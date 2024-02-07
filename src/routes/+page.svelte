@@ -7,6 +7,9 @@
    */
     let showModal
 
+    // current date
+    let currentDate = new Date()
+
 </script>
  
 <div class="app-container">
@@ -90,7 +93,7 @@
     <div class="projects-section">
       <div class="projects-section-header">
         <p>Continua estudiando</p>
-        <p class="time">December, 12</p>
+        <p class="time">{currentDate.toLocaleDateString()}</p>
       </div>
       <div class="projects-section-line">
         <div class="projects-status">
@@ -117,7 +120,7 @@
         <div class="project-box-wrapper">
           <div class="project-box" style="background-color: #fee4cb;">
             <div class="project-box-header">
-              <span>December 10, 2020</span>
+              <span>{currentDate.toLocaleDateString()}</span>
               <div class="more-wrapper">
 
                 <!-- ? options points -->

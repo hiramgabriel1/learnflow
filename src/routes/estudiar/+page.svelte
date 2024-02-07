@@ -128,35 +128,35 @@
   <div class="projects-section">
     <div class="projects-section-header">
       <!-- <p>Ingresa un tema de tu interes</p> -->
-      <p class="time">December, 12</p>
+      <p class="time">Febrero, 7</p>
     </div>
 
     <br><br>
 
-    <!-- component -->
-    <div class="relative flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative items-center">
+    <!-- todo: enter GPT DUDE -->
+    <div class="relative flex items-center justify-center py-12 px-6 lg:px-12 relative items-center">
       <div class="absolute opacity-60 inset-0 z-0"></div>
-      <div class="sm:max-w-xl w-full p-10 bg-white rounded-xl z-10">
+      <div class="sm:max-w-3xl w-full p-12 bg-white rounded-xl z-10">
           <div class="text-center">
-              <h2 class="mt-5 text-3xl font-bold text-gray-900">
+              <h2 class="mt-8 text-4xl font-bold text-gray-900">
                   Ingresa un tema!
               </h2>
-              <p class="mt-2 text-sm text-gray-400">Puedes decirle que te diga que es la programación.</p>
+              <p class="mt-4 text-lg text-gray-400">Puedes decirle que te diga qué es la programación.</p>
           </div>
-
+  
           <!-- ? form here -->
-          <form class="mt-8 space-y-3">
-              <div class="grid grid-cols-1 space-y-2">
+          <form class="mt-10 space-y-6">
+              <div class="grid grid-cols-1 space-y-4">
                   <input 
-                    class="text-base p-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500" 
-                    type="text"
-                    bind:value={prompt} 
-                    placeholder="¿Que es nestJS?" />
+                      class="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500" 
+                      type="text"
+                      bind:value={prompt} 
+                      placeholder="¿Qué es NestJS?" />
               </div>
               <div>
                   <button
                       on:click={responseGPT}
-                      class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                      class="my-8 w-full flex justify-center bg-blue-500 text-gray-100 p-6 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
                   >
                       Comenzar
                   </button>
@@ -165,49 +165,8 @@
       </div>
   </div>
   
-
-<!-- fin componente -->
-<!-- component -->
-<div class="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-  <div class="relative mx-4 mt-4 h-96 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
-    <img
-      src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=927&amp;q=80"
-      class="h-full w-full object-cover"
-    />
-  </div>
-  <div class="p-6">
-    <div class="mb-2 flex items-center justify-between">
-      <p class="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
-        Respuesta
-      </p>
-      <p class="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
-        $95.00
-      </p>
-    </div>
-    <p class="block font-sans text-sm font-normal leading-normal text-gray-700 antialiased opacity-75">
-      {gptResponse}
-    </p>
-  </div>
-  <div class="p-6 pt-0">
-    <button
-      class="block w-full select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-      type="button"
-    >
-      Add to Cart
-    </button>
-  </div>
-</div>
-<div class="w-full pt-5 px-4 mb-8 mx-auto ">
-    <div class="text-sm text-gray-700 py-1">
-        Made with <a class="text-gray-700 font-semibold" href="https://www.material-tailwind.com/docs/html/card?ref=tailwindcomponents" target="_blank">Material Tailwind</a> by <a href="https://www.creative-tim.com?ref=tailwindcomponents" class="text-gray-700 font-semibold" target="_blank"> Creative Tim</a>.
-    </div>
-</div>
-
-<!-- stylesheet -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
-/>
+  <!-- finish -->
+  
   </div>
 </div>
 </div>
