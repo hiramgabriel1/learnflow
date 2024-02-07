@@ -55,7 +55,7 @@ body {
 
 body {
   font-family: "DM Sans", sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   background-color: var(--app-container);
@@ -876,5 +876,19 @@ a {
   .project-boxes.jsListView .more-wrapper {
     right: 2px;
     top: 10px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .messages-section {
+    overflow: hidden;
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .messages-section {
+    display: none;
+    overflow: hidden;
   }
 }

@@ -10,6 +10,8 @@
     // current date
     let currentDate = new Date()
 
+    // todo: Consume data api here
+    
 </script>
  
 <div class="app-container">
@@ -53,11 +55,11 @@
       </button>
 
       <!-- ? profile button -->
-      <button class="profile-btn">
+      <a class="profile-btn" href="/profile">
         <!-- svelte-ignore a11y-img-redundant-alt -->
         <img src="https://scontent.fhmo3-1.fna.fbcdn.net/v/t39.30808-6/406330467_319954527568387_6567001134865580492_n.jpg?stp=cp6_dst-jpg&_nc_cat=103&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=qNArkU2Fr1MAX8pLB74&_nc_ht=scontent.fhmo3-1.fna&oh=00_AfBf_xqnBdpbaEWMyFDtI4Qk48SAl4XygTitPcvMVGA5oA&oe=65C87B24" alt="not found image"/>
         <span>Hiram Gabriel</span>
-      </button>
+      </a>
     </div>
   </div>
   <div class="app-content">

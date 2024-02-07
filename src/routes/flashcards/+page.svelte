@@ -107,16 +107,78 @@
     <!-- todo: menu index -->
     <div class="projects-section">
       <div class="projects-section-header">
-        <!-- <p>Fecha</p> -->
-        <p class="time">{ currentDate.toLocaleDateString() }</p>
+        <p class="text-center font-bolder">Selecciona una tarjeta</p>
+        <!-- <p class="time">{ currentDate.toLocaleDateString() }</p> -->
       </div>
   
       <br><br>
   <!-- index -->
 
+  <!-- component -->
+<div class="py-16 bg-gradient-to-br from-gray-50 to-blue-100 overflow-auto border-10">  
+  <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6 border-10">
+      <div class="mb-12 space-y-2 text-center">
+        <h2 class="text-2xl text-cyan-900 font-bold md:text-4xl">¿Que es programación?</h2>
+        <p class="lg:w-6/12 lg:mx-auto">Da click en la respuesta correcta</p>
+      </div>
 
+      <!-- ? response #1 -->
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div class="p-10 rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
+          <!-- <img src="https://tailus.io/sources/blocks/twocards/preview/images/woman.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-56 sm:h-full w-full sm:w-5/12 object-cover object-top rounded-lg transition duration-500 group-hover:rounded-xl"> -->
+          <div class="sm:w-7/12 pl-0 p-5">
+            <div class="space-y-2">
+              <div class="space-y-4">
+                <h4 class="text-2xl font-semibold text-cyan-900">Provident de illo eveniet commodi fuga fugiat laboriosam expedita.</h4>
+                <p class="text-gray-600">Laborum saepe laudantium in, voluptates ex placeat quo harum aliquam totam, doloribus eum impedit atque! Temporibus...</p>
+              </div>
+              <button class="block w-max text-green-600 text-bolder">Seleccionar ✔</button>
+            </div>
+          </div>
+        </div>
+        <!-- ? finish response #1 -->
+
+
+        <!-- ? response #2 -->
+        <div class="p-10 rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
+          <!-- <img src="https://tailus.io/sources/blocks/twocards/preview/images/man.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-56 sm:h-full w-full sm:w-5/12 object-cover object-top rounded-lg transition duration-500 group-hover:rounded-xl"> -->
+          <div class="sm:w-7/12 pl-0 p-5">
+            <div class="space-y-2">
+              <div class="space-y-4">
+                <h4 class="text-2xl font-semibold text-cyan-900">Provident de illo eveniet commodi fuga fugiat laboriosam expedita.</h4>
+                <p class="text-gray-600">Laborum saepe laudantium in, voluptates ex placeat quo harum aliquam totam, doloribus eum impedit atque! Temporibus...</p>
+              </div>
+              <button class="block w-max text-cyan-600">Seleccionar ✔</button>
+              <!-- <a href="https://tailus.io" class="block w-max text-cyan-600">Read more</a> -->
+            </div>
+          </div>
+        </div>
+        <!-- ? finish response #2 -->
+      </div>
+      <!-- ? content cards finish -->
+
+  </div>
+  <!-- ? finish components cards -->
+</div>
     <!-- finish -->
-    
+
+
+  </div>
+  
+  <!-- ? acciones start -->
+  <div class="messages-section hidden sm:block">
+    <button class="messages-close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="15" y1="9" x2="9" y2="15" />
+        <line x1="9" y1="9" x2="15" y2="15" /></svg>
+    </button>
+    <div class="projects-section-header">
+      <p>Acciones</p>
     </div>
+    <!-- ? acciones finish -->
+
+  </div>
+
   </div>
   </div>

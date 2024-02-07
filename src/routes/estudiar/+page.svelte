@@ -27,18 +27,6 @@
     }
   };
 
-  // @ts-ignore
-  // const handleInputTheme = async (e) => {
-  //   const value = e.target.value;
-    
-  //   if (value != "") {
-  //       toast.error("Ingresa un valor mayor ó igual a 1")
-  //       disabled = true
-  //   }else{
-  //     disabled = false
-  //   }
-  // };
-
     const responseGPT = async () => {
         try {
 
