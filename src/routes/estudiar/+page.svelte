@@ -1,52 +1,74 @@
 <script>
   import "../../app.css"
   import "../../main.styles.css"
-  // import {GF4} from ""
+  import { goto } from "$app/navigation"
+  import toast, { Toaster } from 'svelte-french-toast';
 
-  /**
- * @type {boolean}
- */
-  let showModal
-  /**
-   * @type {any}
+    let currentDate = new Date();
+    /**
+   * @type {boolean}
    */
-  let response
+    let disabled
 
-  let formData = {
-    title: ''
-  }
-
-  let prompt = ''
-  let gptResponse = '';
-
-  const handleSubmit = async () => {
-
-  }
-
-  // const API_KEY = "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"
-  const responseGPT = async () => {
-    try {
-      const response = await fetch('https://api.openai.com/v1/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'text-davinci-003',
-        prompt: 'que es nestjs',
-        max_tokens: 150,
-        temperature: 0.9
-      })
-    });
-
-    const data = await response.json();
-    gptResponse = data.choices[0].text;
-    } catch (error) {
-      console.log(error);
+    let formData = {
+        theme: '',
+        cards: ''
+    };
+  
+    // @ts-ignore
+    const handleInputChange = async (e) => {
+    const value = e.target.value;
+    
+    if (value <= 0) {
+        toast.error("Ingresa un valor mayor ó igual a 1")
+        disabled = true
+    }else{
+      disabled = false
     }
+  };
 
-  }
+  // @ts-ignore
+  // const handleInputTheme = async (e) => {
+  //   const value = e.target.value;
+    
+  //   if (value != "") {
+  //       toast.error("Ingresa un valor mayor ó igual a 1")
+  //       disabled = true
+  //   }else{
+  //     disabled = false
+  //   }
+  // };
+
+    const responseGPT = async () => {
+        try {
+
+          // @ts-ignore
+          if(formData.theme === '' || !isNaN(formData.theme)){
+            return toast.error("Ingresa un tema! 🚀")
+          }
+
+          // console.log(!isNaN(formData.theme));
+          toast('pensando', {
+            icon: '🧠'
+           })
+          
+           const api = "https://jsonplaceholder.typicode.com/todos/1";
+            const response = await fetch(api);
+
+            if (!response.ok) {
+                throw new Error('No se pudo obtener la respuesta del servidor.');
+            }
+
+            const convertData = await response.json();
+            
+            goto("/flashcards")
+            console.log(convertData);
+        } catch (error) {
+            console.error('Error al obtener los datos:', error);
+        }
+    }
 </script>
+<Toaster />
 
 <div class="app-container">
 <div class="app-header">
@@ -127,8 +149,8 @@
   <!-- todo: menu index -->
   <div class="projects-section">
     <div class="projects-section-header">
-      <!-- <p>Ingresa un tema de tu interes</p> -->
-      <p class="time">Febrero, 7</p>
+      <!-- <p>Fecha</p> -->
+      <p class="time">{ currentDate.toLocaleDateString() }</p>
     </div>
 
     <br><br>
@@ -146,75 +168,42 @@
   
           <!-- ? form here -->
           <form class="mt-10 space-y-6">
+            
               <div class="grid grid-cols-1 space-y-4">
-                  <input 
-                      class="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500" 
-                      type="text"
-                      bind:value={prompt} 
-                      placeholder="¿Qué es NestJS?" />
+                    <input 
+                    class="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500" 
+                    type="text"
+                    id="theme"
+                    required
+                    minlength="1"
+                    bind:value={formData.theme} 
+                    placeholder="¿Qué es NestJS?" />
               </div>
+              <div class="grid grid-cols-1 space-y-4">
+                <input 
+                    class="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500" 
+                    type="number"
+                    id="numberCards"
+                    required
+                    min="1"
+                    on:input={handleInputChange}
+                    bind:value={formData.cards}
+                    placeholder="¿Cuantas tarjetas deseas?" />
+            </div>
               <div>
-                  <button
+                  {#if !disabled}
+                      <button
                       on:click={responseGPT}
                       class="my-8 w-full flex justify-center bg-blue-500 text-gray-100 p-6 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                  >
-                      Comenzar
-                  </button>
+                      >
+                        Comenzar
+                    </button>
+                  {/if}
               </div>
           </form>
       </div>
   </div>
   
-  <!-- finish -->
-  
   </div>
 </div>
 </div>
-
-{#if showModal}
-<div class="min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover" id="modal-id">
-<div class="absolute bg-black opacity-80 inset-0 z-0"></div>
-<div class="w-full max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg bg-white">
-      <div class="">
-            <div class="text-center p-5 flex-auto justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 -m-1 flex items-center text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 flex items-center text-red-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                              fill-rule="evenodd"
-                              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                              clip-rule="evenodd"
-                        />
-                  </svg>
-                  <h3 class="text-xl font-bold py-4">¿Está seguro de eliminar?</h3>
-                  <p class="text-sm text-gray-500 px-8">Si lo elimina no podrá recuperarlo</p>
-            </div>
-            <!--footer-->
-            <div class="p-3 mt-2 text-center space-x-4 md:block">
-                  <button 
-                    class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
-                    on:click={() => showModal = false}
-                    >
-                      Cancelar
-                  </button>
-                  <button 
-                    type="submit"
-                    class="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600"
-                    >
-                      Eliminar
-                  </button>
-            </div>
-      </div>
-</div>
-</div>
-
-{/if}
-
-
-<!-- todo: response AI -->
-
-
-<!-- {#if response}
-  
-{/if} -->

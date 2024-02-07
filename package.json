@@ -27,6 +27,7 @@
 	"type": "module",
 	"dependencies": {
 		"g4f": "^1.2.1",
-		"openai": "^4.0.0"
+		"openai": "^4.0.0",
+		"svelte-french-toast": "^1.2.0"
 	}
 }
