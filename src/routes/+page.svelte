@@ -96,7 +96,7 @@
     <div class="projects-section">
       <div class="projects-section-header">
         <p>Continua estudiando</p>
-        <p class="time">{currentDate.toLocaleDateString()}</p>
+        <p class="time">{currentDate.toDateString()}</p>
       </div>
       <div class="projects-section-line">
         <div class="projects-status">
