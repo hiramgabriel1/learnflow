@@ -156,7 +156,6 @@
   
           <!-- ? form here -->
           <form class="mt-10 space-y-6">
-            
               <div class="grid grid-cols-1 space-y-4">
                     <input 
                     class="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500" 
