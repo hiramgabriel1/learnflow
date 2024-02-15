@@ -206,10 +206,41 @@
 
       <!-- todo: index component -->
 
-
-
+      
+      
       <!-- todo: final component -->
-
+      
+      
+      <article class='flex'>
+      <section class='flex flex-col items-center'>
+        <div class='min-h-96 rounded-lg border border-gray-900 max-w-md p-3'>
+          <p class='text-center text-lg font-sans'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nobis aspernatur omnis necessitatibus eaque minus provident eum explicabo laudantium obcaecati quo vitae cupiditate, tempora veniam accusantium ipsa perferendis praesentium reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi atque veniam ea, similique repudiandae exercitationem doloribus assumenda hic enim asperiores Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum earum enim nobis! Doloribus, pariatur. Neque sit eos aut assumenda cupiditate?.</p>
+        </div>
+        <div class="flex flex-col items-center mt-3">
+          <div class="mr-2">Icon</div>
+          <div>.............................</div>
+        </div>
+      </section>
+      <section class='flex mx-5 flex-col items-center'>
+        <div class='min-h-96 rounded-lg border border-gray-900 max-w-md p-3'>
+          <p class='text-center text-lg font-sans'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nobis aspernatur omnis necessitatibus eaque minus provident eum explicabo laudantium obcaecati quo vitae cupiditate, tempora veniam accusantium ipsa perferendis praesentium reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi atque veniam ea, similique repudiandae exercitationem doloribus assumenda hic enim asperiores Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum earum enim nobis! Doloribus, pariatur. Neque sit eos aut assumenda cupiditate?.</p>
+        </div>
+        <div class="flex flex-col items-center mt-3">
+          <div class="mr-2">Icon</div>
+          <div>.............................</div>
+        </div>
+      </section>
+      <section class='flex flex-col items-center'>
+        <div class='min-h-96 rounded-lg border border-gray-900 max-w-md p-3'>
+          <p class='text-center text-lg font-sans'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nobis aspernatur omnis necessitatibus eaque minus provident eum explicabo laudantium obcaecati quo vitae cupiditate, tempora veniam accusantium ipsa perferendis praesentium reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi atque veniam ea, similique repudiandae exercitationem doloribus assumenda hic enim asperiores Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum earum enim nobis! Doloribus, pariatur. Neque sit eos aut assumenda cupiditate?.</p>
+        </div>
+        <div class="flex flex-col items-center mt-3">
+          <div class="mr-2">Icon</div>
+          <div>.............................</div>
+        </div>
+      </section>
+      </article>
+        
       <!-- index -->
       <!-- <div class="py-16 bg-gradient-to-br from-gray-50 to-blue-100 overflow-auto border-10">  
   <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6 border-10">
