@@ -2,44 +2,39 @@
   import "../../../app.css";
   import video from "$lib/public/assets/video.mp4";
   import google from "$lib/public/assets/google.svg";
-  import poster from "$lib/public/assets/bg.jpg"
+  import poster from "$lib/public/assets/bg.jpg";
 
   // @ts-ignore
   let formData = {
-    username: '',
-    lastName: '',
-    userEmail: '',
-    contraseña: '',
-    isStudent: '',
-    reasons: '',
-  }
+    username: "",
+    lastName: "",
+    userEmail: "",
+    contraseña: "",
+    isStudent: "",
+    reasons: "",
+  };
 
-  const formHandler = async () => {
-    
-  }
+  const formHandler = async () => {};
 
   // todo: auth methods here
   const handleAuthGithub = () => {
-    const client_id = "7c5fdb1ab913c01760da"
+    const client_id = "7c5fdb1ab913c01760da";
 
-    window.location.assign("https://github.com/login/oauth/authorize?client_id=" + client_id)
-  }
+    window.location.assign(
+      "https://github.com/login/oauth/authorize?client_id=" + client_id
+    );
+  };
 
   const handleAuthGoogle = () => {
     // progress...
-  }
+  };
   // finish auth methods
 </script>
 
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video
-      class="w-full h-full object-cover"
-      loop
-      autoplay
-      src={video}
-      poster={poster}
+    <video class="w-full h-full object-cover" loop autoplay src={video} {poster}
     ></video>
   </div>
   <!-- svelte-ignore a11y-unknown-role -->
@@ -51,9 +46,7 @@
   <div class="relative h-full ml-auto lg:w-6/12">
     <div class="m-auto py-12 px-6 sm:p-20 xl:w-10/12">
       <div class="space-y-4">
-        <p class="text-xl" style="font-size: 60px;">
-          Learnflow AI
-        </p>
+        <p class="text-xl" style="font-size: 60px;">Learnflow AI</p>
         <p class="font-medium text-lg text-gray-600">
           Bienvenido a Learnflow AI. Crea una cuenta y comienza la magia!
         </p>
@@ -67,8 +60,7 @@
             <img src={google} class="w-5" alt="" />
             <button
               class="block w-max font-medium tracking-wide text-sm text-blue-700"
-              on:click={handleAuthGoogle}
-              >Google</button
+              on:click={handleAuthGoogle}>Google</button
             >
           </div>
         </button>
@@ -88,8 +80,8 @@
             </svg>
             <button
               class="block w-max font-medium tracking-wide text-sm text-white"
-              on:click={handleAuthGithub}
-              >Github</button>
+              on:click={handleAuthGithub}>Github</button
+            >
           </div>
         </button>
       </div>
@@ -102,7 +94,7 @@
         >
       </div>
 
-      <form class="space-y-6 py-6">
+      <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
         <div>
           <input
             type="text"
@@ -122,22 +114,22 @@
         </div>
 
         <div>
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-            />
-          </div>
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+          />
+        </div>
 
-          <div>
-            <input
-              type="password"
-              placeholder="Contraseña"
-              required
-              class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-            />
-          </div>
+        <div>
+          <input
+            type="password"
+            placeholder="Contraseña"
+            required
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+          />
+        </div>
 
         <div>
           <input

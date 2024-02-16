@@ -10,17 +10,23 @@
     contraseña: '',
   }
 
-    // todo: auth methods here
-    const handleAuthGithub = () => {
-      const client_id = "7c5fdb1ab913c01760da"
+  const formHandler = async () => {
 
-      window.location.assign("https://github.com/login/oauth/authorize?client_id=" + client_id)
-    }
+  }
 
-    const handleAuthGoogle = () => {
-      console.log("progress...");
-    }
+  // todo: auth methods here
+  const handleAuthGithub = () => {
+    const client_id = "7c5fdb1ab913c01760da"
+
+    window.location.assign("https://github.com/login/oauth/authorize?client_id=" + client_id)
+  }
+
+  const handleAuthGoogle = () => {
+    console.log("progress...");
+  }
     // finish auth methods
+
+
 </script>
 
 <div class="2xl:container h-screen m-auto">
@@ -95,7 +101,7 @@
         >
       </div>
 
-      <form class="space-y-6 py-6">
+      <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
         <div>
           <input
             type="text"
