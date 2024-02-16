@@ -3,18 +3,54 @@
   import video from "$lib/public/assets/video.mp4";
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
+  import toast, { Toaster } from "svelte-french-toast";
 
   // @ts-ignore
   let formData = {
     username: "",
     lastName: "",
     userEmail: "",
-    contraseña: "",
     isStudent: "",
-    reasons: "",
+    reasonsToUseApp: "",
+    password: "",
   };
 
-  const formHandler = async () => {};
+  const formHandler = async () => {
+    try {
+      const saveUser = await fetch(
+        "http://localhost:4000/api/v1/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!saveUser.ok && saveUser.status !== 201 && saveUser.status !== 200) {
+        return toast.error(
+          "ha habido un error al intentar registrarte, vuelve a intentar más tarde o intenta con otro nombre y correo"
+        );
+      } else if (saveUser.statusText === "400" && saveUser.status === 400) {
+        return toast.error("el usuario ingresado ya éxiste");
+      }else if(saveUser.ok){
+        toast.success("registrado éxitosamente")
+
+        setTimeout(() => {
+          window.location.href = "/"
+        }, 2000);
+      }
+
+      console.log(saveUser.status);
+
+      saveUser.status === 400 ? console.log("si") : console.log("no");
+    } catch (error) {
+      console.error(error);
+      throw new Error("bad request");
+    }
+  };
 
   // todo: auth methods here
   const handleAuthGithub = () => {
@@ -30,6 +66,8 @@
   };
   // finish auth methods
 </script>
+
+<Toaster />
 
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
@@ -99,6 +137,7 @@
           <input
             type="text"
             placeholder="Nombre"
+            bind:value={formData.username}
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
@@ -108,6 +147,7 @@
           <input
             type="text"
             placeholder="Apellido"
+            bind:value={formData.lastName}
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
@@ -117,6 +157,7 @@
           <input
             type="email"
             placeholder="Email"
+            bind:value={formData.userEmail}
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
@@ -126,6 +167,7 @@
           <input
             type="password"
             placeholder="Contraseña"
+            bind:value={formData.password}
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
@@ -135,6 +177,8 @@
           <input
             type="text"
             placeholder="¿Eres estudiante?"
+            bind:value={formData.isStudent}
+            required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
         </div>
@@ -143,6 +187,8 @@
           <input
             type="text"
             placeholder="¿Por que quieres usar Learnflow?"
+            bind:value={formData.reasonsToUseApp}
+            required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
           <button type="reset" class="w-max p-3 -mr-3">
