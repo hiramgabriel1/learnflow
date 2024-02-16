@@ -78,6 +78,7 @@
         </button>
       </div>
 
+      <!-- svelte-ignore a11y-unknown-role -->
       <div role="hidden" class="mt-12 border-t">
         <span
           class="block w-max mx-auto -mt-3 px-4 text-center text-gray-500 bg-white"
@@ -157,7 +158,7 @@
         </div>
       </form>
 
-      <div class="border-t pt-12">
+      <!-- <div class="border-t pt-12">
         <div class="space-y-2 text-center">
           <img
             src="../public/images/logo.svg"
@@ -168,7 +169,7 @@
             >Get +50 modern blocks for free next month.</span
           >
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
