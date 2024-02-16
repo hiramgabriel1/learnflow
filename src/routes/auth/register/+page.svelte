@@ -2,6 +2,7 @@
   import "../../../app.css";
   import video from "$lib/public/assets/video.mp4";
   import google from "$lib/public/assets/google.svg";
+  import poster from "$lib/public/assets/bg.jpg"
 
   // @ts-ignore
   let formData = {
@@ -38,7 +39,7 @@
       loop
       autoplay
       src={video}
-      poster="../../../lib/public/assets/bg.jpg"
+      poster={poster}
     ></video>
   </div>
   <!-- svelte-ignore a11y-unknown-role -->
@@ -51,8 +52,7 @@
     <div class="m-auto py-12 px-6 sm:p-20 xl:w-10/12">
       <div class="space-y-4">
         <p class="text-xl" style="font-size: 60px;">
-          Learnflow
-          <!-- <img src="../public/images/logo.svg" class="w-40" alt="tailus logo" /> -->
+          Learnflow AI
         </p>
         <p class="font-medium text-lg text-gray-600">
           Bienvenido a Learnflow AI. Crea una cuenta y comienza la magia!
