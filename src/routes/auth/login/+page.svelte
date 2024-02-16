@@ -123,19 +123,6 @@
           </a>
         </div>
       </form>
-
-      <!-- <div class="border-t pt-12">
-        <div class="space-y-2 text-center">
-          <img
-            src="../public/images/logo.svg"
-            class="w-40 m-auto grayscale"
-            alt=""
-          />
-          <span class="block text-sm tracking-wide text-gray-500"
-            >Get +50 modern blocks for free next month.</span
-          >
-        </div>
-      </div> -->
     </div>
   </div>
 </div>

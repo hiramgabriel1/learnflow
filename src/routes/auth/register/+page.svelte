@@ -2,7 +2,12 @@
   import "../../../app.css";
   import video from "$lib/public/assets/video.mp4";
   import google from "$lib/public/assets/google.svg";
+  // import { env } from "$lib/env";
 
+  // const clientID = import.meta.env.CLIENT_ID
+  // const debugMode = import.meta.env.DEBUG === true
+
+  // @ts-ignore
   let formData = {
     username: '',
     lastName: '',
@@ -12,7 +17,17 @@
     reasons: '',
   }
 
+  // @ts-ignore
+  const formHandler = async () => {
 
+  }
+
+  const handleButton = () => {
+    const client_id = "7c5fdb1ab913c01760da"
+
+    // console.log(env);
+    window.location.assign("https://github.com/login/oauth/authorize?client_id=" + client_id)
+  }
 </script>
 
 <div class="2xl:container h-screen m-auto">
@@ -72,6 +87,7 @@
             </svg>
             <span
               class="block w-max font-medium tracking-wide text-sm text-white"
+              on:click={handleButton}
               >Github</span
             >
           </div>
@@ -147,6 +163,7 @@
         <div>
           <button
             class="w-full px-6 py-3 rounded-xl bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
+            on:click={handleButton}
           >
             <span class="font-semibold text-white text-lg">Crear cuenta</span>
           </button>
@@ -157,19 +174,6 @@
           </a>
         </div>
       </form>
-
-      <!-- <div class="border-t pt-12">
-        <div class="space-y-2 text-center">
-          <img
-            src="../public/images/logo.svg"
-            class="w-40 m-auto grayscale"
-            alt=""
-          />
-          <span class="block text-sm tracking-wide text-gray-500"
-            >Get +50 modern blocks for free next month.</span
-          >
-        </div>
-      </div> -->
     </div>
   </div>
 </div>
