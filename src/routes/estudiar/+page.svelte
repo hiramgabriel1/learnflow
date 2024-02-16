@@ -239,7 +239,7 @@
 
       <!-- todo: enter GPT DUDE -->
       <div
-        class="relative flex items-center justify-center py-12 px-6 lg:px-12 relative items-center"
+        class="relative flex items-center justify-center py-12 px-6 lg:px-12"
       >
         <div class="absolute opacity-60 inset-0 z-0"></div>
         <div class="sm:max-w-3xl w-full p-12 bg-white rounded-xl z-10">
