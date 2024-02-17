@@ -48,7 +48,7 @@
 
       const convertData = await response.json();
 
-      goto("/flashcards");
+      goto("/estudiar/flashcards");
       console.log(convertData);
     } catch (error) {
       console.error("Error al obtener los datos:", error);

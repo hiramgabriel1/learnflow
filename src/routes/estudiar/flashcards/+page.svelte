@@ -1,22 +1,84 @@
 <script>
-  import "../../app.css";
-  import "../../main.styles.css";
+  import "../../../app.css";
+  import "../../../main.styles.css";
+  import toast, { Toaster } from "svelte-french-toast";
 
+  // @ts-ignore
+  let recognition;
+  let recognizedText = "";
+
+  // @ts-ignore
   let formData = {
     themeFlashcard: "",
-    numberCards: ""
+    numberCards: "",
   };
 
-  const responseGPT = async () => {
+  const saveResponseVoice = async () => {
     try {
-      //
-      // goto()
-      // awaitAI = true
+      // aqui enviar en el body del post la variable recognized text
+      const validateResponseVoiceWithAnswerAI = await fetch("endpoint here", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(recognizedText),
+      });
+
+      if (validateResponseVoiceWithAnswerAI.ok) {
+        toast.success("pensando...")
+      }
     } catch (error) {
       console.log(error);
     }
   };
+
+  // @ts-ignore
+  const sendResponseVoiceUser = () => {
+    if ("SpeechRecognition" in window || "webkitSpeechRecognition" in window) {
+      // @ts-ignore
+      recognition = new (window.SpeechRecognition ||
+        // @ts-ignore
+        window.webkitSpeechRecognition)();
+
+      recognition.lang = "es-ES"; // Establecer el idioma
+      recognition.interimResults = true; // Obtener resultados provisionales
+
+      recognition.onstart = () => {
+        console.log("Reconocimiento de voz iniciado");
+      };
+
+      // @ts-ignore
+      recognition.onresult = (event) => {
+        recognizedText = Array.from(event.results)
+          .map((result) => result[0].transcript)
+          .join("");
+      };
+
+      // @ts-ignore
+      recognition.onerror = (event) => {
+        console.error("Error de reconocimiento de voz:", event.error);
+      };
+
+      // Iniciar el reconocimiento de voz
+      recognition.start();
+      saveResponseVoice();
+    } else {
+      console.error("El navegador no soporta la Web Speech API");
+    }
+  };
+
+  // @ts-ignore
+  const stopRecognition = () => {
+    // @ts-ignore
+    if (recognition) {
+      // @ts-ignore
+      recognition.stop();
+    }
+  };
 </script>
+
+<Toaster />
 
 <div class="app-container">
   <div class="app-header">
@@ -194,35 +256,70 @@
         <p class="text-center font-bolder">Selecciona una tarjeta</p>
       </div>
       <br /><br />
-      
-      <article class='flex'>
-      <section class='flex flex-col items-center'>
-        <div class='min-h-96 rounded-lg border border-gray-900 max-w-md p-3'>
-          <p class='text-center text-lg font-sans'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nobis aspernatur omnis necessitatibus eaque minus provident eum explicabo laudantium obcaecati quo vitae cupiditate, tempora veniam accusantium ipsa perferendis praesentium reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi atque veniam ea, similique repudiandae exercitationem doloribus assumenda hic enim asperiores Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum earum enim nobis! Doloribus, pariatur. Neque sit eos aut assumenda cupiditate?.</p>
-        </div>
-        <div class="flex flex-col items-center mt-3">
-          <div class="mr-2">Icon</div>
-          <div>.............................</div>
-        </div>
-      </section>
-      <section class='flex mx-5 flex-col items-center'>
-        <div class='min-h-96 rounded-lg border border-gray-900 max-w-md p-3'>
-          <p class='text-center text-lg font-sans'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nobis aspernatur omnis necessitatibus eaque minus provident eum explicabo laudantium obcaecati quo vitae cupiditate, tempora veniam accusantium ipsa perferendis praesentium reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi atque veniam ea, similique repudiandae exercitationem doloribus assumenda hic enim asperiores Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum earum enim nobis! Doloribus, pariatur. Neque sit eos aut assumenda cupiditate?.</p>
-        </div>
-        <div class="flex flex-col items-center mt-3">
-          <div class="mr-2">Icon</div>
-          <div>.............................</div>
-        </div>
-      </section>
-      <section class='flex flex-col items-center'>
-        <div class='min-h-96 rounded-lg border border-gray-900 max-w-md p-3'>
-          <p class='text-center text-lg font-sans'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nobis aspernatur omnis necessitatibus eaque minus provident eum explicabo laudantium obcaecati quo vitae cupiditate, tempora veniam accusantium ipsa perferendis praesentium reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi atque veniam ea, similique repudiandae exercitationem doloribus assumenda hic enim asperiores Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum earum enim nobis! Doloribus, pariatur. Neque sit eos aut assumenda cupiditate?.</p>
-        </div>
-        <div class="flex flex-col items-center mt-3">
-          <div class="mr-2">Icon</div>
-          <div>.............................</div>
-        </div>
-      </section>
+
+      <article class="flex">
+        <section class="flex flex-col items-center">
+          <div class="min-h-96 rounded-lg border border-gray-900 max-w-md p-3">
+            <p class="text-center text-lg font-sans">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consequuntur nobis aspernatur omnis necessitatibus eaque minus
+              provident eum explicabo laudantium obcaecati quo vitae cupiditate,
+              tempora veniam accusantium ipsa perferendis praesentium
+              reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi
+              atque veniam ea, similique repudiandae exercitationem doloribus
+              assumenda hic enim asperiores Lorem ipsum, dolor sit amet
+              consectetur adipisicing elit. Eum earum enim nobis! Doloribus,
+              pariatur. Neque sit eos aut assumenda cupiditate?.
+            </p>
+          </div>
+          <div class="flex flex-col items-center mt-3">
+            <button on:click={sendResponseVoiceUser} class="mr-2">Icon</button>
+            <button on:click={stopRecognition} class="mr-2">stop</button>
+            <div>
+              {#if recognizedText}
+                <p>Texto reconocido: {recognizedText}</p>
+              {/if}
+            </div>
+          </div>
+        </section>
+        <section class="flex mx-5 flex-col items-center">
+          <div class="min-h-96 rounded-lg border border-gray-900 max-w-md p-3">
+            <p class="text-center text-lg font-sans">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consequuntur nobis aspernatur omnis necessitatibus eaque minus
+              provident eum explicabo laudantium obcaecati quo vitae cupiditate,
+              tempora veniam accusantium ipsa perferendis praesentium
+              reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi
+              atque veniam ea, similique repudiandae exercitationem doloribus
+              assumenda hic enim asperiores Lorem ipsum, dolor sit amet
+              consectetur adipisicing elit. Eum earum enim nobis! Doloribus,
+              pariatur. Neque sit eos aut assumenda cupiditate?.
+            </p>
+          </div>
+          <div class="flex flex-col items-center mt-3">
+            <div class="mr-2">Icon</div>
+            <div>.............................</div>
+          </div>
+        </section>
+        <section class="flex flex-col items-center">
+          <div class="min-h-96 rounded-lg border border-gray-900 max-w-md p-3">
+            <p class="text-center text-lg font-sans">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consequuntur nobis aspernatur omnis necessitatibus eaque minus
+              provident eum explicabo laudantium obcaecati quo vitae cupiditate,
+              tempora veniam accusantium ipsa perferendis praesentium
+              reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi
+              atque veniam ea, similique repudiandae exercitationem doloribus
+              assumenda hic enim asperiores Lorem ipsum, dolor sit amet
+              consectetur adipisicing elit. Eum earum enim nobis! Doloribus,
+              pariatur. Neque sit eos aut assumenda cupiditate?.
+            </p>
+          </div>
+          <div class="flex flex-col items-center mt-3">
+            <div class="mr-2">Icon</div>
+            <div>.............................</div>
+          </div>
+        </section>
       </article>
     </div>
 

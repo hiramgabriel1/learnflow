@@ -28,6 +28,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@types/artyom.js": "^1.0.6",
+		"artyom.js": "^1.0.6",
 		"g4f": "^1.2.1",
 		"openai": "^4.0.0",
 		"svelte-french-toast": "^1.2.0"
