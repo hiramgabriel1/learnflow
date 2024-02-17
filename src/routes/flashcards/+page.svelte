@@ -1,20 +1,12 @@
 <script>
   import "../../app.css";
   import "../../main.styles.css";
-  import { goto } from "$app/navigation";
-  // import { Data } from "../../interfaces/data.interface"
-
-  /**
-   * @type {any}
-   */
-  let awaitAI;
-  let currentDate = new Date();
 
   let formData = {
-    theme: "",
+    themeFlashcard: "",
+    numberCards: ""
   };
 
-  // const API_KEY = "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"
   const responseGPT = async () => {
     try {
       //
@@ -200,7 +192,6 @@
     <div class="projects-section">
       <div class="projects-section-header">
         <p class="text-center font-bolder">Selecciona una tarjeta</p>
-        <!-- <p class="time">{ currentDate.toLocaleDateString() }</p> -->
       </div>
       <br /><br />
       
@@ -233,45 +224,6 @@
         </div>
       </section>
       </article>
-        
-      <!-- index -->
-      <!-- <div class="py-16 bg-gradient-to-br from-gray-50 to-blue-100 overflow-auto border-10">  
-  <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6 border-10">
-      <div class="mb-12 space-y-2 text-center">
-        <h2 class="text-2xl text-cyan-900 font-bold md:text-4xl">¿Qué es programación?</h2>
-        <p class="lg:w-6/12 lg:mx-auto">Da click en la respuesta correcta</p>
-      </div>
-
-      <div class="grid gap-12 lg:grid-cols-2">
-        <div class="p-10 rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
-          <img src="https://tailus.io/sources/blocks/twocards/preview/images/woman.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-56 sm:h-full w-full sm:w-5/12 object-cover object-top rounded-lg transition duration-500 group-hover:rounded-xl">
-          <div class="sm:w-7/12 pl-0 p-5">
-            <div class="space-y-2">
-              <div class="space-y-4">
-                <h4 class="text-2xl font-semibold text-cyan-900">Provident de illo eveniet commodi fuga fugiat laboriosam expedita.</h4>
-                <p class="text-gray-600">Laborum saepe laudantium in, voluptates ex placeat quo harum aliquam totam, doloribus eum impedit atque! Temporibus...</p>
-              </div>
-              <button class="block w-max text-green-600 text-bolder">Seleccionar ✔</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-10 rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
-          <img src="https://tailus.io/sources/blocks/twocards/preview/images/man.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-56 sm:h-full w-full sm:w-5/12 object-cover object-top rounded-lg transition duration-500 group-hover:rounded-xl">
-          <div class="sm:w-7/12 pl-0 p-5">
-            <div class="space-y-2">
-              <div class="space-y-4">
-                <h4 class="text-2xl font-semibold text-cyan-900">Provident de illo eveniet commodi fuga fugiat laboriosam expedita.</h4>
-                <p class="text-gray-600">Laborum saepe laudantium in, voluptates ex placeat quo harum aliquam totam, doloribus eum impedit atque! Temporibus...</p>
-              </div>
-              <button class="block w-max text-cyan-600">Seleccionar ✔</button>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-</div> -->
-      <!-- finish -->
     </div>
 
     <!-- ? acciones start -->

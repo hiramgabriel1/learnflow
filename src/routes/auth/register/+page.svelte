@@ -54,11 +54,9 @@
 
   // todo: auth methods here
   const handleAuthGithub = () => {
-    const client_id = "7c5fdb1ab913c01760da";
+    const client_id = "df98834eb79fa591677f";
 
-    window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + client_id
-    );
+    window.location.assign("https://github.com/login/oauth/authorize?client_id=" + client_id)
   };
 
   const handleAuthGoogle = () => {
@@ -118,7 +116,8 @@
             </svg>
             <button
               class="block w-max font-medium tracking-wide text-sm text-white"
-              on:click={handleAuthGithub}>Github</button
+              on:click={handleAuthGithub}
+              >Github</button
             >
           </div>
         </button>
