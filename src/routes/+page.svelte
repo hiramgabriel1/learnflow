@@ -1,6 +1,6 @@
 <script>
   import "../app.css";
-  // import "../style.main.css"
+  import "../style.main.css"
   import microsoft from "$lib/public/images/clients/microsoft.svg";
   import airbnb from "$lib/public/images/clients/airbnb.svg";
   import ge from "$lib/public/images/clients/ge.svg";
