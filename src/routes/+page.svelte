@@ -10,7 +10,6 @@
   import member from "$lib/public/images/profile.webp";
   import svg from "$lib/public/images/tkt.svg"
 
-  // https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap
 </script>
 
 <!-- landing page here -->
@@ -168,7 +167,7 @@
             </p>
             <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
               <a
-                href="#"
+                href="/auth/register"
                 class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
               >
                 <span class="relative text-base font-semibold text-white"
