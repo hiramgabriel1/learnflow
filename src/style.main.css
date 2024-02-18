@@ -130,6 +130,7 @@ progress {
   height: auto;
 }
 
+/* search */
 [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
