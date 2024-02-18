@@ -4,6 +4,8 @@
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
+  import { onMount } from "svelte";
+  import { writable } from "svelte/store";
 
   // @ts-ignore
   let formData = {
@@ -15,6 +17,14 @@
     password: "",
   };
 
+  // let reload = writable(false);
+
+  // onMount(() => {
+  //   reload.set(true);
+  //   setTimeout(() => {
+  //     window.location.reload();
+  //   }, 1);
+  // });
   const formHandler = async () => {
     try {
       const saveUser = await fetch(
@@ -35,11 +45,11 @@
         );
       } else if (saveUser.statusText === "400" && saveUser.status === 400) {
         return toast.error("el usuario ingresado ya éxiste");
-      }else if(saveUser.ok){
-        toast.success("registrado éxitosamente")
+      } else if (saveUser.ok) {
+        toast.success("registrado éxitosamente");
 
         setTimeout(() => {
-          window.location.href = "/"
+          window.location.href = "/";
         }, 2000);
       }
 
@@ -56,7 +66,9 @@
   const handleAuthGithub = () => {
     const client_id = "df98834eb79fa591677f";
 
-    window.location.assign("https://github.com/login/oauth/authorize?client_id=" + client_id)
+    window.location.assign(
+      "https://github.com/login/oauth/authorize?client_id=" + client_id
+    );
   };
 
   const handleAuthGoogle = () => {
@@ -116,8 +128,7 @@
             </svg>
             <button
               class="block w-max font-medium tracking-wide text-sm text-white"
-              on:click={handleAuthGithub}
-              >Github</button
+              on:click={handleAuthGithub}>Github</button
             >
           </div>
         </button>
