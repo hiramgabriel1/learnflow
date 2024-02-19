@@ -9,24 +9,31 @@
 
   // @ts-ignore
   let formData = {
-    themeFlashcard: "",
-    numberCards: "",
+    requestText: "",
   };
 
   const saveResponseVoice = async () => {
     try {
-      // aqui enviar en el body del post la variable recognized text
-      const validateResponseVoiceWithAnswerAI = await fetch("endpoint here", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      let newFormData = {
+        responseUserToFlashcard: (formData.requestText = recognizedText),
+      };
 
-        body: JSON.stringify(recognizedText),
-      });
+      console.log(newFormData);
+
+      const validateResponseVoiceWithAnswerAI = await fetch(
+        "http://localhost:4000/api/v1/flashcard/send-response-voice/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify(newFormData),
+        }
+      );
 
       if (validateResponseVoiceWithAnswerAI.ok) {
-        toast.success("pensando...")
+        toast.success("procesando tu respuesta... 🧠");
       }
     } catch (error) {
       console.log(error);
@@ -62,7 +69,6 @@
 
       // Iniciar el reconocimiento de voz
       recognition.start();
-      saveResponseVoice();
     } else {
       console.error("El navegador no soporta la Web Speech API");
     }
@@ -74,7 +80,12 @@
     if (recognition) {
       // @ts-ignore
       recognition.stop();
+      saveResponseVoice();
     }
+  };
+
+  const saveFlashCardToUser = async () => {
+    console.log("funciona");
   };
 </script>
 
@@ -175,7 +186,7 @@
   </div>
   <div class="app-content">
     <div class="app-sidebar">
-      <a href="/" class="app-sidebar-link active" title="home">
+      <a href="/dashboard" class="app-sidebar-link active" title="home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -274,7 +285,18 @@
           </div>
           <div class="flex flex-col items-center mt-3">
             <button on:click={sendResponseVoiceUser} class="mr-2">Icon</button>
-            <button on:click={stopRecognition} class="mr-2">stop</button>
+            <button
+              on:click={stopRecognition}
+              class="my-3 w-full flex justify-center bg-blue-500 text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+            >
+              Terminar respuesta
+            </button>
+            <button
+              on:click={saveFlashCardToUser}
+              class="my-3 w-full flex justify-center bg-blue-500 text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+            >
+              Continuar luego
+            </button>
             <div>
               {#if recognizedText}
                 <p>Texto reconocido: {recognizedText}</p>
@@ -322,20 +344,5 @@
         </section>
       </article>
     </div>
-
-    <!-- ? acciones start -->
-    <!-- <div class="messages-section hidden sm:block">
-    <button class="messages-close">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="15" y1="9" x2="9" y2="15" />
-        <line x1="9" y1="9" x2="15" y2="15" /></svg>
-    </button>
-    <div class="projects-section-header">
-      <p>Acciones</p>
-    </div>
-  </div> -->
-
-    <!-- ? dont touch -->
   </div>
 </div>

@@ -113,7 +113,7 @@
   <div class="app-content">
     <div class="app-sidebar">
       <!-- <Tooltip> -->
-      <a href="/" class="app-sidebar-link active" title="home">
+      <a href="/dashboard" class="app-sidebar-link active" title="home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

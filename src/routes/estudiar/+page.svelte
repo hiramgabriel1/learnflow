@@ -3,17 +3,24 @@
   import "../../main.styles.css";
   import { goto } from "$app/navigation";
   import toast, { Toaster } from "svelte-french-toast";
+  import Loading from "../../components/Loading.svelte";
 
   let currentDate = new Date();
   /**
    * @type {boolean}
    */
   let disabled;
+  /**
+   * @type {any}
+   */
+  let showLoading;
 
   let formData = {
-    theme: "",
-    cards: "",
+    themeFlashcard: "",
+    numberCards: "",
   };
+
+  let isLoading = false;
 
   // @ts-ignore
   const handleInputChange = async (e) => {
@@ -29,35 +36,60 @@
 
   const responseGPT = async () => {
     try {
+      disabled = true;
+      showLoading = true;
       // @ts-ignore
-      if (formData.theme === "" || !isNaN(formData.theme)) {
+      if (formData.themeFlashcard === "" || !isNaN(formData.themeFlashcard)) {
         return toast.error("Ingresa un tema! 🚀");
       }
 
-      // console.log(!isNaN(formData.theme));
-      toast("pensando", {
-        icon: "🧠",
+      // // Verificar si el número de tarjetas está presente y es un número válido
+      // if (isNaN(formData.cards) || formData.cards <= 0) {
+      //   return toast.error("Ingresa un número válido de tarjetas! 🚀");
+      // }
+
+      // Mostrar el toast "pensando"
+      const thinkingToast = toast(
+        "Pensando... esto puede tomar unos segundos 🧠",
+        {
+          duration: 15000,
+        }
+      );
+
+      console.log(Number(formData.numberCards));
+
+      // setTimeout(() => {
+      //   toast("tranquilo, esto tomará solo unos segundos! 😃", {
+      //     duration: 10000,
+      //   });
+      // }, 17000);
+
+      const api = "http://localhost:4000/api/v1/flashcard/generate-ai";
+      const sendData = await fetch(api, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(formData),
       });
 
-      const api = "https://jsonplaceholder.typicode.com/todos/1";
-      const response = await fetch(api);
-
-      if (!response.ok) {
+      if (!sendData.ok) {
         throw new Error("No se pudo obtener la respuesta del servidor.");
       }
 
-      const convertData = await response.json();
+      toast.dismiss(thinkingToast);
 
-      goto("/estudiar/flashcards");
-      console.log(convertData);
+      return goto("/estudiar/flashcards");
     } catch (error) {
       console.error("Error al obtener los datos:", error);
+    } finally {
+      isLoading = false;
     }
   };
 </script>
 
 <Toaster />
-
 <div class="app-container">
   <div class="app-header">
     <div class="app-header-left">
@@ -153,7 +185,7 @@
   </div>
   <div class="app-content">
     <div class="app-sidebar">
-      <a href="/" class="app-sidebar-link active" title="home">
+      <a href="/dashboard" class="app-sidebar-link active" title="home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -253,15 +285,14 @@
           </div>
 
           <!-- ? form here -->
-          <form class="mt-10 space-y-6">
+          <form on:submit|preventDefault={responseGPT} class="mt-10 space-y-6">
             <div class="grid grid-cols-1 space-y-4">
               <input
                 class="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
                 type="text"
                 id="theme"
                 required
-                minlength="1"
-                bind:value={formData.theme}
+                bind:value={formData.themeFlashcard}
                 placeholder="¿Qué es NestJS?"
               />
             </div>
@@ -272,19 +303,27 @@
                 id="numberCards"
                 required
                 min="1"
+                max="15"
                 on:input={handleInputChange}
-                bind:value={formData.cards}
+                bind:value={formData.numberCards}
                 placeholder="¿Cuantas tarjetas deseas?"
               />
             </div>
             <div>
               {#if !disabled}
                 <button
-                  on:click={responseGPT}
                   class="my-8 w-full flex justify-center bg-blue-500 text-gray-100 p-6 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
                 >
                   Comenzar
                 </button>
+              {:else if showLoading}
+                <div class="flex justify-center items-center h-full">
+                  <img
+                    class="h-16 w-16"
+                    src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
+                    alt=""
+                  />
+                </div>
               {/if}
             </div>
           </form>
