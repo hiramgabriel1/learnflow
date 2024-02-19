@@ -2,9 +2,7 @@
   import "../app.css";
   import ceoProfile from "$lib/public/images/profile.webp";
   import member from "$lib/public/images/alexander.webp";
-  // const listenEmailSender = async () => {
-
-  // }
+  // import memberJaf from "$lib/public/images"
 </script>
 
 <body class="bg-white dark:bg-gray-900 astro-M5ZLDKQK">
@@ -91,7 +89,7 @@
                     href="#solution"
                     class="block md:px-4 transition hover:text-primary astro-LEPVKGVF"
                   >
-                    <span class="astro-LEPVKGVF">Solution</span>
+                    <span class="astro-LEPVKGVF">Conocer más</span>
                   </a>
                 </li>
                 <li class="astro-LEPVKGVF">
@@ -99,7 +97,7 @@
                     href="#testimonials"
                     class="block md:px-4 transition hover:text-primary astro-LEPVKGVF"
                   >
-                    <span class="astro-LEPVKGVF">Testimonials</span>
+                    <span class="astro-LEPVKGVF">Creadores</span>
                   </a>
                 </li>
                 <li class="astro-LEPVKGVF">
@@ -115,7 +113,7 @@
 
             <div class="mt-12 lg:mt-0 astro-LEPVKGVF">
               <a
-                href="#"
+                href="/auth/register"
                 class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
               >
                 <span
@@ -169,7 +167,7 @@
                 >
               </a>
               <a
-                href="#"
+                href="#learnflow"
                 class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
               >
                 <span
@@ -309,7 +307,7 @@
             </div>
             <br />
           </div>
-          <div class="md:7/12 lg:w-1/2">
+          <div class="md:7/12 lg:w-1/2" id="learnflow">
             <h2
               class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white"
             >
@@ -580,14 +578,14 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                  De fuga fugiat lorem ispum laboriosam expedita.
+                Integración de AI para usuarios premium
                 </h3>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                  Voluptates harum aliquam totam, doloribus eum impedit atque!
-                  Temporibus...
+                  Comming Soon...
                 </p>
+                <!-- svelte-ignore a11y-invalid-attribute -->
                 <a class="inline-block" href="#">
-                  <span class="text-info dark:text-blue-300">Read more</span>
+                  <!-- <span class="text-info dark:text-blue-300">Read more</span> -->
                 </a>
               </div>
             </div>
@@ -606,17 +604,15 @@
               </div>
               <div class="mt-6 relative">
                 <h3
-                  class="text-2xl font-semibold text-gray-800 dark:text-white"
-                >
-                  De fuga fugiat lorem ispum laboriosam expedita.
-                </h3>
+                  class="text-2xl font-semibold text-gray-800 dark:text-white">
+                  Creación de modo multijugador en progreso
+              </h3>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                  Voluptates harum aliquam totam, doloribus eum impedit atque!
-                  Temporibus...
+                  Comming Soon...
                 </p>
-                <a class="inline-block" href="#">
+                <!-- <a class="inline-block" href="#">
                   <span class="text-info dark:text-blue-300">Read more</span>
-                </a>
+                </a> -->
               </div>
             </div>
           </div>
