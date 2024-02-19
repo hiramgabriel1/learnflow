@@ -179,19 +179,6 @@
               </a>
             </div>
           </div>
-          <div class="mt-12 flex justify-center">
-            <div class="aspect-w-16 aspect-h-9 sm:w-full md:w-3/4 lg:w-1/2 xl:w-1/3">
-                <iframe
-                    width="500"
-                    height="310"
-                    src="https://www.youtube.com/embed/Z_-OAHPJw3U?si=GXy0jPVixdF_9C35"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                ></iframe>
-            </div>
-        </div>
         </div>
       </div>
     </div>
@@ -322,14 +309,22 @@
           class="space-y-6 justify-between text-gray-600 md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center"
         >
           <div class="md:5/12 lg:w-1/2">
-            <!-- svelte-ignore a11y-img-redundant-alt -->
-            <img
-              src="../lib/public/images/pie.svg"
-              loading="lazy"
-              width=""
-              height=""
-              class="w-full"
-            />
+            <div class="mt-12 flex justify-center">
+              <div
+                class="aspect-w-16 aspect-h-9 sm:w-full md:w-3/4 lg:w-1/2 xl:w-1/3"
+              >
+                <iframe
+                  width="500"
+                  height="315"
+                  src="https://www.youtube.com/embed/BsnCpESUEqM?si=6tctCQyR5ubOcmya"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <br />
           </div>
           <div class="md:7/12 lg:w-1/2">
             <h2
@@ -723,21 +718,19 @@
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap");
 
-  @media(min-width: 600px){
+  @media (min-width: 600px) {
     iframe {
       width: 400px;
     }
   }
 
-  
-  @media(min-width: 500px){
+  @media (min-width: 500px) {
     iframe {
       width: 400px;
     }
   }
 
-  
-  @media(min-width: 490px){
+  @media (min-width: 490px) {
     iframe {
       width: 400px;
     }
