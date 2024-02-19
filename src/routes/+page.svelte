@@ -317,13 +317,9 @@
               apasionados
             </h2>
             <p class="my-8 text-gray-600 dark:text-gray-300">
-              Nobis minus voluptatibus pariatur dignissimos libero quaerat iure
-              expedita at? Asperiores nemo possimus nesciunt dicta veniam
-              aspernatur quam mollitia. <br />
-              <br />
-              Vitae error, quaerat officia delectus voluptatibus explicabo quo pariatur
-              impedit, at reprehenderit aliquam a ipsum quas voluptatem. Quo pariatur
-              asperiores eum amet.
+              Descubre cómo nuestra aplicación innovadora transforma la
+              experiencia educativa, proporcionando herramientas intuitivas y
+              adaptativas para impulsar tu conocimiento hacia nuevos horizontes.
             </p>
             <div
               class="divide-y space-y-4 divide-gray-100 dark:divide-gray-800"
@@ -349,10 +345,11 @@
                   <h4
                     class="font-semibold text-lg text-gray-700 dark:text-indigo-300"
                   >
-                    Soporte 
+                    Soporte
                   </h4>
                   <p class="text-gray-500 dark:text-gray-400">
-                    Damos soporte a tus dudas o posibles problemas sobre la aplicación en el menor tiempo posible
+                    Damos soporte a tus dudas o posibles problemas sobre la
+                    aplicación en el menor tiempo posible
                   </p>
                 </div>
               </div>
@@ -380,7 +377,8 @@
                     No importa el lugar donde te encuentres
                   </h4>
                   <p class="text-gray-500 dark:text-gray-400">
-                    A pesar de que estés al otro lado del mundo, te damos soporte para que disfrutes de la mejor manera a LearnflowAI
+                    A pesar de que estés al otro lado del mundo, te damos
+                    soporte para que disfrutes de la mejor manera a LearnflowAI
                   </p>
                 </div>
               </div>
@@ -526,12 +524,12 @@
             <h2
               class="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white"
             >
-              Latest Articles
+              Últimas novedades en LearnflowAI
             </h2>
             <p class="lg:mx-auto lg:w-6/12 text-gray-600 dark:text-gray-300">
-              Quam hic dolore cumque voluptate rerum beatae et quae, tempore
-              sunt, debitis dolorum officia aliquid explicabo? Excepturi,
-              voluptate?
+              Aquí podrás ver las actualizaciones de <span
+                class="text-indigo-500">LearnflowAI</span
+              > que vayamos sacando conforme al tiempo.
             </p>
           </div>
           <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -552,15 +550,17 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                  De fuga fugiat lorem ispum laboriosam expedita.
+                  Lanzamiento de la Beta
                 </h3>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                  Voluptates harum aliquam totam, doloribus eum impedit atque!
-                  Temporibus...
+                  Momento de lanzar una beta de LearnflowAI para ir recibiendo
+                  feedback de los usuarios he ir mejorando la plataforma cada
+                  vez más
                 </p>
-                <a class="inline-block" href="#">
+                <!-- ! NO BORRAR -->
+                <!-- <a class="inline-block" href="#">
                   <span class="text-info dark:text-blue-300">Read more</span>
-                </a>
+                </a> -->
               </div>
             </div>
             <div
