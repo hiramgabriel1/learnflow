@@ -94,7 +94,7 @@
                 </li>
                 <li class="astro-LEPVKGVF">
                   <a
-                    href="#testimonials"
+                    href="#creadores"
                     class="block md:px-4 transition hover:text-primary astro-LEPVKGVF"
                   >
                     <span class="astro-LEPVKGVF">Creadores</span>
@@ -385,7 +385,7 @@
         </div>
       </div>
     </div>
-    <div class="text-gray-600 dark:text-gray-300" id="testimonials">
+    <div class="text-gray-600 dark:text-gray-300" id="creadores">
       <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
         <div class="mb-20 space-y-4 px-6 md:px-0">
           <h2
