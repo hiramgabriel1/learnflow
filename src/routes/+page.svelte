@@ -2,7 +2,7 @@
   import "../app.css";
   import ceoProfile from "$lib/public/images/profile.webp";
   import member from "$lib/public/images/alexander.webp";
-  // import memberJaf from "$lib/public/images"
+  import memberJaf from "$lib/public/images/jafet.webp";
 </script>
 
 <body class="bg-white dark:bg-gray-900 astro-M5ZLDKQK">
@@ -474,7 +474,7 @@
               >
                 <img
                   class="w-40 h-40 mx-auto rounded-xl"
-                  src="https://tailus.io/sources/blocks/grid-cards/preview/images/avatars/third_user.webp"
+                  src={memberJaf}
                   alt="user avatar"
                   height="220"
                   width="220"
@@ -483,16 +483,22 @@
                 <div class="space-y-4 mt-4 text-center sm:mt-0 sm:text-left">
                   <p class="text-gray-600">
                     <br />
-                    <span class="font-serif">"</span> Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Quaerat repellat perspiciatis
-                    excepturi est. Non ipsum iusto aliquam consequatur repellat
-                    provident, omnis ut, sapiente voluptates veritatis cum
-                    deleniti repudiandae ad doloribus.
+                    <span class="font-serif">"</span> En todo el tiempo de mi
+                    vida, he pensado que alcanzar nuestras metas era algo
+                    imposible, pero ahora, sé que todo es posible. Desde que
+                    comenzamos con el desarrollo de Learnflow, he amado con cada
+                    parte de mi alma saber que podremos ayudar a miles de
+                    estudiantes y personas a cumplir sus sueños, sus sueños de
+                    progresar, de ser mejores, de vivir de una mejor manera. La
+                    vida está llena de desafíos, conflictos y problemas, pero
+                    con Learnflow deseamos que puedan prepararse de una mejor
+                    manera, a soñar en grande, pero sobre todo, a nunca
+                    rendirse.
                     <span class="font-serif">"</span>
                   </p>
                   <div>
                     <h6 class="text-lg font-semibold leading-none">
-                      Jaffet Baez
+                      Jafett Baez
                     </h6>
                     <span class="text-xs text-gray-600">Frontend Developer</span
                     >
@@ -578,7 +584,7 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                Integración de AI para usuarios premium
+                  Integración de AI para usuarios premium
                 </h3>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
                   Comming Soon...
@@ -604,9 +610,10 @@
               </div>
               <div class="mt-6 relative">
                 <h3
-                  class="text-2xl font-semibold text-gray-800 dark:text-white">
+                  class="text-2xl font-semibold text-gray-800 dark:text-white"
+                >
                   Creación de modo multijugador en progreso
-              </h3>
+                </h3>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
                   Comming Soon...
                 </p>
