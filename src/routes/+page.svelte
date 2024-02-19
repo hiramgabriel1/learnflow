@@ -288,23 +288,6 @@
     </div>
     <div id="solution">
       <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          class="w-6 h-6 text-sky-500"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
-            clip-rule="evenodd"
-          ></path>
-          <path
-            fill-rule="evenodd"
-            d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
         <div
           class="space-y-6 justify-between text-gray-600 md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center"
         >
@@ -330,7 +313,8 @@
             <h2
               class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white"
             >
-              Nuxt development is carried out by passionate developers
+              El desarrollo de LearnflowAI lo llevan a cabo desarrolladores
+              apasionados
             </h2>
             <p class="my-8 text-gray-600 dark:text-gray-300">
               Nobis minus voluptatibus pariatur dignissimos libero quaerat iure
@@ -365,10 +349,10 @@
                   <h4
                     class="font-semibold text-lg text-gray-700 dark:text-indigo-300"
                   >
-                    Chat Anytime
+                    Soporte 
                   </h4>
                   <p class="text-gray-500 dark:text-gray-400">
-                    Asperiores nemo possimus nesciunt quam mollitia.
+                    Damos soporte a tus dudas o posibles problemas sobre la aplicación en el menor tiempo posible
                   </p>
                 </div>
               </div>
@@ -393,10 +377,10 @@
                   <h4
                     class="font-semibold text-lg text-gray-700 dark:text-teal-300"
                   >
-                    Real Time Location
+                    No importa el lugar donde te encuentres
                   </h4>
                   <p class="text-gray-500 dark:text-gray-400">
-                    Asperiores nemo possimus nesciunt quam mollitia.
+                    A pesar de que estés al otro lado del mundo, te damos soporte para que disfrutes de la mejor manera a LearnflowAI
                   </p>
                 </div>
               </div>
@@ -419,7 +403,7 @@
           <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
             <div class="grid gap-8 md:grid-rows-2 lg:grid-cols-2">
               <div
-                class="row-span-2 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-8"
+                class="row-span-2 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-5"
               >
                 <div
                   class="h-full w-full flex flex-col justify-center space-y-4"
@@ -433,6 +417,7 @@
                     loading="lazy"
                   />
                   <p class="text-gray-600 md:text-xl">
+                    <br />
                     <span class="font-serif">"</span>El lanzamiento de
                     LearnflowAI marca un hito importante en mi vida. Creo que
                     será una herramienta invaluable tanto para estudiantes como
@@ -468,11 +453,14 @@
                 />
                 <div class="space-y-4 mt-4 text-center sm:mt-0 sm:text-left">
                   <p class="text-gray-600">
-                    <span class="font-serif">"</span> Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Quaerat repellat perspiciatis
-                    excepturi est. Non ipsum iusto aliquam consequatur repellat
-                    provident, omnis ut, sapiente voluptates veritatis cum
-                    deleniti repudiandae ad doloribus.
+                    <br />
+                    <span class="font-serif">"</span>Estoy ansioso por el
+                    lanzamiento de LearnflowAI. Sé que esta maravillosa
+                    herramienta no solo permitirá que las personas transformen
+                    su curiosidad en conocimiento, sino que también las motivará
+                    a seguir aprendiendo constantemente. Ya quiero ver la
+                    comunidad que se formará alrededor de LearnflowAI, donde las
+                    personas compartiran sus experiencias y conocimientos.
                     <span class="font-serif">"</span>
                   </p>
                   <div>
@@ -498,6 +486,7 @@
                 />
                 <div class="space-y-4 mt-4 text-center sm:mt-0 sm:text-left">
                   <p class="text-gray-600">
+                    <br />
                     <span class="font-serif">"</span> Lorem ipsum dolor sit amet
                     consectetur adipisicing elit. Quaerat repellat perspiciatis
                     excepturi est. Non ipsum iusto aliquam consequatur repellat
@@ -637,30 +626,6 @@
   </main>
   <footer class="bg-white bg-white-900">
     <div class="mx-auto max-w-md">
-      <strong
-        class="block text-center text-xl font-bold text-gray-900 sm:text-3xl"
-      >
-        Want us to email you with the latest blockbuster news?
-      </strong>
-
-      <form class="mt-6">
-        <div class="relative max-w-lg">
-          <label class="sr-only" for="email"> Email </label>
-
-          <input
-            class="w-full rounded-full border-gray-200 bg-gray-100 p-4 pe-32 text-sm font-medium"
-            id="email"
-            type="email"
-            placeholder="john@doe.com"
-          />
-
-          <button
-            class="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
-          >
-            Enviar email
-          </button>
-        </div>
-      </form>
       <div class="mt-16 border-t border-gray-100 pt-8 dark:border-gray-800">
         <p class="text-center text-sm/relaxed text-gray-500 dark:text-gray-400">
           © LearnflowAI 2024. All rights reserved.
