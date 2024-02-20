@@ -43,11 +43,6 @@
         return toast.error("Ingresa un tema! 🚀");
       }
 
-      // // Verificar si el número de tarjetas está presente y es un número válido
-      // if (isNaN(formData.cards) || formData.cards <= 0) {
-      //   return toast.error("Ingresa un número válido de tarjetas! 🚀");
-      // }
-
       // Mostrar el toast "pensando"
       const thinkingToast = toast(
         "Pensando... esto puede tomar unos segundos 🧠",
@@ -57,12 +52,6 @@
       );
 
       console.log(Number(formData.numberCards));
-
-      // setTimeout(() => {
-      //   toast("tranquilo, esto tomará solo unos segundos! 😃", {
-      //     duration: 10000,
-      //   });
-      // }, 17000);
 
       const api = "http://localhost:4000/api/v1/flashcard/generate-ai";
       const sendData = await fetch(api, {
@@ -77,6 +66,7 @@
       if (!sendData.ok) {
         throw new Error("No se pudo obtener la respuesta del servidor.");
       }
+
 
       toast.dismiss(thinkingToast);
 
