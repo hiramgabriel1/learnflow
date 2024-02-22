@@ -1,30 +1,84 @@
-<script>
+<script lang="ts">
   import "../../app.css";
   import "../../main.styles.css";
-  import { goto } from "$app/navigation";
-  // import { Data } from "../../interfaces/data.interface"
+  import toast, { Toaster } from "svelte-french-toast";
+  import { onMount } from "svelte";
 
-  /**
-   * @type {any}
-   */
-  let awaitAI;
   let currentDate = new Date();
+  let disabled: boolean;
 
   let formData = {
-    theme: "",
+    question: "",
   };
 
-  // const API_KEY = "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"
-  const responseGPT = async () => {
-    try {
-      //
-      // goto()
-      // awaitAI = true
-    } catch (error) {
-      console.log(error);
+  let suggestion: any;
+
+  const handleInputChange = async (e: Event) => {
+    // @ts-ignore
+    const value = e.target.value;
+
+    if (value <= 0) {
+      toast.error("Ingresa un valor mayor ó igual a 1");
+      disabled = true;
+    } else {
+      disabled = false;
     }
   };
+
+  const sendQuestionToMarcyAI = async () => {
+    try {
+      const sendRequest = await fetch(
+        "https://learnflow-services.up.railway.app/api/v1/ai/generate/question/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify(formData),
+        }
+      );
+
+      // validate
+      if (!sendRequest) {
+        toast.error("Intente de nuevo más tarde! ❌");
+      }
+
+      console.log(sendRequest);
+      console.log(typeof sendRequest);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const generateSuggestionsAI = async () => {
+    try {
+      const requestSuggestion = await fetch(
+        "https://learnflow-services.up.railway.app/api/v1/ai/suggestions"
+      );
+      if (!requestSuggestion.ok) {
+        throw new Error("La solicitud no pudo completarse correctamente.");
+      }
+      const suggestion = await requestSuggestion.json();
+
+      console.log(suggestion); // Imprime la respuesta JSON en la consola
+
+      /*
+         arreglar este problema @ecuadaniflow
+        
+        SyntaxError: Unterminated fractional number in JSON at position 2 (line 1 column 3)
+      */
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  onMount(() => {
+    return generateSuggestionsAI();
+  });
 </script>
+
+<Toaster />
 
 <div class="app-container">
   <div class="app-header">
@@ -114,14 +168,13 @@
 
       <!-- ? profile button -->
       <button class="profile-btn">
-        <!-- <img src="https://assets.codepen.io/3306515/IMG_2025.jpg"/> -->
         <span>Hiram Gabriel</span>
       </button>
     </div>
   </div>
   <div class="app-content">
     <div class="app-sidebar">
-      <a href="/" class="app-sidebar-link active" title="home">
+      <a href="/dashboard" class="app-sidebar-link active" title="home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -155,7 +208,7 @@
           <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
         </svg>
       </a>
-      <a href="/calendario" class="app-sidebar-link">
+      <a href="/asistente" class="app-sidebar-link">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -199,100 +252,61 @@
     <!-- todo: menu index -->
     <div class="projects-section">
       <div class="projects-section-header">
-        <p class="text-center font-bolder">Selecciona una tarjeta</p>
-        <!-- <p class="time">{ currentDate.toLocaleDateString() }</p> -->
+        <!-- <p>Fecha</p> -->
+        <p class="time">{currentDate.toLocaleDateString()}</p>
       </div>
+
       <br /><br />
 
-      <!-- todo: index component -->
-
-      <!-- component -->
-      <!-- <body class="antialiased bg-gray-300 h-screen text-gray-900 font-sans"> -->
-
-      <div class="flex my-10">
-        <div
-          class="bg-white w-1/2 m-auto border-1 border-dashed border-gray-100 shadow-md rounded-lg overflow-hidden"
-        >
-          <img
-            src="https://via.placeholder.com/400x300"
-            alt=""
-            class="w-full object-cover object-center"
-          />
-          <div class="p-4">
-            <p class="mb-1 text-gray-900 font-semibold">Card Title</p>
-
-            <span class="text-gray-700"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-              fugit hic ab quos eos quisquam labore minus, dignissimos porro
-              explicabo distinctio.</span
-            >
-
-            <div class="mt-8 mb-3">
-              <a
-                href="#"
-                class="px-4 py-2 bg-teal-500 shadow-lg border rounded-lg text-white uppercase font-semibold tracking-wider focus:outline-none focus:shadow-outline hover:bg-teal-400 active:bg-teal-400"
-                >Card Button</a
+      <!-- todo: assistant code -->
+      <div class="max-w-2xl mx-auto p-8">
+        <h1 class="text-4xl font-extrabold mb-1">MarcyAI</h1>
+        <p class="text-lg text-gray-600 mb-6">AI Assistant for Students</p>
+        <form on:submit|preventDefault={sendQuestionToMarcyAI} class="flex items-center bg-gray-100 p-4 rounded-lg mb-6">
+          <span
+            class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+            ><img
+              class="aspect-square h-full w-full"
+              alt="AI"
+              src="https://imgs.search.brave.com/RK4eSupiqRKVzr36sUJ3xjc5x3KMrwE5cvDdcdLOkaU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9oYXBw/eS1wZXJzb24tcG9y/dHJhaXQtc21pbGlu/Zy13b21hbi10YW5u/ZWQtc2tpbi1jdXJs/eS1oYWlyLWhhcHB5/LXBlcnNvbi1wb3J0/cmFpdC1zbWlsaW5n/LXlvdW5nLWZyaWVu/ZGx5LXdvbWFuLTE5/NzUwMTE4NC5qcGc"
+            /></span
+          >
+          <p class="ml-4 flex-1">
+            Hola!, Me dicen Marcy. ¿Cómo puedo ayudarte hoy?
+          </p>
+          <input
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
+            bind:value={formData.question}
+            placeholder="Comenzar una conversación con MarcyAI..."
+          /><button
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 bg-black"
+            style="color: white; width: 100px"
+            >Enviar</button
+          >
+        </form>
+        <div>
+          <!-- sugerencias -->
+          <h2 class="text-2xl font-semibold mb-4">Sugerencias</h2>
+          <ul>
+            <li class="flex items-center justify-between py-2 border-b">
+              <span>{suggestion}</span><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-6 h-6"><path d="m9 18 6-6-6-6"></path></svg
               >
-            </div>
-          </div>
+            </li>
+          </ul>
+          <!-- sugerencias -->
         </div>
       </div>
-
-      <!-- todo: final component -->
-
-      <!-- index -->
-      <!-- <div class="py-16 bg-gradient-to-br from-gray-50 to-blue-100 overflow-auto border-10">  
-  <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6 border-10">
-      <div class="mb-12 space-y-2 text-center">
-        <h2 class="text-2xl text-cyan-900 font-bold md:text-4xl">¿Qué es programación?</h2>
-        <p class="lg:w-6/12 lg:mx-auto">Da click en la respuesta correcta</p>
-      </div>
-
-      <div class="grid gap-12 lg:grid-cols-2">
-        <div class="p-10 rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
-          <img src="https://tailus.io/sources/blocks/twocards/preview/images/woman.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-56 sm:h-full w-full sm:w-5/12 object-cover object-top rounded-lg transition duration-500 group-hover:rounded-xl">
-          <div class="sm:w-7/12 pl-0 p-5">
-            <div class="space-y-2">
-              <div class="space-y-4">
-                <h4 class="text-2xl font-semibold text-cyan-900">Provident de illo eveniet commodi fuga fugiat laboriosam expedita.</h4>
-                <p class="text-gray-600">Laborum saepe laudantium in, voluptates ex placeat quo harum aliquam totam, doloribus eum impedit atque! Temporibus...</p>
-              </div>
-              <button class="block w-max text-green-600 text-bolder">Seleccionar ✔</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-10 rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
-          <img src="https://tailus.io/sources/blocks/twocards/preview/images/man.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-56 sm:h-full w-full sm:w-5/12 object-cover object-top rounded-lg transition duration-500 group-hover:rounded-xl">
-          <div class="sm:w-7/12 pl-0 p-5">
-            <div class="space-y-2">
-              <div class="space-y-4">
-                <h4 class="text-2xl font-semibold text-cyan-900">Provident de illo eveniet commodi fuga fugiat laboriosam expedita.</h4>
-                <p class="text-gray-600">Laborum saepe laudantium in, voluptates ex placeat quo harum aliquam totam, doloribus eum impedit atque! Temporibus...</p>
-              </div>
-              <button class="block w-max text-cyan-600">Seleccionar ✔</button>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-</div> -->
       <!-- finish -->
     </div>
-
-    <!-- ? acciones start -->
-    <!-- <div class="messages-section hidden sm:block">
-    <button class="messages-close">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="15" y1="9" x2="9" y2="15" />
-        <line x1="9" y1="9" x2="15" y2="15" /></svg>
-    </button>
-    <div class="projects-section-header">
-      <p>Acciones</p>
-    </div>
-  </div> -->
-
-    <!-- ? dont touch -->
   </div>
 </div>

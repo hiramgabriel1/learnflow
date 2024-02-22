@@ -2,27 +2,38 @@
   import "../../../app.css";
   import video from "$lib/public/assets/video.mp4";
   import google from "$lib/public/assets/google.svg";
+  import poster from "$lib/public/assets/bg.jpg";
 
-  
   let formData = {
-    username: '',
+    username: "",
     // userEmail: '',
-    contraseña: '',
-  }
+    contraseña: "",
+  };
 
+  const formHandler = async () => {};
+
+  // todo: auth methods here
+  const handleAuthGithub = () => {
+    const client_id = "7c5fdb1ab913c01760da";
+
+    window.location.assign(
+      "https://github.com/login/oauth/authorize?client_id=" + client_id
+    );
+  };
+
+  const handleAuthGoogle = () => {
+    console.log("progress...");
+  };
+  // finish auth methods
 </script>
 
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video
-      class="w-full h-full object-cover"
-      loop
-      autoplay
-      src={video}
-      poster="../../../lib/public/assets/bg.jpg"
+    <video class="w-full h-full object-cover" loop autoplay src={video} {poster}
     ></video>
   </div>
+
   <!-- svelte-ignore a11y-unknown-role -->
   <div
     hidden
@@ -32,10 +43,7 @@
   <div class="relative h-full ml-auto lg:w-6/12">
     <div class="m-auto py-12 px-6 sm:p-20 xl:w-10/12">
       <div class="space-y-4">
-        <p class="text-xl" style="font-size: 60px;">
-          Learnflow
-          <!-- <img src="../public/images/logo.svg" class="w-40" alt="tailus logo" /> -->
-        </p>
+        <p class="text-xl" style="font-size: 60px;">Learnflow AI</p>
         <p class="font-medium text-lg text-gray-600">
           Bienvenido a Learnflow AI. Inicia Sesión primero !
         </p>
@@ -47,14 +55,15 @@
         >
           <div class="flex gap-4 justify-center">
             <img src={google} class="w-5" alt="" />
-            <span
+            <button
               class="block w-max font-medium tracking-wide text-sm text-blue-700"
-              >Google</span
+              on:click={handleAuthGoogle}>Google</button
             >
           </div>
         </button>
         <button
           class="py-3 px-6 rounded-xl bg-gray-900 transition hover:bg-gray-800 active:bg-gray-600 focus:bg-gray-700"
+          on:click={handleAuthGithub}
         >
           <div class="flex gap-4 items-center justify-center text-white">
             <svg
@@ -75,6 +84,7 @@
         </button>
       </div>
 
+      <!-- svelte-ignore a11y-unknown-role -->
       <div role="hidden" class="mt-12 border-t">
         <span
           class="block w-max mx-auto -mt-3 px-4 text-center text-gray-500 bg-white"
@@ -82,7 +92,7 @@
         >
       </div>
 
-      <form class="space-y-6 py-6">
+      <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
         <div>
           <input
             type="text"
@@ -122,19 +132,6 @@
           </a>
         </div>
       </form>
-
-      <div class="border-t pt-12">
-        <div class="space-y-2 text-center">
-          <img
-            src="../public/images/logo.svg"
-            class="w-40 m-auto grayscale"
-            alt=""
-          />
-          <span class="block text-sm tracking-wide text-gray-500"
-            >Get +50 modern blocks for free next month.</span
-          >
-        </div>
-      </div>
     </div>
   </div>
 </div>
