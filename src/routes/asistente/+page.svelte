@@ -12,7 +12,10 @@
   };
 
   let suggestion: any;
-
+  let responseMarcyAI: any;
+  let marcyIsResponse: boolean;
+  let sending: boolean
+  
   const handleInputChange = async (e: Event) => {
     // @ts-ignore
     const value = e.target.value;
@@ -44,6 +47,12 @@
         toast.error("Intente de nuevo más tarde! ❌");
       }
 
+      toast.success("Pensando... 🧠")
+      responseMarcyAI = await sendRequest.json();
+
+      console.log(responseMarcyAI);
+      
+      marcyIsResponse = true;
       console.log(sendRequest);
       console.log(typeof sendRequest);
     } catch (error) {
@@ -262,7 +271,10 @@
       <div class="max-w-2xl mx-auto p-8">
         <h1 class="text-4xl font-extrabold mb-1">MarcyAI</h1>
         <p class="text-lg text-gray-600 mb-6">AI Assistant for Students</p>
-        <form on:submit|preventDefault={sendQuestionToMarcyAI} class="flex items-center bg-gray-100 p-4 rounded-lg mb-6">
+        <form
+          on:submit|preventDefault={sendQuestionToMarcyAI}
+          class="flex items-center bg-gray-100 p-4 rounded-lg mb-6"
+        >
           <span
             class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
             ><img
@@ -280,29 +292,35 @@
             placeholder="Comenzar una conversación con MarcyAI..."
           /><button
             class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 bg-black"
-            style="color: white; width: 100px"
-            >Enviar</button
-          >
+            on:click={()=> sending = true}
+            style="color: white; width: 100px">Enviar</button>
         </form>
         <div>
           <!-- sugerencias -->
-          <h2 class="text-2xl font-semibold mb-4">Sugerencias</h2>
-          <ul>
-            <li class="flex items-center justify-between py-2 border-b">
-              <span>{suggestion}</span><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="w-6 h-6"><path d="m9 18 6-6-6-6"></path></svg
-              >
-            </li>
-          </ul>
+          {#if marcyIsResponse}
+            <p><b>MarcyAI:</b> {responseMarcyAI.response}</p>
+          {:else}
+            <h2 class="text-2xl font-semibold mb-4">Sugerencias</h2>
+            <ul>
+              <li class="flex items-center justify-between py-2 border-b">
+                <!-- todo: aqui se renderizan las sugerencias -->
+                <!-- <span>{suggestion}</span> -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-6 h-6"
+                  ><path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </li>
+            </ul>
+          {/if}
           <!-- sugerencias -->
         </div>
       </div>
