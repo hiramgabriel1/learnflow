@@ -1,0 +1,11 @@
+@media (max-width: 1366px) {
+    .custom-width {
+        width: 200px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .custom-button {
+        margin-top: -10px;
+    }
+}

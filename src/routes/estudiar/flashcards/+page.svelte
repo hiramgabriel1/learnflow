@@ -1,13 +1,13 @@
 <script>
   import "../../../app.css";
   import "../../../main.styles.css";
+  import "./styles.css";
   import toast, { Toaster } from "svelte-french-toast";
 
   // @ts-ignore
   let recognition;
   let recognizedText = "";
 
-  // @ts-ignore
   let formData = {
     requestText: "",
   };
@@ -21,7 +21,7 @@
       console.log(newFormData);
 
       const validateResponseVoiceWithAnswerAI = await fetch(
-        "http://localhost:4000/api/v1/flashcard/send-response-voice/",
+        "https://learnflow-services.up.railway.app/api/v1/flashcard/send-response-voice/",
         {
           method: "POST",
           headers: {
@@ -87,6 +87,37 @@
   const saveFlashCardToUser = async () => {
     console.log("funciona");
   };
+
+  // flashcards
+  // const flashCards = [
+  //   {
+  //     pregunta: "¿Como ser programador web?",
+  //     respuesta:
+  //       "- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione magni ullam repudiandae cupiditate earum quibusdam debitis, enim, ab ipsum dignissimos eaque in quisquam commodi deserunt asperiores quo veritatis ut doloribus.",
+  //   },
+  // ];
+
+  // let currentIndex = 0;
+
+  // const showCurrentFlashCard = () => {
+  //   const currentCard = flashCards[currentIndex];
+  //   console.log("Pregunta:", currentCard.pregunta);
+  //   console.log("Respuesta:", currentCard.respuesta);
+  // };
+
+  // const nextFlashCard = () => {
+  //   currentIndex++;
+  //   if (currentIndex >= flashCards.length) {
+  //     currentIndex = 0;
+  //   }
+  //   showCurrentFlashCard();
+  // };
+
+  // const nextButton = document.querySelector("#nextButton");
+  // // @ts-ignore
+  // nextButton.addEventListener("click", nextFlashCard);
+
+  // showCurrentFlashCard();
 </script>
 
 <Toaster />
@@ -120,7 +151,7 @@
         </svg>
       </div>
     </div>
-    <div class="app-header-right">
+    <div class="app-header-right gap-3">
       <!-- ? dark mode -->
       <button class="mode-switch" title="Switch Theme">
         <svg
@@ -220,7 +251,7 @@
           <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
         </svg>
       </a>
-      <a href="/calendario" class="app-sidebar-link">
+      <a href="/asistente" class="app-sidebar-link">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -262,7 +293,7 @@
     </div>
 
     <!-- todo: menu index -->
-    <div class="projects-section">
+    <div class="projects-section flex items-center">
       <div class="projects-section-header">
         <p class="text-center font-bolder">Selecciona una tarjeta</p>
       </div>
@@ -270,33 +301,102 @@
 
       <article class="flex">
         <section class="flex flex-col items-center">
-          <div class="min-h-96 rounded-lg border border-gray-900 max-w-md p-3">
-            <p class="text-center text-lg font-sans">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur nobis aspernatur omnis necessitatibus eaque minus
-              provident eum explicabo laudantium obcaecati quo vitae cupiditate,
-              tempora veniam accusantium ipsa perferendis praesentium
-              reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi
-              atque veniam ea, similique repudiandae exercitationem doloribus
-              assumenda hic enim asperiores Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Eum earum enim nobis! Doloribus,
-              pariatur. Neque sit eos aut assumenda cupiditate?.
-            </p>
+          <div class="hidden sm:flex flex-row border rounded-lg gap-5">
+            <div class="bg-gray-500 w-96 rounded-lg custom-width"></div>
+            <div class="h-72">
+              <!-- Pregunta -->
+              <div>
+                <p class="p-4 font-bold">¿Como ser programador web?</p>
+              </div>
+
+              <!-- Respuesta -->
+              <div class=" flex flex-row p-4">
+                <div class="w-96 text-justify">
+                  <p class="text-[#717171]">
+                    - Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Ratione magni ullam repudiandae cupiditate earum quibusdam
+                    debitis, enim, ab ipsum dignissimos eaque in quisquam
+                    commodi deserunt asperiores quo veritatis ut doloribus.
+                  </p>
+                </div>
+
+                <div class="flex flex-col p-2 pl-5">
+                  <button
+                    on:click={stopRecognition}
+                    class="my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      fill="currentColor"
+                      class="bi bi-pause-circle-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5m3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5"
+                      />
+                    </svg>
+                  </button>
+
+                  <button
+                    on:click={sendResponseVoiceUser}
+                    class="my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      fill="currentColor"
+                      class="bi bi-mic-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0z" />
+                      <path
+                        d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex w-full">
+            <div class="border rounded-lg p-4 my-4 flex flex-row w-full">
+              <div class="flex">
+                <form action="">
+                  <textarea
+                    class="w-full p-4 h-40 rounded-lg outline-none"
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="10"
+                    placeholder="Escribe tu respuesta..."
+                  ></textarea>
+                </form>
+              </div>
+            </div>
+
+            <div class="flex w-full justify-end">
+              <div class="flex flex-col justify-center space-y-5">
+                <button
+                  on:click={saveFlashCardToUser}
+                  class="my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                >
+                  Responder
+                </button>
+                <button
+                  on:click={saveFlashCardToUser}
+                  class="my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                >
+                  Siguiente
+                </button>
+              </div>
+            </div>
           </div>
           <div class="flex flex-col items-center mt-3">
-            <button on:click={sendResponseVoiceUser} class="mr-2">Icon</button>
-            <button
-              on:click={stopRecognition}
-              class="my-3 w-full flex justify-center bg-blue-500 text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-            >
-              Terminar respuesta
-            </button>
-            <button
-              on:click={saveFlashCardToUser}
-              class="my-3 w-full flex justify-center bg-blue-500 text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-            >
-              Continuar luego
-            </button>
+            <div class="flex flex-row gap-5"></div>
             <div>
               {#if recognizedText}
                 <p>Texto reconocido: {recognizedText}</p>
@@ -304,42 +404,62 @@
             </div>
           </div>
         </section>
-        <section class="flex mx-5 flex-col items-center">
-          <div class="min-h-96 rounded-lg border border-gray-900 max-w-md p-3">
-            <p class="text-center text-lg font-sans">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur nobis aspernatur omnis necessitatibus eaque minus
-              provident eum explicabo laudantium obcaecati quo vitae cupiditate,
-              tempora veniam accusantium ipsa perferendis praesentium
-              reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi
-              atque veniam ea, similique repudiandae exercitationem doloribus
-              assumenda hic enim asperiores Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Eum earum enim nobis! Doloribus,
-              pariatur. Neque sit eos aut assumenda cupiditate?.
-            </p>
+
+        <section class="flex flex-col items-center ml-5 gap-5">
+          <div class="flex flex-row border rounded-lg gap-5">
+            <div class="h-72">
+              <!-- Pregunta -->
+              <div>
+                <p class="p-4 font-bold">¿Como ser programador web?</p>
+              </div>
+
+              <!-- Respuesta -->
+              <div class=" flex flex-col p-4">
+                <div class="w-96 text-justify">
+                  <p class="text-[#717171]">
+                    - Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Ratione magni ullam repudiandae cupiditate earum quibusdam
+                    debitis, enim, ab ipsum dignissimos eaque in quisquam
+                    commodi deserunt asperiores quo veritatis ut doloribus.
+                  </p>
+                </div>
+
+                <div class=" flex justify-center p-5">
+                  <button
+                    class="custom-button my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                  >
+                    <span>Seleccionar</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="flex flex-col items-center mt-3">
-            <div class="mr-2">Icon</div>
-            <div>.............................</div>
-          </div>
-        </section>
-        <section class="flex flex-col items-center">
-          <div class="min-h-96 rounded-lg border border-gray-900 max-w-md p-3">
-            <p class="text-center text-lg font-sans">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur nobis aspernatur omnis necessitatibus eaque minus
-              provident eum explicabo laudantium obcaecati quo vitae cupiditate,
-              tempora veniam accusantium ipsa perferendis praesentium
-              reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi
-              atque veniam ea, similique repudiandae exercitationem doloribus
-              assumenda hic enim asperiores Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Eum earum enim nobis! Doloribus,
-              pariatur. Neque sit eos aut assumenda cupiditate?.
-            </p>
-          </div>
-          <div class="flex flex-col items-center mt-3">
-            <div class="mr-2">Icon</div>
-            <div>.............................</div>
+          <div class="flex flex-row border rounded-lg gap-5">
+            <div class="h-72">
+              <!-- Pregunta -->
+              <div>
+                <p class="p-4 font-bold">¿Como ser programador web?</p>
+              </div>
+
+              <!-- Respuesta -->
+              <div class=" flex flex-col p-4">
+                <div class="w-96 text-justify">
+                  <p class="text-[#717171]">
+                    - Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Ratione magni ullam repudiandae cupiditate earum quibusdam
+                    debitis, enim, ab ipsum dignissimos eaque in quisquam
+                    commodi deserunt asperiores quo veritatis ut doloribus.
+                  </p>
+                </div>
+                <div class=" flex justify-center p-5">
+                  <button
+                    class="custom-button my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                  >
+                    <span>Seleccionar</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </article>

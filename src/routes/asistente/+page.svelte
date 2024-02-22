@@ -1,22 +1,25 @@
 <script lang="ts">
   import "../../app.css";
   import "../../main.styles.css";
-  import { goto } from "$app/navigation";
   import toast, { Toaster } from "svelte-french-toast";
+  import { onMount } from "svelte";
 
   let currentDate = new Date();
   let disabled: boolean;
-  let showLoading: any;
 
   let formData = {
-    themeFlashcard: "",
-    numberCards: "",
+    question: "",
   };
 
-  let isLoading = false;
+  let suggestion: any;
+  let responseMarcyAI: any;
+  let marcyIsResponse: boolean;
+  let sending: boolean;
+  let loadingSuggestions: boolean;
+  let suggestionArrayList: [];
 
-  // @ts-ignore
-  const handleInputChange = async (e) => {
+  const handleInputChange = async (e: Event) => {
+    // @ts-ignore
     const value = e.target.value;
 
     if (value <= 0) {
@@ -27,62 +30,68 @@
     }
   };
 
-  const responseGPT = async () => {
+  const sendQuestionToMarcyAI = async () => {
+    sending = true;
+    toast.success("Esto puede tardar unos segundos... 🧠");
     try {
-      disabled = true;
-      showLoading = true;
-      // @ts-ignore
-      if (formData.themeFlashcard === "" || !isNaN(formData.themeFlashcard)) {
-        return toast.error("Ingresa un tema! 🚀");
-      }
-
-      // // Verificar si el número de tarjetas está presente y es un número válido
-      // if (isNaN(formData.cards) || formData.cards <= 0) {
-      //   return toast.error("Ingresa un número válido de tarjetas! 🚀");
-      // }
-
-      // Mostrar el toast "pensando"
-      const thinkingToast = toast(
-        "Pensando... esto puede tomar unos segundos 🧠",
+      const sendRequest = await fetch(
+        "https://learnflow-services.up.railway.app/api/v1/ai/generate/question/",
         {
-          duration: 15000,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify(formData),
         }
       );
 
-      console.log(Number(formData.numberCards));
-
-      // setTimeout(() => {
-      //   toast("tranquilo, esto tomará solo unos segundos! 😃", {
-      //     duration: 10000,
-      //   });
-      // }, 17000);
-
-      const api = "https://learnflow-services.up.railway.app/api/v1/flashcard/generate-ai";
-      const sendData = await fetch(api, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify(formData),
-      });
-
-      if (!sendData.ok) {
-        throw new Error("No se pudo obtener la respuesta del servidor.");
+      // validate
+      if (!sendRequest) {
+        toast.error("Intente de nuevo más tarde! ❌");
       }
 
-      toast.dismiss(thinkingToast);
+      responseMarcyAI = await sendRequest.json();
+      formData.question = ''
+      sending = false;
+      console.log(responseMarcyAI);
 
-      return goto("/estudiar/flashcards");
+      marcyIsResponse = true;
+      console.log(sendRequest);
+      console.log(typeof sendRequest);
     } catch (error) {
-      console.error("Error al obtener los datos:", error);
-    } finally {
-      isLoading = false;
+      console.error(error);
     }
   };
+
+  const generateSuggestionsAI = async () => {
+    try {
+      const requestSuggestion = await fetch(
+        "https://learnflow-services.up.railway.app/api/v1/ai/suggestions"
+      );
+      if (!requestSuggestion.ok) {
+        throw new Error("La solicitud no pudo completarse correctamente.");
+      }
+      suggestion = await requestSuggestion.text();
+      suggestionArrayList = suggestion.split("\n");
+
+      console.log(suggestionArrayList);
+
+      loadingSuggestions = true;
+      console.log(suggestion);
+    } catch (error) {
+      console.log(error);
+      //   console.error(error);
+    }
+  };
+
+  onMount(() => {
+    return generateSuggestionsAI();
+  });
 </script>
 
 <Toaster />
+
 <div class="app-container">
   <div class="app-header">
     <div class="app-header-left">
@@ -171,7 +180,6 @@
 
       <!-- ? profile button -->
       <button class="profile-btn">
-        <!-- <img src="https://assets.codepen.io/3306515/IMG_2025.jpg"/> -->
         <span>Hiram Gabriel</span>
       </button>
     </div>
@@ -262,66 +270,74 @@
 
       <br /><br />
 
-      <!-- todo: enter GPT DUDE -->
-      <div
-        class="relative flex items-center justify-center py-12 px-6 lg:px-12"
-      >
-        <div class="absolute opacity-60 inset-0 z-0"></div>
-        <div class="sm:max-w-3xl w-full p-12 bg-white rounded-xl z-10">
-          <div class="text-center">
-            <h2 class="mt-8 text-4xl font-bold text-gray-900">
-              Ingresa un tema!
-            </h2>
-            <p class="mt-4 text-lg text-gray-400">
-              Puedes decirle que te diga qué es la programación.
-            </p>
-          </div>
+      <!-- todo: assistant code -->
+      <div class="max-w-3xl mx-auto p-8 overflow-auto">
+        <h1 class="text-4xl font-extrabold mb-1">MarcyAI</h1>
+        <p class="text-lg text-gray-600 mb-6">AI Assistant for Students</p>
+        <form
+          on:submit|preventDefault={sendQuestionToMarcyAI}
+          class="flex items-center bg-gray-100 p-4 rounded-lg mb-6"
+        >
+          <span
+            class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+            ><img
+              class="aspect-square h-full w-full"
+              alt="AI"
+              src="https://imgs.search.brave.com/RK4eSupiqRKVzr36sUJ3xjc5x3KMrwE5cvDdcdLOkaU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9oYXBw/eS1wZXJzb24tcG9y/dHJhaXQtc21pbGlu/Zy13b21hbi10YW5u/ZWQtc2tpbi1jdXJs/eS1oYWlyLWhhcHB5/LXBlcnNvbi1wb3J0/cmFpdC1zbWlsaW5n/LXlvdW5nLWZyaWVu/ZGx5LXdvbWFuLTE5/NzUwMTE4NC5qcGc"
+            /></span
+          >
+          <p class="ml-4 flex-1">
+            Hola!, Me dicen Marcy. ¿Cómo puedo ayudarte hoy?
+          </p>
+          <input
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
+            bind:value={formData.question}
+            placeholder="Comenzar una conversación con MarcyAI..."
+          />
 
-          <!-- ? form here -->
-          <form on:submit|preventDefault={responseGPT} class="mt-10 space-y-6">
-            <div class="grid grid-cols-1 space-y-4">
-              <input
-                class="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
-                type="text"
-                id="theme"
-                required
-                bind:value={formData.themeFlashcard}
-                placeholder="¿Qué es NestJS?"
-              />
-            </div>
-            <div class="grid grid-cols-1 space-y-4">
-              <input
-                class="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
-                type="number"
-                id="numberCards"
-                required
-                min="1"
-                max="15"
-                on:input={handleInputChange}
-                bind:value={formData.numberCards}
-                placeholder="¿Cuantas tarjetas deseas?"
-              />
-            </div>
-            <div>
-              {#if !disabled}
-                <button
-                  class="my-8 w-full flex justify-center bg-blue-500 text-gray-100 p-6 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+          <button
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 bg-black"
+            style="color: white; width: 100px"
+            disabled={sending}
+          >
+            {sending ? "Pensando..." : "Enviar"}
+          </button>
+        </form>
+        <div>
+          <!-- todo: response MarcyAI -->
+          {#if marcyIsResponse}
+            <p><b>MarcyAI:</b> {responseMarcyAI.response}</p>
+          {:else}
+            <h2 class="text-2xl font-semibold mb-4">Sugerencias</h2>
+            <ul>
+              <li class="flex items-center justify-between py-2 border-b">
+                <!-- todo: aqui se renderizan las sugerencias -->
+                <span>
+                  {loadingSuggestions
+                    ? suggestion
+                    : "Creando sugerencias... 🧠"}
+                </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-6 h-6"
                 >
-                  Comenzar
-                </button>
-              {:else if showLoading}
-                <div class="flex justify-center items-center h-full">
-                  <img
-                    class="h-16 w-16"
-                    src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
-                    alt=""
-                  />
-                </div>
-              {/if}
-            </div>
-          </form>
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </li>
+            </ul>
+          {/if}
+          <!-- sugerencias -->
         </div>
       </div>
+      <!-- finish -->
     </div>
   </div>
 </div>
