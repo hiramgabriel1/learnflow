@@ -8,7 +8,6 @@
   let recognition;
   let recognizedText = "";
 
-  // @ts-ignore
   let formData = {
     requestText: "",
   };
@@ -22,7 +21,7 @@
       console.log(newFormData);
 
       const validateResponseVoiceWithAnswerAI = await fetch(
-        "http://localhost:4000/api/v1/flashcard/send-response-voice/",
+        "https://learnflow-services.up.railway.app/api/v1/flashcard/send-response-voice/",
         {
           method: "POST",
           headers: {
@@ -252,7 +251,7 @@
           <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
         </svg>
       </a>
-      <a href="/calendario" class="app-sidebar-link">
+      <a href="/asistente" class="app-sidebar-link">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -396,94 +395,8 @@
               </div>
             </div>
           </div>
-
-          <!-- <div
-            class="relative mx-auto max-w-md rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg"
-          >
-            <div
-              class="bg-white p-7 rounded-md"
-              style="background-image: url(../img/background.jpg); background-repeat: no-repeat; background-size: 100%;"
-            >
-              <h1 class="font-bold text-xl mb-2">Respuesta 1</h1>
-              <p class="text-justify text-lg font-sans">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur nobis aspernatur omnis necessitatibus eaque minus
-                provident eum explicabo laudantium obcaecati quo vitae
-                cupiditate, tempora veniam accusantium ipsa perferendis
-                praesentium reprehenderit sed neque distinctio illo! Rem fugit
-                eum ullam quasi atque veniam ea, similique repudiandae
-                exercitationem doloribus assumenda hic enim asperiores Lorem
-                ipsum, dolor sit amet consectetur adipisicing elit. Eum earum
-                enim nobis! Doloribus, pariatur. Neque sit eos aut assumenda
-                cupiditate?.
-              </p>
-            </div>
-          </div> -->
-          <!-- <div class="min-h-96 rounded-lg border border-gray-900 max-w-md p-3">
-            <p class="text-center text-lg font-sans">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur nobis aspernatur omnis necessitatibus eaque minus
-              provident eum explicabo laudantium obcaecati quo vitae cupiditate,
-              tempora veniam accusantium ipsa perferendis praesentium
-              reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi
-              atque veniam ea, similique repudiandae exercitationem doloribus
-              assumenda hic enim asperiores Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Eum earum enim nobis! Doloribus,
-              pariatur. Neque sit eos aut assumenda cupiditate?.
-            </p>
-          </div> -->
           <div class="flex flex-col items-center mt-3">
-            <div class="flex flex-row gap-5">
-              <!-- <button
-                on:click={sendResponseVoiceUser}
-                class="my-3 w-full flex justify-center bg-blue-500 text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="30"
-                  fill="currentColor"
-                  class="bi bi-mic-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0z" />
-                  <path
-                    d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5"
-                  />
-                </svg>
-              </button> -->
-              <!-- <button
-                on:click={stopRecognition}
-                class="my-3 w-full flex justify-center bg-blue-500 text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="30"
-                  fill="currentColor"
-                  class="bi bi-pause-circle-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5m3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5"
-                  />
-                </svg>
-              </button> -->
-            </div>
-
-            <!-- <button
-              on:click={saveFlashCardToUser}
-              class="my-3 w-full flex justify-center bg-blue-500 text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-            >
-              Escribe manualmente
-            </button>
-            <button
-              on:click={saveFlashCardToUser}
-              class="my-3 w-full flex justify-center bg-blue-500 text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-            >
-              Continuar luego
-            </button> -->
-
+            <div class="flex flex-row gap-5"></div>
             <div>
               {#if recognizedText}
                 <p>Texto reconocido: {recognizedText}</p>
@@ -549,83 +462,6 @@
             </div>
           </div>
         </section>
-
-        <!-- <section class="flex mx-5 flex-col items-center">
-          <div
-            class="relative mx-auto max-w-md rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg"
-          >
-            <div class="bg-white p-7 rounded-md">
-              <h1 class="font-bold text-xl mb-2">Respuesta 2</h1>
-              <p class="text-justify text-lg font-sans">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur nobis aspernatur omnis necessitatibus eaque minus
-                provident eum explicabo laudantium obcaecati quo vitae
-                cupiditate, tempora veniam accusantium ipsa perferendis
-                praesentium reprehenderit sed neque distinctio illo! Rem fugit
-                eum ullam quasi atque veniam ea, similique repudiandae
-                exercitationem doloribus assumenda hic enim asperiores Lorem
-                ipsum, dolor sit amet consectetur adipisicing elit. Eum earum
-                enim nobis! Doloribus, pariatur. Neque sit eos aut assumenda
-                cupiditate?.
-              </p>
-            </div>
-          </div>
-          <div class="min-h-96 rounded-lg border border-gray-900 max-w-md p-3">
-            <p class="text-center text-lg font-sans">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur nobis aspernatur omnis necessitatibus eaque minus
-              provident eum explicabo laudantium obcaecati quo vitae cupiditate,
-              tempora veniam accusantium ipsa perferendis praesentium
-              reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi
-              atque veniam ea, similique repudiandae exercitationem doloribus
-              assumenda hic enim asperiores Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Eum earum enim nobis! Doloribus,
-              pariatur. Neque sit eos aut assumenda cupiditate?.
-            </p>
-          </div> 
-          <div class="flex flex-col items-center mt-3">
-            <div class="mr-2">Icon</div>
-            <div>.............................</div>
-          </div>
-        </section> -->
-        <!-- <section class="flex flex-col items-center">
-          <div
-            class="relative mx-auto max-w-md rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg"
-          >
-            <div class="bg-white p-7 rounded-md">
-              <h1 class="font-bold text-xl mb-2">Respuesta 3</h1>
-              <p class="text-justify text-lg font-sans">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur nobis aspernatur omnis necessitatibus eaque minus
-                provident eum explicabo laudantium obcaecati quo vitae
-                cupiditate, tempora veniam accusantium ipsa perferendis
-                praesentium reprehenderit sed neque distinctio illo! Rem fugit
-                eum ullam quasi atque veniam ea, similique repudiandae
-                exercitationem doloribus assumenda hic enim asperiores Lorem
-                ipsum, dolor sit amet consectetur adipisicing elit. Eum earum
-                enim nobis! Doloribus, pariatur. Neque sit eos aut assumenda
-                cupiditate?.
-              </p>
-            </div>
-          </div>
-          <div class="min-h-96 rounded-lg border border-gray-900 max-w-md p-3">
-            <p class="text-center text-lg font-sans">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur nobis aspernatur omnis necessitatibus eaque minus
-              provident eum explicabo laudantium obcaecati quo vitae cupiditate,
-              tempora veniam accusantium ipsa perferendis praesentium
-              reprehenderit sed neque distinctio illo! Rem fugit eum ullam quasi
-              atque veniam ea, similique repudiandae exercitationem doloribus
-              assumenda hic enim asperiores Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Eum earum enim nobis! Doloribus,
-              pariatur. Neque sit eos aut assumenda cupiditate?.
-            </p>
-          </div> 
-          <div class="flex flex-col items-center mt-3">
-            <div class="mr-2">Icon</div>
-            <div>.............................</div>
-          </div>
-        </section> -->
       </article>
     </div>
   </div>
