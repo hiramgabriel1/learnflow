@@ -14,8 +14,10 @@
   let suggestion: any;
   let responseMarcyAI: any;
   let marcyIsResponse: boolean;
-  let sending: boolean
-  
+  let sending: boolean;
+  let loadingSuggestions: boolean;
+  let suggestionArrayList: [];
+
   const handleInputChange = async (e: Event) => {
     // @ts-ignore
     const value = e.target.value;
@@ -29,6 +31,8 @@
   };
 
   const sendQuestionToMarcyAI = async () => {
+    sending = true;
+    toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
         "https://learnflow-services.up.railway.app/api/v1/ai/generate/question/",
@@ -47,11 +51,11 @@
         toast.error("Intente de nuevo más tarde! ❌");
       }
 
-      toast.success("Pensando... 🧠")
       responseMarcyAI = await sendRequest.json();
-
+      formData.question = ''
+      sending = false;
       console.log(responseMarcyAI);
-      
+
       marcyIsResponse = true;
       console.log(sendRequest);
       console.log(typeof sendRequest);
@@ -68,17 +72,16 @@
       if (!requestSuggestion.ok) {
         throw new Error("La solicitud no pudo completarse correctamente.");
       }
-      const suggestion = await requestSuggestion.json();
+      suggestion = await requestSuggestion.text();
+      suggestionArrayList = suggestion.split("\n");
 
-      console.log(suggestion); // Imprime la respuesta JSON en la consola
+      console.log(suggestionArrayList);
 
-      /*
-         arreglar este problema @ecuadaniflow
-        
-        SyntaxError: Unterminated fractional number in JSON at position 2 (line 1 column 3)
-      */
+      loadingSuggestions = true;
+      console.log(suggestion);
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      //   console.error(error);
     }
   };
 
@@ -268,7 +271,7 @@
       <br /><br />
 
       <!-- todo: assistant code -->
-      <div class="max-w-2xl mx-auto p-8">
+      <div class="max-w-3xl mx-auto p-8 overflow-auto">
         <h1 class="text-4xl font-extrabold mb-1">MarcyAI</h1>
         <p class="text-lg text-gray-600 mb-6">AI Assistant for Students</p>
         <form
@@ -290,13 +293,18 @@
             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
             bind:value={formData.question}
             placeholder="Comenzar una conversación con MarcyAI..."
-          /><button
+          />
+
+          <button
             class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 bg-black"
-            on:click={()=> sending = true}
-            style="color: white; width: 100px">Enviar</button>
+            style="color: white; width: 100px"
+            disabled={sending}
+          >
+            {sending ? "Pensando..." : "Enviar"}
+          </button>
         </form>
         <div>
-          <!-- sugerencias -->
+          <!-- todo: response MarcyAI -->
           {#if marcyIsResponse}
             <p><b>MarcyAI:</b> {responseMarcyAI.response}</p>
           {:else}
@@ -304,7 +312,11 @@
             <ul>
               <li class="flex items-center justify-between py-2 border-b">
                 <!-- todo: aqui se renderizan las sugerencias -->
-                <!-- <span>{suggestion}</span> -->
+                <span>
+                  {loadingSuggestions
+                    ? suggestion
+                    : "Creando sugerencias... 🧠"}
+                </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -316,7 +328,8 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   class="w-6 h-6"
-                  ><path d="m9 18 6-6-6-6"></path>
+                >
+                  <path d="m9 18 6-6-6-6"></path>
                 </svg>
               </li>
             </ul>
