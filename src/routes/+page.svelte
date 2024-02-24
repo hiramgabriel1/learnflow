@@ -3,6 +3,13 @@
   import ceoProfile from "$lib/public/images/profile.webp";
   import member from "$lib/public/images/alexander.webp";
   import memberJaf from "$lib/public/images/jafet.webp";
+
+  const imagesSlider = [
+    "https://crehana-blog.imgix.net/media/filer_public/72/92/729243d3-0d4a-455b-b680-ec4f8ab237a1/tecnologia-futurista-glass.jpg?auto=format&q=50",
+    "https://cdn.pixabay.com/photo/2023/12/21/19/00/city-8462425_1280.png",
+    "https://i.pinimg.com/736x/1b/d2/0b/1bd20b54564d52930bd77af2e199375c.jpg",
+    "https://www.harvard-deusto.com/sites/default/files/styles/article_front/public/2022-09/foto-prospectiva-estrategica.jpg?itok=cpHvCuVw",
+  ];
 </script>
 
 <body class="bg-white dark:bg-gray-900 astro-M5ZLDKQK">
@@ -127,7 +134,7 @@
       </div>
     </nav>
   </header>
-  <main class="space-y-40 mb-40">
+  <main class="space-y-40">
     <div class="relative" id="home">
       <div
         aria-hidden="true"
@@ -141,8 +148,72 @@
         ></div>
       </div>
       <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-        <div class="relative pt-36 ml-auto">
+        <div class="relative pt-28 ml-auto h-[100vh]">
           <div class="lg:w-2/3 text-center mx-auto">
+            <div class="grid grid-cols-2 gap-5">
+              <img
+                src="https://media.istockphoto.com/id/1322220448/es/foto/ojo-futurista-digital-abstracto.jpg?s=612x612&w=0&k=20&c=uEtwe47oBCu55RwwecLKwxDVVr7N5rSCoDAMDX6uIiU="
+                alt=""
+                class="rounded-xl min-h-[33vh] object-cover"
+              />
+              <div class="text-left flex flex-col justify-between gap-3 h-full">
+                <div>
+                  <h1
+                    class="text-4xl font-bold text-primary [text-shadow:_0_0_5px_rgb(20_2_2_/_30%)_!important]"
+                  >
+                    Convierte tu curiosidad en conocimiento.
+                  </h1>
+                  <p class="mt-2">The world's leading Ai Learnflow</p>
+                </div>
+                <div class="pt-3 flex flex-col items-start w-fit gap-3">
+                  <a
+                    href="/auth/register"
+                    class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
+                  >
+                    <span
+                      class="relative text-sm font-semibold text-white astro-LEPVKGVF"
+                      >Sign up for GitHub</span
+                    >
+                  </a>
+                  <a
+                    href="/auth/register"
+                    class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-gray-900 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
+                  >
+                    <span
+                      class="relative text-sm font-semibold text-white astro-LEPVKGVF"
+                      >Start a free enterprise trial</span
+                    >
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4 mt-6 text-left">
+              <span class="text-slate-600"
+                >Somos una startup que busca ayudar</span
+              >
+            </div>
+            <div class="overflow-x-auto w-full pb-2">
+              <div class="flex gap-5 rounded-xl">
+                {#each imagesSlider as imageSlider}
+                  <div class="rounded-xl overflow-hidden">
+                    <img
+                      class="h-[100%_!important] overflow-hidden object-cover hover:scale-[1.2_!important] transition duration-500"
+                      alt="art img"
+                      loading="lazy"
+                      width="180"
+                      height="96"
+                      src={imageSlider}
+                    />
+                  </div>
+                {/each}
+              </div>
+            </div>
+            <div class="my-4 text-left flex flex-col gap-3">
+              <h1 class="text-2xl font-bold">Productividad</h1>
+              <p>Acelera tu potencial de estudio generando cards</p>
+            </div>
+
+            <!--             
             <h1
               class="text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-7xl"
             >
@@ -175,7 +246,7 @@
                   >Saber más</span
                 >
               </a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
