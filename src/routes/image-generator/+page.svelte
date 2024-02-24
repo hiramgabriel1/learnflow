@@ -1,6 +1,7 @@
 <script lang="ts">
   import "../../app.css";
   import "../../main.styles.css";
+  import { onMount } from "svelte";
   import toast, { Toaster } from "svelte-french-toast";
 
   let currentDate = new Date();
@@ -43,11 +44,11 @@
     );
 
     if (containsForbiddenWord) {
-      toast.error("no puedes ingresar eso")
+      toast.error("no puedes ingresar eso");
       formData.prompt = "";
     }
-    if (inputValue === '') {
-      toast.error("no puedes dejar vacio")
+    if (inputValue === "") {
+      toast.error("no puedes dejar vacio");
       // return
       disabled = true;
     } else {
@@ -353,6 +354,10 @@
             class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 w-full bg-blue-600 text-white py-2 rounded-md"
             >Generar imágen</button
           >
+          <!-- <a
+            class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 w-full bg-blue-600 text-white py-2 rounded-md"
+            href="https://buy.stripe.com/9AQcQ76k1gIJe6QdQQ">Pagar</a
+          > -->
         </form>
         <section class="mt-10">
           <div class="flex space-x-2 mb-6">
@@ -372,62 +377,6 @@
             <img
               src={image}
               alt="Gallery item 1"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            /><img
-              src="/placeholder.svg"
-              alt="Gallery item 2"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            /><img
-              src="/placeholder.svg"
-              alt="Gallery item 3"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            /><img
-              src="/placeholder.svg"
-              alt="Gallery item 4"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            /><img
-              src="/placeholder.svg"
-              alt="Gallery item 5"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            /><img
-              src="/placeholder.svg"
-              alt="Gallery item 6"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            /><img
-              src="/placeholder.svg"
-              alt="Gallery item 7"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            /><img
-              src="/placeholder.svg"
-              alt="Gallery item 8"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            /><img
-              src="/placeholder.svg"
-              alt="Gallery item 9"
               class="w-full h-auto rounded-md"
               width="200"
               height="200"
