@@ -68,8 +68,7 @@
             src="https://res.cloudinary.com/williamsondesign/check-grey.svg"
           />
           <span class="ml-3"
-            ><span class="text-black">Generación de imagenes</span> con Inteligencia
-            Artificial</span
+            ><span class="text-black">Generación de imagenes</span> con Inteligencia Artificial</span
           >
         </li>
       </ul>
@@ -131,9 +130,7 @@
             src="https://res.cloudinary.com/williamsondesign/check-white.svg"
           />
           <span class="ml-3"
-            ><span class="text-white"
-              >Generación de imagenes con
-            </span>Inteligencia Articial</span
+            ><span class="text-white">Generación de imagenes con </span>Inteligencia Articial</span
           >
         </li>
       </ul>
