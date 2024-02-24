@@ -7,7 +7,11 @@
   let currentDate = new Date();
   let disabled: boolean;
 
-  let formData = {
+  interface FormData {
+    question: string;
+  }
+
+  let formData: FormData = {
     question: "",
   };
 
@@ -15,8 +19,8 @@
   let responseMarcyAI: any;
   let marcyIsResponse: boolean;
   let sending: boolean;
-  let loadingSuggestions: boolean;
-  let suggestionArrayList: [];
+  let loadingSuggestions = true;
+  let suggestionArrayList: any[] = [];
 
   const handleInputChange = async (e: Event) => {
     // @ts-ignore
@@ -52,7 +56,7 @@
       }
 
       responseMarcyAI = await sendRequest.json();
-      formData.question = ''
+      formData.question = "";
       sending = false;
       console.log(responseMarcyAI);
 
@@ -77,7 +81,7 @@
 
       console.log(suggestionArrayList);
 
-      loadingSuggestions = true;
+      loadingSuggestions = false;
       console.log(suggestion);
     } catch (error) {
       console.log(error);
@@ -88,6 +92,11 @@
   onMount(() => {
     return generateSuggestionsAI();
   });
+
+  const sendSuggestion = (sugerencias: string) => {
+    formData.question = sugerencias.slice(3);
+    console.log(formData.question);
+  };
 </script>
 
 <Toaster />
@@ -96,7 +105,7 @@
   <div class="app-header">
     <div class="app-header-left">
       <span class="app-icon"></span>
-      <p class="app-name">Learnflow</p>
+      <p class="app-name">Learnflow AI</p>
       <div class="search-wrapper">
         <!-- ? search input -->
         <input
@@ -262,8 +271,8 @@
     </div>
 
     <!-- todo: menu index -->
-    <div class="projects-section">
-      <div class="projects-section-header">
+    <div class="projects-section overflow-auto">
+      <div class="projects-section-header overflow-auto">
         <!-- <p>Fecha</p> -->
         <p class="time">{currentDate.toLocaleDateString()}</p>
       </div>
@@ -271,13 +280,10 @@
       <br /><br />
 
       <!-- todo: assistant code -->
-      <div class="max-w-3xl mx-auto p-8 overflow-auto">
+      <div class="w-9/12 mx-auto p-8">
         <h1 class="text-4xl font-extrabold mb-1">MarcyAI</h1>
         <p class="text-lg text-gray-600 mb-6">AI Assistant for Students</p>
-        <form
-          on:submit|preventDefault={sendQuestionToMarcyAI}
-          class="flex items-center bg-gray-100 p-4 rounded-lg mb-6"
-        >
+        <div class="flex items-center mb-10">
           <span
             class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
             ><img
@@ -289,10 +295,15 @@
           <p class="ml-4 flex-1">
             Hola!, Me dicen Marcy. ¿Cómo puedo ayudarte hoy?
           </p>
+        </div>
+        <form
+          class="flex items-center bg-gray-100 p-4 rounded-lg mb-6"
+          on:submit|preventDefault={sendQuestionToMarcyAI}
+        >
           <input
             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
-            bind:value={formData.question}
             placeholder="Comenzar una conversación con MarcyAI..."
+            bind:value={formData.question}
           />
 
           <button
@@ -303,36 +314,41 @@
             {sending ? "Pensando..." : "Enviar"}
           </button>
         </form>
-        <div>
+        <div class="min-w-96">
           <!-- todo: response MarcyAI -->
           {#if marcyIsResponse}
             <p><b>MarcyAI:</b> {responseMarcyAI.response}</p>
           {:else}
             <h2 class="text-2xl font-semibold mb-4">Sugerencias</h2>
-            <ul>
-              <li class="flex items-center justify-between py-2 border-b">
-                <!-- todo: aqui se renderizan las sugerencias -->
-                <span>
-                  {loadingSuggestions
-                    ? suggestion
-                    : "Creando sugerencias... 🧠"}
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="w-6 h-6"
-                >
-                  <path d="m9 18 6-6-6-6"></path>
-                </svg>
-              </li>
-            </ul>
+            <div class="overflow-auto">
+              {#if loadingSuggestions}
+                <span>Creando sugerencias... 🧠</span>
+              {:else}
+                {#each suggestionArrayList as sugerencias}
+                  <ul class="my-5">
+                    <li class="flex items-center justify-between py-2 border-b">
+                      <!-- todo: renderización de sugerencias -->
+                      <span class="font-bold">{sugerencias.slice(2)}</span>
+                      <button on:click={() => sendSuggestion(sugerencias)}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="w-6 h-6">
+                          <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                      </button>
+                    </li>
+                  </ul>
+                {/each}
+              {/if}
+            </div>
           {/if}
           <!-- sugerencias -->
         </div>

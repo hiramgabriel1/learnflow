@@ -27,6 +27,9 @@
     }
   };
 
+  let questionIA = '';
+  let responseIA = '';
+
   const responseGPT = async () => {
     try {
       disabled = true;
@@ -70,6 +73,13 @@
       if (!sendData.ok) {
         throw new Error("No se pudo obtener la respuesta del servidor.");
       }
+
+      let responseApi = await sendData.json()
+      const {question, response} = responseApi
+
+      //Almacenar los valores en el localStorage
+      localStorage.setItem('question', question);
+      localStorage.setItem('response', response);
 
       toast.dismiss(thinkingToast);
 
