@@ -150,14 +150,14 @@
       <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
         <div class="relative pt-28 ml-auto h-[100vh]">
           <div class="lg:w-2/3 text-center mx-auto">
-            <div class="grid grid-cols-2 gap-5">
+            <div class="grid md:grid-cols-2 gap-5">
               <img
                 src="https://media.istockphoto.com/id/1322220448/es/foto/ojo-futurista-digital-abstracto.jpg?s=612x612&w=0&k=20&c=uEtwe47oBCu55RwwecLKwxDVVr7N5rSCoDAMDX6uIiU="
                 alt=""
-                class="rounded-xl min-h-[33vh] object-cover"
+                class="rounded-xl min-h-[33vh] object-cover hidden md:flex"
               />
-              <div class="text-left flex flex-col justify-between gap-3 h-full">
-                <div>
+              <div class=" flex flex-col justify-between gap-3 h-full">
+                <div class="text-center md:[text-align:left_!important]">
                   <h1
                     class="text-4xl font-bold text-primary [text-shadow:_0_0_5px_rgb(20_2_2_/_30%)_!important]"
                   >
@@ -165,10 +165,12 @@
                   </h1>
                   <p class="mt-2">The world's leading Ai Learnflow</p>
                 </div>
-                <div class="pt-3 flex flex-col items-start w-fit gap-3">
+                <div
+                  class="pt-3 flex flex-col items-start w-full md:w-fit gap-3"
+                >
                   <a
                     href="/auth/register"
-                    class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
+                    class="relative flex h-9 w-[100%_!important] md:w-fit items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
                   >
                     <span
                       class="relative text-sm font-semibold text-white astro-LEPVKGVF"
@@ -177,7 +179,7 @@
                   </a>
                   <a
                     href="/auth/register"
-                    class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-gray-900 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
+                    class="relative flex h-9 w-[100%_!important] md:w-fit items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-gray-900 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
                   >
                     <span
                       class="relative text-sm font-semibold text-white astro-LEPVKGVF"
