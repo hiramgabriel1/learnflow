@@ -1,11 +1,8 @@
 <script>
   import "../../../app.css";
-  // import video from "$lib/public/assets/video.mp4";
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
-  import { onMount } from "svelte";
-  import { writable } from "svelte/store";
 
   // @ts-ignore
   let formData = {
@@ -17,14 +14,6 @@
     password: "",
   };
 
-  // let reload = writable(false);
-
-  // onMount(() => {
-  //   reload.set(true);
-  //   setTimeout(() => {
-  //     window.location.reload();
-  //   }, 1);
-  // });
   const formHandler = async () => {
     try {
       const saveUser = await fetch(

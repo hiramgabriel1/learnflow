@@ -1,16 +1,20 @@
 <script>
   import "../../../app.css";
-  // import video from "$lib/public/assets/video.mp4";
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
 
   let formData = {
-    username: "",
-    // userEmail: '',
+    userEmail: "",
     contraseña: "",
   };
 
-  const formHandler = async () => {};
+  const formHandler = async () => {
+    try {
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // todo: auth methods here
   const handleAuthGithub = () => {
@@ -24,14 +28,13 @@
   const handleAuthGoogle = () => {
     console.log("progress...");
   };
-  // finish auth methods
+
 </script>
 
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video class="w-full h-full object-cover" loop autoplay {poster}
-    ></video>
+    <video class="w-full h-full object-cover" loop autoplay {poster}></video>
   </div>
 
   <!-- svelte-ignore a11y-unknown-role -->
@@ -96,17 +99,19 @@
         <div>
           <input
             type="text"
-            placeholder="Nombre"
+            placeholder="Email"
             required
+            bind:value={formData.userEmail}
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
         </div>
 
         <div>
           <input
-            type="email"
-            placeholder="Email"
+            type="password"
+            placeholder="Contraseña"
             required
+            bind:value={formData.contraseña}
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
         </div>
