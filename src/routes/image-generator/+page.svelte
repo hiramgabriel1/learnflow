@@ -5,7 +5,7 @@
 
   let currentDate = new Date();
   let disabled: boolean;
-  let image = ''
+  let image = "";
 
   interface FormData {
     prompt: string;
@@ -19,12 +19,36 @@
   let marcyIsResponse: boolean;
   let sending: boolean;
 
+  const forbiddenWords = [
+    "porno",
+    "porn",
+    "niño",
+    "niña",
+    "pene",
+    "sexual",
+    "sexo",
+    "sexual",
+    "desnudo",
+    "desnuda",
+    "sin ropa",
+    "nude",
+    "nudes",
+  ];
   const handleInputChange = async (e: Event) => {
     // @ts-ignore
-    const value = e.target.value;
+    const inputValue = e.target.value.toLowerCase().trim();
 
-    if (value <= 0) {
-      toast.error("Ingresa un valor mayor ó igual a 1");
+    const containsForbiddenWord = forbiddenWords.some((word) =>
+      inputValue.includes(word.toLowerCase())
+    );
+
+    if (containsForbiddenWord) {
+      toast.error("no puedes ingresar eso")
+      formData.prompt = "";
+    }
+    if (inputValue === '') {
+      toast.error("no puedes dejar vacio")
+      // return
       disabled = true;
     } else {
       disabled = false;
@@ -36,7 +60,7 @@
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        "http://localhost:4000/api/v1/generate-image/realistic",
+        "https://learnflow-services.up.railway.app/api/v1/generate-image/realistic",
         {
           method: "POST",
           headers: {
@@ -52,14 +76,12 @@
         throw new Error(`Error en la solicitud: ${sendRequest.statusText}`);
       }
 
-      // const data = await sendRequest.blob(); // o response.blob() si la respuesta es una imagen
-
-      responseMarcyAI = await sendRequest.json()
+      responseMarcyAI = await sendRequest.json();
       formData.prompt = "";
       sending = false;
       console.log(responseMarcyAI);
       marcyIsResponse = true;
-      image = responseMarcyAI.url
+      image = responseMarcyAI.url;
       console.log(sendRequest);
       console.log(typeof sendRequest);
     } catch (error) {
@@ -72,7 +94,7 @@
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        "https://learnflow-services.up.railway.app/api/v1/generate-image/realistic",
+        "https://learnflow-services.up.railway.app/api/v1/generate-image/paint",
         {
           method: "POST",
           headers: {
@@ -106,7 +128,7 @@
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        "http://localhost:4000/api/v1/generate-image/realistic",
+        "http://localhost:4000/api/v1/generate-image/cartoon",
         {
           method: "POST",
           headers: {
@@ -328,6 +350,8 @@
             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mb-4"
             bind:value={formData.prompt}
             placeholder="Describe la imagen que quieras generar"
+            on:input={handleInputChange}
+            required
           />
           <button
             class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 w-full bg-blue-600 text-white py-2 rounded-md"
