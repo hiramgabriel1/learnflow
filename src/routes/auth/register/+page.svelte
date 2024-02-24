@@ -143,17 +143,18 @@
       </div>
 
       <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
-        <div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Nombre completo</label>
           <input
             type="text"
-            placeholder="Nombre"
+            placeholder="Nombre / Apellido"
             bind:value={formData.username}
             required
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
 
-        <div>
+        <!-- <div>
           <input
             type="text"
             placeholder="Apellido"
@@ -161,29 +162,31 @@
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
-        </div>
+        </div> -->
 
-        <div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Correo electronico</label>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="example@xyz.com"
             bind:value={formData.userEmail}
             required
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
 
-        <div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Contraseña</label>
           <input
             type="password"
-            placeholder="Contraseña"
+            placeholder="*********"
             bind:value={formData.password}
             required
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
 
-        <div>
+        <!-- <div>
           <input
             type="text"
             placeholder="¿Eres estudiante?"
@@ -191,34 +194,37 @@
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
-        </div>
+        </div> -->
 
         <div class="flex flex-col items-end">
-          <input
+          <!-- <input
             type="text"
             placeholder="¿Por que quieres usar Learnflow?"
             bind:value={formData.reasonsToUseApp}
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-          />
-          <button type="reset" class="w-max p-3 -mr-3">
-            <span class="text-sm tracking-wide text-blue-600"
-              >Olvidé mi contraseña
-            </span>
-          </button>
+          /> -->
         </div>
 
         <div>
           <button
-            class="w-full px-6 py-3 rounded-xl bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
+            class="w-full px-6 py-3 rounded-full bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
           >
             <span class="font-semibold text-white text-lg">Crear cuenta</span>
           </button>
-          <a href="/auth/login" type="reset" class="w-max p-3 -ml-3">
-            <span class="text-sm tracking-wide text-blue-600"
-              >Ya tengo una cuenta</span
-            >
-          </a>
+
+          <div class="flex justify-between">
+            <a href="/auth/login" type="reset" class="w-max p-3 -ml-3">
+              <span class="text-sm tracking-wide text-blue-600"
+                >Ya tengo una cuenta</span
+              >
+            </a>
+            <button type="reset" class="w-max p-3 -mr-3">
+              <span class="text-sm tracking-wide text-blue-600"
+                >Olvidé mi contraseña
+              </span>
+            </button>
+          </div>
         </div>
       </form>
     </div>
