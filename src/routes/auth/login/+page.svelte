@@ -2,6 +2,7 @@
   import "../../../app.css";
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
+  import { auth, provider } from "../../../firebase";
 
   let formData = {
     userEmail: "",
@@ -25,7 +26,19 @@
     );
   };
 
-  const handleAuthGoogle = () => {
+  const handleAuthGoogle = async() => {
+
+    try {
+      
+      const res = await auth.signInWithPopup(provider)
+      console.log(res)
+
+      // @ts-ignore
+      history.push('/dashboard');
+    } catch (error) {
+      console.log(error)
+    }
+
     console.log("progress...");
   };
 
@@ -96,17 +109,18 @@
       </div>
 
       <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
-        <div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Correo electronico</label>
           <input
             type="text"
-            placeholder="Email"
+            placeholder="example@xzy.com"
             required
             bind:value={formData.userEmail}
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
 
-        <div>
+        <!-- <div>
           <input
             type="password"
             placeholder="Contraseña"
@@ -114,7 +128,7 @@
             bind:value={formData.contraseña}
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
-        </div>
+        </div> -->
 
         <div class="flex flex-col">
           <label class="pb-2 font-bold" for="">Contraseña</label>
@@ -122,6 +136,7 @@
             type="password"
             placeholder="*********"
             required
+            bind:value={formData.contraseña}
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>

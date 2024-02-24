@@ -174,7 +174,7 @@
           />
         </div>
 
-        <div>
+        <!-- <div>
           <select
             bind:value={formData.isStudent}
             required
@@ -184,7 +184,7 @@
             <option value="true">Sí</option>
             <option value="false">No</option>
           </select>
-        </div>
+        </div> -->
 
         <div class="flex flex-col items-end">
           <!-- <input
