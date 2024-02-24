@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
   import "../../../app.css";
   import "../../../main.styles.css";
   import "./styles.css";
   import toast, { Toaster } from "svelte-french-toast";
+  import { onMount } from "svelte";
 
   // @ts-ignore
   let recognition;
@@ -12,6 +13,10 @@
     requestText: "",
   };
 
+  let questionIA = "";
+  let responseIA = "";
+  //@ts-ignore
+  let respuestaApi: any[] = [];
   const saveResponseVoice = async () => {
     try {
       let newFormData = {
@@ -39,6 +44,19 @@
       console.log(error);
     }
   };
+  //@ts-ignore
+  respuestaApi = JSON.parse(localStorage.getItem("respuestaApi")) || [];
+
+  // Esta función se ejecutará cuando el componente se monte
+  onMount(() => {
+    // Obtenemos los datos de localStorage
+    questionIA = localStorage.getItem("question") || "";
+    responseIA = localStorage.getItem("response") || "";
+    // Dividimos la respuesta en un array de preguntas
+    respuestaApi = responseIA.split("\n");
+    // Actualizamos localStorage con el nuevo valor de respuestaApi
+    localStorage.setItem("respuestaApi", JSON.stringify(respuestaApi));
+  });
 
   // @ts-ignore
   const sendResponseVoiceUser = () => {
@@ -58,7 +76,7 @@
       // @ts-ignore
       recognition.onresult = (event) => {
         recognizedText = Array.from(event.results)
-          .map((result) => result[0].transcript)
+          .map((result: any) => result[0].transcript)
           .join("");
       };
 
@@ -126,7 +144,7 @@
   <div class="app-header">
     <div class="app-header-left">
       <span class="app-icon"></span>
-      <p class="app-name">Learnflow</p>
+      <p class="app-name">Learnflow AI</p>
       <div class="search-wrapper">
         <!-- ? search input -->
         <input
@@ -299,121 +317,66 @@
       </div>
       <br /><br />
 
-      <article class="flex">
-        <section class="flex flex-col items-center">
-          <div class="hidden sm:flex flex-row border rounded-lg gap-5">
-            <div class="bg-gray-500 w-96 rounded-lg custom-width"></div>
-            <div class="h-72">
-              <!-- Pregunta -->
+      <article class="flex mx-5">
+        <section class="mx-5">
+          <section class="flex flex-wrap">
+            {#each respuestaApi as pregunta}
+              <div
+                class="hidden sm:flex flex-row border w-80 text-center m-1 rounded-lg gap-5"
+              >
+                <div class="h-80">
+                  <!-- Pregunta -->
+                  <div>
+                    {#if pregunta}
+                      <p class="p-3 font-bold">{pregunta}</p>
+                    {/if}
+                  </div>
+
+                  <!-- Respuesta -->
+                  <div class="flex flex-col px-3 justify-between">
+                    <div class="text-justify">
+                      <p class="text-[#717171] text-center">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Ratione magni ullam repudiandae cupiditate earum
+                        quibusdam debitis, enim, ab ipsum dignissimos eaque in
+                        quisquam commodi deserunt asperiores quo veritatis ut
+                        doloribus alex.
+                      </p>
+                    </div>
+
+                    <!-- Botón Seleccionar -->
+                    <div class="flex justify-end">
+                      <button
+                        class="custom-button my-3 flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                      >
+                        <span>Seleccionar</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {/each}
+
+            <div class="flex flex-col items-center mt-3">
+              <div class="flex flex-row gap-5"></div>
               <div>
-                <p class="p-4 font-bold">¿Como ser programador web?</p>
-              </div>
-
-              <!-- Respuesta -->
-              <div class=" flex flex-row p-4">
-                <div class="w-96 text-justify">
-                  <p class="text-[#717171]">
-                    - Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Ratione magni ullam repudiandae cupiditate earum quibusdam
-                    debitis, enim, ab ipsum dignissimos eaque in quisquam
-                    commodi deserunt asperiores quo veritatis ut doloribus.
-                  </p>
-                </div>
-
-                <div class="flex flex-col p-2 pl-5">
-                  <button
-                    on:click={stopRecognition}
-                    class="my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="30"
-                      height="30"
-                      fill="currentColor"
-                      class="bi bi-pause-circle-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5m3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5"
-                      />
-                    </svg>
-                  </button>
-
-                  <button
-                    on:click={sendResponseVoiceUser}
-                    class="my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="30"
-                      height="30"
-                      fill="currentColor"
-                      class="bi bi-mic-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0z" />
-                      <path
-                        d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                {#if recognizedText}
+                  <p>Texto reconocido: {recognizedText}</p>
+                {/if}
               </div>
             </div>
-          </div>
+          </section>
 
-          <div class="flex w-full">
-            <div class="border rounded-lg p-4 my-4 flex flex-row w-full">
-              <div class="flex">
-                <form action="">
-                  <textarea
-                    class="w-full p-4 h-40 rounded-lg outline-none"
-                    name=""
-                    id=""
-                    cols="30"
-                    rows="10"
-                    placeholder="Escribe tu respuesta..."
-                  ></textarea>
-                </form>
-              </div>
-            </div>
-
-            <div class="flex w-full justify-end">
-              <div class="flex flex-col justify-center space-y-5">
-                <button
-                  on:click={saveFlashCardToUser}
-                  class="my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                >
-                  Responder
-                </button>
-                <button
-                  on:click={saveFlashCardToUser}
-                  class="my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                >
-                  Siguiente
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-col items-center mt-3">
-            <div class="flex flex-row gap-5"></div>
-            <div>
-              {#if recognizedText}
-                <p>Texto reconocido: {recognizedText}</p>
-              {/if}
-            </div>
-          </div>
-        </section>
-
-        <section class="flex flex-col items-center ml-5 gap-5">
+          <!--<section class="flex flex-col items-center ml-5 gap-5">
           <div class="flex flex-row border rounded-lg gap-5">
-            <div class="h-72">
-              <!-- Pregunta -->
+           
               <div>
-                <p class="p-4 font-bold">¿Como ser programador web?</p>
+                {#if responseIA}
+                <p class="p-4 font-bold">¿{questionIA}?</p>
+                {/if}
               </div>
 
-              <!-- Respuesta -->
+            
               <div class=" flex flex-col p-4">
                 <div class="w-96 text-justify">
                   <p class="text-[#717171]">
@@ -433,15 +396,17 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="flex flex-row border rounded-lg gap-5">
+          </div> -->
+          <!-- <div class="flex flex-row border rounded-lg gap-5">
             <div class="h-72">
-              <!-- Pregunta -->
+              
               <div>
-                <p class="p-4 font-bold">¿Como ser programador web?</p>
+                {#if responseIA}
+                <p class="p-4 font-bold">¿{questionIA}?</p>
+                {/if}
               </div>
 
-              <!-- Respuesta -->
+             
               <div class=" flex flex-col p-4">
                 <div class="w-96 text-justify">
                   <p class="text-[#717171]">
@@ -460,7 +425,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </section>
       </article>
     </div>

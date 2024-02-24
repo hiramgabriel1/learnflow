@@ -2,44 +2,99 @@
   import "../../app.css";
   import "../../main.styles.css";
   import toast, { Toaster } from "svelte-french-toast";
-  import { onMount } from "svelte";
 
   let currentDate = new Date();
   let disabled: boolean;
+  let image = "";
 
   interface FormData {
-    question: string;
+    prompt: string;
   }
 
   let formData: FormData = {
-    question: "",
+    prompt: "",
   };
 
-  let suggestion: any;
   let responseMarcyAI: any;
   let marcyIsResponse: boolean;
   let sending: boolean;
-  let loadingSuggestions = true;
-  let suggestionArrayList: any[] = [];
 
+  const forbiddenWords = [
+    "porno",
+    "porn",
+    "niño",
+    "niña",
+    "pene",
+    "sexual",
+    "sexo",
+    "sexual",
+    "desnudo",
+    "desnuda",
+    "sin ropa",
+    "nude",
+    "nudes",
+  ];
   const handleInputChange = async (e: Event) => {
     // @ts-ignore
-    const value = e.target.value;
+    const inputValue = e.target.value.toLowerCase().trim();
 
-    if (value <= 0) {
-      toast.error("Ingresa un valor mayor ó igual a 1");
+    const containsForbiddenWord = forbiddenWords.some((word) =>
+      inputValue.includes(word.toLowerCase())
+    );
+
+    if (containsForbiddenWord) {
+      toast.error("no puedes ingresar eso")
+      formData.prompt = "";
+    }
+    if (inputValue === '') {
+      toast.error("no puedes dejar vacio")
+      // return
       disabled = true;
     } else {
       disabled = false;
     }
   };
 
-  const sendQuestionToMarcyAI = async () => {
+  const generateImageRealistic = async () => {
     sending = true;
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        "https://learnflow-services.up.railway.app/api/v1/ai/generate/question/",
+        "https://learnflow-services.up.railway.app/api/v1/generate-image/realistic",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify(formData),
+        }
+      );
+
+      // validate
+      if (!sendRequest.ok) {
+        throw new Error(`Error en la solicitud: ${sendRequest.statusText}`);
+      }
+
+      responseMarcyAI = await sendRequest.json();
+      formData.prompt = "";
+      sending = false;
+      console.log(responseMarcyAI);
+      marcyIsResponse = true;
+      image = responseMarcyAI.url;
+      console.log(sendRequest);
+      console.log(typeof sendRequest);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const generateImagePaint = async () => {
+    sending = true;
+    toast.success("Esto puede tardar unos segundos... 🧠");
+    try {
+      const sendRequest = await fetch(
+        "https://learnflow-services.up.railway.app/api/v1/generate-image/paint",
         {
           method: "POST",
           headers: {
@@ -56,7 +111,7 @@
       }
 
       responseMarcyAI = await sendRequest.json();
-      formData.question = "";
+      formData.prompt = "";
       sending = false;
       console.log(responseMarcyAI);
 
@@ -68,34 +123,38 @@
     }
   };
 
-  const generateSuggestionsAI = async () => {
+  const generateImageCartoon = async () => {
+    sending = true;
+    toast.success("Esto puede tardar unos segundos... 🧠");
     try {
-      const requestSuggestion = await fetch(
-        "https://learnflow-services.up.railway.app/api/v1/ai/suggestions"
+      const sendRequest = await fetch(
+        "http://localhost:4000/api/v1/generate-image/cartoon",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify(formData),
+        }
       );
-      if (!requestSuggestion.ok) {
-        throw new Error("La solicitud no pudo completarse correctamente.");
+
+      // validate
+      if (!sendRequest) {
+        toast.error("Intente de nuevo más tarde! ❌");
       }
-      suggestion = await requestSuggestion.text();
-      suggestionArrayList = suggestion.split("\n");
 
-      console.log(suggestionArrayList);
+      responseMarcyAI = await sendRequest.json();
+      formData.prompt = "";
+      sending = false;
+      console.log(responseMarcyAI);
 
-      loadingSuggestions = false;
-      console.log(suggestion);
+      marcyIsResponse = true;
+      console.log(sendRequest);
+      console.log(typeof sendRequest);
     } catch (error) {
-      console.log(error);
-      //   console.error(error);
+      console.error(error);
     }
-  };
-
-  onMount(() => {
-    return generateSuggestionsAI();
-  });
-
-  const sendSuggestion = (sugerencias: string) => {
-    formData.question = sugerencias.slice(3);
-    console.log(formData.question);
   };
 </script>
 
@@ -224,7 +283,7 @@
           />
         </svg>
       </a>
-      <a href="/asistente" class="app-sidebar-link active">
+      <a href="/asistente" class="app-sidebar-link">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 640 512"
@@ -248,7 +307,7 @@
           />
         </svg>
       </a>
-      <a href="/image-generator" class="app-sidebar-link">
+      <a href="/image-generator" class="app-sidebar-link active">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -266,7 +325,6 @@
       </a>
     </div>
 
-
     <!-- todo: menu index -->
     <div class="projects-section overflow-auto">
       <div class="projects-section-header overflow-auto">
@@ -276,79 +334,107 @@
 
       <br /><br />
 
-      <!-- todo: assistant code -->
-      <div class="w-9/12 mx-auto p-8">
-        <h1 class="text-4xl font-extrabold mb-1">MarcyAI</h1>
-        <p class="text-lg text-gray-600 mb-6">AI Assistant for Students</p>
-        <div class="flex items-center mb-10">
-          <span
-            class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-            ><img
-              class="aspect-square h-full w-full"
-              alt="AI"
-              src="https://imgs.search.brave.com/RK4eSupiqRKVzr36sUJ3xjc5x3KMrwE5cvDdcdLOkaU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9oYXBw/eS1wZXJzb24tcG9y/dHJhaXQtc21pbGlu/Zy13b21hbi10YW5u/ZWQtc2tpbi1jdXJs/eS1oYWlyLWhhcHB5/LXBlcnNvbi1wb3J0/cmFpdC1zbWlsaW5n/LXlvdW5nLWZyaWVu/ZGx5LXdvbWFuLTE5/NzUwMTE4NC5qcGc"
-            /></span
-          >
-          <p class="ml-4 flex-1">
-            Hola!, Me dicen Marcy. ¿Cómo puedo ayudarte hoy?
+      <!-- index todo -->
+      <div class="max-w-7xl mx-auto py-12 px-4">
+        <form on:submit|preventDefault={generateImageRealistic}>
+          <h1 class="text-4xl font-bold mb-4">Genera una imagen con AI</h1>
+          <p class="mb-6">
+            Introduce una breve descripción y generaremos una imagen para ti. <br
+            />
           </p>
-        </div>
-        <form
-          class="flex items-center bg-gray-100 p-4 rounded-lg mb-6"
-          on:submit|preventDefault={sendQuestionToMarcyAI}
-        >
           <input
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
-            placeholder="Comenzar una conversación con MarcyAI..."
-            bind:value={formData.question}
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mb-4"
+            bind:value={formData.prompt}
+            placeholder="Describe la imagen que quieras generar"
+            on:input={handleInputChange}
+            required
           />
-
           <button
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 bg-black"
-            style="color: white; width: 100px"
-            disabled={sending}
+            class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 w-full bg-blue-600 text-white py-2 rounded-md"
+            >Generar imágen</button
           >
-            {sending ? "Pensando..." : "Enviar"}
-          </button>
         </form>
-        <div class="min-w-96">
-          <!-- todo: response MarcyAI -->
-          {#if marcyIsResponse}
-            <p><b>MarcyAI:</b> {responseMarcyAI.response}</p>
-          {:else}
-            <h2 class="text-2xl font-semibold mb-4">Sugerencias</h2>
-            <div class="overflow-auto">
-              {#if loadingSuggestions}
-                <span>Creando sugerencias... 🧠</span>
-              {:else}
-                {#each suggestionArrayList as sugerencias}
-                  <ul class="my-5">
-                    <li class="flex items-center justify-between py-2 border-b">
-                      <!-- todo: renderización de sugerencias -->
-                      <span class="font-bold">{sugerencias.slice(2)}</span>
-                      <button on:click={() => sendSuggestion(sugerencias)}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="w-6 h-6">
-                          <path d="m9 18 6-6-6-6"></path>
-                        </svg>
-                      </button>
-                    </li>
-                  </ul>
-                {/each}
-              {/if}
-            </div>
-          {/if}
-          <!-- sugerencias -->
-        </div>
+        <section class="mt-10">
+          <div class="flex space-x-2 mb-6">
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-1 rounded-md"
+              >All</button
+            ><button
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-1 rounded-md"
+              >Custom Style</button
+            ><button
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-1 rounded-md"
+              >Photo-realistic</button
+            >
+          </div>
+          <h2 class="text-2xl font-bold mb-4">Recientes</h2>
+          <div class="grid grid-cols-3 gap-4">
+            <img
+              src={image}
+              alt="Gallery item 1"
+              class="w-full h-auto rounded-md"
+              width="200"
+              height="200"
+              style="aspect-ratio: 200 / 200; object-fit: cover;"
+            /><img
+              src="/placeholder.svg"
+              alt="Gallery item 2"
+              class="w-full h-auto rounded-md"
+              width="200"
+              height="200"
+              style="aspect-ratio: 200 / 200; object-fit: cover;"
+            /><img
+              src="/placeholder.svg"
+              alt="Gallery item 3"
+              class="w-full h-auto rounded-md"
+              width="200"
+              height="200"
+              style="aspect-ratio: 200 / 200; object-fit: cover;"
+            /><img
+              src="/placeholder.svg"
+              alt="Gallery item 4"
+              class="w-full h-auto rounded-md"
+              width="200"
+              height="200"
+              style="aspect-ratio: 200 / 200; object-fit: cover;"
+            /><img
+              src="/placeholder.svg"
+              alt="Gallery item 5"
+              class="w-full h-auto rounded-md"
+              width="200"
+              height="200"
+              style="aspect-ratio: 200 / 200; object-fit: cover;"
+            /><img
+              src="/placeholder.svg"
+              alt="Gallery item 6"
+              class="w-full h-auto rounded-md"
+              width="200"
+              height="200"
+              style="aspect-ratio: 200 / 200; object-fit: cover;"
+            /><img
+              src="/placeholder.svg"
+              alt="Gallery item 7"
+              class="w-full h-auto rounded-md"
+              width="200"
+              height="200"
+              style="aspect-ratio: 200 / 200; object-fit: cover;"
+            /><img
+              src="/placeholder.svg"
+              alt="Gallery item 8"
+              class="w-full h-auto rounded-md"
+              width="200"
+              height="200"
+              style="aspect-ratio: 200 / 200; object-fit: cover;"
+            /><img
+              src="/placeholder.svg"
+              alt="Gallery item 9"
+              class="w-full h-auto rounded-md"
+              width="200"
+              height="200"
+              style="aspect-ratio: 200 / 200; object-fit: cover;"
+            />
+          </div>
+        </section>
       </div>
       <!-- finish -->
     </div>
