@@ -1,7 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyD4b8xPu4bbC_LSqlUToXgg-G2UQfmR_xs",
   authDomain: "learnflow-app.firebaseapp.com",
@@ -14,23 +13,20 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 
-const auth = firebase.auth()
+const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 
 // @ts-ignore
 firebase.getCurrentUser = () => {
   return new Promise((resolve, reject) => {
-    firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        resolve(user); 
+        resolve(user);
       } else {
-        reject('No hay usuario autenticado');
+        reject("No hay usuario autenticado");
       }
     });
   });
 };
 
-
-
-
-export {auth, provider}
+export { auth, provider };
