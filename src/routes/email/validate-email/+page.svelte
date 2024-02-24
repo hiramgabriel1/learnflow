@@ -9,7 +9,7 @@
     <h2 class="mb-2 text-[42px] font-bold text-zinc-800">Verifica tu cuenta</h2>
     <p class="mb-2 text-lg text-zinc-500">
       Ingresa a tu correo gmail y verifica que recibiste un correo de
-      confirmación de tu cuenta en LearnflowAI <br>
+      confirmación de tu cuenta en Learnflow AI <br>
       <span
         class="font-medium text-indigo-500">mail@yourdomain.com</span 
       >.

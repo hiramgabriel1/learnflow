@@ -1,6 +1,6 @@
 <script>
   import "../../../app.css";
-  import video from "$lib/public/assets/video.mp4";
+  // import video from "$lib/public/assets/video.mp4";
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
 
@@ -30,7 +30,7 @@
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video class="w-full h-full object-cover" loop autoplay src={video} {poster}
+    <video class="w-full h-full object-cover" loop autoplay {poster}
     ></video>
   </div>
 

@@ -38,7 +38,7 @@
   <div class="app-header">
     <div class="app-header-left">
       <span class="app-icon"></span>
-      <p class="app-name">Learnflow</p>
+      <p class="app-name">Learnflow AI</p>
       <div class="search-wrapper">
         <!-- ? search input -->
         <input

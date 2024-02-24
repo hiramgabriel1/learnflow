@@ -16,7 +16,7 @@
     </h2>
 
     Ingresa a tu correo gmail y verifica que recibiste un correo de confirmación
-    de tu cuenta en LearnflowAI<br />
+    de tu cuenta en Learnflow AI<br />
     <br />
     <br />
     <label
