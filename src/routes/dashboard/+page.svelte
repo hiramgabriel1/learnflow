@@ -1,5 +1,5 @@
 <script>
-  import firebase from "firebase/compat/app";
+  // import firebase from "firebase/compat/app";
   import "../../app.css";
   import "../../main.styles.css";
 
