@@ -474,7 +474,7 @@
           <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
             <div class="grid gap-8 md:grid-rows-2 lg:grid-cols-2">
               <div
-                class="row-span-1 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-5"
+                class="row-span-2 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-5"
               >
                 <div
                   class="h-full w-full flex flex-col justify-center space-y-4"
