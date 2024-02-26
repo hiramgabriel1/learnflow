@@ -645,7 +645,9 @@
                     <span class="font-serif">"</span>
                   </p>
                   <div>
-                    <h6 class="text-lg font-semibold leading-none">Daniel</h6>
+                    <h6 class="text-lg font-semibold leading-none">
+                      Daniel Cantillo
+                    </h6>
                     <span class="text-sm text-gray-600"
                       >Frontend Developer
                     </span>
