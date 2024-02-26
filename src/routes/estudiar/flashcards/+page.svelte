@@ -136,6 +136,9 @@
   // nextButton.addEventListener("click", nextFlashCard);
 
   // showCurrentFlashCard();
+
+  const itemSelection = null;
+  console.log(respuestaApi);
 </script>
 
 <Toaster />
@@ -311,7 +314,7 @@
     </div>
 
     <!-- todo: menu index -->
-    <div class="projects-section flex items-center">
+    <div class="projects-section flex items-left h-fit">
       <div class="projects-section-header">
         <p class="text-center font-bolder">Selecciona una tarjeta</p>
       </div>
@@ -319,20 +322,169 @@
 
       <article class="flex mx-5">
         <section class="mx-5">
-          <section class="flex flex-wrap">
-            {#each respuestaApi as pregunta}
+          <section
+            class="flex flex-wrap h-full gap-5 items-center justify-around pb-10"
+          >
+            <div
+              class="grid grid-cols-[auto_1fr_auto] gap-2 w-[60%] border-2 max-h-96 h-fit min-h-60
+                 border-zinc-200 overflow-hidden rounded-xl"
+            >
+              <img
+                height="300"
+                width="300"
+                src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg"
+                alt=""
+                class="h-full bg-slate-600 rounded-xl object-cover"
+              />
+              <div class="h-full overflow-auto flex flex-col gap-3 py-2">
+                <h1 class="text-lg font-semibold text-slate-900">
+                  Como ser programador?
+                </h1>
+                <p class=" text-slate-600">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequuntur dolore, eligendi maxime facilis architecto
+                  lorem90
+                </p>
+              </div>
+              <div class="flex items-center px-2">
+                <button
+                  class="bg-slate-900 rounded-full p-2 text-slate-50 hover:scale-105"
+                >
+                  <svg
+                    class="w-8"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    ><g
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      ><rect width="8" height="13" x="8" y="2" rx="4" /><path
+                        d="M18 16.292A7.98 7.98 0 0 1 12 19a7.98 7.98 0 0 1-6-2.708M12 19v3m-2 0h4"
+                      /></g
+                    ></svg
+                  >
+                </button>
+              </div>
+            </div>
+            {#each respuestaApi as pregunta, index}
+              <div
+                class="  max-h-[50%] h-60 flex-1 cursor-pointer
+                  overflow-hidden rounded-xl
+                 group min-w-[25%] [perspective:1000px]"
+              >
+                <div
+                  class="relative h-full w-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+                >
+                  <div
+                    class="absolute inset-0 p-8 bg-amber-400 bg-opacity-10 rounded-xl"
+                  >
+                    <div class="flex flex-col justify-between h-full">
+                      <h1
+                        class="absolute mt-auto font-light text-2xl leading-9 text-slate-900 block"
+                      >
+                        {pregunta}
+                      </h1>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute inset-0 h-full w-full rounded-xl bg-[#fdfcf7] p-8 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                  >
+                    <div class="flex flex-col justify-between h-full">
+                      <div class="mt-auto space-y-4">
+                        <p class="text-[#16453a] text-lg font-light leading-5">
+                          Como ser programador?
+                        </p>
+                        <p class="text-[#16453a] text-lg font-light leading-5">
+                          We have opinions and we never shy away from asking the
+                          tough questions
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {#if index === 0}
+                <div
+                  class="grid grid-rows-[1fr_auto] gap-2 w-[60%] border-2 h-fit min-h-60 max-h-60 max-h-[50%]
+                 border-zinc-200 overflow-hidden rounded-xl"
+                >
+                  <div class="h-full overflow-auto flex flex-col gap-3 p-2">
+                    <h1 class="text-lg font-semibold text-slate-900">
+                      Como ser programador?
+                    </h1>
+                    <p class=" text-slate-600">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Consequuntur dolore, eligendi maxime facilis architecto
+                      lorem90 Lorem ipsum dolor sit amet consectetur adipisicing
+                      elit. Dolor, expedita iste neque fuga cumque iusto tempora
+                      magni quaerat dicta atque? Lorem ipsum dolor sit amet
+                      consectetur, adipisicing elit. Animi illo a, ratione
+                      cupiditate quibusdam omnis deleniti, ex, neque corrupti
+                      magnam nostrum accusamus! Commodi eaque cum atque
+                      asperiores obcaecati totam sunt.
+                    </p>
+                  </div>
+                  <div class="grid grid-cols-[1fr_auto] px-3 pb-2 gap-2">
+                    <div class="relative bg-slate-300 rounded-full h-full">
+                      <input
+                        type="text"
+                        class="w-full outline-none px-3 bg-transparent h-full pe-10"
+                      />
+                      <svg
+                        class="absolute right-0 h-10 top-1 text-blue-700 hover:scale-105 cursor-pointer"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        ><path
+                          fill="currentColor"
+                          fill-rule="evenodd"
+                          d="M3.402 6.673c-.26-2.334 2.143-4.048 4.266-3.042l11.944 5.658c2.288 1.083 2.288 4.339 0 5.422L7.668 20.37c-2.123 1.006-4.525-.708-4.266-3.042L3.882 13H12a1 1 0 1 0 0-2H3.883z"
+                          clip-rule="evenodd"
+                        /></svg
+                      >
+                    </div>
+                    <button
+                      class="bg-slate-900 w-fit rounded-full p-2 text-slate-50 hover:scale-105"
+                    >
+                      <svg
+                        class="w-8"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        ><g
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          ><rect
+                            width="8"
+                            height="13"
+                            x="8"
+                            y="2"
+                            rx="4"
+                          /><path
+                            d="M18 16.292A7.98 7.98 0 0 1 12 19a7.98 7.98 0 0 1-6-2.708M12 19v3m-2 0h4"
+                          /></g
+                        ></svg
+                      >
+                    </button>
+                  </div>
+                </div>
+              {/if}
+            {/each}
+
+            <!-- {#each respuestaApi as pregunta}
               <div
                 class="hidden sm:flex flex-row border w-80 text-center m-1 rounded-lg gap-5"
               >
                 <div class="h-80">
-                  <!-- Pregunta -->
                   <div>
                     {#if pregunta}
                       <p class="p-3 font-bold">{pregunta}</p>
                     {/if}
                   </div>
 
-                  <!-- Respuesta -->
                   <div class="flex flex-col px-3 justify-between">
                     <div class="text-justify">
                       <p class="text-[#717171] text-center">
@@ -344,7 +496,6 @@
                       </p>
                     </div>
 
-                    <!-- Botón Seleccionar -->
                     <div class="flex justify-end">
                       <button
                         class="custom-button my-3 flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
@@ -355,7 +506,7 @@
                   </div>
                 </div>
               </div>
-            {/each}
+            {/each} -->
 
             <div class="flex flex-col items-center mt-3">
               <div class="flex flex-row gap-5"></div>
