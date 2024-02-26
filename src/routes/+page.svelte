@@ -3,6 +3,8 @@
   import ceoProfile from "$lib/public/images/profile.webp";
   import member from "$lib/public/images/alexander.webp";
   import memberJaf from "$lib/public/images/jafet.webp";
+  import memberCrisFront from "$lib/public/images/crisFront.webp";
+  import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
 
   const imagesSlider = [
     "https://crehana-blog.imgix.net/media/filer_public/72/92/729243d3-0d4a-455b-b680-ec4f8ab237a1/tecnologia-futurista-glass.jpg?auto=format&q=50",
@@ -472,7 +474,7 @@
           <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
             <div class="grid gap-8 md:grid-rows-2 lg:grid-cols-2">
               <div
-                class="row-span-2 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-5"
+                class="row-span-1 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-5"
               >
                 <div
                   class="h-full w-full flex flex-col justify-center space-y-4"
@@ -575,6 +577,78 @@
                     </h6>
                     <span class="text-xs text-gray-600">Frontend Developer</span
                     >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="row-span-1 justify-center p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-5"
+              >
+                <div
+                  class="h-full w-full flex flex-col justify-center space-y-4"
+                >
+                  <img
+                    class="w-40 h-40 mx-auto rounded-xl"
+                    src={memberCrisFront}
+                    alt="user avatar"
+                    height="220"
+                    width="220"
+                    loading="lazy"
+                  />
+                  <p class="text-gray-600 md:text-xl">
+                    <br />
+                    <span class="font-serif">"</span>
+                    En el transcurso de nuestro aprendizaje como desarrolladores,
+                    siempre hay altibajos. Sin embargo, en esas situaciones, es crucial
+                    saber cómo levantarnos y seguir adelante. Internet es uno de
+                    los recursos más valiosos para el aprendizaje constante; sin
+                    embargo, el mal uso de este también puede alejarnos de nuestra
+                    humanidad. Estoy orgulloso de formar parte de LearnFlow para
+                    contribuir al esfuerzo constante de aprendizaje.
+                    <span class="font-serif">"</span>
+                  </p>
+                  <div>
+                    <h6 class="text-lg font-semibold leading-none">
+                      Cristhian Bautista
+                    </h6>
+                    <span class="text-sm text-gray-600"
+                      >Frontend Developer
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="row-span-1 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-5"
+              >
+                <div
+                  class="h-full w-full flex flex-col justify-center space-y-4"
+                >
+                  <img
+                    class="w-40 h-40 mx-auto rounded-xl"
+                    src={memberEcuDaniFront}
+                    alt="user avatar"
+                    height="220"
+                    width="220"
+                    loading="lazy"
+                  />
+                  <p class="text-gray-600 md:text-xl">
+                    <br />
+                    <span class="font-serif">"</span>
+                    Con el lanzamiento de LearnflowAI, encontramos en una sola plataforma
+                    la llave que transforma desafíos en oportunidades, inspirando
+                    a todos a alcanzar sus metas, aprender constantemente y construir
+                    una comunidad de conocimiento compartido. Me llena de gratitud
+                    formar parte de LearnflowAI, una plataforma que no solo me ha
+                    brindado la oportunidad de contribuir al aprendizaje constante,
+                    sino que también me llena de alegría saber que estamos allanando
+                    el camino para que innumerables personas alcancen sus metas educativas
+                    y sueños de superación.
+                    <span class="font-serif">"</span>
+                  </p>
+                  <div>
+                    <h6 class="text-lg font-semibold leading-none">Daniel</h6>
+                    <span class="text-sm text-gray-600"
+                      >Frontend Developer
+                    </span>
                   </div>
                 </div>
               </div>
