@@ -45,7 +45,25 @@
     }
   };
   //@ts-ignore
-  respuestaApi = JSON.parse(localStorage.getItem("respuestaApi")) || [];
+  // respuestaApi = JSON.parse(localStorage.getItem("respuestaApi")) || [];
+
+  var expresionRegular = /\[([^[\]]*)\]/;
+  var expresion = expresionRegular.exec(
+    localStorage.getItem("response")?.toString() || ""
+  );
+  // @ts-ignore
+  if (expresion && expresion.length > 1) {
+    try {
+      const parseJson = JSON.parse(
+        JSON.parse(
+          JSON.stringify("[" + expresion[1].replace(/\n/g, "").trim() + "]")
+        )
+      );
+      respuestaApi = parseJson;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   // Esta función se ejecutará cuando el componente se monte
   onMount(() => {
@@ -53,7 +71,7 @@
     questionIA = localStorage.getItem("question") || "";
     responseIA = localStorage.getItem("response") || "";
     // Dividimos la respuesta en un array de preguntas
-    respuestaApi = responseIA.split("\n");
+    // respuestaApi = responseIA.split("\n");
     // Actualizamos localStorage con el nuevo valor de respuestaApi
     localStorage.setItem("respuestaApi", JSON.stringify(respuestaApi));
   });
@@ -384,7 +402,11 @@
                       <h1
                         class="absolute mt-auto font-light text-2xl leading-9 text-slate-900 block"
                       >
-                        {pregunta}
+                          <!-- content here -->
+                          {#if pregunta}
+                             <!-- content here -->
+                             {pregunta?.pregunta}
+                          {/if}
                       </h1>
                     </div>
                   </div>
@@ -394,11 +416,10 @@
                     <div class="flex flex-col justify-between h-full">
                       <div class="mt-auto space-y-4">
                         <p class="text-[#16453a] text-lg font-light leading-5">
-                          Como ser programador?
+                          {pregunta?.pregunta}
                         </p>
                         <p class="text-[#16453a] text-lg font-light leading-5">
-                          We have opinions and we never shy away from asking the
-                          tough questions
+                          {pregunta?.respuesta}
                         </p>
                       </div>
                     </div>
