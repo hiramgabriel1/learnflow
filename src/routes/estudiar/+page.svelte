@@ -27,8 +27,8 @@
     }
   };
 
-  let questionIA = '';
-  let responseIA = '';
+  let questionIA = "";
+  let responseIA = "";
 
   const responseGPT = async () => {
     try {
@@ -61,6 +61,7 @@
       // }, 17000);
 
       const api = "https://learnflow-services.up.railway.app/api/v1/flashcard/generate-ai";
+
       const sendData = await fetch(api, {
         method: "POST",
         headers: {
@@ -74,20 +75,26 @@
         throw new Error("No se pudo obtener la respuesta del servidor.");
       }
 
-      let responseApi = await sendData.json()
-      const {question, response} = responseApi
+      let responseApi = await sendData.json();
+      const { question, response } = responseApi;
 
       //Almacenar los valores en el localStorage
-      localStorage.setItem('question', question);
-      localStorage.setItem('response', response);
+      localStorage.setItem("question", question);
+      localStorage.setItem("response", response.toString());
 
       toast.dismiss(thinkingToast);
 
       return goto("/estudiar/flashcards");
     } catch (error) {
+      toast.error(
+        toast("Upps, ha ocurrido un error", {
+          duration: 15000,
+        })
+      );
       console.error("Error al obtener los datos:", error);
     } finally {
       isLoading = false;
+      disabled = false;
     }
   };
 </script>
@@ -258,7 +265,6 @@
         </svg>
       </a>
     </div>
-
 
     <!-- todo: menu index -->
     <div class="projects-section">
