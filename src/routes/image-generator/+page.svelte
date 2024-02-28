@@ -10,10 +10,12 @@
 
   interface FormData {
     prompt: string;
+    type: string;
   }
 
   let formData: FormData = {
     prompt: "",
+    type: "realistic",
   };
 
   let responseMarcyAI: any;
@@ -61,7 +63,7 @@
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        "https://learnflow-services.up.railway.app/api/v1/generate-image/realistic",
+        `https://learnflow-services.up.railway.app/api/v1/generate-image/${formData.type}`,
         {
           method: "POST",
           headers: {
@@ -327,7 +329,7 @@
     </div>
 
     <!-- todo: menu index -->
-    <div class="projects-section overflow-auto">
+    <div class="projects-section overflow-auto h-fit">
       <div class="projects-section-header overflow-auto">
         <!-- <p>Fecha</p> -->
         <p class="time">{currentDate.toLocaleDateString()}</p>
@@ -344,12 +346,25 @@
             />
           </p>
           <input
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mb-4"
+            class=" flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mb-4"
             bind:value={formData.prompt}
             placeholder="Describe la imagen que quieras generar"
             on:input={handleInputChange}
             required
           />
+          <div class="flex gap-3 items-center mb-4  justify-end">
+            <span class="font-semibold">Tipo: </span>
+            <select
+              name=""
+              id=""
+              bind:value={formData.type}
+              class="flex h-10 w-fit rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <option value="realistic">Realismo</option>
+              <option value="paint">Pintura</option>
+              <option value="cartoon">Caricatura</option>
+            </select>
+          </div>
           <button
             class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 w-full bg-blue-600 text-white py-2 rounded-md"
             >Generar imágen</button
@@ -359,7 +374,7 @@
             href="https://buy.stripe.com/9AQcQ76k1gIJe6QdQQ">Pagar</a
           > -->
         </form>
-        <section class="mt-10">
+        <section class="mt-10 pb-10">
           <div class="flex space-x-2 mb-6">
             <button
               class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-1 rounded-md"
@@ -372,17 +387,20 @@
               >Photo-realistic</button
             >
           </div>
-          <h2 class="text-2xl font-bold mb-4">Recientes</h2>
-          <div class="grid grid-cols-3 gap-4">
-            <img
-              src={image}
-              alt="Gallery item 1"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            />
-          </div>
+          {#if image}
+             <!-- content here -->
+             <h2 class="text-2xl font-bold mb-4">Recientes</h2>
+             <div class="grid grid-cols-3 gap-4">
+               <img
+                 src={image}
+                 alt="Gallery item 1"
+                 class="w-full h-auto rounded-md"
+                 width="200"
+                 height="200"
+                 style="aspect-ratio: 200 / 200; object-fit: cover;"
+               />
+             </div>
+          {/if}
         </section>
       </div>
       <!-- finish -->
