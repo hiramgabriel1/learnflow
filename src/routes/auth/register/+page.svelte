@@ -9,7 +9,7 @@
     username: "",
     lastName: "",
     userEmail: "",
-    isStudent: "",
+    isStudent: false,
     reasonsToUseApp: "",
     password: "",
   };
@@ -27,6 +27,7 @@
           body: JSON.stringify(formData),
         }
       );
+        console.log(saveUser)
 
       if (!saveUser.ok && saveUser.status !== 201 && saveUser.status !== 200) {
         return toast.error(
@@ -132,12 +133,31 @@
 
       <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
         <div class="flex flex-col">
-          <label class="pb-2 font-bold" for="">Nombre completo</label>
+          <label class="pb-2 font-bold" for="">Nombres</label>
           <input
             type="text"
-            placeholder="Nombre / Apellido"
+            placeholder="Addm..."
             bind:value={formData.username}
             required
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Apellidos</label>
+          <input
+            type="text"
+            placeholder="Ale... Pol..."
+            bind:value={formData.lastName}
+            required
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Razón para usar el programa</label>
+          <input
+            type="text"
+            placeholder="Addmer"
+            bind:value={formData.reasonsToUseApp}
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
