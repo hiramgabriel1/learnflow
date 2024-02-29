@@ -27,8 +27,8 @@
     }
   };
 
-  let questionIA = "";
-  let responseIA = "";
+  // let questionIA = "";
+  // let responseIA = "";
 
   const responseGPT = async () => {
     try {
