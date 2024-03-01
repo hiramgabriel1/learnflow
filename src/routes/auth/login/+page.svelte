@@ -3,15 +3,39 @@
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
   import { auth, provider } from "../../../firebase";
+  import toast, { Toaster } from "svelte-french-toast";
+  import {goto} from "$app/navigation";
+  // @ts-ignore
+  import cookie from "js-cookie";
 
   let formData = {
     userEmail: "",
-    contraseña: "",
+    password: "",
   };
 
   const formHandler = async () => {
     try {
+      const verifyUser = await fetch(
+        "http://localhost:4000/api/v1/auth/login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // credentials: 'include',
+          body: JSON.stringify(formData),
+        }
+      );
 
+      if (!verifyUser.ok) {
+        if (verifyUser.status === 400)
+          return toast.error("Correo o contraseña invalidos");
+        else return toast.error("Error en la solicitud");
+      }
+    
+      const userCurrent = await verifyUser.json();
+      cookie.set("session", userCurrent.jwt);
+      await goto("/dashboard");
     } catch (error) {
       console.error(error);
     }
@@ -26,24 +50,22 @@
     );
   };
 
-  const handleAuthGoogle = async() => {
-
+  const handleAuthGoogle = async () => {
     try {
-      
-      const res = await auth.signInWithPopup(provider)
-      console.log(res)
+      const res = await auth.signInWithPopup(provider);
+      console.log(res);
 
       // @ts-ignore
-      history.push('/dashboard');
+      history.push("/dashboard");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
 
     console.log("progress...");
   };
-
 </script>
 
+<Toaster />
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
     <!-- svelte-ignore a11y-media-has-caption -->
@@ -136,7 +158,7 @@
             type="password"
             placeholder="*********"
             required
-            bind:value={formData.contraseña}
+            bind:value={formData.password}
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
