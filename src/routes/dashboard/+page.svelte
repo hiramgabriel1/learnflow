@@ -11,6 +11,7 @@
   // current date
   let currentDate = new Date();
 
+
   // todo: Consume data api here
 
   // document.addEventListener("DOMContentLoaded", function () {

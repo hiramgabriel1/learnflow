@@ -34,7 +34,7 @@
       }
     
       const userCurrent = await verifyUser.json();
-      cookie.set("session", userCurrent.jwt);
+      cookie.set("jwt", userCurrent.jwt);
       await goto("/dashboard");
     } catch (error) {
       console.error(error);
