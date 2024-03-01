@@ -5,7 +5,6 @@
   import { auth, provider } from "../../../firebase";
   import toast, { Toaster } from "svelte-french-toast";
   import {goto} from "$app/navigation";
-  // @ts-ignore
   import cookie from "js-cookie";
 
   let formData = {
