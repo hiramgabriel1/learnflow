@@ -39,7 +39,7 @@
         toast.success("registrado éxitosamente");
 
         setTimeout(() => {
-          window.location.href = "/";
+          window.location.href = "/dashboard";
         }, 2000);
       }
 
