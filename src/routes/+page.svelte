@@ -3,7 +3,7 @@
   import ceoProfile from "$lib/public/images/profile.webp";
   import member from "$lib/public/images/alexander.webp";
   import memberJaf from "$lib/public/images/jafet.webp";
-  import memberCrisFront from "$lib/public/images/crisFront.webp";
+  import memberCrisFront from "$lib/public/images/crisfront.webp";
   import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
 
   const imagesSlider = [
