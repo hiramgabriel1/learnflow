@@ -402,11 +402,11 @@
                       <h1
                         class="absolute mt-auto font-light text-2xl leading-9 text-slate-900 block"
                       >
+                        <!-- content here -->
+                        {#if pregunta}
                           <!-- content here -->
-                          {#if pregunta}
-                             <!-- content here -->
-                             {pregunta?.pregunta}
-                          {/if}
+                          {pregunta?.pregunta}
+                        {/if}
                       </h1>
                     </div>
                   </div>
