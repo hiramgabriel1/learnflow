@@ -325,7 +325,7 @@
               {:else if showLoading}
                 <div class="flex justify-center items-center h-full">
                   <img
-                    class="h-16 w-16"
+                    class="h-10 w-10"
                     src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
                     alt=""
                   />

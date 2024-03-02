@@ -290,7 +290,7 @@
             /></span
           >
           <p class="ml-4 flex-1">
-            Hola!, Me dicen Marcy. ¿Cómo puedo ayudarte hoy?
+            Hola! Me dicen Marcy. ¿Cómo puedo ayudarte hoy?
           </p>
         </div>
         <form
