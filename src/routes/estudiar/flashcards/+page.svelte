@@ -10,6 +10,11 @@
     totalCount: 1,
   };
 
+  let responseAI = {
+    isCorrect: false,
+    consejos: "",
+  };
+
   // @ts-ignore
   let recognition;
   let recognizedText = "";
@@ -33,12 +38,14 @@
     try {
       let newFormData = {
         responseUserToFlashcard: (formData.requestText = recognizedText),
+        answerUserToFlashCard:
+          respuestaApi[totalConfigAnswers.currentItem].pregunta,
       };
 
       console.log(newFormData);
 
       const validateResponseVoiceWithAnswerAI = await fetch(
-        "https://learnflow-services.up.railway.app/api/v1/flashcard/send-response-voice/",
+        "http://localhost:4000/api/v1/flashcard/send-response-voice/",
         {
           method: "POST",
           headers: {
@@ -48,10 +55,22 @@
           body: JSON.stringify(newFormData),
         }
       );
-
+      
+      console.log(await validateResponseVoiceWithAnswerAI);
       if (validateResponseVoiceWithAnswerAI.ok) {
         userIsAnswered = true;
-        console.log(validateResponseVoiceWithAnswerAI);
+        let resp = await validateResponseVoiceWithAnswerAI; 
+
+        console.log(resp)
+        console.log(typeof resp)
+        // var expresionRegular = /\[([^[\]]*)\]/;
+        // var expresion = validateResponseVoiceWithAnswerAI;
+        
+        // responseAI.consejos = (
+        //   await expresion.json()
+        // ).toString();
+
+
       }
     } catch (error) {
       console.log(error);
@@ -87,7 +106,6 @@
         console.log(err);
       }
     }
-    
 
     // Obtenemos los datos de localStorage
     questionIA = localStorage.getItem("question") || "";
@@ -356,10 +374,7 @@
               Respuesta Correcta
             </h2>
             <p class="text-gray-700 mb-4">
-              La respuesta correcta es 'TypeScript'. TypeScript es un lenguaje
-              de programación desarrollado y mantenido por Microsoft. Es un
-              superconjunto de JavaScript que añade tipado estático y objetos
-              basados en clases.
+              {responseAI.consejos}
             </p>
             <h3 class="text-lg font-semibold text-gray-900 mb-2">
               Explicación
@@ -403,7 +418,7 @@
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              class={`w-16 ${totalConfigAnswers.currentItem != 0?"text-slate-900":"text-slate-200"}`}
+                              class={`w-16 ${totalConfigAnswers.currentItem != 0 ? "text-slate-900" : "text-slate-200"}`}
                               viewBox="0 0 32 32"
                               ><path
                                 fill="currentColor"
@@ -428,7 +443,7 @@
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              class={`w-16 ${totalConfigAnswers.currentItem != totalConfigAnswers.totalCount - 1?"text-slate-900":"text-slate-200"}`}
+                              class={`w-16 ${totalConfigAnswers.currentItem != totalConfigAnswers.totalCount - 1 ? "text-slate-900" : "text-slate-200"}`}
                               viewBox="0 0 32 32"
                               ><path
                                 fill="currentColor"
