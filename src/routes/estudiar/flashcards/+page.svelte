@@ -124,37 +124,6 @@
     console.log("funciona");
   };
 
-  // flashcards
-  // const flashCards = [
-  //   {
-  //     pregunta: "¿Como ser programador web?",
-  //     respuesta:
-  //       "- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione magni ullam repudiandae cupiditate earum quibusdam debitis, enim, ab ipsum dignissimos eaque in quisquam commodi deserunt asperiores quo veritatis ut doloribus.",
-  //   },
-  // ];
-
-  // let currentIndex = 0;
-
-  // const showCurrentFlashCard = () => {
-  //   const currentCard = flashCards[currentIndex];
-  //   console.log("Pregunta:", currentCard.pregunta);
-  //   console.log("Respuesta:", currentCard.respuesta);
-  // };
-
-  // const nextFlashCard = () => {
-  //   currentIndex++;
-  //   if (currentIndex >= flashCards.length) {
-  //     currentIndex = 0;
-  //   }
-  //   showCurrentFlashCard();
-  // };
-
-  // const nextButton = document.querySelector("#nextButton");
-  // // @ts-ignore
-  // nextButton.addEventListener("click", nextFlashCard);
-
-  // showCurrentFlashCard();
-
   const itemSelection = null;
   console.log(respuestaApi);
 </script>
@@ -192,7 +161,7 @@
     </div>
     <div class="app-header-right gap-3">
       <!-- ? dark mode -->
-      <button class="mode-switch" title="Switch Theme">
+      <!-- <button class="mode-switch" title="Switch Theme">
         <svg
           class="moon"
           fill="none"
@@ -207,7 +176,7 @@
           <defs></defs>
           <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
         </svg>
-      </button>
+      </button> -->
 
       <!-- ? button add -->
       <a class="add-btn" href="/estudiar">
@@ -229,23 +198,23 @@
       </a>
 
       <!-- ? notifications -->
-      <button class="notification-btn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-bell"
-        >
-          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-          <path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg
-        >
-      </button>
+      <!-- <button class="notification-btn"> -->
+      <!-- <svg -->
+      <!-- xmlns="http://www.w3.org/2000/svg" -->
+      <!-- width="24" -->
+      <!-- height="24" -->
+      <!-- viewBox="0 0 24 24" -->
+      <!-- fill="none" -->
+      <!-- stroke="currentColor" -->
+      <!-- stroke-width="2" -->
+      <!-- stroke-linecap="round" -->
+      <!-- stroke-linejoin="round" -->
+      <!-- class="feather feather-bell" -->
+      <!-- > -->
+      <!-- <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /> -->
+      <!-- <path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg -->
+      <!-- > -->
+      <!-- </button> -->
 
       <!-- ? profile button -->
       <button class="profile-btn">
@@ -336,269 +305,93 @@
       <div class="projects-section-header">
         <p class="text-center font-bolder">Selecciona una tarjeta</p>
       </div>
-      <br /><br />
-
-      <article class="flex mx-5">
-        <section class="mx-5">
-          <section
-            class="flex flex-wrap h-full gap-5 items-center justify-around pb-10"
-          >
-            <div
-              class="grid grid-cols-[auto_1fr_auto] gap-2 w-[60%] border-2 max-h-96 h-fit min-h-60
-                 border-zinc-200 overflow-hidden rounded-xl"
-            >
-              <img
-                height="300"
-                width="300"
-                src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg"
-                alt=""
-                class="h-full bg-slate-600 rounded-xl object-cover"
-              />
-              <div class="h-full overflow-auto flex flex-col gap-3 py-2">
-                <h1 class="text-lg font-semibold text-slate-900">
-                  Como ser programador?
-                </h1>
-                <p class=" text-slate-600">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequuntur dolore, eligendi maxime facilis architecto
-                  lorem90
-                </p>
-              </div>
-              <div class="flex items-center px-2">
-                <button
-                  class="bg-slate-900 rounded-full p-2 text-slate-50 hover:scale-105"
-                >
-                  <svg
-                    class="w-8"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    ><g
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      ><rect width="8" height="13" x="8" y="2" rx="4" /><path
-                        d="M18 16.292A7.98 7.98 0 0 1 12 19a7.98 7.98 0 0 1-6-2.708M12 19v3m-2 0h4"
-                      /></g
-                    ></svg
-                  >
-                </button>
-              </div>
-            </div>
-            {#each respuestaApi as pregunta, index}
-              <div
-                class="  max-h-[50%] h-60 flex-1 cursor-pointer
-                  overflow-hidden rounded-xl
-                 group min-w-[25%] [perspective:1000px]"
-              >
-                <div
-                  class="relative h-full w-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
-                >
-                  <div
-                    class="absolute inset-0 p-8 bg-amber-400 bg-opacity-10 rounded-xl"
-                  >
-                    <div class="flex flex-col justify-between h-full">
-                      <h1
-                        class="absolute mt-auto font-light text-2xl leading-9 text-slate-900 block"
+      <article class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <section>
+              <div class="d-flex flex-wrap justify-content-center pb-3">
+                {#each respuestaApi.slice(0, 1) as pregunta}
+                  <div class="flex my-10">
+                    <div
+                      class="bg-white w-1/2 m-auto border-1 border-dashed border-gray-100 shadow-md rounded-lg overflow-hidden"
+                    >
+                      <div
+                        style="width:100%;height:0;padding-bottom:100%;position:relative;"
                       >
-                          <!-- content here -->
-                          {#if pregunta}
-                             <!-- content here -->
-                             {pregunta?.pregunta}
-                          {/if}
-                      </h1>
-                    </div>
-                  </div>
-                  <div
-                    class="absolute inset-0 h-full w-full rounded-xl bg-[#fdfcf7] p-8 [transform:rotateY(180deg)] [backface-visibility:hidden]"
-                  >
-                    <div class="flex flex-col justify-between h-full">
-                      <div class="mt-auto space-y-4">
-                        <p class="text-[#16453a] text-lg font-light leading-5">
-                          {pregunta?.pregunta}
+                        <iframe
+                          src="https://giphy.com/embed/wq1I3ILdsvYJub8Rwx"
+                          width="100%"
+                          height="100%"
+                          style="position:absolute"
+                          frameBorder="0"
+                          class="giphy-embed"
+                        ></iframe>
+                      </div>
+                      <div class="p-4">
+                        <p class="mb-1 text-gray-900 font-bold">
+                          {pregunta.pregunta}
                         </p>
-                        <p class="text-[#16453a] text-lg font-light leading-5">
-                          {pregunta?.respuesta}
-                        </p>
+
+                        <span class="text-gray-700"
+                          >Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Quasi fugit hic ab quos eos quisquam labore
+                          minus, dignissimos porro explicabo distinctio.</span
+                        >
+
+                        <div class="mt-8 mb-3">
+                          <button
+                            class="bg-slate-900 w-fit rounded-full p-2 text-slate-50 hover:scale-105"
+                            on:click={sendResponseVoiceUser}
+                          >
+                            <svg
+                              class="w-8"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              ><g
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                ><rect
+                                  width="8"
+                                  height="13"
+                                  x="8"
+                                  y="2"
+                                  rx="4"
+                                /><path
+                                  d="M18 16.292A7.98 7.98 0 0 1 12 19a7.98 7.98 0 0 1-6-2.708M12 19v3m-2 0h4"
+                                /></g
+                              ></svg
+                            >
+                          </button>
+                          <button on:click={stopRecognition}>detener</button>
+
+                          <!-- arreglar el responsive y diseño de éste input -->
+                          <input
+                            type="text"
+                            placeholder="Escribe tu respuesta..."
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                {/each}
               </div>
-              {#if index === 0}
-                <div
-                  class="grid grid-rows-[1fr_auto] gap-2 w-[60%] border-2 h-fit min-h-60 max-h-60 max-h-[50%]
-                 border-zinc-200 overflow-hidden rounded-xl"
-                >
-                  <div class="h-full overflow-auto flex flex-col gap-3 p-2">
-                    <h1 class="text-lg font-semibold text-slate-900">
-                      Como ser programador?
-                    </h1>
-                    <p class=" text-slate-600">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Consequuntur dolore, eligendi maxime facilis architecto
-                      lorem90 Lorem ipsum dolor sit amet consectetur adipisicing
-                      elit. Dolor, expedita iste neque fuga cumque iusto tempora
-                      magni quaerat dicta atque? Lorem ipsum dolor sit amet
-                      consectetur, adipisicing elit. Animi illo a, ratione
-                      cupiditate quibusdam omnis deleniti, ex, neque corrupti
-                      magnam nostrum accusamus! Commodi eaque cum atque
-                      asperiores obcaecati totam sunt.
-                    </p>
-                  </div>
-                  <div class="grid grid-cols-[1fr_auto] px-3 pb-2 gap-2">
-                    <div class="relative bg-slate-300 rounded-full h-full">
-                      <input
-                        type="text"
-                        class="w-full outline-none px-3 bg-transparent h-full pe-10"
-                      />
-                      <svg
-                        class="absolute right-0 h-10 top-1 text-blue-700 hover:scale-105 cursor-pointer"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><path
-                          fill="currentColor"
-                          fill-rule="evenodd"
-                          d="M3.402 6.673c-.26-2.334 2.143-4.048 4.266-3.042l11.944 5.658c2.288 1.083 2.288 4.339 0 5.422L7.668 20.37c-2.123 1.006-4.525-.708-4.266-3.042L3.882 13H12a1 1 0 1 0 0-2H3.883z"
-                          clip-rule="evenodd"
-                        /></svg
-                      >
-                    </div>
-                    <button
-                      class="bg-slate-900 w-fit rounded-full p-2 text-slate-50 hover:scale-105"
-                    >
-                      <svg
-                        class="w-8"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><g
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          ><rect
-                            width="8"
-                            height="13"
-                            x="8"
-                            y="2"
-                            rx="4"
-                          /><path
-                            d="M18 16.292A7.98 7.98 0 0 1 12 19a7.98 7.98 0 0 1-6-2.708M12 19v3m-2 0h4"
-                          /></g
-                        ></svg
-                      >
-                    </button>
-                  </div>
-                </div>
-              {/if}
-            {/each}
-
-            <!-- {#each respuestaApi as pregunta}
-              <div
-                class="hidden sm:flex flex-row border w-80 text-center m-1 rounded-lg gap-5"
-              >
-                <div class="h-80">
-                  <div>
-                    {#if pregunta}
-                      <p class="p-3 font-bold">{pregunta}</p>
-                    {/if}
-                  </div>
-
-                  <div class="flex flex-col px-3 justify-between">
-                    <div class="text-justify">
-                      <p class="text-[#717171] text-center">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Ratione magni ullam repudiandae cupiditate earum
-                        quibusdam debitis, enim, ab ipsum dignissimos eaque in
-                        quisquam commodi deserunt asperiores quo veritatis ut
-                        doloribus alex.
-                      </p>
-                    </div>
-
-                    <div class="flex justify-end">
-                      <button
-                        class="custom-button my-3 flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                      >
-                        <span>Seleccionar</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {/each} -->
-
-            <div class="flex flex-col items-center mt-3">
-              <div class="flex flex-row gap-5"></div>
-              <div>
+            </section>
+          </div>
+          <div class="col-lg-6">
+            <section>
+              <div class="text-center">
                 {#if recognizedText}
                   <p>Texto reconocido: {recognizedText}</p>
                 {/if}
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
+        </div>
 
-          <!--<section class="flex flex-col items-center ml-5 gap-5">
-          <div class="flex flex-row border rounded-lg gap-5">
-           
-              <div>
-                {#if responseIA}
-                <p class="p-4 font-bold">¿{questionIA}?</p>
-                {/if}
-              </div>
-
-            
-              <div class=" flex flex-col p-4">
-                <div class="w-96 text-justify">
-                  <p class="text-[#717171]">
-                    - Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Ratione magni ullam repudiandae cupiditate earum quibusdam
-                    debitis, enim, ab ipsum dignissimos eaque in quisquam
-                    commodi deserunt asperiores quo veritatis ut doloribus.
-                  </p>
-                </div>
-
-                <div class=" flex justify-center p-5">
-                  <button
-                    class="custom-button my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                  >
-                    <span>Seleccionar</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="flex flex-row border rounded-lg gap-5">
-            <div class="h-72">
-              
-              <div>
-                {#if responseIA}
-                <p class="p-4 font-bold">¿{questionIA}?</p>
-                {/if}
-              </div>
-
-             
-              <div class=" flex flex-col p-4">
-                <div class="w-96 text-justify">
-                  <p class="text-[#717171]">
-                    - Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Ratione magni ullam repudiandae cupiditate earum quibusdam
-                    debitis, enim, ab ipsum dignissimos eaque in quisquam
-                    commodi deserunt asperiores quo veritatis ut doloribus.
-                  </p>
-                </div>
-                <div class=" flex justify-center p-5">
-                  <button
-                    class="custom-button my-3 w-full flex justify-center bg-[#1f1c2e] text-gray-100 p-2 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                  >
-                    <span>Seleccionar</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </section>
+        <button>siguente</button>
       </article>
     </div>
   </div>

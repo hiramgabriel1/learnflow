@@ -14,10 +14,13 @@ export const load: PageServerLoad = async ({ fetch }) => {
         },
       }
     );
-    if (!validateSesion.ok){
+    if (!validateSesion.ok) {
+      console.log("error detectado");
+
       throw new Error("Error al acceder a la página");
     }
   } catch (err) {
+    console.log(303);
     return redirect(303, "/auth/login");
   }
 };

@@ -7,6 +7,7 @@
   let currentDate = new Date();
   let disabled: boolean;
   let image = "";
+  let showLoading: boolean;
 
   interface FormData {
     prompt: string;
@@ -59,8 +60,11 @@
   };
 
   const generateImageRealistic = async () => {
+    disabled = true;
+    showLoading = true;
     sending = true;
-    toast.success("Esto puede tardar unos segundos... 🧠");
+
+    toast.success("Generando imagen, esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
         `https://learnflow-services.up.railway.app/api/v1/generate-image/${formData.type}`,
@@ -82,9 +86,11 @@
       responseMarcyAI = await sendRequest.json();
       formData.prompt = "";
       sending = false;
-      console.log(responseMarcyAI);
       marcyIsResponse = true;
+      showLoading = false;
       image = responseMarcyAI.url;
+
+      console.log(responseMarcyAI);
       console.log(sendRequest);
       console.log(typeof sendRequest);
     } catch (error) {
@@ -116,9 +122,12 @@
       responseMarcyAI = await sendRequest.json();
       formData.prompt = "";
       sending = false;
-      console.log(responseMarcyAI);
-
+      showLoading = false;
       marcyIsResponse = true;
+      image = responseMarcyAI.url;
+      showLoading = false;
+
+      console.log(responseMarcyAI);
       console.log(sendRequest);
       console.log(typeof sendRequest);
     } catch (error) {
@@ -127,6 +136,8 @@
   };
 
   const generateImageCartoon = async () => {
+    disabled = true;
+    showLoading = true;
     sending = true;
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
@@ -150,13 +161,30 @@
       responseMarcyAI = await sendRequest.json();
       formData.prompt = "";
       sending = false;
-      console.log(responseMarcyAI);
-
       marcyIsResponse = true;
+      image = responseMarcyAI.url;
+      showLoading = false;
+
+      console.log(responseMarcyAI);
       console.log(sendRequest);
       console.log(typeof sendRequest);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const generateImage = () => {
+    console.log("Generando imagen...");
+    if (formData.type === "cartoon") {
+      console.log("Generar imagen de estilo cartoon");
+      generateImageCartoon();
+    } else if (formData.type === "realistic") {
+      console.log("Generar imagen de estilo realista");
+      generateImageRealistic();
+    } else if (formData.type === "paint") {
+      generateImagePaint();
+    } else {
+      console.log("error");
     }
   };
 </script>
@@ -194,22 +222,22 @@
     </div>
     <div class="app-header-right gap-3">
       <!-- ? dark mode -->
-      <button class="mode-switch" title="Switch Theme">
-        <svg
-          class="moon"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
-          <defs></defs>
-          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-        </svg>
-      </button>
+      <!-- <button class="mode-switch" title="Switch Theme"> -->
+      <!-- <svg -->
+      <!-- class="moon" -->
+      <!-- fill="none" -->
+      <!-- stroke="currentColor" -->
+      <!-- stroke-linecap="round" -->
+      <!-- stroke-linejoin="round" -->
+      <!-- stroke-width="2" -->
+      <!-- width="24" -->
+      <!-- height="24" -->
+      <!-- viewBox="0 0 24 24" -->
+      <!-- > -->
+      <!-- <defs></defs> -->
+      <!-- <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path> -->
+      <!-- </svg> -->
+      <!-- </button> -->
 
       <!-- ? button add -->
       <a class="add-btn" href="/estudiar">
@@ -231,7 +259,7 @@
       </a>
 
       <!-- ? notifications -->
-      <button class="notification-btn">
+      <!-- <button class="notification-btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -247,7 +275,7 @@
           <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
           <path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg
         >
-      </button>
+      </button> -->
 
       <!-- ? profile button -->
       <button class="profile-btn">
@@ -339,7 +367,7 @@
 
       <!-- index todo -->
       <div class="max-w-7xl mx-auto py-12 px-4">
-        <form on:submit|preventDefault={generateImageRealistic}>
+        <form on:submit|preventDefault={generateImage}>
           <h1 class="text-4xl font-bold mb-4">Genera una imagen con AI</h1>
           <p class="mb-6">
             Introduce una breve descripción y generaremos una imagen para ti. <br
@@ -352,7 +380,7 @@
             on:input={handleInputChange}
             required
           />
-          <div class="flex gap-3 items-center mb-4  justify-end">
+          <div class="flex gap-3 items-center mb-4 justify-end">
             <span class="font-semibold">Tipo: </span>
             <select
               name=""
@@ -365,41 +393,36 @@
               <option value="cartoon">Caricatura</option>
             </select>
           </div>
-          <button
-            class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 w-full bg-blue-600 text-white py-2 rounded-md"
-            >Generar imágen</button
-          >
-          <!-- <a
-            class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 w-full bg-blue-600 text-white py-2 rounded-md"
-            href="https://buy.stripe.com/9AQcQ76k1gIJe6QdQQ">Pagar</a
-          > -->
+          {#if !disabled}
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 w-full bg-blue-600 text-white py-2 rounded-md"
+            >
+              Generar imágen
+            </button>
+          {:else if showLoading}
+            <div class="flex justify-center items-center h-full">
+              <img
+                class="h-10 w-10"
+                src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
+                alt=""
+              />
+            </div>
+          {/if}
         </form>
         <section class="mt-10 pb-10">
-          <div class="flex space-x-2 mb-6">
-            <button
-              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-1 rounded-md"
-              >All</button
-            ><button
-              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-1 rounded-md"
-              >Custom Style</button
-            ><button
-              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-1 rounded-md"
-              >Photo-realistic</button
-            >
-          </div>
           {#if image}
-             <!-- content here -->
-             <h2 class="text-2xl font-bold mb-4">Recientes</h2>
-             <div class="grid grid-cols-3 gap-4">
-               <img
-                 src={image}
-                 alt="Gallery item 1"
-                 class="w-full h-auto rounded-md"
-                 width="200"
-                 height="200"
-                 style="aspect-ratio: 200 / 200; object-fit: cover;"
-               />
-             </div>
+            <!-- content here -->
+            <h2 class="text-2xl font-bold mb-4">Recientes</h2>
+            <div class="grid grid-cols-3 gap-4">
+              <img
+                src={image}
+                alt="Gallery item 1"
+                class="w-full h-auto rounded-md"
+                width="200"
+                height="200"
+                style="aspect-ratio: 200 / 200; object-fit: cover;"
+              />
+            </div>
           {/if}
         </section>
       </div>
