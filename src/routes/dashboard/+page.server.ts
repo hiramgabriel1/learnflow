@@ -14,8 +14,6 @@ export const load: PageServerLoad = async ({ fetch }) => {
         },
       }
     );
-    console.log(validateSesion);
-    console.log("go");
     if (!validateSesion.ok){
       throw new Error("Error al acceder a la página");
     }

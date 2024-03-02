@@ -78,6 +78,9 @@
       let responseApi = await sendData.json();
       const { question, response } = responseApi;
 
+      console.log(responseApi)
+      console.log(question)
+      console.log(response)
       //Almacenar los valores en el localStorage
       localStorage.setItem("question", question);
       localStorage.setItem("response", response.toString());
