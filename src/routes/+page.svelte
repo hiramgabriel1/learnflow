@@ -120,6 +120,17 @@
               </ul>
             </div>
 
+            <div class="mt-12 me-4 lg:mt-0 ">
+              <a
+                href="/auth/login"
+                class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-orange-400 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max "
+              >
+                <span
+                  class="relative text-sm font-semibold text-white "
+                  >Iniciar sesión</span
+                >
+              </a>
+            </div>
             <div class="mt-12 lg:mt-0 astro-LEPVKGVF">
               <a
                 href="/auth/register"
@@ -127,7 +138,7 @@
               >
                 <span
                   class="relative text-sm font-semibold text-white astro-LEPVKGVF"
-                  >Empezar</span
+                  >Registrarse</span
                 >
               </a>
             </div>
@@ -171,21 +182,21 @@
                   class="pt-3 flex flex-col items-start w-full md:w-fit gap-3"
                 >
                   <a
+                    href="/auth/login"
+                    class="relative flex h-9 w-[100%_!important] md:w-fit items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-orange-400 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
+                  >
+                    <span
+                      class="relative text-sm font-semibold text-white astro-LEPVKGVF"
+                      >Iniciar sesión</span
+                    >
+                  </a>
+                  <a
                     href="/auth/register"
                     class="relative flex h-9 w-[100%_!important] md:w-fit items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
                   >
                     <span
                       class="relative text-sm font-semibold text-white astro-LEPVKGVF"
-                      >Sign up for GitHub</span
-                    >
-                  </a>
-                  <a
-                    href="/auth/register"
-                    class="relative flex h-9 w-[100%_!important] md:w-fit items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-gray-900 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
-                  >
-                    <span
-                      class="relative text-sm font-semibold text-white astro-LEPVKGVF"
-                      >Start a free enterprise trial</span
+                      >Registrarse</span
                     >
                   </a>
                 </div>
