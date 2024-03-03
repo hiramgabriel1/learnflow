@@ -17,7 +17,7 @@
   const formHandler = async () => {
     try {
       const saveUser = await fetch(
-        "http://localhost:4000/api/v1/auth/register",
+        "https://learnflow-services.up.railway.app/api/v1/auth/register",
         {
           method: "POST",
           headers: {
@@ -27,7 +27,7 @@
           body: JSON.stringify(formData),
         }
       );
-        console.log(saveUser)
+      console.log(saveUser);
 
       if (!saveUser.ok && saveUser.status !== 201 && saveUser.status !== 200) {
         return toast.error(
@@ -153,7 +153,9 @@
           />
         </div>
         <div class="flex flex-col">
-          <label class="pb-2 font-bold" for="">Razón para usar el programa</label>
+          <label class="pb-2 font-bold" for=""
+            >Razón para usar el programa</label
+          >
           <input
             type="text"
             placeholder="Addmer"

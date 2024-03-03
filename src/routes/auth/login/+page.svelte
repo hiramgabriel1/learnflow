@@ -4,7 +4,7 @@
   import poster from "$lib/public/assets/bg.jpg";
   import { auth, provider } from "../../../firebase";
   import toast, { Toaster } from "svelte-french-toast";
-  import {goto} from "$app/navigation";
+  import { goto } from "$app/navigation";
   import cookie from "js-cookie";
 
   let formData = {
@@ -15,7 +15,7 @@
   const formHandler = async () => {
     try {
       const verifyUser = await fetch(
-        "http://localhost:4000/api/v1/auth/login/",
+        "https://learnflow-services.up.railway.app/api/v1/auth/login/",
         {
           method: "POST",
           headers: {
@@ -31,7 +31,7 @@
           return toast.error("Correo o contraseña invalidos");
         else return toast.error("Error en la solicitud");
       }
-    
+
       const userCurrent = await verifyUser.json();
       cookie.set("jwt", userCurrent.jwt);
       await goto("/dashboard");
