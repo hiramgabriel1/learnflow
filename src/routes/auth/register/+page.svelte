@@ -123,6 +123,7 @@
         </button>
       </div>
 
+      <!-- dsklslaklñdkslñdkdslñ{dkñ{d}} -->
       <!-- svelte-ignore a11y-unknown-role -->
       <div role="hidden" class="mt-12 border-t">
         <span
@@ -130,6 +131,7 @@
           >o</span
         >
       </div>
+      <!-- git y github_ -->
 
       <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
         <div class="flex flex-col">
@@ -185,7 +187,7 @@
           />
         </div>
 
-        <div class="flex flex-col">
+          <div class="flex flex-col">
           <label class="pb-2 font-bold" for="">Contraseña</label>
           <input
             type="password"
@@ -242,3 +244,5 @@
     </div>
   </div>
 </div>
+
+<!-- tailwind -->
