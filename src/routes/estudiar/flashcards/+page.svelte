@@ -13,6 +13,7 @@
   let responseAI = {
     isCorrect: false,
     consejos: "",
+    explicacion: ""
   };
 
   // @ts-ignore
@@ -59,16 +60,14 @@
       console.log(await validateResponseVoiceWithAnswerAI);
       if (validateResponseVoiceWithAnswerAI.ok) {
         userIsAnswered = true;
-        let resp = await validateResponseVoiceWithAnswerAI; 
-
-        console.log(resp)
-        console.log(typeof resp)
+        let resp = await validateResponseVoiceWithAnswerAI.json(); 
+        const rpra = JSON.parse(resp.response)
         // var expresionRegular = /\[([^[\]]*)\]/;
         // var expresion = validateResponseVoiceWithAnswerAI;
         
-        // responseAI.consejos = (
-        //   await expresion.json()
-        // ).toString();
+        responseAI.consejos = rpra.consejos;
+        responseAI.isCorrect = rpra.isCorrect;
+        responseAI.explicacion = rpra.explicacion;
 
 
       }
@@ -370,8 +369,8 @@
             </button>
           </div>
           <div class="border-t border-gray-200 pt-4">
-            <h2 class="text-xl font-semibold text-green-600 mb-2">
-              Respuesta Correcta
+            <h2 class={`text-xl font-semibold ${responseAI.isCorrect?"text-green-600":"text-red-600"} mb-2`}>
+              {responseAI.isCorrect?"Respuesta Correcta":"Respuesta Incorrecta"}
             </h2>
             <p class="text-gray-700 mb-4">
               {responseAI.consejos}
@@ -380,17 +379,15 @@
               Explicación
             </h3>
             <p class="text-gray-700 mb-6">
-              TypeScript proporciona características opcionales de tipado
-              estático y es diseñado para el desarrollo de aplicaciones grandes.
-              Permite a los desarrolladores escribir código más limpio y
-              mantenible.
+              {responseAI.explicacion}
             </p>
-            <a
-              href="/estudiar"
-              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-green-500 hover:bg-green-600 text-white"
+            <button
+              on:click={()=>{userIsAnswered=false; recognizedText=""}}
+              class={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 
+                w-full ${responseAI.isCorrect?"bg-green-500 hover:bg-green-600":"bg-red-500 hover:bg-red-600"}   text-white`}
             >
               Volver a Inicio
-            </a>
+            </button>
           </div>
         </div>
       {:else if !userIsAnswered}
