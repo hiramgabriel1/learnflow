@@ -3,7 +3,7 @@ import type { PageServerLoad } from "./$types";
 import { envDataConf } from "../../server/server";
 
 export const load: PageServerLoad = async ({ fetch }) => {
-  const jwt = "jwt=dear";
+    const jwt = "jwt=dear";
 
   const token = jwt.split("=")[1];
   try {
@@ -19,8 +19,6 @@ export const load: PageServerLoad = async ({ fetch }) => {
     console.log(validateSesion);
     if (!validateSesion.ok){
       throw new Error("Error al acceder a la página");
+
     }
-  } catch (err) {
-    return redirect(303, "/auth/login");
-  }
 };
