@@ -60,7 +60,7 @@
       //   });
       // }, 17000);
 
-      const api = "https://learnflow-services.up.railway.app/api/v1/flashcard/generate-ai";
+      const api = "http://localhost:4000/api/v1/flashcard/generate-ai";
 
       const sendData = await fetch(api, {
         method: "POST",

@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
   const token = jwt.split("=")[1];
   try {
     const validateSesion = await fetch(
-      "https://learnflow-services.up.railway.app/api/v1/auth/user",
+      "http://localhost:4000/api/v1/auth/user",
       {
         headers: {
           Authorization: `Bearer ${token}`,

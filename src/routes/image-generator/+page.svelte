@@ -67,7 +67,7 @@
     toast.success("Generando imagen, esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        `https://learnflow-services.up.railway.app/api/v1/generate-image/${formData.type}`,
+        `http://localhost:4000/api/v1/generate-image/${formData.type}`,
         {
           method: "POST",
           headers: {
