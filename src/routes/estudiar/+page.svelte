@@ -3,6 +3,7 @@
   import "../../main.styles.css";
   import { goto } from "$app/navigation";
   import toast, { Toaster } from "svelte-french-toast";
+  import { envDataConf } from "../../server/server";
 
   let currentDate = new Date();
   let disabled: boolean;
@@ -60,7 +61,7 @@
       //   });
       // }, 17000);
 
-      const api = "https://learnflow-services.up.railway.app/api/v1/flashcard/generate-ai";
+      const api = `${envDataConf.URLBACK}/flashcard/generate-ai`;
 
       const sendData = await fetch(api, {
         method: "POST",
