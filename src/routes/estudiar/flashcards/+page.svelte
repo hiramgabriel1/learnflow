@@ -4,6 +4,7 @@
   import "./styles.css";
   import toast, { Toaster } from "svelte-french-toast";
   import { onMount } from "svelte";
+  import { envDataConf } from "../../../server/server";
 
   let totalConfigAnswers = {
     currentItem: 0,
@@ -46,7 +47,7 @@
       console.log(newFormData);
 
       const validateResponseVoiceWithAnswerAI = await fetch(
-        "http://localhost:4000/api/v1/flashcard/send-response-voice/",
+        `${envDataConf.URLBACK}/flashcard/send-response-voice/`,
         {
           method: "POST",
           headers: {

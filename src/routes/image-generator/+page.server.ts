@@ -1,13 +1,14 @@
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
+import { envDataConf } from "../../server/server";
 
 export const load: PageServerLoad = async ({ fetch }) => {
   const jwt = "jwt=dear";
 
   const token = jwt.split("=")[1];
   try {
-    const response = await fetch(
-      "https://learnflow-services.up.railway.app/api/v1/auth/user",
+    const validateSesion = await fetch(
+      `${envDataConf.URLBACK}/auth/user`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

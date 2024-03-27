@@ -6,6 +6,7 @@
   import toast, { Toaster } from "svelte-french-toast";
   import { goto } from "$app/navigation";
   import cookie from "js-cookie";
+  import { envDataConf } from "../../../server/server";
 
   let formData = {
     userEmail: "",
@@ -15,7 +16,7 @@
   const formHandler = async () => {
     try {
       const verifyUser = await fetch(
-        "https://learnflow-services.up.railway.app/api/v1/auth/login/",
+        `${envDataConf.URLBACK}/auth/login/`,
         {
           method: "POST",
           headers: {
