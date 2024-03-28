@@ -2,10 +2,8 @@ import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { envDataConf } from "../../server/server";
 
-export const load: PageServerLoad = async ({ fetch }) => {
-  const jwt = "jwt=dear";
-
-  const token = jwt.split("=")[1];
+export const load: PageServerLoad = async ({ cookies }) => {
+  const token = cookies.get("jwt");
   try {
     const validateSesion = await fetch(
       `${envDataConf.URLBACK}/auth/user`,
@@ -16,7 +14,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
       }
     );
 
-    if (!response.ok) {
+    if (!validateSesion.ok) {
       throw new Error("Error al acceder a la página");
     }
 
