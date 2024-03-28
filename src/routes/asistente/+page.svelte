@@ -3,6 +3,7 @@
   import "../../main.styles.css";
   import toast, { Toaster } from "svelte-french-toast";
   import { onMount } from "svelte";
+  import { envDataConf } from "../../server/server";
 
   let currentDate = new Date();
   let disabled: boolean;
@@ -39,7 +40,7 @@
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        "http://localhost:4000/api/v1/ai/generate/question/",
+        "https://learnflow-services.up.railway.app/api/v1/ai/generate/question/",
         {
           method: "POST",
           headers: {
@@ -71,7 +72,7 @@
   const generateSuggestionsAI = async () => {
     try {
       const requestSuggestion = await fetch(
-        "http://localhost:4000/api/v1/ai/suggestions"
+        "https://learnflow-services.up.railway.app/api/v1/ai/suggestions"
       );
       if (!requestSuggestion.ok) {
         throw new Error("La solicitud no pudo completarse correctamente.");

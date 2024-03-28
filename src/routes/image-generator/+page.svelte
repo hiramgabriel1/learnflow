@@ -3,6 +3,7 @@
   import "../../main.styles.css";
   import { onMount } from "svelte";
   import toast, { Toaster } from "svelte-french-toast";
+  import { envDataConf } from "../../server/server";
 
   let currentDate = new Date();
   let disabled: boolean;
@@ -67,7 +68,7 @@
     toast.success("Generando imagen, esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        `http://localhost:4000/api/v1/generate-image/${formData.type}`,
+        `${envDataConf.URLBACK}/generate-image/${formData.type}`,
         {
           method: "POST",
           headers: {
@@ -103,7 +104,7 @@
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        "https://learnflow-services.up.railway.app/api/v1/generate-image/paint",
+        `${envDataConf.URLBACK}/generate-image/paint`,
         {
           method: "POST",
           headers: {
@@ -142,7 +143,7 @@
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        "http://localhost:4000/api/v1/generate-image/cartoon",
+        `${envDataConf.URLBACK}/generate-image/cartoon`,
         {
           method: "POST",
           headers: {

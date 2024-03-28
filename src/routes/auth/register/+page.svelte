@@ -3,6 +3,7 @@
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
+  import { envDataConf } from "../../../server/server";
 
   // @ts-ignore
   let formData = {
@@ -17,7 +18,7 @@
   const formHandler = async () => {
     try {
       const saveUser = await fetch(
-        "http://localhost:4000/api/v1/auth/register",
+        `${envDataConf.URLBACK}/auth/register`,
         {
           method: "POST",
           headers: {
