@@ -17,7 +17,7 @@
   const formHandler = async () => {
     try {
       const saveUser = await fetch(
-        "https://learnflow-services.up.railway.app/api/v1/auth/register",
+        "http://localhost:4000/api/v1/auth/register",
         {
           method: "POST",
           headers: {
