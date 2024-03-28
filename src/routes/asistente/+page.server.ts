@@ -2,10 +2,9 @@ import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { envDataConf } from "../../server/server";
 
-export const load: PageServerLoad = async ({ fetch }) => {
-  const jwt = "jwt=dear";
+export const load: PageServerLoad = async ({ cookies }) => {
+  const token = cookies.get("jwt");
 
-  const token = jwt.split("=")[1];
   try {
     const validateSesion = await fetch(
       `${envDataConf.URLBACK}/auth/user`,
