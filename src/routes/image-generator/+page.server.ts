@@ -13,13 +13,14 @@ export const load: PageServerLoad = async ({ cookies }) => {
         },
       }
     );
-    if (!validateSesion.ok) {
-      console.log("error detectado");
 
+    if (!validateSesion.ok) {
       throw new Error("Error al acceder a la página");
     }
+
+    // Si la respuesta es correcta, no es necesario hacer nada más
   } catch (err) {
-    console.log(303);
+    // Si hay un error, redirige al usuario a la página de inicio de sesión
     return redirect(303, "/auth/login");
   }
 };
