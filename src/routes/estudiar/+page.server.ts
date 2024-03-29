@@ -12,6 +12,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        credentials: "include",
       }
     );
 
