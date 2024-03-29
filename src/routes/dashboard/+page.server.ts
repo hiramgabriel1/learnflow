@@ -10,6 +10,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      credentials: "include"
     });
     // console.log("Validate validate");
     console.log(validateSesion);
