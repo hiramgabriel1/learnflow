@@ -10,6 +10,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
 
       {
         headers: {
+          Cookie: `jwt=${token};`,
           Authorization: `Bearer ${token}`,
         },
         credentials: "include",

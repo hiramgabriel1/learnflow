@@ -9,6 +9,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
     const validateSesion = await fetch(`${envDataConf.URLBACK}/auth/user`, {
       headers: {
         Authorization: `Bearer ${token}`,
+        Cookie: `jwt=${token};`,
       },
       credentials: "include"
     });
