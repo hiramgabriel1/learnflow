@@ -30,11 +30,14 @@
 	"type": "module",
 	"dependencies": {
 		"@types/artyom.js": "^1.0.6",
+		"@types/jsonwebtoken": "^9.0.6",
 		"artyom.js": "^1.0.6",
 		"firebase": "^10.8.0",
 		"g4f": "^1.2.1",
 		"js-cookie": "^3.0.5",
+		"jsonwebtoken": "^9.0.2",
 		"openai": "^4.0.0",
+		"safe-buffer": "^5.2.1",
 		"svelte-french-toast": "^1.2.0"
 	}
 }

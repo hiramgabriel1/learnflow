@@ -1,4 +1,7 @@
 <script>
+  export let data;
+  const { user } = data;
+
   import "../../app.css";
   import LayoutInitial from "../../components/LayoutInitial.svelte";
   import "../../main.styles.css";
@@ -35,7 +38,7 @@
 </script>
 
 <Toaster />
-<LayoutInitial>
+<LayoutInitial user={user}>
   <!-- todo: menu index -->
   <div class="projects-section">
     <div class="projects-section-header">

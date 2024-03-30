@@ -1,4 +1,7 @@
 <script lang="ts">
+  export let data;
+  const { user } = data;
+  
   import "../../app.css";
   import "../../main.styles.css";
   import { onMount } from "svelte";
@@ -193,7 +196,7 @@
 
 <Toaster />
 
-<LayoutInitial>
+<LayoutInitial user={user}>
   <!-- todo: menu index -->
   <div class="projects-section overflow-auto h-fit">
     <div class="projects-section-header overflow-auto">
