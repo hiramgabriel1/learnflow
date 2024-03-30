@@ -1,4 +1,9 @@
 <script>
+  export let data;
+
+  const { user } = data;
+
+
   // import firebase from "firebase/compat/app";
   import "../../app.css";
   import LayoutInitial from "../../components/LayoutInitial.svelte";
@@ -43,7 +48,7 @@
   // });
 </script>
 
-<LayoutInitial>
+<LayoutInitial user={user}>
   <!-- todo: menu index -->
   <div class="projects-section">
     <div class="projects-section-header">

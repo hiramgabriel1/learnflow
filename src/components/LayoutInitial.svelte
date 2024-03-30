@@ -1,8 +1,20 @@
 <script>
+  /**
+   * @type {import("../interfaces/MessageJwt.interface").MessageJwtInterface} User
+   * @description Representa la información del usuario autenticado. Puede ser un objeto de usuario o una cadena vacía si no hay usuario autenticado.
+   */
+  export let user;
+
   import { page } from "$app/stores";
   import Cookies from "js-cookie";
   const pathCurrent = $page.url.pathname;
-	
+  import { onMount } from "svelte";
+  
+  onMount(() => {
+    const cookie = Cookies.get("jwt") || "";
+    console.log((cookie));
+    // console.log(jwt.decode(cookie));
+  });
 </script>
 
 <main class="app-container">
@@ -53,7 +65,7 @@
       </a>
 
       <a class="profile-btn" href="/profile">
-        <span>Hiram Gabriel</span>
+        <span>{user && user.id}</span>
       </a>
     </div>
   </header>

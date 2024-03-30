@@ -1,4 +1,7 @@
 <script lang="ts">
+  export let data;
+  const { user } = data;
+
   import "../../app.css";
   import "../../main.styles.css";
   import { goto } from "$app/navigation";
@@ -106,7 +109,7 @@
 
 <Toaster />
 
-<LayoutInitial>
+<LayoutInitial user={user}>
   <!-- todo: menu index -->
   <div class="projects-section">
     <div class="projects-section-header">

@@ -1,4 +1,7 @@
 <script lang="ts">
+  export let data;
+  const { user } = data;
+  
   import "../../../app.css";
   import "../../../main.styles.css";
   import "./styles.css";
@@ -171,7 +174,7 @@
 
 <Toaster />
 
-<LayoutInitial>
+<LayoutInitial user={user}>
   <!-- todo: menu index -->
   <div class="projects-section flex items-left h-fit">
     {#if userIsAnswered}

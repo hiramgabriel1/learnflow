@@ -1,8 +1,8 @@
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import { envDataConf } from "../../server/server";
+import { envDataConf } from "../../../server/server";
 import jwt from "jsonwebtoken";
-import type { MessageJwtInterface } from "../../interfaces/MessageJwt.interface";
+import type { MessageJwtInterface } from "../../../interfaces/MessageJwt.interface";
 
 export const load: PageServerLoad = async ({ cookies }) => {
   const token = cookies.get("jwt");
