@@ -93,9 +93,9 @@
         >
           <div class="flex gap-4 justify-center">
             <img src={google} class="w-5" alt="" />
-            <button
+            <span
               class="block w-max font-medium tracking-wide text-sm text-blue-700"
-              on:click={handleAuthGoogle}>Google</button
+              >Google</span
             >
           </div>
         </button>
