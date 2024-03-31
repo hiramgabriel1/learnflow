@@ -199,7 +199,6 @@
       </a>
     </div>
 
-
     <!-- todo: menu index -->
     <div class="projects-section">
       <div class="projects-section-header">
