@@ -1,5 +1,9 @@
 <script>
+  export let data;
+  const { user } = data;
+
   import "../../app.css";
+  import LayoutInitial from "../../components/LayoutInitial.svelte";
   import "../../main.styles.css";
   import toast, { Toaster } from "svelte-french-toast";
 
