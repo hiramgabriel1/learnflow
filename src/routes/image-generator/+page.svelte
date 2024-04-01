@@ -20,6 +20,8 @@
   let disabled: boolean;
   // let image = "";
   let listImages = writable<MessageImageResponse[]>([]);
+  console.log(listImages);
+  
   let showLoading: boolean;
 
   let formData: SendFormDataImageAiInterface = {
@@ -202,9 +204,8 @@
               </div>
             {/each}
           </div>
-
-            {:else}
-              <h1>No has generado na'</h1>
+          {:else}
+          <h1>No has generado na'</h1>
         {/if}
       </section>
     </div>
