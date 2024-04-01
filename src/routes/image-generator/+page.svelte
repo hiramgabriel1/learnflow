@@ -172,9 +172,10 @@
         {/if}
       </form>
       <section class="mt-10 pb-10">
+
         <!-- content here -->
         <h2 class="text-2xl font-bold mb-4">Recientes</h2>
-        {#if $listImages.length >= 1}
+        {#if $listImages !== null}
           <div class="grid grid-cols-3 gap-4 gap-y-10">
             {#each $listImages as image}
               <div class="flex flex-col items-center gap-2">
@@ -202,8 +203,8 @@
             {/each}
           </div>
 
-        {:else}
-          <h1>No has generado na'</h1>
+            {:else}
+              <h1>No has generado na'</h1>
         {/if}
       </section>
     </div>
