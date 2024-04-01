@@ -1,7 +1,7 @@
 <script>
   import "../../../app.css";
-  import google from "$lib/public/assets/google.svg";
-  import poster from "$lib/public/assets/bg.jpg";
+  // import google from "$lib/public/assets/google.svg";
+  // import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../../server/server";
 
@@ -88,7 +88,7 @@
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video class="w-full h-full object-cover" loop autoplay {poster}></video>
+    <!-- <video class="w-full h-full object-cover" loop autoplay {poster}></video> -->
   </div>
   <!-- svelte-ignore a11y-unknown-role -->
   <div
@@ -110,7 +110,7 @@
           class="py-3 px-6 rounded-xl bg-blue-50 hover:bg-blue-100 focus:bg-blue-100 active:bg-blue-200"
         >
           <div class="flex gap-4 justify-center">
-            <img src={google} class="w-5" alt="" />
+            <!-- <img src={google} class="w-5" alt="" /> -->
             <button
               class="block w-max font-medium tracking-wide text-sm text-blue-700"
               on:click={handleAuthGoogle}>Google</button
