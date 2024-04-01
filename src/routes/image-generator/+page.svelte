@@ -219,7 +219,14 @@
                 height="200"
                 style="aspect-ratio: 200 / 200; object-fit: cover;"
               />
-              <h4 class="text-xs font-semibold">{image.original_filename}</h4>
+
+              <!-- render name file -->
+              {#if !image.original_filename || typeof image.original_filename !== "undefined"}
+                  <h4 class="text-xs font-semibold">{image.original_filename.replace("_", " ")}</h4>
+
+              {:else}
+                  <h4>nombre error</h4>
+              {/if}
             </div>
           {/each}
         </div>
