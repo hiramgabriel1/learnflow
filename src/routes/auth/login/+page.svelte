@@ -89,6 +89,7 @@
 
       <div class="mt-12 grid gap-6 sm:grid-cols-2">
         <button
+        on:click={handleAuthGoogle}
           class="py-3 px-6 rounded-xl bg-blue-50 hover:bg-blue-100 focus:bg-blue-100 active:bg-blue-200"
         >
           <div class="flex gap-4 justify-center">
