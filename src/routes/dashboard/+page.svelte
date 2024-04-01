@@ -25,7 +25,7 @@
 
     if (logoutButton) {
       logoutButton.addEventListener("click", function () {
-        fetch("http://localhost:4000/api/v1/auth/logout", {
+        fetch("https://learnflow-services-api-production.up.railway.app/api/v1/auth/logout", {
           method: "POST",
           credentials: "include",
         })
