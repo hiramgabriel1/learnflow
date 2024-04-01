@@ -188,7 +188,7 @@
               <!-- render name file -->
               {#if !image.original_filename || typeof image.original_filename !== "undefined"}
                 <h4 class="text-xs font-semibold">
-                  {#if image.original_filename.length > 20}
+                  {#if image.original_filename.length > 40}
                     imagen generada
                     <!-- {image.original_filename.replace(/_/g, " ")} -->
                   {/if}
