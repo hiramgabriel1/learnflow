@@ -205,7 +205,7 @@
             {/each}
           </div>
           {:else}
-          <h1>No has generado na'</h1>
+            <h1>No has generado na'</h1>
         {/if}
       </section>
     </div>
