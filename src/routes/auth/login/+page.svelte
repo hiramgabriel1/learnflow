@@ -51,18 +51,18 @@
   };
 
   const handleAuthGoogle = async () => {
-    try {
-      const res = await auth.signInWithPopup(provider);
-      console.log(res);
+  try {
+    const res = await auth.signInWithPopup(provider);
+    console.log("esto es: ",res);
 
-      // @ts-ignore
-      history.push("/dashboard");
-    } catch (error) {
-      console.log(error);
-    }
+    window.location.href = "/dashboard";
 
     console.log("progress...");
-  };
+  } catch (error) {
+    console.error("Error al iniciar sesión: ", error);
+  }
+};
+
 </script>
 
 <Toaster />

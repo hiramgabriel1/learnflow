@@ -65,6 +65,8 @@
   const handleAuthGoogle = () => {
     // progress...
   };
+
+  
   // finish auth methods
 </script>
 

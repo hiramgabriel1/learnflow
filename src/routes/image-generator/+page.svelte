@@ -120,7 +120,7 @@
       );
 
       // validate
-      if (!sendRequest) {
+      if (!sendRequest.ok) {
         toast.error("Intente de nuevo más tarde! ❌");
       }
 
