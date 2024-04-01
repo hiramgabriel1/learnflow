@@ -4,7 +4,7 @@
   import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../../server/server";
-  import { auth, provider } from "../../../firebase";
+  // import { auth, provider } from "../../../firebase";
 
   // @ts-ignore
   let formData = {
@@ -56,29 +56,32 @@
 
   // todo: auth methods here
   const handleAuthGithub = () => {
-    const client_id = "df98834eb79fa591677f";
+    toast.success("github auth no disponible")
+    // const client_id = "df98834eb79fa591677f";
 
-    window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + client_id
-    );
+    // window.location.assign(
+    //   "https://github.com/login/oauth/authorize?client_id=" + client_id
+    // );
   };
 
   const handleAuthGoogle = async () => {
     try {
-      const res = await auth.signInWithPopup(provider);
-      console.log(res);
+      toast.success("google no disponible")
+    //   const res = await auth.signInWithPopup(provider);
+    //   console.log(res);
 
-      // @ts-ignore
-      history.push("/dashboard");
-    } catch (error) {
-      console.log(error);
-    }
+    //   // @ts-ignore
+    //   history.push("/dashboard");
+    // } catch (error) {
+    //   console.log(error);
+    // }
 
-    console.log("progress...");
-  };
-
-  
-  // finish auth methods
+    // console.log("progress...");
+  }catch(err){
+    toast.error("Ha ocurrido un error intenta más tarde...")
+    console.error(err)
+  }
+}
 </script>
 
 <Toaster />

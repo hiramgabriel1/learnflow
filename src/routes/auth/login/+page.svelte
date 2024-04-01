@@ -2,7 +2,7 @@
   import "../../../app.css";
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
-  import { auth, provider } from "../../../firebase";
+  // import { auth, provider } from "../../../firebase";
   import toast, { Toaster } from "svelte-french-toast";
   import { goto } from "$app/navigation";
   import cookie from "js-cookie";
@@ -43,22 +43,25 @@
 
   // todo: auth methods here
   const handleAuthGithub = () => {
-    const client_id = "7c5fdb1ab913c01760da";
+   toast.success("github no disponible")
+    // const client_id = "7c5fdb1ab913c01760da";
 
-    window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + client_id
-    );
+    // window.location.assign(
+    //   "https://github.com/login/oauth/authorize?client_id=" + client_id
+    // );
   };
 
   const handleAuthGoogle = async () => {
   try {
-    const res = await auth.signInWithPopup(provider);
-    console.log("esto es: ",res);
+    toast.success("google no disponible")
+    // const res = await auth.signInWithPopup(provider);
+    // console.log("esto es: ",res);
 
-    window.location.href = "/dashboard";
+    // window.location.href = "/dashboard";
 
-    console.log("progress...");
+    // console.log("progress...");
   } catch (error) {
+    toast.error("Ha ocurrido un error intenta más tarde...")
     console.error("Error al iniciar sesión: ", error);
   }
 };
