@@ -7,6 +7,7 @@ import type { MessageJwtInterface } from "../../interfaces/MessageJwt.interface"
 export const load: PageServerLoad = async ({ cookies }) => {
   const token = cookies.get("jwt");
   const decodeToken = jwt.decode(token || "");
+  console.log(decodeToken)
   try {
     if (cookies === undefined) throw new Error("No existe el token");
     const validateSesion = await fetch(`${envDataConf.URLBACK}/auth/user`, {

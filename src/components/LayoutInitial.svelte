@@ -65,7 +65,7 @@
       </a>
 
       <a class="profile-btn" href="/profile">
-        <span>{user && user.id}</span>
+        <span>{user && user.userName}</span>
       </a>
     </div>
   </header>
