@@ -14,7 +14,6 @@
     SendFormDataImageAiInterface,
   } from "../types/imageTypes";
   import { writable } from "svelte/store";
-  import { HttpError_1 } from "@sveltejs/kit";
 
   let currentDate = new Date();
   let disabled: boolean;
@@ -32,6 +31,7 @@
   let responseMarcyAI: any;
   let marcyIsResponse: boolean;
   let sending: boolean;
+  let getDataStorage: string | null | any
 
   const forbiddenWords = [
     "porno",
@@ -108,7 +108,7 @@
   };
 
   onMount(() => {
-    let getDataStorage = localStorage.getItem("imagesGenerates");
+    getDataStorage = localStorage.getItem("imagesGenerates");
     if (getDataStorage) {
       listImages.update(
         () => JSON.parse(getDataStorage as string) as MessageImageResponse[]
@@ -177,7 +177,7 @@
 
         <!-- content here -->
         <h2 class="text-2xl font-bold mb-4">Recientes</h2>
-        {#if $listImages !== null}
+        {#if getDataStorage == null}
           <div class="grid grid-cols-3 gap-4 gap-y-10">
             {#each $listImages as image}
               <div class="flex flex-col items-center gap-2">
