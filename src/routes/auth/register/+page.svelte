@@ -76,6 +76,8 @@
 
     console.log("progress...");
   };
+
+  
   // finish auth methods
 </script>
 
@@ -150,9 +152,10 @@
           <label class="pb-2 font-bold" for="">Nombres</label>
           <input
             type="text"
-            placeholder="Addm..."
+            placeholder="Introduce tu nombre"
             bind:value={formData.username}
             required
+            minlength="4"
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
@@ -160,9 +163,10 @@
           <label class="pb-2 font-bold" for="">Apellidos</label>
           <input
             type="text"
-            placeholder="Ale... Pol..."
+            placeholder="Introduce tu apellido"
             bind:value={formData.lastName}
             required
+            minlength="5"
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
@@ -172,7 +176,9 @@
           >
           <input
             type="text"
-            placeholder="Addmer"
+            placeholder="Cuentanos porque quieres usar nuestro software"
+            minlength="10"
+            required
             bind:value={formData.reasonsToUseApp}
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />

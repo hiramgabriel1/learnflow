@@ -33,3 +33,4 @@ export const load: PageServerLoad = async ({ cookies }) => {
     return redirect(303, "/auth/login");
   }
 };
+

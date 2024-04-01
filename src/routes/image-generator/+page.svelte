@@ -68,6 +68,7 @@
 
   const generateImage = () => {
     toast.success("Generando imagen, esto puede tardar unos segundos... 🧠");
+
     disabled = true;
     showLoading = true;
     sending = true;

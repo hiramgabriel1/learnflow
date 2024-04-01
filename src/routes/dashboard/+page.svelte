@@ -19,33 +19,36 @@
 
   // todo: Consume data api here
 
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   const logoutButton = document.getElementById("logoutButton");
+  if (typeof document !== 'undefined') {
+  document.addEventListener("DOMContentLoaded", function () {
+    const logoutButton = document.getElementById("logoutButton");
 
-  //   if (logoutButton) {
-  //     logoutButton.addEventListener("click", function () {
-  //       fetch("https://learnflow-services.up.railway.app/api/v1/auth/logout", {
-  //         method: "POST",
-  //         credentials: "include",
-  //       })
-  //         .then((response) => {
-  //           if (response.ok) {
-  //             console.log("Usuario ha cerrado sesión exitosamente");
-  //           } else {
-  //             console.error(
-  //               "No se pudo cerrar sesión. Código de estado:",
-  //               response.status
-  //             );
-  //           }
-  //         })
-  //         .catch((error) => {
-  //           console.error("Error al intentar cerrar sesión:", error);
-  //         });
-  //     });
-  //   } else {
-  //     console.error("No se encontró el botón de cerrar sesión.");
-  //   }
-  // });
+    if (logoutButton) {
+      logoutButton.addEventListener("click", function () {
+        fetch("http://localhost:4000/api/v1/auth/logout", {
+          method: "POST",
+          credentials: "include",
+        })
+          .then((response) => {
+            if (response.ok) {
+              console.log("Usuario ha cerrado sesión exitosamente");
+            } else {
+              console.error(
+                "No se pudo cerrar sesión. Código de estado:",
+                response.status
+              );
+            }
+          })
+          .catch((error) => {
+            console.error("Error al intentar cerrar sesión:", error);
+          });
+      });
+    } else {
+      console.error("No se encontró el botón de cerrar sesión.");
+    }
+  });
+}
+
 </script>
 
 <LayoutInitial user={user}>

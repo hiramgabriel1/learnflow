@@ -15,6 +15,35 @@
     console.log((cookie));
     // console.log(jwt.decode(cookie));
   });
+
+
+  async function handleLogout() {
+  try {
+    const response = await fetch('https://learnflow-services-api-production.up.railway.app/api/v1/auth/logout', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al cerrar sesión');
+    }
+
+    document.cookie.split(";").forEach((c) => {
+      document.cookie = c
+        .replace(/^ +/, "")
+        .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
+    });
+
+    console.log('Sesión cerrada correctamente');
+    window.location.href = '/auth/login';
+  } catch (error) {
+    console.error('Error al cerrar sesión:', error);
+  }
+}
+
 </script>
 
 <main class="app-container">
@@ -160,7 +189,7 @@
           />
         </svg>
       </a>
-      <button class="pt-6" id="logoutButton">
+      <button class="pt-6" id="logoutButton" on:click={handleLogout}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
