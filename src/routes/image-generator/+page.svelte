@@ -187,10 +187,11 @@
 
               <!-- render name file -->
               {#if !image.original_filename || typeof image.original_filename !== "undefined"}
-                  <h4 class="text-xs font-semibold">{image.original_filename.replace("_", " ")}</h4>
-
+                <h4 class="text-xs font-semibold">
+                  {image.original_filename.replace(/_/g, " ")}
+                </h4>
               {:else}
-                  <h4>nombre error</h4>
+                <h4>nombre error</h4>
               {/if}
             </div>
           {/each}
