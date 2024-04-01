@@ -32,10 +32,15 @@
 
   const forbiddenWords = [
     "porno",
+    "pornografia",
+    "pornografía",
     "porn",
     "niño",
     "niña",
     "pene",
+    "tetas",
+    "senos",
+    "vagina",
     "sexual",
     "sexo",
     "sexual",
@@ -68,7 +73,6 @@
 
   const generateImage = () => {
     toast.success("Generando imagen, esto puede tardar unos segundos... 🧠");
-
     disabled = true;
     showLoading = true;
     sending = true;
