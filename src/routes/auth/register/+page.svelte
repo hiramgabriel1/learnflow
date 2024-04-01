@@ -4,7 +4,6 @@
   import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../../server/server";
-  // import { auth, provider } from "../../../firebase";
 
   // @ts-ignore
   let formData = {

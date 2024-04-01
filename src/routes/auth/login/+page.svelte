@@ -2,7 +2,6 @@
   import "../../../app.css";
   import google from "$lib/public/assets/google.svg";
   import poster from "$lib/public/assets/bg.jpg";
-  // import { auth, provider } from "../../../firebase";
   import toast, { Toaster } from "svelte-french-toast";
   import { goto } from "$app/navigation";
   import cookie from "js-cookie";
