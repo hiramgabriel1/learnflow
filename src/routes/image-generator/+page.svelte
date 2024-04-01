@@ -14,7 +14,6 @@
     SendFormDataImageAiInterface,
   } from "../types/imageTypes";
   import { writable } from "svelte/store";
-  import { G4F } from "g4f";
 
   let currentDate = new Date();
   let disabled: boolean;
@@ -69,40 +68,6 @@
       disabled = true;
     } else {
       disabled = false;
-    }
-  };
-
-  const validatePromptsInput = async (promptUser: string) => {
-    try {
-      const g4f = new G4F();
-      const messages = [
-        {
-          role: "system",
-          content:
-            "eres un analista muy bueno que siempre busca encontrar palabras explicitas o prohibidas, tales como la pornografia y derivados de palabras explicitas",
-        },
-
-        {
-          role: "user",
-          content: `busca si hay palabras explicitas en este texto, si las hay devuelveme un true, en caso contrario devuelveme un false nada mas: ${promptUser}`,
-        },
-      ];
-
-      const options = {
-        provider: g4f.providers.GPT,
-        model: "gpt-4",
-        output: (text: string | any) => {
-          console.log(text);
-
-          return text;
-        },
-      };
-
-      const promptAnalyze = await g4f.chatCompletion(messages, options);
-
-      return promptAnalyze;
-    } catch (error) {
-      console.error(error);
     }
   };
 

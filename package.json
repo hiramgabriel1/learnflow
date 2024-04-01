@@ -31,7 +31,6 @@
 	"dependencies": {
 		"@types/jsonwebtoken": "^9.0.6",
 		"clerk-sveltekit": "^0.4.1",
-		"g4f": "^1.4.3",
 		"js-cookie": "^3.0.5",
 		"jsonwebtoken": "^9.0.2",
 		"safe-buffer": "^5.2.1",
