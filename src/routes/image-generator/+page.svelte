@@ -1,25 +1,27 @@
 <script lang="ts">
   export let data;
   const { user } = data;
-  
+
   import "../../app.css";
   import "../../main.styles.css";
   import { onMount } from "svelte";
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../server/server";
   import LayoutInitial from "../../components/LayoutInitial.svelte";
+  import { generateImageAi } from "../tasks/generateImage";
+  import type {
+    MessageImageResponse,
+    SendFormDataImageAiInterface,
+  } from "../types/imageTypes";
+  import { writable } from "svelte/store";
 
   let currentDate = new Date();
   let disabled: boolean;
-  let image = "";
+  // let image = "";
+  let listImages = writable<MessageImageResponse[]>([]);
   let showLoading: boolean;
 
-  interface FormData {
-    prompt: string;
-    type: string;
-  }
-
-  let formData: FormData = {
+  let formData: SendFormDataImageAiInterface = {
     prompt: "",
     type: "realistic",
   };
@@ -64,139 +66,53 @@
     }
   };
 
-  const generateImageRealistic = async () => {
-    disabled = true;
-    showLoading = true;
-    sending = true;
-
-    toast.success("Generando imagen, esto puede tardar unos segundos... 🧠");
-    try {
-      const sendRequest = await fetch(
-        `${envDataConf.URLBACK}/generate-image/${formData.type}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify(formData),
-        }
-      );
-
-      // validate
-      if (!sendRequest.ok) {
-        throw new Error(`Error en la solicitud: ${sendRequest.statusText}`);
-      }
-
-      responseMarcyAI = await sendRequest.json();
-      formData.prompt = "";
-      sending = false;
-      marcyIsResponse = true;
-      showLoading = false;
-      image = responseMarcyAI.url;
-
-      console.log(responseMarcyAI);
-      console.log(sendRequest);
-      console.log(typeof sendRequest);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const generateImagePaint = async () => {
-    sending = true;
-    toast.success("Esto puede tardar unos segundos... 🧠");
-    try {
-      const sendRequest = await fetch(
-        `${envDataConf.URLBACK}/generate-image/paint`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify(formData),
-        }
-      );
-
-      // validate
-      if (!sendRequest.ok) {
-        toast.error("Intente de nuevo más tarde! ❌");
-      }
-
-      responseMarcyAI = await sendRequest.json();
-      formData.prompt = "";
-      sending = false;
-      showLoading = false;
-      marcyIsResponse = true;
-      image = responseMarcyAI.url;
-      showLoading = false;
-
-      console.log(responseMarcyAI);
-      console.log(sendRequest);
-      console.log(typeof sendRequest);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const generateImageCartoon = async () => {
-    disabled = true;
-    showLoading = true;
-    sending = true;
-    toast.success("Esto puede tardar unos segundos... 🧠");
-    try {
-      const sendRequest = await fetch(
-        `${envDataConf.URLBACK}/generate-image/cartoon`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify(formData),
-        }
-      );
-
-      // validate
-      if (!sendRequest) {
-        toast.error("Intente de nuevo más tarde! ❌");
-      }
-
-      responseMarcyAI = await sendRequest.json();
-      formData.prompt = "";
-      sending = false;
-      marcyIsResponse = true;
-      image = responseMarcyAI.url;
-      showLoading = false;
-
-      console.log(responseMarcyAI);
-      console.log(sendRequest);
-      console.log(typeof sendRequest);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const generateImage = () => {
-    console.log("Generando imagen...");
-    if (formData.type === "cartoon") {
-      console.log("Generar imagen de estilo cartoon");
-      generateImageCartoon();
-    } else if (formData.type === "realistic") {
-      console.log("Generar imagen de estilo realista");
-      generateImageRealistic();
-    } else if (formData.type === "paint") {
-      generateImagePaint();
-    } else {
-      console.log("error");
-    }
+    toast.success("Generando imagen, esto puede tardar unos segundos... 🧠");
+
+    disabled = true;
+    showLoading = true;
+    sending = true;
+
+    generateImageAi(formData)
+      .then((resp) => {
+        marcyIsResponse = true;
+
+        let getDataStorage = localStorage.getItem("imagesGenerates");
+        let storageDataArray: MessageImageResponse[] = getDataStorage
+          ? JSON.parse(getDataStorage)
+          : [];
+        storageDataArray.unshift(resp);
+
+        localStorage.setItem(
+          "imagesGenerates",
+          JSON.stringify(storageDataArray)
+        );
+        listImages.update((images) => [resp, ...images]);
+      })
+      .catch((err) => {
+        toast.error("Upps, ha ocurrido un error al generar la imagen... 🧠");
+        marcyIsResponse = false;
+      })
+      .finally(() => {
+        disabled = false;
+        showLoading = false;
+        sending = false;
+      });
   };
+
+  onMount(() => {
+    let getDataStorage = localStorage.getItem("imagesGenerates");
+    if (getDataStorage) {
+      listImages.update(
+        () => JSON.parse(getDataStorage as string) as MessageImageResponse[]
+      );
+    }
+  });
 </script>
 
 <Toaster />
 
-<LayoutInitial user={user}>
+<LayoutInitial {user}>
   <!-- todo: menu index -->
   <div class="projects-section overflow-auto h-fit">
     <div class="projects-section-header overflow-auto">
@@ -251,20 +167,23 @@
         {/if}
       </form>
       <section class="mt-10 pb-10">
-        {#if image}
-          <!-- content here -->
-          <h2 class="text-2xl font-bold mb-4">Recientes</h2>
-          <div class="grid grid-cols-3 gap-4">
-            <img
-              src={image}
-              alt="Gallery item 1"
-              class="w-full h-auto rounded-md"
-              width="200"
-              height="200"
-              style="aspect-ratio: 200 / 200; object-fit: cover;"
-            />
-          </div>
-        {/if}
+        <!-- content here -->
+        <h2 class="text-2xl font-bold mb-4">Recientes</h2>
+        <div class="grid grid-cols-3 gap-4 gap-y-10">
+          {#each $listImages as image}
+            <div class="flex flex-col items-center gap-2">
+              <img
+                src={image.url}
+                alt="Gallery item 1"
+                class="w-full h-auto rounded-md"
+                width="200"
+                height="200"
+                style="aspect-ratio: 200 / 200; object-fit: cover;"
+              />
+              <h4 class="text-xs font-semibold">{image.original_filename}</h4>
+            </div>
+          {/each}
+        </div>
       </section>
     </div>
     <!-- finish -->
