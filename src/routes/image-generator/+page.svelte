@@ -14,6 +14,7 @@
     SendFormDataImageAiInterface,
   } from "../types/imageTypes";
   import { writable } from "svelte/store";
+  import { HttpError_1 } from "@sveltejs/kit";
 
   let currentDate = new Date();
   let disabled: boolean;
@@ -173,32 +174,37 @@
       <section class="mt-10 pb-10">
         <!-- content here -->
         <h2 class="text-2xl font-bold mb-4">Recientes</h2>
-        <div class="grid grid-cols-3 gap-4 gap-y-10">
-          {#each $listImages as image}
-            <div class="flex flex-col items-center gap-2">
-              <img
-                src={image.url}
-                alt="Gallery item 1"
-                class="w-full h-auto rounded-md"
-                width="200"
-                height="200"
-                style="aspect-ratio: 200 / 200; object-fit: cover;"
-              />
+        {#if $listImages.length >= 1}
+          <div class="grid grid-cols-3 gap-4 gap-y-10">
+            {#each $listImages as image}
+              <div class="flex flex-col items-center gap-2">
+                <img
+                  src={image.url}
+                  alt="Gallery item 1"
+                  class="w-full h-auto rounded-md"
+                  width="200"
+                  height="200"
+                  style="aspect-ratio: 200 / 200; object-fit: cover;"
+                />
 
-              <!-- render name file -->
-              {#if !image.original_filename || typeof image.original_filename !== "undefined"}
-                <h4 class="text-xs font-semibold">
-                  {#if image.original_filename.length > 40}
-                    imagen generada
-                    <!-- {image.original_filename.replace(/_/g, " ")} -->
-                  {/if}
-                </h4>
-              {:else}
-                <h4>nombre error</h4>
-              {/if}
-            </div>
-          {/each}
-        </div>
+                <!-- render name file -->
+                {#if !image.original_filename || typeof image.original_filename !== "undefined"}
+                  <h4 class="text-xs font-semibold">
+                    {#if image.original_filename.length > 50}
+                      imagen generada
+                      <!-- {image.original_filename.replace(/_/g, " ")} -->
+                    {/if}
+                  </h4>
+                {:else}
+                  <h4>nombre error</h4>
+                {/if}
+              </div>
+            {/each}
+          </div>
+
+        {:else}
+          <h1>No has generado na'</h1>
+        {/if}
       </section>
     </div>
     <!-- finish -->
