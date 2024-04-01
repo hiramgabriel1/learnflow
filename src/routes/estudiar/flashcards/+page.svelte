@@ -311,9 +311,7 @@
                         </p>
 
                         <span class="text-gray-700"
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Quasi fugit hic ab quos eos quisquam labore
-                          minus, dignissimos porro explicabo distinctio.</span
+                          >{pregunta.respuesta}</span
                         >
 
                         <form
