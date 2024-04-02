@@ -147,7 +147,7 @@
             class="text-center sm:mx-auto sm:w-10/12 lg:mr-auto lg:mt-0 lg:w-4/5"
           >
             <a
-              href="https://beta.tailus.io/demo"
+              href="/auth/login"
               class="border w-fit mx-auto flex justify-between items-center transition duration-200 rounded-full border-white hover:border-[--ui-light-border-hover-color] dark:border-[--ui-dark-border-color] dark:hover:border-[--ui-dark-border-hover-color] p-1 group gap-2"
             >
               <span
