@@ -39,6 +39,7 @@
     "pornografía",
     "porn",
     "niño",
+    "verga",
     "niña",
     "pene",
     "tetas",
