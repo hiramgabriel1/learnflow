@@ -20,7 +20,7 @@
   // let image = "";
   let listImages = writable<MessageImageResponse[]>([]);
   console.log(listImages);
-  
+
   let showLoading: boolean;
 
   let formData: SendFormDataImageAiInterface = {
@@ -31,7 +31,7 @@
   let responseMarcyAI: any;
   let marcyIsResponse: boolean;
   let sending: boolean;
-  let getDataStorage: string | null | any
+  let getDataStorage: string | null | any;
 
   const forbiddenWords = [
     "porno",
@@ -174,37 +174,34 @@
         {/if}
       </form>
       <section class="mt-10 pb-10">
-
         <!-- content here -->
         <h2 class="text-2xl font-bold mb-4">Recientes</h2>
-        {#if getDataStorage == null}
-          <div class="grid grid-cols-3 gap-4 gap-y-10">
-            {#each $listImages as image}
-              <div class="flex flex-col items-center gap-2">
-                <img
-                  src={image.url}
-                  alt="Gallery item 1"
-                  class="w-full h-auto rounded-md"
-                  width="200"
-                  height="200"
-                  style="aspect-ratio: 200 / 200; object-fit: cover;"
-                />
+        <div class="grid grid-cols-3 gap-4 gap-y-10">
+          {#each $listImages as image}
+            <div class="flex flex-col items-center gap-2">
+              <img
+                src={image.url}
+                alt="Gallery item 1"
+                class="w-full h-auto rounded-md"
+                width="200"
+                height="200"
+                style="aspect-ratio: 200 / 200; object-fit: cover;"
+              />
 
-                <!-- render name file -->
-                {#if !image.original_filename || typeof image.original_filename !== "undefined"}
-                  <h4 class="text-xs font-semibold">
-                    {#if image.original_filename.length > 50}
-                      imagen generada
-                      <!-- {image.original_filename.replace(/_/g, " ")} -->
-                    {/if}
-                  </h4>
-                {:else}
-                  <h4>Hubo un error</h4>
-                {/if}
-              </div>
-            {/each}
-          </div>
-        {/if}
+              <!-- render name file -->
+              {#if !image.original_filename || typeof image.original_filename !== "undefined"}
+                <h4 class="text-xs font-semibold">
+                  {#if image.original_filename.length > 50}
+                    imagen generada
+                    {image.original_filename.replace(/_/g, " ")}
+                  {/if}
+                </h4>
+              {:else}
+                <h4>Hubo un error</h4>
+              {/if}
+            </div>
+          {/each}
+        </div>
       </section>
     </div>
     <!-- finish -->
