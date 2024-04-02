@@ -1,50 +1,55 @@
-<script>
+<script lang="ts">
   /**
    * @type {import("../interfaces/MessageJwt.interface").MessageJwtInterface} User
    * @description Representa la información del usuario autenticado. Puede ser un objeto de usuario o una cadena vacía si no hay usuario autenticado.
    */
-  export let user;
+  export let user: any;
+
+  let timer: Boolean;
 
   import { page } from "$app/stores";
   import Cookies from "js-cookie";
-  const pathCurrent = $page.url.pathname;
   import { onMount } from "svelte";
   import { envDataConf } from "../server/server";
-  
+
+  const pathCurrent = $page.url.pathname;
+
   onMount(() => {
     const cookie = Cookies.get("jwt") || "";
-    console.log((cookie));
+    console.log(cookie);
     // console.log(jwt.decode(cookie));
   });
 
-
   async function handleLogout() {
-  try {
-    const response = await fetch(`${envDataConf.URLBACK}/auth/logout`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    try {
+      const response = await fetch(`${envDataConf.URLBACK}/auth/logout`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error('Error al cerrar sesión');
+      if (!response.ok) {
+        throw new Error("Error al cerrar sesión");
+      }
+
+      document.cookie.split(";").forEach((c) => {
+        document.cookie = c
+          .replace(/^ +/, "")
+          .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
+      });
+
+      console.log("Sesión cerrada correctamente");
+      window.location.href = "/auth/login";
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
     }
-
-    document.cookie.split(";").forEach((c) => {
-      document.cookie = c
-        .replace(/^ +/, "")
-        .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
-    });
-
-    console.log('Sesión cerrada correctamente');
-    window.location.href = '/auth/login';
-  } catch (error) {
-    console.error('Error al cerrar sesión:', error);
   }
-}
 
+  const createTimer = () => {
+    console.log("timer");
+  };
 </script>
 
 <main class="app-container">
@@ -93,6 +98,25 @@
           <line x1="5" y1="12" x2="19" y2="12" /></svg
         >
       </a>
+
+      <!-- poner un nuevo icon -->
+      <button class="activate-pomodoro" on:click={() => (timer = true)}>
+        <svg
+          class="btn-icon feather feather-plus"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <line x1="5" y1="12" x2="19" y2="12" /></svg
+        >
+      </button>
 
       <a class="profile-btn" href="/profile">
         <span>{user && user.userName}</span>
@@ -208,3 +232,51 @@
     <slot />
   </aside>
 </main>
+
+<!-- modal to create timer here -->
+{#if timer}
+  <div
+    class="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8"
+    role="alert"
+  >
+    <div class="flex items-center gap-4">
+      <span class="shrink-0 rounded-full bg-blue-400 p-2 text-white">
+        <svg
+          class="h-4 w-4"
+          fill="currentColor"
+          viewbox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+
+      <p class="font-medium sm:text-lg">New message!</p>
+    </div>
+
+    <p class="mt-4 text-gray-500">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ea quo unde
+      vel adipisci blanditiis voluptates eum. Nam, cum minima?
+    </p>
+
+    <div class="mt-6 sm:flex sm:gap-4">
+      <a
+        class="inline-block w-full rounded-lg bg-blue-500 px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto"
+        href="#"
+      >
+        Take a Look
+      </a>
+
+      <a
+        class="mt-2 inline-block w-full rounded-lg bg-gray-50 px-5 py-3 text-center text-sm font-semibold text-gray-500 sm:mt-0 sm:w-auto"
+        href="#"
+      >
+        Mark as Read
+      </a>
+    </div>
+  </div>
+{/if}
