@@ -1,10 +1,11 @@
 <script>
   import "../app.css";
-  import ceoProfile from "$lib/public/images/profile.webp";
-  import member from "$lib/public/images/alexander.webp";
-  import memberJaf from "$lib/public/images/jafet.webp";
-  import memberCrisFront from "$lib/public/images/crisfront.webp";
-  import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
+  // import ceoProfile from "$lib/public/images/profile.webp";
+  // import member from "$lib/public/images/alexander.webp";
+  // import memberJaf from "$lib/public/images/jafet.webp";
+  // import memberCrisFront from "$lib/public/images/crisfront.webp";
+  // import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
+  // import memberEcu from "$lib/public/images/clients"
 
   const imagesSlider = [
     "https://crehana-blog.imgix.net/media/filer_public/72/92/729243d3-0d4a-455b-b680-ec4f8ab237a1/tecnologia-futurista-glass.jpg?auto=format&q=50",
@@ -640,7 +641,7 @@
                 >
                   <img
                     class="w-40 h-40 mx-auto rounded-xl"
-                    src={ceoProfile}
+                    src=""
                     alt="user avatar"
                     height="220"
                     width="220"
@@ -675,7 +676,7 @@
               >
                 <img
                   class="w-40 h-40 mx-auto rounded-xl"
-                  src={member}
+                  src=""
                   alt="user avatar"
                   height="220"
                   width="220"
@@ -708,7 +709,7 @@
               >
                 <img
                   class="w-40 h-40 mx-auto rounded-xl"
-                  src={memberJaf}
+                  src=""
                   alt="user avatar"
                   height="220"
                   width="220"
@@ -747,7 +748,7 @@
                 >
                   <img
                     class="w-40 h-40 mx-auto rounded-xl"
-                    src={memberCrisFront}
+                    src=""
                     alt="user avatar"
                     height="220"
                     width="220"
@@ -783,7 +784,7 @@
                 >
                   <img
                     class="w-40 h-40 mx-auto rounded-xl"
-                    src={memberEcuDaniFront}
+                    src=""
                     alt="user avatar"
                     height="220"
                     width="220"
