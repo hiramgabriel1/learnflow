@@ -9,6 +9,7 @@
   import Cookies from "js-cookie";
   const pathCurrent = $page.url.pathname;
   import { onMount } from "svelte";
+  import { envDataConf } from "../server/server";
   
   onMount(() => {
     const cookie = Cookies.get("jwt") || "";
@@ -19,7 +20,7 @@
 
   async function handleLogout() {
   try {
-    const response = await fetch('https://learnflow-services-api-production.up.railway.app/api/v1/auth/logout', {
+    const response = await fetch(`${envDataConf.URLBACK}/auth/logout`, {
       method: 'POST',
       credentials: 'include',
       headers: {
