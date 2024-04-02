@@ -1,7 +1,7 @@
 <script lang="ts">
   export let data;
   const { user } = data;
-  
+
   import "../../../app.css";
   import "../../../main.styles.css";
   import "./styles.css";
@@ -9,6 +9,8 @@
   import { onMount } from "svelte";
   import { envDataConf } from "../../../server/server";
   import LayoutInitial from "../../../components/LayoutInitial.svelte";
+  import { goto } from "$app/navigation";
+  import type { FlashcardInterface } from "../../types/flashcardTypes";
 
   let totalConfigAnswers = {
     currentItem: 0,
@@ -34,18 +36,20 @@
     requestText: "",
   };
 
-  let questionIA = "";
-  let responseIA = "";
+  let flashcardCurrent: FlashcardInterface | null = null;
   let userIsAnswered: boolean;
 
   //@ts-ignore
   let respuestaApi: any[] = [];
   const saveResponseVoice = async () => {
     try {
+      if(!flashcardCurrent) return;
+      
       let newFormData = {
         responseUserToFlashcard: (formData.requestText = recognizedText),
         answerUserToFlashCard:
-          respuestaApi[totalConfigAnswers.currentItem].pregunta,
+          // respuestaApi[totalConfigAnswers.currentItem].pregunta,
+          flashcardCurrent.response[totalConfigAnswers.currentItem].pregunta,
       };
 
       console.log(newFormData);
@@ -89,33 +93,18 @@
 
   // Esta función se ejecutará cuando el componente se monte
   onMount(() => {
-    var expresionRegular = /\[([^[\]]*)\]/;
-    var expresion = expresionRegular.exec(
-      localStorage.getItem("response")?.toString() || ""
-    );
-
-    // @ts-ignore
-    if (expresion && expresion.length > 1) {
-      try {
-        const parseJson = JSON.parse(
-          JSON.parse(
-            JSON.stringify("[" + expresion[1].replace(/\n/g, "").trim() + "]")
-          )
-        );
-        respuestaApi = parseJson;
-        totalConfigAnswers.totalCount = respuestaApi.length;
-      } catch (err) {
-        console.log(err);
-      }
+    const flashcardsGenerateString = localStorage.getItem("flashcardsGenerate");
+    if (
+      !flashcardsGenerateString ||
+      JSON.parse(flashcardsGenerateString)?.length <= 0
+    ) {
+      return goto("/estudiar");
     }
-
-    // Obtenemos los datos de localStorage
-    questionIA = localStorage.getItem("question") || "";
-    responseIA = localStorage.getItem("response") || "";
-    // Dividimos la respuesta en un array de preguntas
-    // respuestaApi = responseIA.split("\n");
-    // Actualizamos localStorage con el nuevo valor de respuestaApi
-    localStorage.setItem("respuestaApi", JSON.stringify(respuestaApi));
+    const flashcardsGenerate = JSON.parse(
+      flashcardsGenerateString
+    ) as FlashcardInterface[];
+    flashcardCurrent = flashcardsGenerate[flashcardsGenerate.length - 1];
+    totalConfigAnswers.totalCount = flashcardCurrent.response.length;
   });
 
   // @ts-ignore
@@ -174,7 +163,7 @@
 
 <Toaster />
 
-<LayoutInitial user={user}>
+<LayoutInitial {user}>
   <!-- todo: menu index -->
   <div class="projects-section flex items-left h-fit">
     {#if userIsAnswered}
@@ -238,145 +227,151 @@
           <div class="col-lg-6">
             <section>
               <div class="d-flex flex-wrap justify-content-center pb-3">
-                {#each respuestaApi.slice(totalConfigAnswers.currentItem, totalConfigAnswers.currentItem + 1) as pregunta}
-                  <div class="flex my-10">
-                    <div
-                      class="bg-white w-1/2 m-auto border-1 relative border-dashed border-gray-100 shadow-md rounded-lg overflow-hidden"
-                    >
+                {#if flashcardCurrent}
+                  {#each flashcardCurrent.response.slice(totalConfigAnswers.currentItem, totalConfigAnswers.currentItem + 1) as pregunta}
+                    <div class="flex my-10">
                       <div
-                        class="w-full flex justify-center z-20 absolute gap-16"
+                        class="bg-white w-1/2 m-auto border-1 relative border-dashed border-gray-100 shadow-md rounded-lg overflow-hidden"
                       >
-                        <button
-                          disabled={totalConfigAnswers.currentItem == 0}
-                          on:click={() => {
-                            totalConfigAnswers.currentItem -= 1;
-                          }}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class={`w-16 ${totalConfigAnswers.currentItem != 0 ? "text-slate-900" : "text-slate-200"}`}
-                            viewBox="0 0 32 32"
-                            ><path
-                              fill="currentColor"
-                              d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2m8 15H11.85l5.58 5.573L16 24l-8-8l8-8l1.43 1.393L11.85 15H24Z"
-                            /><path
-                              fill="none"
-                              d="m16 8l1.43 1.393L11.85 15H24v2H11.85l5.58 5.573L16 24l-8-8z"
-                            /></svg
-                          >
-                        </button>
-                        <div
-                          class="w-12 h-12 font-bold text-xl bg-slate-200 rounded-xl grid self-center items-center justify-center"
-                        >
-                          <p>{totalConfigAnswers.currentItem + 1}</p>
+
+                        <div class="absolute top-0 left-0 w-20 flex items-center justify-center py-3 z-20 rounded-xl bg-slate-100/80 backdrop-blur-sm">
+                          <span class="h-5 w-5 rounded-full {pregunta.state==='enable'?'bg-yellow-400':(pregunta.state==='incorrect'?'bg-red-600':'bg-lime-500')}"></span>
                         </div>
-                        <button
-                          disabled={totalConfigAnswers.currentItem ==
-                            totalConfigAnswers.totalCount - 1}
-                          on:click={() => {
-                            totalConfigAnswers.currentItem += 1;
-                          }}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class={`w-16 ${totalConfigAnswers.currentItem != totalConfigAnswers.totalCount - 1 ? "text-slate-900" : "text-slate-200"}`}
-                            viewBox="0 0 32 32"
-                            ><path
-                              fill="currentColor"
-                              d="M2 16A14 14 0 1 0 16 2A14 14 0 0 0 2 16m6-1h12.15l-5.58-5.607L16 8l8 8l-8 8l-1.43-1.427L20.15 17H8Z"
-                            /><path
-                              fill="none"
-                              d="m16 8l-1.43 1.393L20.15 15H8v2h12.15l-5.58 5.573L16 24l8-8z"
-                            /></svg
-                          >
-                        </button>
-                      </div>
 
-                      <div
-                        class="z-10"
-                        style="width:100%;height:0;padding-bottom:100%;position:relative;"
-                      >
-                        <iframe
-                          title="giphy"
-                          src="https://giphy.com/embed/wq1I3ILdsvYJub8Rwx"
-                          width="100%"
-                          height="100%"
-                          frameBorder="0"
-                          class="giphy-embed z-10 absolute"
-                        ></iframe>
-                      </div>
-                      <div class="p-4">
-                        <p class="mb-1 text-gray-900 font-bold">
-                          {pregunta.pregunta}
-                        </p>
-
-                        <span class="text-gray-700"
-                          >{pregunta.respuesta}</span
-                        >
-
-                        <form
-                          on:submit|preventDefault={formEnvData}
-                          class="mt-8 mb-3 flex gap-2"
+                        <div
+                          class="w-full flex justify-center z-20 absolute gap-16"
                         >
                           <button
-                            type="button"
-                            class={`${dataRecognition.active ? "bg-red-500 animate-pulse" : "bg-slate-900"}  w-fit rounded-full p-2 text-slate-50 hover:scale-105`}
-                            on:click={sendResponseVoiceUser}
-                          >
-                            <svg
-                              class="w-8"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              ><g
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                ><rect
-                                  width="8"
-                                  height="13"
-                                  x="8"
-                                  y="2"
-                                  rx="4"
-                                /><path
-                                  d="M18 16.292A7.98 7.98 0 0 1 12 19a7.98 7.98 0 0 1-6-2.708M12 19v3m-2 0h4"
-                                /></g
-                              ></svg
-                            >
-                          </button>
-                          <!-- <button on:click={stopRecognition}>detener</button> -->
-
-                          <!-- todo: arreglar el responsive y diseño de éste input -->
-                          <input
-                            class="flex-1 px-3 border-b-2 border-none border-blue-500 outline-none"
-                            type="text"
-                            bind:value={recognizedText}
-                            placeholder="Escribe tu respuesta..."
-                          />
-                          <button
-                            type="submit"
-                            class={` text-blue-700  w-fit rounded-full p-2  hover:scale-110`}
+                            disabled={totalConfigAnswers.currentItem == 0}
+                            on:click={() => {
+                              totalConfigAnswers.currentItem -= 1;
+                            }}
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              class="w-8"
-                              viewBox="0 0 24 24"
+                              class={`w-16 ${totalConfigAnswers.currentItem != 0 ? "text-slate-900" : "text-slate-200"}`}
+                              viewBox="0 0 32 32"
                               ><path
+                                fill="currentColor"
+                                d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2m8 15H11.85l5.58 5.573L16 24l-8-8l8-8l1.43 1.393L11.85 15H24Z"
+                              /><path
                                 fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="m22 2l-7 20l-4-9l-9-4Zm0 0L11 13"
+                                d="m16 8l1.43 1.393L11.85 15H24v2H11.85l5.58 5.573L16 24l-8-8z"
                               /></svg
                             >
                           </button>
-                        </form>
+                          <div
+                            class="w-12 h-12 font-bold text-xl bg-slate-200 rounded-xl grid self-center items-center justify-center"
+                          >
+                            <p>{totalConfigAnswers.currentItem + 1}</p>
+                          </div>
+                          <button
+                            disabled={totalConfigAnswers.currentItem ==
+                              totalConfigAnswers.totalCount - 1}
+                            on:click={() => {
+                              totalConfigAnswers.currentItem += 1;
+                            }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class={`w-16 ${totalConfigAnswers.currentItem != totalConfigAnswers.totalCount - 1 ? "text-slate-900" : "text-slate-200"}`}
+                              viewBox="0 0 32 32"
+                              ><path
+                                fill="currentColor"
+                                d="M2 16A14 14 0 1 0 16 2A14 14 0 0 0 2 16m6-1h12.15l-5.58-5.607L16 8l8 8l-8 8l-1.43-1.427L20.15 17H8Z"
+                              /><path
+                                fill="none"
+                                d="m16 8l-1.43 1.393L20.15 15H8v2h12.15l-5.58 5.573L16 24l8-8z"
+                              /></svg
+                            >
+                          </button>
+                        </div>
+
+                        <div
+                          class="z-10"
+                          style="width:100%;height:0;padding-bottom:100%;position:relative;"
+                        >
+                          <iframe
+                            title="giphy"
+                            src="https://giphy.com/embed/wq1I3ILdsvYJub8Rwx"
+                            width="100%"
+                            height="100%"
+                            frameBorder="0"
+                            class="giphy-embed z-10 absolute"
+                          ></iframe>
+                        </div>
+                        <div class="p-4">
+                          <p class="mb-1 text-gray-900 font-bold">
+                            {pregunta.pregunta}
+                          </p>
+
+                          <!-- <span class="text-gray-700">{pregunta.respuesta}</span
+                          > -->
+
+                          <form
+                            on:submit|preventDefault={formEnvData}
+                            class="mt-8 mb-3 flex gap-2"
+                          >
+                            <button
+                              type="button"
+                              class={`${dataRecognition.active ? "bg-red-500 animate-pulse" : "bg-slate-900"}  w-fit rounded-full p-2 text-slate-50 hover:scale-105`}
+                              on:click={sendResponseVoiceUser}
+                            >
+                              <svg
+                                class="w-8"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                ><g
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  ><rect
+                                    width="8"
+                                    height="13"
+                                    x="8"
+                                    y="2"
+                                    rx="4"
+                                  /><path
+                                    d="M18 16.292A7.98 7.98 0 0 1 12 19a7.98 7.98 0 0 1-6-2.708M12 19v3m-2 0h4"
+                                  /></g
+                                ></svg
+                              >
+                            </button>
+                            <!-- <button on:click={stopRecognition}>detener</button> -->
+
+                            <!-- todo: arreglar el responsive y diseño de éste input -->
+                            <input
+                              class="flex-1 px-3 border-b-2 border-none border-blue-500 outline-none"
+                              type="text"
+                              bind:value={recognizedText}
+                              placeholder="Escribe tu respuesta..."
+                            />
+                            <button
+                              type="submit"
+                              class={` text-blue-700  w-fit rounded-full p-2  hover:scale-110`}
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-8"
+                                viewBox="0 0 24 24"
+                                ><path
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="m22 2l-7 20l-4-9l-9-4Zm0 0L11 13"
+                                /></svg
+                              >
+                            </button>
+                          </form>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                {/each}
+                  {/each}
+                {/if}
               </div>
             </section>
           </div>
