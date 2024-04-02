@@ -199,13 +199,11 @@
                     {/if}
                   </h4>
                 {:else}
-                  <h4>nombre error</h4>
+                  <h4>Hubo un error</h4>
                 {/if}
               </div>
             {/each}
           </div>
-          {:else}
-            <h1>No has generado na'</h1>
         {/if}
       </section>
     </div>
