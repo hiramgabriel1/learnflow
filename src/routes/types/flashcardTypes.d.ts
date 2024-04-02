@@ -1,5 +1,6 @@
 export interface FlashcardInterface {
   question: string;
+  created: string;
   response: ResponseFlashcardInterface[];
 }
 

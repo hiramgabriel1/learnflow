@@ -8,7 +8,10 @@
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../server/server";
   import LayoutInitial from "../../components/LayoutInitial.svelte";
-  import type { FlashcardInterface, ResponseFlashcardInterface } from "../types/flashcardTypes";
+  import type {
+    FlashcardInterface,
+    ResponseFlashcardInterface,
+  } from "../types/flashcardTypes";
 
   let currentDate = new Date();
   let disabled: boolean;
@@ -90,14 +93,16 @@
 
       const questionFormatter = {
         question: question,
+        created: (new Date()).toDateString(),
         response: resposeFormatter,
       } as FlashcardInterface;
       questionFormatter.response.forEach((resp) => {
         resp.state = "enable";
       });
 
-      const getQuestionFormatter = (localStorage.getItem("questionFormatter") ??
-        []) as FlashcardInterface[];
+      const getQuestionFormatter = (JSON.parse(
+        localStorage.getItem("flashcardsGenerate") || "[]"
+      )) as FlashcardInterface[];
       //Almacenar los valores en el localStorage
       // localStorage.setItem("question", question);
       // localStorage.setItem("response", response.toString());
