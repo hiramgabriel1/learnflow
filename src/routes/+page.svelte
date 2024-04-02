@@ -1,8 +1,18 @@
 <script>
   import "../app.css";
-  import ceoProfile from "$lib/public/images/profile.webp";
-  import member from "$lib/public/images/alexander.webp";
-  import memberJaf from "$lib/public/images/jafet.webp";
+  // import ceoProfile from "$lib/public/images/profile.webp";
+  // import member from "$lib/public/images/alexander.webp";
+  // import memberJaf from "$lib/public/images/jafet.webp";
+  // import memberCrisFront from "$lib/public/images/crisfront.webp";
+  // import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
+  // import memberEcu from "$lib/public/images/clients"
+
+  const imagesSlider = [
+    "https://crehana-blog.imgix.net/media/filer_public/72/92/729243d3-0d4a-455b-b680-ec4f8ab237a1/tecnologia-futurista-glass.jpg?auto=format&q=50",
+    "https://cdn.pixabay.com/photo/2023/12/21/19/00/city-8462425_1280.png",
+    "https://i.pinimg.com/736x/1b/d2/0b/1bd20b54564d52930bd77af2e199375c.jpg",
+    "https://www.harvard-deusto.com/sites/default/files/styles/article_front/public/2022-09/foto-prospectiva-estrategica.jpg?itok=cpHvCuVw",
+  ];
 </script>
 
 <body class="bg-white dark:bg-gray-900 astro-M5ZLDKQK">
@@ -111,6 +121,17 @@
               </ul>
             </div>
 
+            <div class="mt-12 me-4 lg:mt-0 ">
+              <a
+                href="/auth/login"
+                class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-orange-400 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max "
+              >
+                <span
+                  class="relative text-sm font-semibold text-white "
+                  >Iniciar sesión</span
+                >
+              </a>
+            </div>
             <div class="mt-12 lg:mt-0 astro-LEPVKGVF">
               <a
                 href="/auth/register"
@@ -118,7 +139,7 @@
               >
                 <span
                   class="relative text-sm font-semibold text-white astro-LEPVKGVF"
-                  >Empezar</span
+                  >Registrarse</span
                 >
               </a>
             </div>
@@ -127,7 +148,7 @@
       </div>
     </nav>
   </header>
-  <main class="space-y-40 mb-40">
+  <main class="space-y-40">
     <div class="relative" id="home">
       <div
         aria-hidden="true"
@@ -141,8 +162,74 @@
         ></div>
       </div>
       <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-        <div class="relative pt-36 ml-auto">
+        <div class="relative pt-28 ml-auto h-[100vh]">
           <div class="lg:w-2/3 text-center mx-auto">
+            <div class="grid md:grid-cols-2 gap-5">
+              <img
+                src="https://media.istockphoto.com/id/1322220448/es/foto/ojo-futurista-digital-abstracto.jpg?s=612x612&w=0&k=20&c=uEtwe47oBCu55RwwecLKwxDVVr7N5rSCoDAMDX6uIiU="
+                alt=""
+                class="rounded-xl min-h-[33vh] object-cover hidden md:flex"
+              />
+              <div class=" flex flex-col justify-between gap-3 h-full">
+                <div class="text-center md:[text-align:left_!important]">
+                  <h1
+                    class="text-4xl font-bold text-primary [text-shadow:_0_0_5px_rgb(20_2_2_/_30%)_!important]"
+                  >
+                    Convierte tu curiosidad en conocimiento.
+                  </h1>
+                  <p class="mt-2">The world's leading Ai Learnflow</p>
+                </div>
+                <div
+                  class="pt-3 flex flex-col items-start w-full md:w-fit gap-3"
+                >
+                  <a
+                    href="/auth/login"
+                    class="relative flex h-9 w-[100%_!important] md:w-fit items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-orange-400 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
+                  >
+                    <span
+                      class="relative text-sm font-semibold text-white astro-LEPVKGVF"
+                      >Iniciar sesión</span
+                    >
+                  </a>
+                  <a
+                    href="/auth/register"
+                    class="relative flex h-9 w-[100%_!important] md:w-fit items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-LEPVKGVF"
+                  >
+                    <span
+                      class="relative text-sm font-semibold text-white astro-LEPVKGVF"
+                      >Registrarse</span
+                    >
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4 mt-6 text-left">
+              <span class="text-slate-600"
+                >Somos una startup que busca ayudar</span
+              >
+            </div>
+            <div class="overflow-x-auto w-full pb-2">
+              <div class="flex gap-5 rounded-xl">
+                {#each imagesSlider as imageSlider}
+                  <div class="rounded-xl overflow-hidden">
+                    <img
+                      class="h-[100%_!important] overflow-hidden object-cover hover:scale-[1.2_!important] transition duration-500"
+                      alt="art img"
+                      loading="lazy"
+                      width="180"
+                      height="96"
+                      src={imageSlider}
+                    />
+                  </div>
+                {/each}
+              </div>
+            </div>
+            <div class="my-4 text-left flex flex-col gap-3">
+              <h1 class="text-2xl font-bold">Productividad</h1>
+              <p>Acelera tu potencial de estudio generando cards</p>
+            </div>
+
+            <!--             
             <h1
               class="text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-7xl"
             >
@@ -175,7 +262,7 @@
                   >Saber más</span
                 >
               </a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -406,7 +493,7 @@
                 >
                   <img
                     class="w-40 h-40 mx-auto rounded-xl"
-                    src={ceoProfile}
+                    src=""
                     alt="user avatar"
                     height="220"
                     width="220"
@@ -441,7 +528,7 @@
               >
                 <img
                   class="w-40 h-40 mx-auto rounded-xl"
-                  src={member}
+                  src=""
                   alt="user avatar"
                   height="220"
                   width="220"
@@ -474,7 +561,7 @@
               >
                 <img
                   class="w-40 h-40 mx-auto rounded-xl"
-                  src={memberJaf}
+                  src=""
                   alt="user avatar"
                   height="220"
                   width="220"
@@ -502,6 +589,80 @@
                     </h6>
                     <span class="text-xs text-gray-600">Frontend Developer</span
                     >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="row-span-1 justify-center p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-5"
+              >
+                <div
+                  class="h-full w-full flex flex-col justify-center space-y-4"
+                >
+                  <img
+                    class="w-40 h-40 mx-auto rounded-xl"
+                    src=""
+                    alt="user avatar"
+                    height="220"
+                    width="220"
+                    loading="lazy"
+                  />
+                  <p class="text-gray-600 md:text-xl">
+                    <br />
+                    <span class="font-serif">"</span>
+                    En el transcurso de nuestro aprendizaje como desarrolladores,
+                    siempre hay altibajos. Sin embargo, en esas situaciones, es crucial
+                    saber cómo levantarnos y seguir adelante. Internet es uno de
+                    los recursos más valiosos para el aprendizaje constante; sin
+                    embargo, el mal uso de este también puede alejarnos de nuestra
+                    humanidad. Estoy orgulloso de formar parte de LearnFlow para
+                    contribuir al esfuerzo constante de aprendizaje.
+                    <span class="font-serif">"</span>
+                  </p>
+                  <div>
+                    <h6 class="text-lg font-semibold leading-none">
+                      Cristhian Bautista
+                    </h6>
+                    <span class="text-sm text-gray-600"
+                      >Frontend Developer
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="row-span-1 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-5"
+              >
+                <div
+                  class="h-full w-full flex flex-col justify-center space-y-4"
+                >
+                  <img
+                    class="w-40 h-40 mx-auto rounded-xl"
+                    src=""
+                    alt="user avatar"
+                    height="220"
+                    width="220"
+                    loading="lazy"
+                  />
+                  <p class="text-gray-600 md:text-xl">
+                    <br />
+                    <span class="font-serif">"</span>
+                    Con el lanzamiento de LearnflowAI, encontramos en una sola plataforma
+                    la llave que transforma desafíos en oportunidades, inspirando
+                    a todos a alcanzar sus metas, aprender constantemente y construir
+                    una comunidad de conocimiento compartido. Me llena de gratitud
+                    formar parte de LearnflowAI, una plataforma que no solo me ha
+                    brindado la oportunidad de contribuir al aprendizaje constante,
+                    sino que también me llena de alegría saber que estamos allanando
+                    el camino para que innumerables personas alcancen sus metas educativas
+                    y sueños de superación.
+                    <span class="font-serif">"</span>
+                  </p>
+                  <div>
+                    <h6 class="text-lg font-semibold leading-none">
+                      Daniel Cantillo
+                    </h6>
+                    <span class="text-sm text-gray-600"
+                      >Frontend Developer
+                    </span>
                   </div>
                 </div>
               </div>

@@ -1,34 +1,24 @@
 <script>
   import "../../../app.css";
-  import video from "$lib/public/assets/video.mp4";
-  import google from "$lib/public/assets/google.svg";
-  import poster from "$lib/public/assets/bg.jpg";
+  // import google from "$lib/public/assets/google.svg";
+  // import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
-  import { onMount } from "svelte";
-  import { writable } from "svelte/store";
+  import { envDataConf } from "../../../server/server";
 
   // @ts-ignore
   let formData = {
     username: "",
     lastName: "",
     userEmail: "",
-    isStudent: "",
+    isStudent: false,
     reasonsToUseApp: "",
     password: "",
   };
 
-  // let reload = writable(false);
-
-  // onMount(() => {
-  //   reload.set(true);
-  //   setTimeout(() => {
-  //     window.location.reload();
-  //   }, 1);
-  // });
   const formHandler = async () => {
     try {
       const saveUser = await fetch(
-        "http://localhost:4000/api/v1/auth/register",
+        `${envDataConf.URLBACK}/auth/register`,
         {
           method: "POST",
           headers: {
@@ -38,6 +28,7 @@
           body: JSON.stringify(formData),
         }
       );
+      console.log(saveUser);
 
       if (!saveUser.ok && saveUser.status !== 201 && saveUser.status !== 200) {
         return toast.error(
@@ -49,7 +40,7 @@
         toast.success("registrado éxitosamente");
 
         setTimeout(() => {
-          window.location.href = "/";
+          window.location.href = "/dashboard";
         }, 2000);
       }
 
@@ -64,17 +55,32 @@
 
   // todo: auth methods here
   const handleAuthGithub = () => {
-    const client_id = "df98834eb79fa591677f";
+    toast.success("github auth no disponible")
+    // const client_id = "df98834eb79fa591677f";
 
-    window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + client_id
-    );
+    // window.location.assign(
+    //   "https://github.com/login/oauth/authorize?client_id=" + client_id
+    // );
   };
 
-  const handleAuthGoogle = () => {
-    // progress...
-  };
-  // finish auth methods
+  const handleAuthGoogle = async () => {
+    try {
+      toast.success("google no disponible")
+    //   const res = await auth.signInWithPopup(provider);
+    //   console.log(res);
+
+    //   // @ts-ignore
+    //   history.push("/dashboard");
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    // console.log("progress...");
+  }catch(err){
+    toast.error("Ha ocurrido un error intenta más tarde...")
+    console.error(err)
+  }
+}
 </script>
 
 <Toaster />
@@ -82,8 +88,7 @@
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video class="w-full h-full object-cover" loop autoplay src={video} {poster}
-    ></video>
+    <!-- <video class="w-full h-full object-cover" loop autoplay {poster}></video> -->
   </div>
   <!-- svelte-ignore a11y-unknown-role -->
   <div
@@ -105,7 +110,7 @@
           class="py-3 px-6 rounded-xl bg-blue-50 hover:bg-blue-100 focus:bg-blue-100 active:bg-blue-200"
         >
           <div class="flex gap-4 justify-center">
-            <img src={google} class="w-5" alt="" />
+            <!-- <img src={google} class="w-5" alt="" /> -->
             <button
               class="block w-max font-medium tracking-wide text-sm text-blue-700"
               on:click={handleAuthGoogle}>Google</button
@@ -134,6 +139,7 @@
         </button>
       </div>
 
+      <!-- dsklslaklñdkslñdkdslñ{dkñ{d}} -->
       <!-- svelte-ignore a11y-unknown-role -->
       <div role="hidden" class="mt-12 border-t">
         <span
@@ -141,19 +147,46 @@
           >o</span
         >
       </div>
+      <!-- git y github_ -->
 
       <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
-        <div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Nombres</label>
           <input
             type="text"
-            placeholder="Nombre"
+            placeholder="Introduce tu nombre"
             bind:value={formData.username}
             required
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+            minlength="4"
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Apellidos</label>
+          <input
+            type="text"
+            placeholder="Introduce tu apellido"
+            bind:value={formData.lastName}
+            required
+            minlength="5"
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for=""
+            >Razón para usar el programa</label
+          >
+          <input
+            type="text"
+            placeholder="Cuentanos porque quieres usar nuestro software"
+            minlength="10"
+            required
+            bind:value={formData.reasonsToUseApp}
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
 
-        <div>
+        <!-- <div>
           <input
             type="text"
             placeholder="Apellido"
@@ -161,66 +194,75 @@
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
-        </div>
+        </div> -->
 
-        <div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Correo electronico</label>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="example@xyz.com"
             bind:value={formData.userEmail}
             required
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
 
-        <div>
+          <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Contraseña</label>
           <input
             type="password"
-            placeholder="Contraseña"
+            placeholder="*********"
             bind:value={formData.password}
             required
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
 
-        <div>
-          <input
-            type="text"
-            placeholder="¿Eres estudiante?"
+        <!-- <div>
+          <select
             bind:value={formData.isStudent}
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-          />
-        </div>
+          >
+            <option value="" disabled selected>¿Eres estudiante?</option>
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+          </select>
+        </div> -->
 
         <div class="flex flex-col items-end">
-          <input
+          <!-- <input
             type="text"
-            placeholder="¿Por que quieres usar Learnflow?"
+            placeholder="¿Por que quieres usar LearnflowAI?"
             bind:value={formData.reasonsToUseApp}
             required
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-          />
-          <button type="reset" class="w-max p-3 -mr-3">
-            <span class="text-sm tracking-wide text-blue-600"
-              >Olvidé mi contraseña
-            </span>
-          </button>
+          /> -->
         </div>
 
         <div>
           <button
-            class="w-full px-6 py-3 rounded-xl bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
+            class="w-full px-6 py-3 rounded-full bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
           >
             <span class="font-semibold text-white text-lg">Crear cuenta</span>
           </button>
-          <a href="/auth/login" type="reset" class="w-max p-3 -ml-3">
-            <span class="text-sm tracking-wide text-blue-600"
-              >Ya tengo una cuenta</span
-            >
-          </a>
+
+          <div class="flex justify-between">
+            <a href="/auth/login" type="reset" class="w-max p-3 -ml-3">
+              <span class="text-sm tracking-wide text-blue-600"
+                >Ya tengo una cuenta</span
+              >
+            </a>
+            <button type="reset" class="w-max p-3 -mr-3">
+              <span class="text-sm tracking-wide text-blue-600"
+                >Olvidé mi contraseña
+              </span>
+            </button>
+          </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<!-- tailwind -->

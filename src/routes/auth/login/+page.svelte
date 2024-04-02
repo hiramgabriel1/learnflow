@@ -1,37 +1,77 @@
 <script>
   import "../../../app.css";
-  import video from "$lib/public/assets/video.mp4";
-  import google from "$lib/public/assets/google.svg";
-  import poster from "$lib/public/assets/bg.jpg";
+  // import google from "$lib/public/assets/google.svg";
+  // import poster from "$lib/public/assets/bg.jpg";
+  import toast, { Toaster } from "svelte-french-toast";
+  import { goto } from "$app/navigation";
+  import cookie from "js-cookie";
+  import { envDataConf } from "../../../server/server";
 
   let formData = {
-    username: "",
-    // userEmail: '',
-    contraseña: "",
+    userEmail: "",
+    password: "",
   };
 
-  const formHandler = async () => {};
+  const formHandler = async () => {
+    try {
+      const verifyUser = await fetch(
+        `${envDataConf.URLBACK}/auth/login/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // credentials: 'include',
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!verifyUser.ok) {
+        if (verifyUser.status === 400)
+          return toast.error("Correo o contraseña invalidos");
+        else return toast.error("Error en la solicitud");
+      }
+
+      const userCurrent = await verifyUser.json();
+      cookie.set("jwt", userCurrent.jwt);
+      await goto("/dashboard");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // todo: auth methods here
   const handleAuthGithub = () => {
-    const client_id = "7c5fdb1ab913c01760da";
+   toast.success("github no disponible")
+    // const client_id = "7c5fdb1ab913c01760da";
 
-    window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + client_id
-    );
+    // window.location.assign(
+    //   "https://github.com/login/oauth/authorize?client_id=" + client_id
+    // );
   };
 
-  const handleAuthGoogle = () => {
-    console.log("progress...");
-  };
-  // finish auth methods
+  const handleAuthGoogle = async () => {
+  try {
+    toast.success("google no disponible")
+    // const res = await auth.signInWithPopup(provider);
+    // console.log("esto es: ",res);
+
+    // window.location.href = "/dashboard";
+
+    // console.log("progress...");
+  } catch (error) {
+    toast.error("Ha ocurrido un error intenta más tarde...")
+    console.error("Error al iniciar sesión: ", error);
+  }
+};
+
 </script>
 
+<Toaster />
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video class="w-full h-full object-cover" loop autoplay src={video} {poster}
-    ></video>
+    <!-- <video class="w-full h-full object-cover" loop autoplay {poster}></video> -->
   </div>
 
   <!-- svelte-ignore a11y-unknown-role -->
@@ -51,13 +91,14 @@
 
       <div class="mt-12 grid gap-6 sm:grid-cols-2">
         <button
+        on:click={handleAuthGoogle}
           class="py-3 px-6 rounded-xl bg-blue-50 hover:bg-blue-100 focus:bg-blue-100 active:bg-blue-200"
         >
           <div class="flex gap-4 justify-center">
-            <img src={google} class="w-5" alt="" />
-            <button
+            <!-- <img src={google} class="w-5" alt="" /> -->
+            <span
               class="block w-max font-medium tracking-wide text-sm text-blue-700"
-              on:click={handleAuthGoogle}>Google</button
+              >Google</span
             >
           </div>
         </button>
@@ -93,43 +134,58 @@
       </div>
 
       <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
-        <div>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Correo electronico</label>
           <input
             type="text"
-            placeholder="Nombre"
+            placeholder="example@xzy.com"
             required
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
+            bind:value={formData.userEmail}
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
 
-        <div>
+        <!-- <div>
           <input
-            type="email"
-            placeholder="Email"
+            type="password"
+            placeholder="Contraseña"
             required
+            bind:value={formData.contraseña}
             class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
           />
-        </div>
+        </div> -->
 
-        <div class="flex flex-col items-end">
-          <button type="reset" class="w-max p-3 -mr-3">
-            <span class="text-sm tracking-wide text-blue-600"
-              >Olvidé mi contraseña
-            </span>
-          </button>
+        <div class="flex flex-col">
+          <label class="pb-2 font-bold" for="">Contraseña</label>
+          <input
+            type="password"
+            placeholder="*********"
+            required
+            bind:value={formData.password}
+            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
+          />
         </div>
 
         <div>
           <button
-            class="w-full px-6 py-3 rounded-xl bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
+            class="w-full px-6 py-3 rounded-full bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
           >
-            <span class="font-semibold text-white text-lg">Login</span>
+            <span class="font-semibold text-white text-lg">Iniciar sesion</span>
           </button>
-          <a href="/auth/register" type="reset" class="w-max p-3 -ml-3">
-            <span class="text-sm tracking-wide text-blue-600"
-              >Crear nueva cuenta</span
-            >
-          </a>
+
+          <div class="flex justify-between">
+            <a href="/auth/register" type="reset" class="w-max p-3 -ml-3">
+              <span class="text-sm tracking-wide text-blue-600"
+                >Crear nueva cuenta</span
+              >
+            </a>
+
+            <button type="reset" class="w-max p-3 -mr-3">
+              <span class="text-sm tracking-wide text-blue-600"
+                >Olvidé mi contraseña
+              </span>
+            </button>
+          </div>
         </div>
       </form>
     </div>
