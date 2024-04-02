@@ -693,7 +693,7 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                  Jafett Bergas
+                  Jafett Beaz
                 </h3>
                 <span>Frontend Developer</span>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
