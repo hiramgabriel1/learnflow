@@ -38,6 +38,7 @@
 		"jsonwebtoken": "^9.0.2",
 		"openai": "^4.0.0",
 		"safe-buffer": "^5.2.1",
-		"svelte-french-toast": "^1.2.0"
+		"svelte-french-toast": "^1.2.0",
+		"swiper": "^11.1.0"
 	}
 }
