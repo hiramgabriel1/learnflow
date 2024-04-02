@@ -1,11 +1,11 @@
 <script>
   import "../app.css";
-  // import ceoProfile from "$lib/public/images/profile.webp";
-  // import member from "$lib/public/images/alexander.webp";
-  // import memberJaf from "$lib/public/images/jafet.webp";
-  // import memberCrisFront from "$lib/public/images/crisfront.webp";
-  // import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
-  // import memberEcu from "$lib/public/images/clients"
+  import ceoProfile from "$lib/public/images/profile.jpg";
+  import member from "$lib/public/images/alexander.webp";
+  import memberJaf from "$lib/public/images/jafet.webp";
+  import memberCrisFront from "$lib/public/images/crisfront.webp";
+  import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
+  // import memberEcu from "$lib/public/images/"
 
   const imagesSlider = [
     "https://crehana-blog.imgix.net/media/filer_public/72/92/729243d3-0d4a-455b-b680-ec4f8ab237a1/tecnologia-futurista-glass.jpg?auto=format&q=50",
@@ -893,7 +893,7 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                Jafett Baez
+                Jafett Bergas
                 </h3>
                 <span>Frontend Developer</span>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
