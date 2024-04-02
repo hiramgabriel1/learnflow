@@ -3,11 +3,10 @@
 
   const { user } = data;
 
-
-  // import firebase from "firebase/compat/app";
   import "../../app.css";
   import LayoutInitial from "../../components/LayoutInitial.svelte";
   import "../../main.styles.css";
+  import { envDataConf } from "../../server/server";
 
   /**
    * @type {boolean}
@@ -18,40 +17,41 @@
   let currentDate = new Date();
 
   // todo: Consume data api here
+  if (typeof document !== "undefined") {
+    document.addEventListener("DOMContentLoaded", function () {
+      const logoutButton = document.getElementById("logoutButton");
 
-  if (typeof document !== 'undefined') {
-  document.addEventListener("DOMContentLoaded", function () {
-    const logoutButton = document.getElementById("logoutButton");
-
-    if (logoutButton) {
-      logoutButton.addEventListener("click", function () {
-        fetch("http://localhost:4000/api/v1/auth/logout", {
-          method: "POST",
-          credentials: "include",
-        })
-          .then((response) => {
-            if (response.ok) {
-              console.log("Usuario ha cerrado sesión exitosamente");
-            } else {
-              console.error(
-                "No se pudo cerrar sesión. Código de estado:",
-                response.status
-              );
+      if (logoutButton) {
+        logoutButton.addEventListener("click", function () {
+          fetch(
+            `${envDataConf.URLBACK}/auth/logout`,
+            {
+              method: "POST",
+              credentials: "include",
             }
-          })
-          .catch((error) => {
-            console.error("Error al intentar cerrar sesión:", error);
-          });
-      });
-    } else {
-      console.error("No se encontró el botón de cerrar sesión.");
-    }
-  });
-}
-
+          )
+            .then((response) => {
+              if (response.ok) {
+                console.log("Usuario ha cerrado sesión exitosamente");
+              } else {
+                console.error(
+                  "No se pudo cerrar sesión. Código de estado:",
+                  response.status
+                );
+              }
+            })
+            .catch((error) => {
+              console.error("Error al intentar cerrar sesión:", error);
+            });
+        });
+      } else {
+        console.error("No se encontró el botón de cerrar sesión.");
+      }
+    });
+  }
 </script>
 
-<LayoutInitial user={user}>
+<LayoutInitial {user}>
   <!-- todo: menu index -->
   <div class="projects-section">
     <div class="projects-section-header">

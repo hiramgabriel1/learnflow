@@ -1,7 +1,7 @@
 <script>
   import "../../../app.css";
-  import google from "$lib/public/assets/google.svg";
-  import poster from "$lib/public/assets/bg.jpg";
+  // import google from "$lib/public/assets/google.svg";
+  // import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../../server/server";
 
@@ -55,19 +55,32 @@
 
   // todo: auth methods here
   const handleAuthGithub = () => {
-    const client_id = "df98834eb79fa591677f";
+    toast.success("github auth no disponible")
+    // const client_id = "df98834eb79fa591677f";
 
-    window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + client_id
-    );
+    // window.location.assign(
+    //   "https://github.com/login/oauth/authorize?client_id=" + client_id
+    // );
   };
 
-  const handleAuthGoogle = () => {
-    // progress...
-  };
+  const handleAuthGoogle = async () => {
+    try {
+      toast.success("google no disponible")
+    //   const res = await auth.signInWithPopup(provider);
+    //   console.log(res);
 
-  
-  // finish auth methods
+    //   // @ts-ignore
+    //   history.push("/dashboard");
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    // console.log("progress...");
+  }catch(err){
+    toast.error("Ha ocurrido un error intenta más tarde...")
+    console.error(err)
+  }
+}
 </script>
 
 <Toaster />
@@ -75,7 +88,7 @@
 <div class="2xl:container h-screen m-auto">
   <div hidden class="fixed inset-0 w-7/12 lg:block">
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video class="w-full h-full object-cover" loop autoplay {poster}></video>
+    <!-- <video class="w-full h-full object-cover" loop autoplay {poster}></video> -->
   </div>
   <!-- svelte-ignore a11y-unknown-role -->
   <div
@@ -97,7 +110,7 @@
           class="py-3 px-6 rounded-xl bg-blue-50 hover:bg-blue-100 focus:bg-blue-100 active:bg-blue-200"
         >
           <div class="flex gap-4 justify-center">
-            <img src={google} class="w-5" alt="" />
+            <!-- <img src={google} class="w-5" alt="" /> -->
             <button
               class="block w-max font-medium tracking-wide text-sm text-blue-700"
               on:click={handleAuthGoogle}>Google</button

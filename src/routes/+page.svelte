@@ -1,10 +1,11 @@
 <script>
   import "../app.css";
-  import ceoProfile from "$lib/public/images/profile.webp";
+  import ceoProfile from "$lib/public/images/profile.jpg";
   import member from "$lib/public/images/alexander.webp";
   import memberJaf from "$lib/public/images/jafet.webp";
   import memberCrisFront from "$lib/public/images/crisfront.webp";
   import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
+  // import memberEcu from "$lib/public/images/"
 
   const imagesSlider = [
     "https://crehana-blog.imgix.net/media/filer_public/72/92/729243d3-0d4a-455b-b680-ec4f8ab237a1/tecnologia-futurista-glass.jpg?auto=format&q=50",
@@ -94,7 +95,7 @@
                 </li>
                 <li>
                   <a
-                    href="/"
+                    href="#conocer"
                     class="block md:px-4 transition hover:text-green-600 dark:hover:text-green-400"
                   >
                     <span>Conocer mas</span>
@@ -102,45 +103,36 @@
                 </li>
                 <li>
                   <a
-                    href="/"
+                    href="#creadores"
                     class="block md:px-4 transition hover:text-green-600 dark:hover:text-green-400"
                   >
                     <span>Creadores</span>
                   </a>
                 </li>
-                <li>
+                <!-- <li>
                   <a
                     href="/"
                     class="block md:px-4 transition hover:text-green-600 dark:hover:text-green-400"
                   >
                     <span>Blog</span>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </div>
             <div
               class="w-full space-y-2 gap-2 pt-6 pb-4 lg:pb-0 border-t border-[#1a232a] dark:border-[#1a232a] items-center flex flex-col lg:flex-row lg:space-y-0 lg:w-fit lg:border-l lg:border-t-0 lg:pt-0 lg:pl-2"
             >
               <button
+                on:click={() => (window.location.href = "/auth/login")}
                 class="w-full h-9 lg:w-fit group flex items-center rounded-full disabled:border *:select-none [&>*:not(.sr-only)]:relative *:disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark:*:disabled:!text-white text-gray-800 hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center"
               >
-                <span>Login</span>
+                <span>Iniciar Sesión</span>
               </button>
-              <!-- <button
-                class="w-full h-9 lg:w-fit group flex items-center relative border rounded-full *:select-none [&>*:not(.sr-only)]:relative before:rounded-full before:absolute before:inset-0 before:border before:bg-gradient-to-b *:disabled:opacity-20 disabled:text-gray-950/40 disabled:border-gray-200 disabled:bg-gray-100 disabled:*:text-gray-300 disabled:before:border-transparent disabled:before:bg-green-600 disabled:before:from-transparent dark:border-0 dark:before:border-0 dark:before:border-t dark:before:shadow-inner dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-green-600 disabled:dark:*:text-gray-700 dark:disabled:before:bg-green-600 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none dark:*:disabled:!text-white text-white border-gray-950 bg-green-600 before:border-gray-600 before:from-green-600 hover:bg-green-900 active:bg-gray-950 dark:text-gray-950 dark:before:border-green-200  dark:bg-green-600  dark:hover:bg-green-400 dark:active:bg-green-600 dark:active:before:from-green-600 lg:text-sm lg:h-8 px-3 justify-center"
+              <button
+                class="w-full h-9 lg:w-fit group flex items-center relative border rounded-full *:select-none [&>*:not(.sr-only)]:relative before:rounded-full before:absolute before:inset-0 before:border before:bg-gradient-to-b *:disabled:opacity-20 disabled:text-gray-950/40 disabled:border-gray-200 disabled:bg-gray-100 disabled:*:text-gray-300 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:before:border-0 dark:before:border-t dark:before:shadow-inner dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 disabled:dark:*:text-gray-700 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none dark:*:disabled:!text-white text-white border-gray-950 bg-gray-600 before:border-gray-600 before:from-gray-800 hover:bg-gray-900 active:bg-gray-950 dark:text-gray-950 dark:before:border-gray-200 dark:before:from-gray-200 dark:bg-white dark:before:shadow-white/10 dark:hover:bg-gray-100 dark:active:bg-gray-300 dark:active:before:from-gray-200 lg:text-sm lg:h-8 px-3 justify-center"
               >
                 <span>Sign Up</span>
-              </button> -->
-              <div
-              class="p-1 rounded-3xl bg-gray-950/5 border dark:border-white/10 dark:bg-white/5"
-            >
-              <a
-                href="/"
-                class="*:select-none dark:shadow-green-500/10 *:disabled:opacity-20 disabled:*:text-gray-300 disabled:dark:*:text-gray-700 dark:*:disabled:!text-white group relative z-[1] flex h-11 items-center justify-center gap-1.5 rounded-3xl border border-green-600 bg-green-500 px-4 text-base text-white shadow-md shadow-primary-200 before:absolute before:inset-0 before:rounded-3xl before:border before:border-primary-500 before:bg-gradient-to-b before:from-primary-600 hover:bg-green-600 active:bg-green-700 disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-950/40 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:bg-primary-600 dark:before:border-0 dark:before:border-t dark:before:border-primary-400 dark:before:shadow-inner dark:before:shadow-white/10 dark:hover:bg-primary-700 dark:active:bg-primary-800 dark:active:before:from-primary-700 dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none [&>*:not(.sr-only)]:relative"
-              >
-                <span class="text-nowrap">Registro</span></a
-              >
-            </div>
+              </button>
             </div>
           </div>
         </div>
@@ -226,7 +218,7 @@
                       fill="currentColor"
                     ></path>
                   </svg>
-                  <span class="text-nowrap">Start Studying</span></a
+                  <span class="text-nowrap">Comenzar</span></a
                 >
               </div>
             </div>
@@ -431,7 +423,7 @@
     </section>
 
     <section id="features">
-      <div class="pt-36">
+      <div class="pt-36" id="conocer">
         <div class="mx-auto px-6 max-w-6xl text-gray-500">
           <div class="relative">
             <h1
@@ -851,7 +843,9 @@
           ></div>
         </div>
       </div> -->
-
+      
+      
+      
       <div id="blog">
         <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
           <div class="mb-12 space-y-2 text-center">
@@ -916,7 +910,7 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                  Jafett Baez
+                Jafett Baez
                 </h3>
                 <span>Frontend Developer</span>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
@@ -1079,27 +1073,29 @@
 
   <style>
     /* Estilo para el track del scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px; /* Ancho del scrollbar */
-    }
+::-webkit-scrollbar {
+  width: 10px; /* Ancho del scrollbar */
+}
 
-    /* Estilo para el thumb del scrollbar */
-    ::-webkit-scrollbar-thumb {
-      background-color: #888; /* Color del thumb */
-      border-radius: 5px; /* Radio de borde del thumb */
-    }
+/* Estilo para el thumb del scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del thumb */
+  border-radius: 5px; /* Radio de borde del thumb */
+}
 
-    /* Estilo para el track del scrollbar en hover */
-    ::-webkit-scrollbar-track:hover {
-      background-color: #090d0f; /* Color del track en hover */
-    }
+/* Estilo para el track del scrollbar en hover */
+::-webkit-scrollbar-track:hover {
+  background-color: #090d0f; /* Color del track en hover */
+}
 
-    /* Estilo para el thumb del scrollbar en hover */
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: #555; /* Color del thumb en hover */
-    }
+/* Estilo para el thumb del scrollbar en hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color del thumb en hover */
+}
+
   </style>
 </body>
+
 
 <!-- <style>
   @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap");
@@ -2868,8 +2864,6 @@
 </style> -->
 
 <style>
-  /* Estilos Tailwind CSS */
-  /* La clase bg-white ya está incluida en Tailwind CSS, por lo que no es necesario definirla nuevamente */
   .shadow-xl {
     box-shadow:
       0 20px 25px -5px rgba(0, 0, 0, 0.1),
