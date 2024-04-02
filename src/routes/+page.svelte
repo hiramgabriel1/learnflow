@@ -1,11 +1,9 @@
 <script>
   import "../app.css";
   import ceoProfile from "$lib/public/images/profile.jpg";
-  import member from "$lib/public/images/alexander.webp";
   import memberJaf from "$lib/public/images/jafet.webp";
   import memberCrisFront from "$lib/public/images/crisfront.webp";
   import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
-  // import memberEcu from "$lib/public/images/"
 
   const imagesSlider = [
     "https://crehana-blog.imgix.net/media/filer_public/72/92/729243d3-0d4a-455b-b680-ec4f8ab237a1/tecnologia-futurista-glass.jpg?auto=format&q=50",
