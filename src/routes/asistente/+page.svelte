@@ -44,7 +44,7 @@
     toast.success("Esto puede tardar unos segundos... 🧠");
     try {
       const sendRequest = await fetch(
-        "https://learnflow-services-api-production.up.railway.app/api/v1/ai/generate/question/",
+        `${envDataConf.URLBACK}/ai/generate/question/`,
         {
           method: "POST",
           headers: {
@@ -76,7 +76,7 @@
   const generateSuggestionsAI = async () => {
     try {
       const requestSuggestion = await fetch(
-        "https://learnflow-services-api-production.up.railway.app/api/v1/ai/suggestions"
+        `${envDataConf.URLBACK}/ai/suggestions`
       );
       if (!requestSuggestion.ok) {
         throw new Error("La solicitud no pudo completarse correctamente.");

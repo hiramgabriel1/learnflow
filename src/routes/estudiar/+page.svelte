@@ -59,7 +59,7 @@
 
       console.log(Number(formData.numberCards));
       
-      const api = "https://learnflow-services-api-production.up.railway.app/api/v1/flashcard/generate-ai"
+      const api = `${envDataConf.URLBACK}/flashcard/generate-ai`
 
       const sendData = await fetch(api, {
         method: "POST",
