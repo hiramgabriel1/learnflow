@@ -107,6 +107,8 @@
                     <span>Creadores</span>
                   </a>
                 </li>
+
+                <!-- ! NO ELIMINAR -->
                 <!-- <li>
                   <a
                     href="/"
@@ -152,7 +154,7 @@
             >
               <span
                 class="block text-sm px-2 py-0.5 rounded-full text-white bg-green-600"
-                >New</span
+                >Nuevo</span
               >
               <span
                 class="text-sm font-medium text-gray-700 dark:text-gray-300 flex gap-6"
@@ -187,12 +189,6 @@
             >
               Convierte tu curiosidad <br class="hidden sm:block" /> en conocimiento.
             </h1>
-            <p
-              class="text-wrap mx-auto mt-8 max-w-2xl text-lg text-gray-700 dark:text-gray-300 hidden sm:block"
-            >
-              The world's leading Ai Learnflow
-            </p>
-
             <div class="mt-8 flex flex-col items-center justify-center gap-4">
               <div
                 class="p-1 rounded-3xl bg-gray-950/5 border dark:border-white/10 dark:bg-white/5"
