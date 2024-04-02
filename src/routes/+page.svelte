@@ -126,11 +126,21 @@
               >
                 <span>Login</span>
               </button>
-              <button
-                class="w-full h-9 lg:w-fit group flex items-center relative border rounded-full *:select-none [&>*:not(.sr-only)]:relative before:rounded-full before:absolute before:inset-0 before:border before:bg-gradient-to-b *:disabled:opacity-20 disabled:text-gray-950/40 disabled:border-gray-200 disabled:bg-gray-100 disabled:*:text-gray-300 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:before:border-0 dark:before:border-t dark:before:shadow-inner dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 disabled:dark:*:text-gray-700 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none dark:*:disabled:!text-white text-white border-gray-950 bg-gray-600 before:border-gray-600 before:from-gray-800 hover:bg-gray-900 active:bg-gray-950 dark:text-gray-950 dark:before:border-gray-200 dark:before:from-gray-200 dark:bg-white dark:before:shadow-white/10 dark:hover:bg-gray-100 dark:active:bg-gray-300 dark:active:before:from-gray-200 lg:text-sm lg:h-8 px-3 justify-center"
+              <!-- <button
+                class="w-full h-9 lg:w-fit group flex items-center relative border rounded-full *:select-none [&>*:not(.sr-only)]:relative before:rounded-full before:absolute before:inset-0 before:border before:bg-gradient-to-b *:disabled:opacity-20 disabled:text-gray-950/40 disabled:border-gray-200 disabled:bg-gray-100 disabled:*:text-gray-300 disabled:before:border-transparent disabled:before:bg-green-600 disabled:before:from-transparent dark:border-0 dark:before:border-0 dark:before:border-t dark:before:shadow-inner dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-green-600 disabled:dark:*:text-gray-700 dark:disabled:before:bg-green-600 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none dark:*:disabled:!text-white text-white border-gray-950 bg-green-600 before:border-gray-600 before:from-green-600 hover:bg-green-900 active:bg-gray-950 dark:text-gray-950 dark:before:border-green-200  dark:bg-green-600  dark:hover:bg-green-400 dark:active:bg-green-600 dark:active:before:from-green-600 lg:text-sm lg:h-8 px-3 justify-center"
               >
                 <span>Sign Up</span>
-              </button>
+              </button> -->
+              <div
+              class="p-1 rounded-3xl bg-gray-950/5 border dark:border-white/10 dark:bg-white/5"
+            >
+              <a
+                href="/"
+                class="*:select-none dark:shadow-green-500/10 *:disabled:opacity-20 disabled:*:text-gray-300 disabled:dark:*:text-gray-700 dark:*:disabled:!text-white group relative z-[1] flex h-11 items-center justify-center gap-1.5 rounded-3xl border border-green-600 bg-green-500 px-4 text-base text-white shadow-md shadow-primary-200 before:absolute before:inset-0 before:rounded-3xl before:border before:border-primary-500 before:bg-gradient-to-b before:from-primary-600 hover:bg-green-600 active:bg-green-700 disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-950/40 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:bg-primary-600 dark:before:border-0 dark:before:border-t dark:before:border-primary-400 dark:before:shadow-inner dark:before:shadow-white/10 dark:hover:bg-primary-700 dark:active:bg-primary-800 dark:active:before:from-primary-700 dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none [&>*:not(.sr-only)]:relative"
+              >
+                <span class="text-nowrap">Registro</span></a
+              >
+            </div>
             </div>
           </div>
         </div>
@@ -223,7 +233,7 @@
           </div>
           <div class="-mx-6 relative mt-8 sm:mt-12 max-w-xl sm:mx-auto">
             <div
-              class="absolute inset-0 -top-8 left-1/2 -z-20 h-56 w-full -translate-x-1/2 dark:opacity-10 bg-gradient-to-b  to-gray-200/25,bg-gradient-to-r from-transparent via-gray-200 to-transparent bg-no-repeat bg-16 bg-35 mask bg-opacity-95"
+              class="absolute inset-0 -top-8 left-1/2 -z-20 h-56 w-full -translate-x-1/2 dark:opacity-10 bg-gradient-to-b to-gray-200/25,bg-gradient-to-r from-transparent via-gray-200 to-transparent bg-no-repeat bg-16 bg-35 mask bg-opacity-95"
             ></div>
             <div
               class="absolute top-12 inset-x-0 w-2/3 h-1/3 -z-[1] rounded-full bg-green-300 dark:bg-white/10 mx-auto blur-3xl"
@@ -432,8 +442,7 @@
 
             <div class="relative z-10 grid gap-3 grid-cols-6">
               <div
-                class="col-span-full lg:col-span-2 overflow-hidden flex relative p-6 rounded-3xl bg-white shadow-  shadow-green-600  dark:bg-[#10161b]"
-                
+                class="col-span-full lg:col-span-2 overflow-hidden flex relative p-6 rounded-3xl bg-white shadow- shadow-green-600 dark:bg-[#10161b]"
               >
                 <div
                   class="size-fit m-auto relative flex flex-col justify-center items-center"
@@ -561,7 +570,6 @@
                 class="inset-0 absolute aspect-video border rounded-full -translate-y-1/2 group-hover:-translate-y-1/4 duration-300 bg-gradient-to-b from-warning-500 to-white dark:from-white dark:to-white blur-2xl opacity-25 dark:opacity-0 dark:group-hover:opacity-5"
               ></div>
               <div class="relative">
-                
                 <div
                   class="border border-warning-500/10 flex relative *:relative *:size-6 *:m-auto size-12 rounded-full dark:bg-gray-900 dark:border-white/15 before:rounded-full before:absolute before:inset-0 before:border-t before:border-white before:from-warning-100 dark:before:border-white/20 before:bg-gradient-to-b dark:before:from-white/10 dark:before:to-transparent before:shadow dark:before:shadow-gray-950"
                 >
@@ -579,47 +587,60 @@
                     />
                   </svg>
                 </div>
-                <span class="flex ">Soporte</span>
+                <span class="flex">Soporte</span>
 
                 <div class="mt-6 pb-6 rounded-b-[--card-border-radius]">
                   <p class="text-gray-700 dark:text-gray-300">
-                    Damos soporte a tus dudas o posibles  problemas sobre la
-                    aplicación en el  menor tiempo posible
+                    Damos soporte a tus dudas o posibles problemas sobre la
+                    aplicación en el menor tiempo posible
                   </p>
                 </div>
               </div>
             </div>
 
             <div
-            class="relative group overflow-hidden p-6 rounded-3xl bg-white border border-[--ui-light-border-color] dark:border-[#1f2930] dark:bg-[#10161b]"
-          >
-            <div
-              aria-hidden="true"
-              class="inset-0 absolute aspect-video border rounded-full -translate-y-1/2 group-hover:-translate-y-1/4 duration-300 bg-gradient-to-b from-warning-500 to-white dark:from-white dark:to-white blur-2xl opacity-25 dark:opacity-0 dark:group-hover:opacity-5"
-            ></div>
-            <div class="relative">
-              
+              class="relative group overflow-hidden p-6 rounded-3xl bg-white border border-[--ui-light-border-color] dark:border-[#1f2930] dark:bg-[#10161b]"
+            >
               <div
-                class="border border-warning-500/10 flex relative *:relative *:size-6 *:m-auto size-12 rounded-full dark:bg-gray-900 dark:border-white/15 before:rounded-full before:absolute before:inset-0 before:border-t before:border-white before:from-warning-100 dark:before:border-white/20 before:bg-gradient-to-b dark:before:from-white/10 dark:before:to-transparent before:shadow dark:before:shadow-gray-950"
-              >
-              <svg  class="text-[#000014] dark:text-white" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 100 100"><path fill="currentColor" d="m70.387 70l-3.854 7.247l18.87-3.085c-3.808-1.91-8.963-3.275-15.016-4.162m-48.61 1.58C13.037 73.885 7.5 77.662 7.5 83.272a8.4 8.4 0 0 0 .774 3.497l30.285-4.95zM91.79 80l-42.15 6.87l11.116 12.646C79.01 97.881 92.5 92.05 92.5 83.272c0-1.17-.252-2.257-.71-3.271m-49.272 8.055l-28.48 4.655C21.566 97.374 34.853 100 50 100c.918 0 1.815-.026 2.719-.045z"/><path fill="currentColor" d="M50.002 0c-16.3 0-29.674 13.333-29.674 29.596c0 6.252 1.987 12.076 5.342 16.865l19.234 33.25l.082.107c.759.991 1.5 1.773 2.37 2.348c.87.576 1.95.92 3.01.814c2.118-.212 3.415-1.708 4.646-3.376l.066-.086l21.234-36.141l.012-.023c.498-.9.866-1.816 1.178-2.708a29.246 29.246 0 0 0 2.17-11.05C79.672 13.333 66.302 0 50.002 0m0 17.045c7.071 0 12.59 5.509 12.59 12.55c0 7.043-5.519 12.55-12.59 12.55c-7.072 0-12.594-5.508-12.594-12.55c0-7.04 5.523-12.55 12.594-12.55" color="currentColor"/>
-              </svg>
-              </div>
-              <span class="flex ">No importa el lugar donde te encuentres</span>
+                aria-hidden="true"
+                class="inset-0 absolute aspect-video border rounded-full -translate-y-1/2 group-hover:-translate-y-1/4 duration-300 bg-gradient-to-b from-warning-500 to-white dark:from-white dark:to-white blur-2xl opacity-25 dark:opacity-0 dark:group-hover:opacity-5"
+              ></div>
+              <div class="relative">
+                <div
+                  class="border border-warning-500/10 flex relative *:relative *:size-6 *:m-auto size-12 rounded-full dark:bg-gray-900 dark:border-white/15 before:rounded-full before:absolute before:inset-0 before:border-t before:border-white before:from-warning-100 dark:before:border-white/20 before:bg-gradient-to-b dark:before:from-white/10 dark:before:to-transparent before:shadow dark:before:shadow-gray-950"
+                >
+                  <svg
+                    class="text-[#000014] dark:text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 100 100"
+                    ><path
+                      fill="currentColor"
+                      d="m70.387 70l-3.854 7.247l18.87-3.085c-3.808-1.91-8.963-3.275-15.016-4.162m-48.61 1.58C13.037 73.885 7.5 77.662 7.5 83.272a8.4 8.4 0 0 0 .774 3.497l30.285-4.95zM91.79 80l-42.15 6.87l11.116 12.646C79.01 97.881 92.5 92.05 92.5 83.272c0-1.17-.252-2.257-.71-3.271m-49.272 8.055l-28.48 4.655C21.566 97.374 34.853 100 50 100c.918 0 1.815-.026 2.719-.045z"
+                    /><path
+                      fill="currentColor"
+                      d="M50.002 0c-16.3 0-29.674 13.333-29.674 29.596c0 6.252 1.987 12.076 5.342 16.865l19.234 33.25l.082.107c.759.991 1.5 1.773 2.37 2.348c.87.576 1.95.92 3.01.814c2.118-.212 3.415-1.708 4.646-3.376l.066-.086l21.234-36.141l.012-.023c.498-.9.866-1.816 1.178-2.708a29.246 29.246 0 0 0 2.17-11.05C79.672 13.333 66.302 0 50.002 0m0 17.045c7.071 0 12.59 5.509 12.59 12.55c0 7.043-5.519 12.55-12.59 12.55c-7.072 0-12.594-5.508-12.594-12.55c0-7.04 5.523-12.55 12.594-12.55"
+                      color="currentColor"
+                    />
+                  </svg>
+                </div>
+                <span class="flex">No importa el lugar donde te encuentres</span
+                >
 
-              <div class="mt-6 pb-6 rounded-b-[--card-border-radius]">
-                <p class="text-gray-700 dark:text-gray-300">
-                  A pesar de que estés al otro lado del mundo, te damos soporte para que disfrutes de la mejor manera a LearnflowAI
-                </p>
+                <div class="mt-6 pb-6 rounded-b-[--card-border-radius]">
+                  <p class="text-gray-700 dark:text-gray-300">
+                    A pesar de que estés al otro lado del mundo, te damos
+                    soporte para que disfrutes de la mejor manera a LearnflowAI
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
     </section>
 
-    
     <div class="text-gray-600 dark:text-gray-300 mt-28" id="creadores">
       <!-- <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
         <div class="mb-20 space-y-4 px-6 md:px-0">
@@ -830,9 +851,7 @@
           ></div>
         </div>
       </div> -->
-      
-      
-      
+
       <div id="blog">
         <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
           <div class="mb-12 space-y-2 text-center">
@@ -860,11 +879,18 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                Hiram Gabriel
+                  Hiram Gabriel
                 </h3>
                 <span>CEO Learnflow & Fullstack Developer</span>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                  "El lanzamiento de LearnflowAI marca un hito importante en mi vida. Creo que será una herramienta invaluable tanto para estudiantes como para cualquier persona en busca de conocimiento. Como alguien que ha enfrentado sus propios desafíos de aprendizaje, sé que una plataforma como esta habría hecho una gran diferencia en mi camino educativo. Estoy emocionado de compartir esta oportunidad con todos aquellos que buscan aprender y crecer."
+                  "El lanzamiento de LearnflowAI marca un hito importante en mi
+                  vida. Creo que será una herramienta invaluable tanto para
+                  estudiantes como para cualquier persona en busca de
+                  conocimiento. Como alguien que ha enfrentado sus propios
+                  desafíos de aprendizaje, sé que una plataforma como esta
+                  habría hecho una gran diferencia en mi camino educativo. Estoy
+                  emocionado de compartir esta oportunidad con todos aquellos
+                  que buscan aprender y crecer."
                 </p>
                 <!-- ! NO BORRAR
                 <a class="inline-block" href="#">
@@ -872,8 +898,6 @@
                 </a> -->
               </div>
             </div>
-
-         
 
             <div
               class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
@@ -892,11 +916,20 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                Jafett Baez
+                  Jafett Baez
                 </h3>
                 <span>Frontend Developer</span>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                  "En todo el tiempo de mi vida, he pensado que alcanzar nuestras metas era algo imposible, pero ahora, sé que todo es posible. Desde que comenzamos con el desarrollo de Learnflow, he amado con cada parte de mi alma saber que podremos ayudar a miles de estudiantes y personas a cumplir sus sueños, sus sueños de progresar, de ser mejores, de vivir de una mejor manera. La vida está llena de desafíos, conflictos y problemas, pero con Learnflow deseamos que puedan prepararse de una mejor manera, a soñar en grande, pero sobre todo, a nunca rendirse."
+                  "En todo el tiempo de mi vida, he pensado que alcanzar
+                  nuestras metas era algo imposible, pero ahora, sé que todo es
+                  posible. Desde que comenzamos con el desarrollo de Learnflow,
+                  he amado con cada parte de mi alma saber que podremos ayudar a
+                  miles de estudiantes y personas a cumplir sus sueños, sus
+                  sueños de progresar, de ser mejores, de vivir de una mejor
+                  manera. La vida está llena de desafíos, conflictos y
+                  problemas, pero con Learnflow deseamos que puedan prepararse
+                  de una mejor manera, a soñar en grande, pero sobre todo, a
+                  nunca rendirse."
                 </p>
                 <!-- <a class="inline-block" href="#">
                   <span class="text-info dark:text-blue-300">Read more</span>
@@ -921,11 +954,18 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                Cristhian Bautista
+                  Cristhian Bautista
                 </h3>
                 <span>Frontend Developer</span>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                  "En el transcurso de nuestro aprendizaje como desarrolladores, siempre hay altibajos. Sin embargo, en esas situaciones, es crucial saber cómo levantarnos y seguir adelante. Internet es uno de los recursos más valiosos para el aprendizaje constante; sin embargo, el mal uso de este también puede alejarnos de nuestra humanidad. Estoy orgulloso de formar parte de LearnFlow para contribuir al esfuerzo constante de aprendizaje."
+                  "En el transcurso de nuestro aprendizaje como desarrolladores,
+                  siempre hay altibajos. Sin embargo, en esas situaciones, es
+                  crucial saber cómo levantarnos y seguir adelante. Internet es
+                  uno de los recursos más valiosos para el aprendizaje
+                  constante; sin embargo, el mal uso de este también puede
+                  alejarnos de nuestra humanidad. Estoy orgulloso de formar
+                  parte de LearnFlow para contribuir al esfuerzo constante de
+                  aprendizaje."
                 </p>
                 <!-- ! NO BORRAR
                 <a class="inline-block" href="#">
@@ -955,7 +995,16 @@
                 </h3>
                 <span>Frontend Developer</span>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                  "Con el lanzamiento de LearnflowAI, encontramos en una sola plataforma la llave que transforma desafíos en oportunidades, inspirando a todos a alcanzar sus metas, aprender constantemente y construir una comunidad de conocimiento compartido. Me llena de gratitud formar parte de LearnflowAI, una plataforma que no solo me ha brindado la oportunidad de contribuir al aprendizaje constante, sino que también me llena de alegría saber que estamos allanando el camino para que innumerables personas alcancen sus metas educativas y sueños de superación."
+                  "Con el lanzamiento de LearnflowAI, encontramos en una sola
+                  plataforma la llave que transforma desafíos en oportunidades,
+                  inspirando a todos a alcanzar sus metas, aprender
+                  constantemente y construir una comunidad de conocimiento
+                  compartido. Me llena de gratitud formar parte de LearnflowAI,
+                  una plataforma que no solo me ha brindado la oportunidad de
+                  contribuir al aprendizaje constante, sino que también me llena
+                  de alegría saber que estamos allanando el camino para que
+                  innumerables personas alcancen sus metas educativas y sueños
+                  de superación."
                 </p>
                 <!-- ! NO BORRAR
                 <a class="inline-block" href="#">
@@ -963,17 +1012,20 @@
                 </a> -->
               </div>
             </div>
-            
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <footer class="dark:bg-[#090d0f] ">
+  <footer class="dark:bg-[#090d0f]">
     <div class="mx-auto">
-      <div class="mt-16 border-t border-gray-100 pb-5 dark:border-gray-800 flex justify-center  flex-col">
-        <p class="text-center text-sm/relaxed text-gray-500 dark:text-gray-400 mt-5">
+      <div
+        class="mt-16 border-t border-gray-100 pb-5 dark:border-gray-800 flex justify-center flex-col"
+      >
+        <p
+          class="text-center text-sm/relaxed text-gray-500 dark:text-gray-400 mt-5"
+        >
           © LearnflowAI 2024. All rights reserved.
           <br />
         </p>
@@ -1027,29 +1079,27 @@
 
   <style>
     /* Estilo para el track del scrollbar */
-::-webkit-scrollbar {
-  width: 10px; /* Ancho del scrollbar */
-}
+    ::-webkit-scrollbar {
+      width: 10px; /* Ancho del scrollbar */
+    }
 
-/* Estilo para el thumb del scrollbar */
-::-webkit-scrollbar-thumb {
-  background-color: #888; /* Color del thumb */
-  border-radius: 5px; /* Radio de borde del thumb */
-}
+    /* Estilo para el thumb del scrollbar */
+    ::-webkit-scrollbar-thumb {
+      background-color: #888; /* Color del thumb */
+      border-radius: 5px; /* Radio de borde del thumb */
+    }
 
-/* Estilo para el track del scrollbar en hover */
-::-webkit-scrollbar-track:hover {
-  background-color: #090d0f; /* Color del track en hover */
-}
+    /* Estilo para el track del scrollbar en hover */
+    ::-webkit-scrollbar-track:hover {
+      background-color: #090d0f; /* Color del track en hover */
+    }
 
-/* Estilo para el thumb del scrollbar en hover */
-::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Color del thumb en hover */
-}
-
+    /* Estilo para el thumb del scrollbar en hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #555; /* Color del thumb en hover */
+    }
   </style>
 </body>
-
 
 <!-- <style>
   @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap");
