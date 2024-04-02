@@ -6,6 +6,7 @@
   import "../../app.css";
   import LayoutInitial from "../../components/LayoutInitial.svelte";
   import "../../main.styles.css";
+  import { envDataConf } from "../../server/server";
 
   /**
    * @type {boolean}
@@ -23,7 +24,7 @@
       if (logoutButton) {
         logoutButton.addEventListener("click", function () {
           fetch(
-            "https://learnflow-services-api-production.up.railway.app/api/v1/auth/logout",
+            `${envDataConf.URLBACK}/auth/logout`,
             {
               method: "POST",
               credentials: "include",
