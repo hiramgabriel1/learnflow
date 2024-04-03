@@ -14,7 +14,7 @@
   import type { FlashcardInterface } from "../types/flashcardTypes";
   import { writable } from "svelte/store";
 
-  let showModal: boolean;
+  let showModal: FlashcardInterface | null = null;
   let flashcards = writable<FlashcardInterface[]>([]);
 
   // current date
@@ -57,15 +57,13 @@
     flashcards.update(
       () => JSON.parse(flashcardsGenerateString + "") as FlashcardInterface[]
     );
-    console.log(
-      JSON.parse(flashcardsGenerateString + "") as FlashcardInterface[]
-    );
   });
 
-
-  flashcards.subscribe(value => {
-    console.log(value);
-  });
+  const removeFlashcard = () => {
+    flashcards.update(() => $flashcards.filter((u) => u !== showModal));
+    localStorage.setItem("flashcardsGenerate", JSON.stringify($flashcards));
+    showModal = null;
+  };
 </script>
 
 <LayoutInitial {user}>
@@ -78,11 +76,18 @@
     <div class="projects-section-line">
       <div class="projects-status">
         <div class="item-status">
-          <span class="status-number">4</span>
+          <span class="status-number"
+            >{$flashcards.filter(
+              (u) =>
+                u.response.filter((un) => un.state === "correct").length !==
+                u.response.length
+            ).length}</span
+          >
+
           <span class="status-type">En progreso</span>
         </div>
         <div class="item-status">
-          <span class="status-number">62</span>
+          <span class="status-number">{$flashcards.length}</span>
           <span class="status-type">Temas totales</span>
         </div>
       </div>
@@ -164,12 +169,13 @@
         <div class="p-3 mt-2 text-center space-x-4 md:block">
           <button
             class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
-            on:click={() => (showModal = false)}
+            on:click={() => (showModal = null)}
           >
             Cancelar
           </button>
           <button
-            type="submit"
+            on:click={removeFlashcard}
+            type="button"
             class="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600"
           >
             Eliminar
