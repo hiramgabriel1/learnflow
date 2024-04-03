@@ -4,6 +4,8 @@
   import memberJaf from "$lib/public/images/jafet.webp";
   import memberCrisFront from "$lib/public/images/crisfront.webp";
   import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
+  import memberLohanaFront from "$lib/public/images/lohana.jpeg";
+  import memberCecilFront from "$lib/public/images/cecil.png";
 
   const imagesSlider = [
     "https://crehana-blog.imgix.net/media/filer_public/72/92/729243d3-0d4a-455b-b680-ec4f8ab237a1/tecnologia-futurista-glass.jpg?auto=format&q=50",
@@ -107,14 +109,14 @@
                     <span>Creadores</span>
                   </a>
                 </li>
-                <!-- <li>
+                <li>
                   <a
-                    href="/"
+                    href="#blog"
                     class="block md:px-4 transition hover:text-green-600 dark:hover:text-green-400"
                   >
-                    <span>Blog</span>
+                    <span>Novedades</span>
                   </a>
-                </li> -->
+                </li>
               </ul>
             </div>
             <div
@@ -237,7 +239,6 @@
                     class="bg-white shadow-xl shadow-gray-950/5 p-6 rounded-3xl dark:border-[#1a232a] dark:bg-[#10161b] relative border-[length:var(--border-width)] [--anchor:100] [--border-radius:calc(var(--radius)*1px)] [--border-width:calc(var(--border)*1px)] [--border:1] [--glow:60] [--hue:179] [--lightness:55%] dark:[--lightness:14%] [--opacity:1] [--radius:24] [--saturation:78%] dark:[--saturation:97%] [--speed:2]"
                   >
                     <div>
-                      
                       <svg
                         class="h-12 w-fit mx-auto dark:hidden"
                         xmlns="http://www.w3.org/2000/svg"
@@ -324,25 +325,25 @@
                     <div>
                       <div class="h-12 w-fit mx-auto">
                         <svg
-                        class="h-12 my-auto w-fit dark:hidden"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 14 14"
-                        ><g
-                          fill="none"
-                          stroke="#000"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          ><path
-                            d="M.576 6.733a6.538 6.538 0 0 1 1.164-.104c1.58 0 3.027.563 4.154 1.5"
-                          /><path
-                            d="M5.076 10.629h-3.5a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3.5"
-                          /><path
-                            d="M6.326 5.629a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m1.014 4.934c-.351-.061-.351-.565 0-.626a3.176 3.176 0 0 0 2.558-2.45l.021-.097c.076-.347.57-.349.649-.003l.026.113a3.193 3.193 0 0 0 2.565 2.435c.353.062.353.568 0 .63A3.192 3.192 0 0 0 10.594 13l-.026.113c-.079.346-.573.344-.649-.003l-.021-.097a3.176 3.176 0 0 0-2.558-2.45"
-                          /></g
-                        >
-                      </svg>
+                          class="h-12 my-auto w-fit dark:hidden"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 14 14"
+                          ><g
+                            fill="none"
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path
+                              d="M.576 6.733a6.538 6.538 0 0 1 1.164-.104c1.58 0 3.027.563 4.154 1.5"
+                            /><path
+                              d="M5.076 10.629h-3.5a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3.5"
+                            /><path
+                              d="M6.326 5.629a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m1.014 4.934c-.351-.061-.351-.565 0-.626a3.176 3.176 0 0 0 2.558-2.45l.021-.097c.076-.347.57-.349.649-.003l.026.113a3.193 3.193 0 0 0 2.565 2.435c.353.062.353.568 0 .63A3.192 3.192 0 0 0 10.594 13l-.026.113c-.079.346-.573.344-.649-.003l-.021-.097a3.176 3.176 0 0 0-2.558-2.45"
+                            /></g
+                          >
+                        </svg>
                         <svg
                           class="h-12 my-auto w-fit"
                           xmlns="http://www.w3.org/2000/svg"
@@ -601,7 +602,7 @@
     </section>
 
     <div class="text-gray-600 dark:text-gray-300 mt-28" id="creadores">
-      <div id="blog">
+      <div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
           <div class="mb-12 space-y-2 text-center">
             <h1
@@ -761,10 +762,230 @@
                 </a> -->
               </div>
             </div>
+            <div
+              class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src={memberLohanaFront}
+                  alt="art cover"
+                  loading="lazy"
+                  width="1000"
+                  height="667"
+                  class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="mt-6 relative">
+                <h3
+                  class="text-2xl font-semibold text-gray-800 dark:text-white"
+                >
+                  Lohana Orellano
+                </h3>
+                <span>Frontend Developer</span>
+                <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+                  "El desarrollo y lanzamiento de LearnFlow ha sido un hito
+                  trascendental en mi vida. Creo firmemente en su potencial para
+                  transformar la manera en que las personas acceden al
+                  conocimiento. Como alguien que ha enfrentado obstáculos en su
+                  propio camino de aprendizaje, reconozco el valor que una
+                  plataforma como esta habría tenido para mí. Estoy emocionada
+                  de compartir esta innovación con todos aquellos que buscan
+                  ampliar sus horizontes y alcanzar sus metas educativas."
+                </p>
+                <!-- ! NO BORRAR
+                <a class="inline-block" href="#">
+                  <span class="text-info dark:text-blue-300">Read more</span>
+                </a> -->
+              </div>
+            </div>
+            <div
+              class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src={memberCecilFront}
+                  alt="art cover"
+                  loading="lazy"
+                  width="1000"
+                  height="667"
+                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="mt-6 relative">
+                <h3
+                  class="text-2xl font-semibold text-gray-800 dark:text-white"
+                >
+                  Cecilia Prado
+                </h3>
+                <span>Frontend Developer</span>
+                <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+                  "A lo largo de mi vida, he experimentado la sensación de que
+                  algunas metas eran inalcanzables, pero ahora entiendo que todo
+                  es posible. Desde que comenzamos a trabajar en LearnFlow, he
+                  sentido una profunda satisfacción al saber que estamos
+                  contribuyendo al crecimiento y desarrollo de miles de
+                  personas. Nuestro objetivo es ayudar a los estudiantes y
+                  profesionales a materializar sus sueños, a superarse y a vivir
+                  una vida plena. Aunque la vida está llena de desafíos, estamos
+                  comprometidos a preparar a nuestros usuarios para enfrentarlos
+                  con determinación y nunca perder de vista sus aspiraciones."
+                </p>
+                <!-- ! NO BORRAR
+                <a class="inline-block" href="#">
+                  <span class="text-info dark:text-blue-300">Read more</span>
+                </a> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <section class="py-10 md:py-16" id="blog">
+      <h1
+        class="mt-20 mb-20 text-wrap text-center text-4xl md:text-5xl font-semibold text-gray-950 dark:text-white xl:text-5xl xl:[line-height:1.125]"
+      >
+        Descubre nuestras <br class="hidden sm:block" /> novedades.
+      </h1>
+
+      <div class="container max-w-screen-xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md">
+            <div
+              class="w-20 py-6 flex justify-center bg-[#222c35]  rounded-md mb-4"
+            >
+              <svg
+                class="h-12 w-fit mx-auto dark:hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 32 32"
+                ><path
+                  fill="#fff"
+                  d="M.034 16.668C.388 25.179 7.403 32 16 32s15.612-6.821 15.966-15.332A.493.493 0 0 0 32 16.5c0-.036-.013-.067-.02-.1c.003-.134.02-.265.02-.4c0-8.822-7.178-16-16-16S0 7.178 0 16c0 .135.017.266.02.4c-.007.033-.02.064-.02.1c0 .06.015.115.034.168m24.887 6.074a21.921 21.921 0 0 0-4.215-1.271c.158-1.453.251-2.962.28-4.47h4.98c-.091 2.054-.456 3.993-1.045 5.741M26.965 17h3.984a14.885 14.885 0 0 1-2.663 7.579a17.158 17.158 0 0 0-2.457-1.44c.645-1.869 1.042-3.943 1.136-6.139m-14.576 5.286A23.416 23.416 0 0 1 16 22c1.224 0 2.433.102 3.61.286C18.916 27.621 17.4 31 16 31s-2.916-3.379-3.611-8.714m1.519 8.378c-2.751-.882-5.078-3.471-6.482-6.984a20.873 20.873 0 0 1 3.99-1.217c.459 3.496 1.298 6.542 2.492 8.201m-1.634-19.955A24.43 24.43 0 0 0 16 11a24.43 24.43 0 0 0 3.726-.291c.172 1.62.274 3.388.274 5.291h-8c0-1.903.102-3.671.274-5.291M19.985 17a49.022 49.022 0 0 1-.26 4.291A24.397 24.397 0 0 0 16 21a24.42 24.42 0 0 0-3.726.291a48.668 48.668 0 0 1-.26-4.291zm.6 5.463c1.404.282 2.743.692 3.99 1.217c-1.404 3.513-3.731 6.102-6.482 6.984c1.193-1.659 2.032-4.705 2.492-8.201M21 16c0-1.836-.102-3.696-.294-5.47c1.48-.292 2.896-.72 4.215-1.271C25.605 11.288 26 13.574 26 16zm-.415-6.463c-.46-3.496-1.298-6.543-2.493-8.201c2.751.882 5.078 3.471 6.482 6.984a20.792 20.792 0 0 1-3.989 1.217m-.974.177C18.433 9.898 17.224 10 16 10s-2.433-.102-3.611-.286C13.084 4.379 14.6 1 16 1c1.4 0 2.916 3.379 3.611 8.714m-8.196-.177a20.895 20.895 0 0 1-3.99-1.217c1.404-3.513 3.731-6.102 6.482-6.984c-1.193 1.659-2.032 4.705-2.492 8.201m-.121.993A51.315 51.315 0 0 0 11 16H6c0-2.426.395-4.712 1.079-6.742c1.319.552 2.735.979 4.215 1.272m-.28 6.47c.029 1.508.122 3.017.28 4.471c-1.48.292-2.896.72-4.215 1.271c-.589-1.748-.954-3.687-1.045-5.742zM6.17 23.139a17.24 17.24 0 0 0-2.456 1.44A14.882 14.882 0 0 1 1.051 17h3.984c.094 2.196.491 4.27 1.135 6.139M4.313 25.38a16.126 16.126 0 0 1 2.207-1.305c1.004 2.485 2.449 4.548 4.186 5.943a15.05 15.05 0 0 1-6.393-4.638m16.981 4.637c1.738-1.394 3.182-3.458 4.186-5.943c.79.384 1.522.826 2.207 1.305a15.033 15.033 0 0 1-6.393 4.638M27 16c0-2.567-.428-4.987-1.17-7.139c.88-.422 1.698-.907 2.457-1.44A14.91 14.91 0 0 1 31 16zm.688-9.38c-.685.479-1.417.921-2.207 1.305c-1.004-2.485-2.449-4.549-4.186-5.943a15.062 15.062 0 0 1 6.393 4.638M10.706 1.983C8.968 3.377 7.524 5.441 6.52 7.926A16.173 16.173 0 0 1 4.313 6.62a15.04 15.04 0 0 1 6.393-4.637M3.714 7.421a17.185 17.185 0 0 0 2.456 1.44A21.954 21.954 0 0 0 5 16H1c0-3.19 1.009-6.145 2.714-8.579"
+                />
+              </svg>
+              <svg
+                class="h-12 w-fit mx-auto hidden dark:block"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 32 32"
+                ><path
+                  fill="#fff"
+                  d="M.034 16.668C.388 25.179 7.403 32 16 32s15.612-6.821 15.966-15.332A.493.493 0 0 0 32 16.5c0-.036-.013-.067-.02-.1c.003-.134.02-.265.02-.4c0-8.822-7.178-16-16-16S0 7.178 0 16c0 .135.017.266.02.4c-.007.033-.02.064-.02.1c0 .06.015.115.034.168m24.887 6.074a21.921 21.921 0 0 0-4.215-1.271c.158-1.453.251-2.962.28-4.47h4.98c-.091 2.054-.456 3.993-1.045 5.741M26.965 17h3.984a14.885 14.885 0 0 1-2.663 7.579a17.158 17.158 0 0 0-2.457-1.44c.645-1.869 1.042-3.943 1.136-6.139m-14.576 5.286A23.416 23.416 0 0 1 16 22c1.224 0 2.433.102 3.61.286C18.916 27.621 17.4 31 16 31s-2.916-3.379-3.611-8.714m1.519 8.378c-2.751-.882-5.078-3.471-6.482-6.984a20.873 20.873 0 0 1 3.99-1.217c.459 3.496 1.298 6.542 2.492 8.201m-1.634-19.955A24.43 24.43 0 0 0 16 11a24.43 24.43 0 0 0 3.726-.291c.172 1.62.274 3.388.274 5.291h-8c0-1.903.102-3.671.274-5.291M19.985 17a49.022 49.022 0 0 1-.26 4.291A24.397 24.397 0 0 0 16 21a24.42 24.42 0 0 0-3.726.291a48.668 48.668 0 0 1-.26-4.291zm.6 5.463c1.404.282 2.743.692 3.99 1.217c-1.404 3.513-3.731 6.102-6.482 6.984c1.193-1.659 2.032-4.705 2.492-8.201M21 16c0-1.836-.102-3.696-.294-5.47c1.48-.292 2.896-.72 4.215-1.271C25.605 11.288 26 13.574 26 16zm-.415-6.463c-.46-3.496-1.298-6.543-2.493-8.201c2.751.882 5.078 3.471 6.482 6.984a20.792 20.792 0 0 1-3.989 1.217m-.974.177C18.433 9.898 17.224 10 16 10s-2.433-.102-3.611-.286C13.084 4.379 14.6 1 16 1c1.4 0 2.916 3.379 3.611 8.714m-8.196-.177a20.895 20.895 0 0 1-3.99-1.217c1.404-3.513 3.731-6.102 6.482-6.984c-1.193 1.659-2.032 4.705-2.492 8.201m-.121.993A51.315 51.315 0 0 0 11 16H6c0-2.426.395-4.712 1.079-6.742c1.319.552 2.735.979 4.215 1.272m-.28 6.47c.029 1.508.122 3.017.28 4.471c-1.48.292-2.896.72-4.215 1.271c-.589-1.748-.954-3.687-1.045-5.742zM6.17 23.139a17.24 17.24 0 0 0-2.456 1.44A14.882 14.882 0 0 1 1.051 17h3.984c.094 2.196.491 4.27 1.135 6.139M4.313 25.38a16.126 16.126 0 0 1 2.207-1.305c1.004 2.485 2.449 4.548 4.186 5.943a15.05 15.05 0 0 1-6.393-4.638m16.981 4.637c1.738-1.394 3.182-3.458 4.186-5.943c.79.384 1.522.826 2.207 1.305a15.033 15.033 0 0 1-6.393 4.638M27 16c0-2.567-.428-4.987-1.17-7.139c.88-.422 1.698-.907 2.457-1.44A14.91 14.91 0 0 1 31 16zm.688-9.38c-.685.479-1.417.921-2.207 1.305c-1.004-2.485-2.449-4.549-4.186-5.943a15.062 15.062 0 0 1 6.393 4.638M10.706 1.983C8.968 3.377 7.524 5.441 6.52 7.926A16.173 16.173 0 0 1 4.313 6.62a15.04 15.04 0 0 1 6.393-4.637M3.714 7.421a17.185 17.185 0 0 0 2.456 1.44A21.954 21.954 0 0 0 5 16H1c0-3.19 1.009-6.145 2.714-8.579"
+                />
+              </svg>
+            </div>
+
+            <h4 class="font-medium dark:text-white text-lg mb-4">Chat Global</h4>
+
+            <p class="font-normal text-gray-500 text-md">
+              Podras comunicarte con personas que<br /> se encuentren
+              en <b>Línea</b> en ese momento, <br /> para compartir cualquier peticion.
+            </p>
+          </div>
+
+          <div class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md">
+            <div
+              class="w-20 py-6 flex justify-center bg-[#222c35] rounded-md mb-4"
+            >
+              <svg
+                class="h-12 w-fit mx-auto dark:hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 20 20"
+                ><g fill="#fff" fill-rule="evenodd" clip-rule="evenodd"
+                  ><path
+                    d="M5.604 5.45a6.44 6.44 0 0 0-1.883 5.278a.5.5 0 0 1-.994.105a7.44 7.44 0 0 1 2.175-6.096c2.937-2.897 7.675-2.85 10.582.098c2.907 2.947 2.888 7.685-.05 10.582a7.425 7.425 0 0 1-5.097 2.142a7.527 7.527 0 0 1-2.14-.271a.5.5 0 0 1 .266-.964a6.524 6.524 0 0 0 1.856.235a6.424 6.424 0 0 0 4.413-1.854c2.541-2.506 2.562-6.61.04-9.168c-2.522-2.558-6.627-2.594-9.168-.088"
+                  /><path
+                    d="M3.594 11.363a.5.5 0 0 1-.706.04l-1.72-1.53a.5.5 0 1 1 .664-.746l1.72 1.53a.5.5 0 0 1 .042.706"
+                  /><path
+                    d="M2.82 11.3a.5.5 0 0 0 .7.1l2-1.5a.5.5 0 1 0-.6-.8l-2 1.5a.5.5 0 0 0-.1.7M10 6.5a.5.5 0 0 1 .5.5v3.5a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5"
+                  /><path
+                    d="M13.5 10.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5"
+                  />
+                </g>
+              </svg>
+
+              <svg
+                class="h-12 w-fit mx-auto hidden dark:block"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 20 20"
+                ><g fill="#fff" fill-rule="evenodd" clip-rule="evenodd"
+                  ><path
+                    d="M5.604 5.45a6.44 6.44 0 0 0-1.883 5.278a.5.5 0 0 1-.994.105a7.44 7.44 0 0 1 2.175-6.096c2.937-2.897 7.675-2.85 10.582.098c2.907 2.947 2.888 7.685-.05 10.582a7.425 7.425 0 0 1-5.097 2.142a7.527 7.527 0 0 1-2.14-.271a.5.5 0 0 1 .266-.964a6.524 6.524 0 0 0 1.856.235a6.424 6.424 0 0 0 4.413-1.854c2.541-2.506 2.562-6.61.04-9.168c-2.522-2.558-6.627-2.594-9.168-.088"
+                  /><path
+                    d="M3.594 11.363a.5.5 0 0 1-.706.04l-1.72-1.53a.5.5 0 1 1 .664-.746l1.72 1.53a.5.5 0 0 1 .042.706"
+                  /><path
+                    d="M2.82 11.3a.5.5 0 0 0 .7.1l2-1.5a.5.5 0 1 0-.6-.8l-2 1.5a.5.5 0 0 0-.1.7M10 6.5a.5.5 0 0 1 .5.5v3.5a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5"
+                  /><path
+                    d="M13.5 10.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5"
+                  />
+                </g>
+              </svg>
+            </div>
+
+            <h4 class="font-medium dark:text-white text-lg mb-4">Temporizador</h4>
+
+            <p class="font-normal text-gray-500 text-md">
+              Integramos la nueva funcion <b>Pomodoro,</b> <br /> podras dividir
+              el tiempo de tu trabajo o <br /> estudio.
+            </p>
+          </div>
+
+          <div class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md">
+            <div
+              class="w-20 py-6 flex justify-center bg-[#222c35] rounded-md mb-4"
+            >
+
+            <svg
+            class="h-12 w-fit mx-auto dark:hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 48 48"
+                ><path
+                  fill="none"
+                  stroke="#fff"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M23.82 3.5v41m-7.23-32.517v24.034M9.374 19.759v8.482m21.725-16.258v24.034m7.527-16.258v8.482"
+                />
+              </svg>
+
+
+              <svg
+              class="h-12 w-fit mx-auto hidden dark:block"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 48 48"
+                ><path
+                  fill="none"
+                  stroke="#fff"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M23.82 3.5v41m-7.23-32.517v24.034M9.374 19.759v8.482m21.725-16.258v24.034m7.527-16.258v8.482"
+                />
+              </svg>
+            </div>
+
+            <h4 class="font-medium dark:text-white text-lg mb-4">
+              Historial de chat
+            </h4>
+
+            <p class="font-normal text-gray-500 text-md">
+              Dentro de poco con la nueva actualización <br /> podras visualizar
+              todo el <b>Historial</b>  <br /> registrado con nuestras IA.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="dark:bg-[#090d0f]">
@@ -849,4 +1070,3 @@
     }
   </style>
 </body>
-
