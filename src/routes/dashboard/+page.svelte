@@ -77,17 +77,17 @@
       <div class="projects-status">
         <div class="item-status">
           <span class="status-number"
-            >{$flashcards.filter(
+            >{($flashcards && $flashcards.filter(
               (u) =>
                 u.response.filter((un) => un.state === "correct").length !==
                 u.response.length
-            ).length}</span
+            ).length) ?? 0}</span
           >
 
           <span class="status-type">En progreso</span>
         </div>
         <div class="item-status">
-          <span class="status-number">{$flashcards.length}</span>
+          <span class="status-number">{$flashcards?.length ?? 0}</span>
           <span class="status-type">Temas totales</span>
         </div>
       </div>
