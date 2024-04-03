@@ -124,13 +124,13 @@
             >
               <button
                 on:click={() => (window.location.href = "/auth/login")}
-                class="w-full h-9 lg:w-fit group flex items-center rounded-full disabled:border *:select-none [&>*:not(.sr-only)]:relative *:disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark:*:disabled:!text-white text-gray-800 hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center"
+                class="w-full h-9 lg:w-fit group flex items-center rounded-full disabled:border :select-none [&>:not(.sr-only)]:relative :disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark::disabled:!text-white text-gray-800 hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center"
               >
                 <span>Iniciar Sesión</span>
               </button>
               <button
                 on:click={() => (window.location.href = "/auth/register")}
-                class="w-full h-9 lg:w-fit group flex items-center relative border rounded-full *:select-none [&>*:not(.sr-only)]:relative before:rounded-full before:absolute before:inset-0 before:border before:bg-gradient-to-b *:disabled:opacity-20 disabled:text-gray-950/40 disabled:border-gray-200 disabled:bg-gray-100 disabled:*:text-gray-300 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:before:border-0 dark:before:border-t dark:before:shadow-inner dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 disabled:dark:*:text-gray-700 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none dark:*:disabled:!text-white text-white border-gray-950 bg-gray-600 before:border-gray-600 before:from-gray-800 hover:bg-gray-900 active:bg-gray-950 dark:text-gray-950 dark:before:border-gray-200 dark:before:from-gray-200 dark:bg-white dark:before:shadow-white/10 dark:hover:bg-gray-100 dark:active:bg-gray-300 dark:active:before:from-gray-200 lg:text-sm lg:h-8 px-3 justify-center"
+                class="w-full h-9 lg:w-fit group flex items-center relative border rounded-full :select-none [&>:not(.sr-only)]:relative before:rounded-full before:absolute before:inset-0 before:border before:bg-gradient-to-b :disabled:opacity-20 disabled:text-gray-950/40 disabled:border-gray-200 disabled:bg-gray-100 disabled::text-gray-300 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:before:border-0 dark:before:border-t dark:before:shadow-inner dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 disabled:dark::text-gray-700 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none dark::disabled:!text-white text-white border-gray-950 bg-gray-600 before:border-gray-600 before:from-gray-800 hover:bg-gray-900 active:bg-gray-950 dark:text-gray-950 dark:before:border-gray-200 dark:before:from-gray-200 dark:bg-white dark:before:shadow-white/10 dark:hover:bg-gray-100 dark:active:bg-gray-300 dark:active:before:from-gray-200 lg:text-sm lg:h-8 px-3 justify-center"
               >
                 <span>Crear cuenta</span>
               </button>
@@ -194,6 +194,7 @@
                 class="p-1 rounded-3xl bg-gray-950/5 border dark:border-white/10 dark:bg-white/5"
               >
                 <a
+
                   href="/auth/register"
                   class="*:select-none dark:shadow-green-500/10 *:disabled:opacity-20 disabled:*:text-gray-300 disabled:dark:*:text-gray-700 dark:*:disabled:!text-white group relative z-[1] flex h-11 items-center justify-center gap-1.5 rounded-3xl border border-green-600 bg-green-500 px-4 text-base text-white shadow-md shadow-primary-200 before:absolute before:inset-0 before:rounded-3xl before:border before:border-primary-500 before:bg-gradient-to-b before:from-primary-600 hover:bg-green-600 active:bg-green-700 disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-950/40 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:bg-primary-600 dark:before:border-0 dark:before:border-t dark:before:border-primary-400 dark:before:shadow-inner dark:before:shadow-white/10 dark:hover:bg-primary-700 dark:active:bg-primary-800 dark:active:before:from-primary-700 dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none [&>*:not(.sr-only)]:relative"
                 >
@@ -233,73 +234,21 @@
                     class="bg-white shadow-xl shadow-gray-950/5 p-6 rounded-3xl dark:border-[#1a232a] dark:bg-[#10161b] relative border-[length:var(--border-width)] [--anchor:100] [--border-radius:calc(var(--radius)*1px)] [--border-width:calc(var(--border)*1px)] [--border:1] [--glow:60] [--hue:179] [--lightness:55%] dark:[--lightness:14%] [--opacity:1] [--radius:24] [--saturation:78%] dark:[--saturation:97%] [--speed:2]"
                   >
                     <div>
+                      
                       <svg
                         class="h-12 w-fit mx-auto dark:hidden"
                         xmlns="http://www.w3.org/2000/svg"
-                        width="512"
-                        height="209"
-                        viewBox="0 0 512 209"
-                        fill="none"
-                      >
-                        <g clip-path="url(#clip0_235_8)">
-                          <path
-                            d="M117.436 207.036V154.604L118.529 153.51H129.452L130.545 154.604V207.036L129.452 208.13H118.529L117.436 207.036Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M117.436 53.5225V1.09339L118.529 0H129.452L130.545 1.09339V53.5225L129.452 54.6159H118.529L117.436 53.5225Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M69.9539 169.238H68.4094L60.6869 161.512V159.967L78.7201 141.938L86.8976 141.942L87.9948 143.031V151.209L69.9539 169.238Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M69.9462 38.8917H68.4017L60.6792 46.6181V48.1626L78.7124 66.192L86.8899 66.1882L87.9871 65.0986V56.9212L69.9462 38.8917Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M1.09339 97.5104H75.3711L76.4645 98.6038V109.526L75.3711 110.62H1.09339L0 109.526V98.6038L1.09339 97.5104Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M440.999 97.5104H510.91L512.004 98.6038V109.526L510.91 110.62H436.633L435.539 109.526L439.905 98.6038L440.999 97.5104Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M212.056 108.727L210.963 109.821H177.079L175.986 110.914C175.986 113.101 178.173 119.657 186.916 119.657C190.196 119.657 193.472 118.564 194.566 116.377L195.659 115.284H208.776L209.869 116.377C208.776 122.934 203.313 132.774 186.916 132.774C168.336 132.774 159.589 119.657 159.589 104.357C159.589 89.0576 168.332 75.9408 185.822 75.9408C203.313 75.9408 212.056 89.0576 212.056 104.357V108.731V108.727ZM195.659 97.7971C195.659 96.7037 194.566 89.0538 185.822 89.0538C177.079 89.0538 175.986 96.7037 175.986 97.7971L177.079 98.8905H194.566L195.659 97.7971Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M242.66 115.284C242.66 117.47 243.753 118.564 245.94 118.564H255.776L256.87 119.657V130.587L255.776 131.681H245.94C236.103 131.681 227.36 127.307 227.36 115.284V91.2368L226.266 90.1434H218.617L217.523 89.05V78.1199L218.617 77.0265H226.266L227.36 75.9332V66.0965L228.453 65.0031H241.57L242.663 66.0965V75.9332L243.757 77.0265H255.78L256.874 78.1199V89.05L255.78 90.1434H243.757L242.663 91.2368V115.284H242.66Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M283.1 131.681H269.983L268.889 130.587V56.2636L269.983 55.1702H283.1L284.193 56.2636V130.587L283.1 131.681Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M312.61 68.2871H299.493L298.399 67.1937V56.2636L299.493 55.1702H312.61L313.703 56.2636V67.1937L312.61 68.2871ZM312.61 131.681H299.493L298.399 130.587V78.1237L299.493 77.0304H312.61L313.703 78.1237V130.587L312.61 131.681Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M363.98 56.2636V67.1937L362.886 68.2871H353.05C350.863 68.2871 349.769 69.3805 349.769 71.5672V75.9408L350.863 77.0342H361.793L362.886 78.1276V89.0576L361.793 90.151H350.863L349.769 91.2444V130.591L348.676 131.684H335.559L334.466 130.591V91.2444L333.372 90.151H325.723L324.629 89.0576V78.1276L325.723 77.0342H333.372L334.466 75.9408V71.5672C334.466 59.5438 343.209 55.1702 353.046 55.1702H362.882L363.976 56.2636H363.98Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M404.42 132.774C400.046 143.704 395.677 150.261 380.373 150.261H374.906L373.813 149.167V138.237L374.906 137.144H380.373C385.836 137.144 386.929 136.05 388.023 132.77V131.677L370.536 89.05V78.1199L371.63 77.0265H381.466L382.56 78.1199L395.677 115.284H396.77L409.887 78.1199L410.98 77.0265H420.817L421.91 78.1199V89.05L404.424 132.77L404.42 132.774Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M135.454 131.681L134.361 130.587L134.368 98.9172C134.368 93.4541 132.22 89.2182 125.625 89.0806C122.234 88.9926 118.354 89.0729 114.209 89.2488L113.59 89.8834L113.598 130.587L112.504 131.681H99.3913L98.2979 130.587V77.5388L99.3913 76.4454L128.901 76.1778C143.685 76.1778 149.668 86.3356 149.668 97.8009V130.587L148.575 131.681H135.454Z"
-                            fill="#014847"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_235_8">
-                            <rect width="512" height="208.126" fill="white" />
-                          </clipPath>
-                        </defs>
+                        width="1em"
+                        height="1em"
+                        viewBox="0 0 24 24"
+                        ><path
+                          fill="none"
+                          stroke="#000"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 6V2H8m0 16l-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Zm-6-6h2m5-1v2m6-2v2m5-1h2"
+                        />
                       </svg>
 
                       <svg
@@ -371,6 +320,26 @@
                   >
                     <div>
                       <div class="h-12 w-fit mx-auto">
+                        <svg
+                        class="h-12 my-auto w-fit dark:hidden"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="1em"
+                        height="1em"
+                        viewBox="0 0 14 14"
+                        ><g
+                          fill="none"
+                          stroke="#000"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          ><path
+                            d="M.576 6.733a6.538 6.538 0 0 1 1.164-.104c1.58 0 3.027.563 4.154 1.5"
+                          /><path
+                            d="M5.076 10.629h-3.5a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3.5"
+                          /><path
+                            d="M6.326 5.629a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m1.014 4.934c-.351-.061-.351-.565 0-.626a3.176 3.176 0 0 0 2.558-2.45l.021-.097c.076-.347.57-.349.649-.003l.026.113a3.193 3.193 0 0 0 2.565 2.435c.353.062.353.568 0 .63A3.192 3.192 0 0 0 10.594 13l-.026.113c-.079.346-.573.344-.649-.003l-.021-.097a3.176 3.176 0 0 0-2.558-2.45"
+                          /></g
+                        >
+                      </svg>
                         <svg
                           class="h-12 my-auto w-fit"
                           xmlns="http://www.w3.org/2000/svg"
@@ -878,43 +847,3 @@
   </style>
 </body>
 
-<style>
-  .shadow-xl {
-    box-shadow:
-      0 20px 25px -5px rgba(0, 0, 0, 0.1),
-      0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  }
-  .p-card-padding {
-    padding: var(--card-padding);
-  }
-  .rounded-card-border-radius {
-    border-radius: var(--card-border-radius);
-  }
-  .border-ui-light-border-color {
-    border-color: var(--ui-light-border-color);
-  }
-  .dark\:border-ui-dark-border-color {
-    border-color: var(--ui-dark-border-color);
-  }
-  .dark\:bg-card-dark-bg {
-    background-color: var(--card-dark-bg);
-  }
-  .border-length {
-    border-width: var(--border-width);
-  }
-  .dark\:text-[--lightness-14-percent] {
-    --tw-text-opacity: 1;
-    color: hsla(var(--hue), var(--saturation), 14%, var(--tw-text-opacity));
-  }
-  .text-opacity-1 {
-    --tw-text-opacity: 1;
-    opacity: var(--tw-text-opacity);
-  }
-  .rounded-[--radius] {
-    border-radius: var(--radius);
-  }
-  .dark\:text-[--saturation-97-percent] {
-    --tw-text-opacity: 1;
-    color: hsla(var(--hue), var(--saturation), 97%, var(--tw-text-opacity));
-  }
-</style>
