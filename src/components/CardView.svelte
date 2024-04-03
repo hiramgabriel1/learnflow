@@ -2,19 +2,32 @@
   import { onMount } from "svelte";
   import type { FlashcardInterface } from "../routes/types/flashcardTypes";
 
-  export let showModal:FlashcardInterface | null;
+  export let showModal: FlashcardInterface | null;
   export let currentFlashcard: FlashcardInterface;
 
   const colors = ["#fee4cb", "#e9e7fd", "#ffd3e2"];
   let randomColors = 0;
-  let progress = 0;
+  let progress = {
+    total: 0,
+    correct: 0,
+    incorrect: 0,
+    faltante: 0,
+  };
 
   const getProgress = () => {
     const length = currentFlashcard.response.length;
-    const resp = currentFlashcard.response.filter(
-      (u) => u.state !== "enable"
+    const respIncorrect = currentFlashcard.response.filter(
+      (u) => u.state === "incorrect"
     ).length;
-    progress = (resp * 100) / length;
+    const respCorrect = currentFlashcard.response.filter(
+      (u) => u.state === "correct"
+    ).length;
+    progress.correct = (respCorrect * 100) / length;
+    progress.incorrect = (respIncorrect * 100) / length;
+    progress.faltante = 100 - (progress.correct + progress.incorrect);
+    progress.total = length;
+
+    console.log(progress);
   };
   const getDateString = (date: string): string => {
     const newDate = new Date(date);
@@ -63,13 +76,32 @@
     </div>
     <div class="box-progress-wrapper">
       <p class="box-progress-header">Progreso</p>
-      <div class="box-progress-bar">
+      <div class="box-progress-bar flex flex[column_!important]">
         <span
           class="box-progress"
-          style="width: {progress.toFixed(4)}%; background-color: #ff942e"
+          style="width: {progress.correct.toFixed(
+            2
+          )}%; background-color: #60D910"
+        ></span>
+        <span
+          class="box-progress"
+          style="width: {progress.incorrect.toFixed(
+            2
+          )}%; background-color: #D93310"
+        ></span>
+        <span
+          class="box-progress"
+          style="width: {progress.faltante.toFixed(
+            2
+          )}%; background-color: #F8F8F8"
         ></span>
       </div>
-      <p class="box-progress-percentage">{progress.toFixed(2)}%</p>
+      <p class="box-progress-percentage">
+        {progress.correct.toFixed(2)}%
+      </p>
+      <p class="box-progress-percentage pt-2">
+        {(progress.correct * progress.total) / 100}/{progress.total}
+      </p>
     </div>
     <div class="project-box-footer">
       <div class="days-left" style="color: #ff942e;">

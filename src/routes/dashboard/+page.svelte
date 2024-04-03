@@ -57,9 +57,6 @@
     flashcards.update(
       () => JSON.parse(flashcardsGenerateString + "") as FlashcardInterface[]
     );
-    console.log(
-      JSON.parse(flashcardsGenerateString + "") as FlashcardInterface[]
-    );
   });
 
   const removeFlashcard = () => {
@@ -79,11 +76,18 @@
     <div class="projects-section-line">
       <div class="projects-status">
         <div class="item-status">
-          <span class="status-number">4</span>
+          <span class="status-number"
+            >{$flashcards.filter(
+              (u) =>
+                u.response.filter((un) => un.state === "correct").length !==
+                u.response.length
+            ).length}</span
+          >
+
           <span class="status-type">En progreso</span>
         </div>
         <div class="item-status">
-          <span class="status-number">62</span>
+          <span class="status-number">{$flashcards.length}</span>
           <span class="status-type">Temas totales</span>
         </div>
       </div>

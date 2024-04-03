@@ -11,9 +11,10 @@
   import LayoutInitial from "../../../components/LayoutInitial.svelte";
   import { goto } from "$app/navigation";
   import type { FlashcardInterface } from "../../types/flashcardTypes";
+  import { writable } from "svelte/store";
 
   let flashcardCurrent: FlashcardInterface | null = null;
-  let allFlashCards: FlashcardInterface[] | null = null;
+  let allFlashCards = writable<FlashcardInterface[]>([]);
 
   let totalConfigAnswers = {
     currentItem: 0,
@@ -79,8 +80,8 @@
         // var expresionRegular = /\[([^[\]]*)\]/;
         // var expresion = validateResponseVoiceWithAnswerAI;
 
-        allFlashCards =
-          allFlashCards?.map((obj) => {
+        allFlashCards.update(()=>
+          $allFlashCards?.map((obj) => {
             if (obj.response === flashcardCurrent?.response) {
               return {
                 ...flashcardCurrent,
@@ -96,9 +97,13 @@
               } as FlashcardInterface;
             }
             return obj;
-          }) || null;
-        console.log(allFlashCards);
-        localStorage.setItem("flashcardsGenerate", JSON.stringify(allFlashCards))
+          }) || null
+        )
+        flashcardCurrent = $allFlashCards[$allFlashCards.length - 1];
+
+
+        console.log($allFlashCards);
+        localStorage.setItem("flashcardsGenerate", JSON.stringify($allFlashCards))
 
 
         responseAI.consejos = rpra.consejos;
@@ -130,7 +135,7 @@
     const flashcardsGenerate = JSON.parse(
       flashcardsGenerateString
     ) as FlashcardInterface[];
-    allFlashCards = flashcardsGenerate;
+    allFlashCards.update(()=>flashcardsGenerate);
     flashcardCurrent = flashcardsGenerate[flashcardsGenerate.length - 1];
     totalConfigAnswers.totalCount = flashcardCurrent.response.length;
   });
