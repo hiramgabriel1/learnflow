@@ -18,6 +18,7 @@
   let flashcards = writable<FlashcardInterface[]>([]);
 
   // current date
+  // todo: modificar esto, usar dayJS
   let currentDate = new Date();
 
   // todo: Consume data api here
