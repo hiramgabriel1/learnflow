@@ -50,6 +50,7 @@
   }
 
   const validateInput = (e: Event) => {
+    //@ts-ignore
     let value = e.target.value;
 
     value < 1
