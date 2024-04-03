@@ -11,12 +11,14 @@
   import Cookies from "js-cookie";
   import { onMount } from "svelte";
   import { envDataConf } from "../server/server";
+  import toast, { Toaster } from "svelte-french-toast";
+  // import pomodoro from "$lib/public/assets/pomodoro.svg";
 
   const pathCurrent = $page.url.pathname;
-
+  
   onMount(() => {
     const cookie = Cookies.get("jwt") || "";
-    console.log(cookie);
+    // console.log(cookie);
     // console.log(jwt.decode(cookie));
   });
 
@@ -47,10 +49,19 @@
     }
   }
 
-  const createTimer = () => {
+  const validateInput = (e: Event) => {
+    let value = e.target.value;
+
+    value < 1
+      ? toast.error("No puedes ingresar valores menores a 1")
+      : console.log(value);
+  };
+
+  const handleCreateTimer = () => {
     console.log("timer");
   };
 </script>
+<Toaster/>
 
 <main class="app-container">
   <header class="app-header">
@@ -101,21 +112,36 @@
 
       <!-- poner un nuevo icon -->
       <button class="activate-pomodoro" on:click={() => (timer = true)}>
+        <!-- <img src={pomodoro} alt=""> -->
         <svg
-          class="btn-icon feather feather-plus"
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          class="icon icon-tabler icon-tabler-alarm-filled"
+          width="44"
+          height="44"
           viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#2c3e50"
           fill="none"
-          stroke="currentColor"
-          stroke-width="3"
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <line x1="12" y1="5" x2="12" y2="19" />
-          <line x1="5" y1="12" x2="19" y2="12" /></svg
-        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M16 6.072a8 8 0 1 1 -11.995 7.213l-.005 -.285l.005 -.285a8 8 0 0 1 11.995 -6.643zm-4 2.928a1 1 0 0 0 -1 1v3l.007 .117a1 1 0 0 0 .993 .883h2l.117 -.007a1 1 0 0 0 .883 -.993l-.007 -.117a1 1 0 0 0 -.993 -.883h-1v-2l-.007 -.117a1 1 0 0 0 -.993 -.883z"
+            stroke-width="0"
+            fill="currentColor"
+          />
+          <path
+            d="M6.412 3.191a1 1 0 0 1 1.273 1.539l-.097 .08l-2.75 2a1 1 0 0 1 -1.273 -1.54l.097 -.08l2.75 -2z"
+            stroke-width="0"
+            fill="currentColor"
+          />
+          <path
+            d="M16.191 3.412a1 1 0 0 1 1.291 -.288l.106 .067l2.75 2a1 1 0 0 1 -1.07 1.685l-.106 -.067l-2.75 -2a1 1 0 0 1 -.22 -1.397z"
+            stroke-width="0"
+            fill="currentColor"
+          />
+        </svg>
       </button>
 
       <a class="profile-btn" href="/profile">
@@ -235,48 +261,133 @@
 
 <!-- modal to create timer here -->
 {#if timer}
-  <div
-    class="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8"
-    role="alert"
-  >
-    <div class="flex items-center gap-4">
-      <span class="shrink-0 rounded-full bg-blue-400 p-2 text-white">
-        <svg
-          class="h-4 w-4"
-          fill="currentColor"
-          viewbox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
+  <!-- component -->
+  <div class="flex items-center justify-center h-screen">
+    <div>
+      <!-- Background overlay -->
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <!-- Modal -->
+      <div class="fixed z-10 inset-0 overflow-y-auto">
+        <div
+          class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
         >
-          <path
-            clip-rule="evenodd"
-            d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </span>
+          <!-- Modal panel -->
+          <div
+            class="w-full inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-headline"
+          >
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <!-- Modal content -->
+              <div class="sm:flex sm:items-start">
+                <div
+                  class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10"
+                >
+                  <!-- Icon for newsletter -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-hourglass"
+                    width="44"
+                    height="44"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="#2c3e50"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6.5 7h11" />
+                    <path d="M6.5 17h11" />
+                    <path
+                      d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"
+                    />
+                    <path
+                      d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"
+                >
+                  <h3
+                    class="text-lg leading-6 font-medium text-gray-900"
+                    id="modal-headline"
+                  >
+                    Añadir un pomodoro
+                  </h3>
+                  <div class="mt-2">
+                    <p class="text-sm text-gray-500">
+                      La técnica divide el trabajo en intervalos cortos de 25
+                      minutos, llamados "pomodoros", seguidos de pausas de 5
+                      minutos.
+                    </p>
+                    <!-- Email input -->
+                    <input
+                      type="number"
+                      class="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500"
+                      on:input={validateInput}
+                      max="30"
+                      min="1"
+                      placeholder="Ingresa el tiempo de estudio"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
+            >
+              <!-- Subscribe button -->
+              <button
+                type="button"
+                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                on:click={handleCreateTimer}
+              >
+                Añadir
+              </button>
 
-      <p class="font-medium sm:text-lg">New message!</p>
-    </div>
+              <!-- Cancel button -->
+              <button
+                type="button"
+                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                on:click={() => (timer = false)}
+              >
+                Cancelar
+              </button>
 
-    <p class="mt-4 text-gray-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ea quo unde
-      vel adipisci blanditiis voluptates eum. Nam, cum minima?
-    </p>
-
-    <div class="mt-6 sm:flex sm:gap-4">
-      <a
-        class="inline-block w-full rounded-lg bg-blue-500 px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto"
-        href="#"
-      >
-        Take a Look
-      </a>
-
-      <a
-        class="mt-2 inline-block w-full rounded-lg bg-gray-50 px-5 py-3 text-center text-sm font-semibold text-gray-500 sm:mt-0 sm:w-auto"
-        href="#"
-      >
-        Mark as Read
-      </a>
+              <!-- dude button -->
+              <!-- <button
+                type="button"
+                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                on:click={handleCreateTimer}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-question-mark"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#ffffff"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4"
+                  />
+                  <path d="M12 19l0 .01" />
+                </svg>
+              </button> -->
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 {/if}
