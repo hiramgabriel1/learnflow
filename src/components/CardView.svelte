@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import type { FlashcardInterface } from "../routes/types/flashcardTypes";
 
-  export let showModal;
+  export let showModal:FlashcardInterface | null;
   export let currentFlashcard: FlashcardInterface;
 
   const colors = ["#fee4cb", "#e9e7fd", "#ffd3e2"];
@@ -38,7 +38,7 @@
         <!-- ? options points -->
         <button
           class="project-btn-more text-center p-5 flex-auto justify-center"
-          on:click={() => (showModal = true)}
+          on:click={() => (showModal = currentFlashcard)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,10 +66,10 @@
       <div class="box-progress-bar">
         <span
           class="box-progress"
-          style="width: {progress}%; background-color: #ff942e"
+          style="width: {progress.toFixed(4)}%; background-color: #ff942e"
         ></span>
       </div>
-      <p class="box-progress-percentage">{progress}%</p>
+      <p class="box-progress-percentage">{progress.toFixed(2)}%</p>
     </div>
     <div class="project-box-footer">
       <div class="days-left" style="color: #ff942e;">
