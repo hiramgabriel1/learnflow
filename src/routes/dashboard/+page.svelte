@@ -1,17 +1,21 @@
-<script>
+<script lang="ts">
+  import { onMount } from "svelte";
+
   export let data;
 
   const { user } = data;
 
   import "../../app.css";
+  import CardView from "../../components/CardView.svelte";
   import LayoutInitial from "../../components/LayoutInitial.svelte";
   import "../../main.styles.css";
   import { envDataConf } from "../../server/server";
+  import { goto } from "$app/navigation";
+  import type { FlashcardInterface } from "../types/flashcardTypes";
+  import { writable } from "svelte/store";
 
-  /**
-   * @type {boolean}
-   */
-  let showModal;
+  let showModal: boolean;
+  let flashcards = writable<FlashcardInterface[]>([]);
 
   // current date
   let currentDate = new Date();
@@ -23,13 +27,10 @@
 
       if (logoutButton) {
         logoutButton.addEventListener("click", function () {
-          fetch(
-            `${envDataConf.URLBACK}/auth/logout`,
-            {
-              method: "POST",
-              credentials: "include",
-            }
-          )
+          fetch(`${envDataConf.URLBACK}/auth/logout`, {
+            method: "POST",
+            credentials: "include",
+          })
             .then((response) => {
               if (response.ok) {
                 console.log("Usuario ha cerrado sesión exitosamente");
@@ -49,6 +50,22 @@
       }
     });
   }
+
+  onMount(() => {
+    const flashcardsGenerateString = localStorage.getItem("flashcardsGenerate");
+
+    flashcards.update(
+      () => JSON.parse(flashcardsGenerateString + "") as FlashcardInterface[]
+    );
+    console.log(
+      JSON.parse(flashcardsGenerateString + "") as FlashcardInterface[]
+    );
+  });
+
+
+  flashcards.subscribe(value => {
+    console.log(value);
+  });
 </script>
 
 <LayoutInitial {user}>
@@ -92,182 +109,11 @@
       </div>
     </div>
     <div class="project-boxes jsGridView">
-      <div class="project-box-wrapper">
-        <div class="project-box" style="background-color: #fee4cb;">
-          <div class="project-box-header">
-            <span>{currentDate.toLocaleDateString()}</span>
-            <div class="more-wrapper">
-              <!-- ? options points -->
-              <button
-                class="project-btn-more text-center p-5 flex-auto justify-center"
-                on:click={() => (showModal = true)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6 flex items-center text-red-500 mx-auto"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="project-box-content-header">
-            <p class="box-content-header">Web Designing</p>
-            <p class="box-content-subheader">Prototyping</p>
-          </div>
-          <div class="box-progress-wrapper">
-            <p class="box-progress-header">Progreso</p>
-            <div class="box-progress-bar">
-              <span
-                class="box-progress"
-                style="width: 60%; background-color: #ff942e"
-              ></span>
-            </div>
-            <p class="box-progress-percentage">60%</p>
-          </div>
-          <div class="project-box-footer">
-            <div class="days-left" style="color: #ff942e;">Hace 2 dias</div>
-          </div>
-        </div>
-      </div>
-      <div class="project-box-wrapper">
-        <div class="project-box" style="background-color: #e9e7fd;">
-          <div class="project-box-header">
-            <span>December 10, 2020</span>
-            <div class="more-wrapper">
-              <!-- ? options points -->
-              <button
-                class="project-btn-more text-center p-5 flex-auto justify-center"
-                on:click={() => (showModal = true)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6 flex items-center text-red-500 mx-auto"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="project-box-content-header">
-            <p class="box-content-header">Testing</p>
-            <p class="box-content-subheader">Prototyping</p>
-          </div>
-          <div class="box-progress-wrapper">
-            <p class="box-progress-header">Progreso</p>
-            <div class="box-progress-bar">
-              <span
-                class="box-progress"
-                style="width: 50%; background-color: #4f3ff0"
-              ></span>
-            </div>
-            <p class="box-progress-percentage">50%</p>
-          </div>
-          <div class="project-box-footer">
-            <div class="days-left" style="color: #4f3ff0;">Hace 3 dias</div>
-          </div>
-        </div>
-      </div>
-      <div class="project-box-wrapper">
-        <div class="project-box">
-          <div class="project-box-header">
-            <span>December 10, 2020</span>
-            <div class="more-wrapper">
-              <!-- ? options points -->
-              <button
-                class="project-btn-more text-center p-5 flex-auto justify-center"
-                on:click={() => (showModal = true)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6 flex items-center text-red-500 mx-auto"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="project-box-content-header">
-            <p class="box-content-header">Svg Animations</p>
-            <p class="box-content-subheader">Prototyping</p>
-          </div>
-          <div class="box-progress-wrapper">
-            <p class="box-progress-header">Progreso</p>
-            <div class="box-progress-bar">
-              <span
-                class="box-progress"
-                style="width: 80%; background-color: #096c86"
-              ></span>
-            </div>
-            <p class="box-progress-percentage">80%</p>
-          </div>
-          <div class="project-box-footer">
-            <div class="days-left" style="color: #096c86;">Hace 3 dias</div>
-          </div>
-        </div>
-      </div>
-      <div class="project-box-wrapper">
-        <div class="project-box" style="background-color: #ffd3e2;">
-          <div class="project-box-header">
-            <span>December 10, 2020</span>
-            <div class="more-wrapper">
-              <!-- ? options points -->
-              <button
-                class="project-btn-more text-center p-5 flex-auto justify-center"
-                on:click={() => (showModal = true)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6 flex items-center text-red-500 mx-auto"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="project-box-content-header">
-            <p class="box-content-header">UI Development</p>
-            <p class="box-content-subheader">Prototyping</p>
-          </div>
-          <div class="box-progress-wrapper">
-            <p class="box-progress-header">Progreso</p>
-            <div class="box-progress-bar">
-              <span
-                class="box-progress"
-                style="width: 20%; background-color: #df3670"
-              ></span>
-            </div>
-            <p class="box-progress-percentage">20%</p>
-          </div>
-          <div class="project-box-footer">
-            <div class="days-left" style="color: #df3670;">Hace 3 dias</div>
-          </div>
-        </div>
-      </div>
+      {#if $flashcards}
+        {#each $flashcards as flashcard}
+          <CardView bind:showModal currentFlashcard={flashcard} />
+        {/each}
+      {/if}
     </div>
   </div>
 </LayoutInitial>

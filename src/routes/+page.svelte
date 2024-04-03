@@ -107,6 +107,8 @@
                     <span>Creadores</span>
                   </a>
                 </li>
+
+                <!-- ! NO ELIMINAR -->
                 <!-- <li>
                   <a
                     href="/"
@@ -147,12 +149,12 @@
             class="text-center sm:mx-auto sm:w-10/12 lg:mr-auto lg:mt-0 lg:w-4/5"
           >
             <a
-              href="https://beta.tailus.io/demo"
+              href="/auth/login"
               class="border w-fit mx-auto flex justify-between items-center transition duration-200 rounded-full border-white hover:border-[--ui-light-border-hover-color] dark:border-[--ui-dark-border-color] dark:hover:border-[--ui-dark-border-hover-color] p-1 group gap-2"
             >
               <span
                 class="block text-sm px-2 py-0.5 rounded-full text-white bg-green-600"
-                >New</span
+                >Nuevo</span
               >
               <span
                 class="text-sm font-medium text-gray-700 dark:text-gray-300 flex gap-6"
@@ -187,19 +189,14 @@
             >
               Convierte tu curiosidad <br class="hidden sm:block" /> en conocimiento.
             </h1>
-            <p
-              class="text-wrap mx-auto mt-8 max-w-2xl text-lg text-gray-700 dark:text-gray-300 hidden sm:block"
-            >
-              The world's leading Ai Learnflow
-            </p>
-
             <div class="mt-8 flex flex-col items-center justify-center gap-4">
               <div
                 class="p-1 rounded-3xl bg-gray-950/5 border dark:border-white/10 dark:bg-white/5"
               >
                 <a
-                  href="/"
-                  class=":select-none dark:shadow-green-500/10 *:disabled:opacity-20 disabled::text-gray-300 disabled:dark::text-gray-700 dark::disabled:!text-white group relative z-[1] flex h-11 items-center justify-center gap-1.5 rounded-3xl border border-green-600 bg-green-500 px-4 text-base text-white shadow-md shadow-primary-200 before:absolute before:inset-0 before:rounded-3xl before:border before:border-primary-500 before:bg-gradient-to-b before:from-primary-600 hover:bg-green-600 active:bg-green-700 disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-950/40 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:bg-primary-600 dark:before:border-0 dark:before:border-t dark:before:border-primary-400 dark:before:shadow-inner dark:before:shadow-white/10 dark:hover:bg-primary-700 dark:active:bg-primary-800 dark:active:before:from-primary-700 dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none [&>*:not(.sr-only)]:relative"
+
+                  href="/auth/register"
+                  class="*:select-none dark:shadow-green-500/10 *:disabled:opacity-20 disabled:*:text-gray-300 disabled:dark:*:text-gray-700 dark:*:disabled:!text-white group relative z-[1] flex h-11 items-center justify-center gap-1.5 rounded-3xl border border-green-600 bg-green-500 px-4 text-base text-white shadow-md shadow-primary-200 before:absolute before:inset-0 before:rounded-3xl before:border before:border-primary-500 before:bg-gradient-to-b before:from-primary-600 hover:bg-green-600 active:bg-green-700 disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-950/40 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:bg-primary-600 dark:before:border-0 dark:before:border-t dark:before:border-primary-400 dark:before:shadow-inner dark:before:shadow-white/10 dark:hover:bg-primary-700 dark:active:bg-primary-800 dark:active:before:from-primary-700 dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none [&>*:not(.sr-only)]:relative"
                 >
                   <svg
                     class="size-5 relative"
@@ -665,7 +662,7 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                  Jafett Bergas
+                  Jafett Beaz
                 </h3>
                 <span>Frontend Developer</span>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">

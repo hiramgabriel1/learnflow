@@ -8,6 +8,10 @@
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../server/server";
   import LayoutInitial from "../../components/LayoutInitial.svelte";
+  import type {
+    FlashcardInterface,
+    ResponseFlashcardInterface,
+  } from "../types/flashcardTypes";
 
   let currentDate = new Date();
   let disabled: boolean;
@@ -58,8 +62,8 @@
       );
 
       console.log(Number(formData.numberCards));
-      
-      const api = `${envDataConf.URLBACK}/flashcard/generate-ai`
+
+      const api = `${envDataConf.URLBACK}/flashcard/generate-ai`;
 
       const sendData = await fetch(api, {
         method: "POST",
@@ -75,14 +79,37 @@
       }
 
       let responseApi = await sendData.json();
-      const { question, response } = responseApi;
+      const { question, response } = responseApi as {
+        question: string;
+        response: string;
+      };
 
       console.log(responseApi);
       console.log(question);
-      console.log(response);
+
+      const resposeFormatter = JSON.parse(
+        response.substring(response.indexOf("["), response.lastIndexOf("]") + 1)
+      ) as ResponseFlashcardInterface[];
+
+      const questionFormatter = {
+        question: question,
+        created: (new Date()).toDateString(),
+        response: resposeFormatter,
+      } as FlashcardInterface;
+      questionFormatter.response.forEach((resp) => {
+        resp.state = "enable";
+      });
+
+      const getQuestionFormatter = (JSON.parse(
+        localStorage.getItem("flashcardsGenerate") || "[]"
+      )) as FlashcardInterface[];
       //Almacenar los valores en el localStorage
-      localStorage.setItem("question", question);
-      localStorage.setItem("response", response.toString());
+      // localStorage.setItem("question", question);
+      // localStorage.setItem("response", response.toString());
+      localStorage.setItem(
+        "flashcardsGenerate",
+        JSON.stringify([...getQuestionFormatter, questionFormatter])
+      );
 
       toast.dismiss(thinkingToast);
 
@@ -103,7 +130,7 @@
 
 <Toaster />
 
-<LayoutInitial user={user}>
+<LayoutInitial {user}>
   <!-- todo: menu index -->
   <div class="projects-section">
     <div class="projects-section-header">
