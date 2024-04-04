@@ -133,8 +133,8 @@
     <!-- index todo -->
     <div class="max-w-7xl mx-auto py-12 px-4">
       <form on:submit|preventDefault={generateImage}>
-        <h1 class="text-4xl font-bold mb-4">Genera una imagen con AI</h1>
-        <p class="mb-6">
+        <h1 class="text-4xl font-bold mb-4 text-white">Genera una imagen con AI</h1>
+        <p class="mb-6 text-white">
           Introduce una breve descripción y generaremos una imagen para ti. <br
           />
         </p>
@@ -146,7 +146,7 @@
           required
         />
         <div class="flex gap-3 items-center mb-4 justify-end">
-          <span class="font-semibold">Tipo: </span>
+          <span class="font-semibold text-white">Tipo: </span>
           <select
             name=""
             id=""
@@ -160,7 +160,7 @@
         </div>
         {#if !disabled}
           <button
-            class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 w-full bg-blue-600 text-white py-2 rounded-md"
+            class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-green-700 h-10 px-4 w-full bg-green-600 text-white py-2 rounded-md"
           >
             Generar imágen
           </button>
@@ -176,7 +176,7 @@
       </form>
       <section class="mt-10 pb-10">
         <!-- content here -->
-        <h2 class="text-2xl font-bold mb-4">Recientes</h2>
+        <h2 class="text-2xl font-bold mb-4 text-white">Recientes</h2>
         <div class="grid grid-cols-3 gap-4 gap-y-10">
           {#each $listImages as image}
             <div class="flex flex-col items-center gap-2">
