@@ -36,6 +36,15 @@
       } else if (saveUser.ok) {
         toast.success("registrado éxitosamente");
 
+        formData = {
+          username: "",
+          lastName: "",
+          userEmail: "",
+          isStudent: false,
+          reasonsToUseApp: "",
+          password: "",
+        };
+
         setTimeout(() => {
           window.location.href = "/dashboard";
         }, 2000);
@@ -82,24 +91,38 @@
 
 <Toaster />
 
-<div class="max-w-screen m-0 shadow  flex justify-center bg-background">
+<div class="max-w-screen shadow flex justify-center bg-background">
   <!-- Contenedor de la imagen (visible en dispositivos de pantalla grande) -->
-  <div class="hidden lg:block lg:w-1/2 bg-green-100 ">
-    <div class="bg-contain bg-center bg-no-repeat h-screen w-full " style="background-image: url('/src/lib/public/assets/img-register.svg');"></div>
+  <div class="hidden lg:flex lg:w-1/2 relative justify-center">
+    <div class="fixed mt-12">
+      /
+      <img src="/src/lib/public/assets/img-register.jpg" alt="image-register" />
+    </div>
   </div>
 
   <!-- Contenedor del formulario -->
-  <div class="lg:w-1/2 p-6 sm:p-10">
+  <div class="lg:w-1/2 p-6 sm:p-12 z-10">
     <div>
-      <h1 class="text-2xl xl:text-3xl font-extrabold text-center text-secondary">Learnflow AI</h1>
+      <h1
+        class="text-2xl xl:text-4xl font-extrabold text-center text-secondary"
+      >
+        Learnflow AI
+      </h1>
     </div>
     <div class="mt-5 flex flex-col items-center">
-      <h4 class="text-lg lg:text-xl font-semibold text-center text-secondary">¡Bienvenido a Learnflow AI! Crea una cuenta y comienza la magia.</h4>
+      <h4
+        class="text-lg lg:text-xl font-semibold text-center text-secondary max-w-md"
+      >
+        ¡Bienvenido a Learnflow AI! Crea una cuenta y comienza la magia.
+      </h4>
 
       <div class="w-full flex-1 mt-8">
         <div class="flex flex-col items-center">
           <!-- Botones de registro con Google y GitHub -->
-          <button on:click={handleAuthGoogle} class="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-secondary border-2 border-primary text-gray-800 flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-xl focus:shadow-outline">
+          <button
+            on:click={handleAuthGoogle}
+            class="w-full max-w-md font-bold shadow-sm rounded-full py-3 border border-primary text-secondary flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-xl focus:shadow-outline"
+          >
             <div class="bg-white p-2 rounded-full">
               <svg class="w-4" viewBox="0 0 533.5 544.3">
                 <path
@@ -123,7 +146,10 @@
             <span class="ml-4">Registrarse con Google</span>
           </button>
 
-          <button on:click={handleAuthGithub} class="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-secondary border-2 border-primary text-gray-800 flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-sm focus:shadow-outline mt-5">
+          <button
+            on:click={handleAuthGithub}
+            class="w-full max-w-md font-bold shadow-sm rounded-full py-3 text-secondary border border-primary flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-sm focus:shadow-outline mt-5"
+          >
             <div class="bg-white p-1 rounded-full">
               <svg class="w-6" viewBox="0 0 32 32">
                 <path
@@ -131,64 +157,69 @@
                   d="M16 4C9.371 4 4 9.371 4 16c0 5.3 3.438 9.8 8.207 11.387.602.11.82-.258.82-.578 0-.286-.011-1.04-.015-2.04-3.34.723-4.043-1.609-4.043-1.609-.547-1.387-1.332-1.758-1.332-1.758-1.09-.742.082-.726.082-.726 1.203.086 1.836 1.234 1.836 1.234 1.07 1.836 2.808 1.305 3.492 1 .11-.777.422-1.305.762-1.605-2.664-.301-5.465-1.332-5.465-5.93 0-1.313.469-2.383 1.234-3.223-.121-.3-.535-1.523.117-3.175 0 0 1.008-.32 3.301 1.23A11.487 11.487 0 0116 9.805c1.02.004 2.047.136 3.004.402 2.293-1.55 3.297-1.23 3.297-1.23.656 1.652.246 2.875.12 3.175.77.84 1.231 1.91 1.231 3.223 0 4.61-2.804 5.621-5.476 5.922.43.367.812 1.101.812 2.219 0 1.605-.011 2.898-.011 3.293 0 .32.214.695.824.578C24.566 25.797 28 21.3 28 16c0-6.629-5.371-12-12-12z"
                 />
               </svg>
-
             </div>
             <span class="ml-4">Registrarse con GitHub</span>
           </button>
         </div>
 
-        <div class="my-8 border-b text-center">
-          <div class="leading-none px-2 inline-block text-sm tracking-wide font-medium bg-background text-secondary transform translate-y-1/2">
-            O Regístrate con un correo electrónico
+        <div class="my-8 border-b text-center max-w-md mx-auto">
+          <div
+            class="leading-none px-2 inline-block text-sm tracking-wide font-medium bg-background text-secondary transform translate-y-1/2"
+          >
+            O
           </div>
         </div>
-        
+
         <!-- Formulario de registro -->
         <form on:submit|preventDefault={formHandler} class="space-y-6">
-          <div class="flex flex-col gap-3 mx-auto max-w-xs">
+          <div class="flex flex-col gap-3 mx-auto max-w-md">
+            <label class="text-secondary text-sm" for="">Nombre</label>
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary 0 bg-transparent"
               placeholder="Introduce tu nombre"
               bind:value={formData.username}
               required
               minlength="4"
             />
+            <label class="text-secondary text-sm" for="">Apellido</label>
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
               placeholder="Introduce tu apellido"
               bind:value={formData.lastName}
               required
               minlength="5"
             />
+            <label class="text-secondary text-sm" for=""
+              >Razones por las que quieres usar la App</label
+            >
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-              placeholder=" ¿Porque quieres usar nuestro software?"
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
+              placeholder="Cuentanos porque quieres usar nuestro software"
               minlength="10"
               required
               bind:value={formData.reasonsToUseApp}
             />
+            <label class="text-secondary text-sm" for=""
+              >Correo electrónico</label
+            >
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
               type="email"
               placeholder="example@xyz.com"
               bind:value={formData.userEmail}
               required
             />
-            <button type="reset" class="w-full text-end">
-              <span class="text-[12px] tracking-wide text-secondary underline hover:text-primary"
-                >Olvidé mi contraseña
-              </span>
-            </button>
+            <label class="text-secondary text-sm" for="">Contraseña</label>
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
               type="password"
               placeholder="*********"
               bind:value={formData.password}
               required
             />
-           
+
             <button
-              class="mt-5 mb-10 tracking-wide font-semibold bg-primary text-gray-100 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+              class="mt-5 mb-10 xl:max-w-sm xl:mx-auto tracking-wide font-semibold bg-primary text-gray-100 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
             >
               <svg
                 class="w-6 h-6 -ml-2"
@@ -205,21 +236,18 @@
               <span class="ml-3"> Crear cuenta </span>
             </button>
           </div>
-          <div class="flex flex-col  w-full items-center ">
-            <a href="/auth/login" type="reset" class="w-max ">
-              <span class="text-sm tracking-wide text-secondary hover:text-primary"
-                >Ya tengo una cuenta</span
+          <div class="flex w-full items-center justify-center gap-1">
+            <span class="text-sm text-secondary">¿Ya tienes una cuenta?</span>
+            <a href="/auth/login" type="reset" class="w-max">
+              <span
+                class="text-md tracking-wide text-secondary hover:text-primary underline"
+              >
+                Inicia sesión aqui</span
               >
             </a>
-           
           </div>
-
-
         </form>
       </div>
     </div>
   </div>
 </div>
-
-
-
