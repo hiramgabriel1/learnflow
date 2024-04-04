@@ -36,6 +36,15 @@
       } else if (saveUser.ok) {
         toast.success("registrado éxitosamente");
 
+        formData = {
+          username: "",
+          lastName: "",
+          userEmail: "",
+          isStudent: false,
+          reasonsToUseApp: "",
+          password: "",
+        };
+
         setTimeout(() => {
           window.location.href = "/dashboard";
         }, 2000);
@@ -166,7 +175,7 @@
           <div class="flex flex-col gap-3 mx-auto max-w-md">
             <label class="text-secondary text-sm" for="">Nombre</label>
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium border border-gray-200 placeholder-gray-400 text-sm focus:outline-primary 0 bg-transparent "
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary 0 bg-transparent"
               placeholder="Introduce tu nombre"
               bind:value={formData.username}
               required
@@ -174,23 +183,27 @@
             />
             <label class="text-secondary text-sm" for="">Apellido</label>
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium border border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
               placeholder="Introduce tu apellido"
               bind:value={formData.lastName}
               required
               minlength="5"
             />
-            <label class="text-secondary text-sm" for="">Razones por las que quieres usar la App</label>
+            <label class="text-secondary text-sm" for=""
+              >Razones por las que quieres usar la App</label
+            >
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium border border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
               placeholder="Cuentanos porque quieres usar nuestro software"
               minlength="10"
               required
               bind:value={formData.reasonsToUseApp}
             />
-            <label class="text-secondary text-sm" for="">Correo electrónico</label>
+            <label class="text-secondary text-sm" for=""
+              >Correo electrónico</label
+            >
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium border border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
               type="email"
               placeholder="example@xyz.com"
               bind:value={formData.userEmail}
@@ -198,7 +211,7 @@
             />
             <label class="text-secondary text-sm" for="">Contraseña</label>
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium border border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
+              class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
               type="password"
               placeholder="*********"
               bind:value={formData.password}
