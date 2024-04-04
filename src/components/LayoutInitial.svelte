@@ -12,12 +12,21 @@
   import { onMount } from "svelte";
   import { envDataConf } from "../server/server";
   import toast, { Toaster } from "svelte-french-toast";
+  import alarm from "$lib/public/assets/alarm.mp3";
+  // import { JsonWebTokenError } from "jsonwebtoken";
   // import pomodoro from "$lib/public/assets/pomodoro.svg";
 
   import './style.css'
 
   const pathCurrent = $page.url.pathname;
-  
+
+  let inputValue = 1;
+  let miliSeconds = 0;
+  let currentTimeAlarm: Number;
+  let interval: Number | any;
+  let showModalStopAlarm: Boolean;
+  let value: any;
+
   onMount(() => {
     const cookie = Cookies.get("jwt") || "";
     // console.log(cookie);
@@ -53,15 +62,39 @@
 
   const validateInput = (e: Event) => {
     //@ts-ignore
-    let value = e.target.value;
+    value = e.target.value;
 
-    value < 1
-      ? toast.error("No puedes ingresar valores menores a 1")
-      : console.log(value);
+    if (value < 1 || typeof value === "string")
+      toast.error("No puedes ingresar valores menores a 1");
   };
 
   const handleCreateTimer = () => {
-    console.log("timer");
+    timer = false;
+
+    if (interval) {
+      clearInterval(interval); // Limpiar temporizador existente si lo hay
+    }
+
+    miliSeconds = inputValue * 60000;
+
+    interval = setInterval(() => {
+      miliSeconds -= 1000;
+      console.log("El timer restante es de: " + miliSeconds / 1000);
+
+      if (miliSeconds <= 0) {
+        const audio = new Audio(alarm);
+
+        audio.play();
+
+        currentTimeAlarm = audio.currentTime = 0;
+        showModalStopAlarm = true;
+
+        clearInterval(interval); // Limpiar temporizador cuando termine
+        setTimeout(() => {
+          audio.pause();
+        }, 10000); // 10 seconds
+      }
+    }, 1000);
   };
 
   let hoverDashboard = false;
@@ -71,15 +104,11 @@
   let hoverAjuste = false;
   let hoverSalir = false;
 
-  let currentSection = '';
-
-function setCurrentSection(section: string) {
-    currentSection = section;
-}
 
 
 </script>
-<Toaster/>
+
+<Toaster />
 
 <main class="app-container">
   <header class="app-header">
@@ -181,12 +210,22 @@ function setCurrentSection(section: string) {
 
           <a
             href="/dashboard"
-            class="app-sidebar-link {currentSection === 'dashboard' ? 'dashboard-active' : ''}"
+            class={`app-sidebar-link ${pathCurrent.includes("/dashboard") && "active text-slate-50"}`}
             title="dashboard"
-            on:mouseenter={() => setCurrentSection('dashboard')}
-            on:mouseleave={() => setCurrentSection('')}
-            
-            
+            on:mouseenter="{() => hoverDashboard = true}"
+            on:mouseleave="{() => hoverDashboard = false}"
+            style="
+            display: flex;
+            gap: 10px;
+            width: 9em;
+            height: 3em;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #16a34a;
+            justify-content: space-around;
+            background-color: {hoverDashboard ? '#1a4b2c' : '#16a34a'};
+            transition: background-color 0.3s;
+            "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -434,23 +473,131 @@ function setCurrentSection(section: string) {
                     class="text-lg leading-6 font-medium text-gray-900"
                     id="modal-headline"
                   >
-                    Añadir un pomodoro
+                    Añadir un temporizador
                   </h3>
-                  <div class="mt-2">
+                  <form
+                    on:submit|preventDefault={handleCreateTimer}
+                    class="mt-2"
+                  >
                     <p class="text-sm text-gray-500">
-                      La técnica divide el trabajo en intervalos cortos de 25
-                      minutos, llamados "pomodoros", seguidos de pausas de 5
-                      minutos.
+                      <!-- ! modificar éste texto -->
+                      La técnica divide el trabajo en intervalos cortos de 25 minutos,
+                      llamados "pomodoros", seguidos de pausas de 5 minutos.
                     </p>
-                    <!-- Email input -->
                     <input
                       type="number"
                       class="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500"
                       on:input={validateInput}
+                      bind:value={inputValue}
                       max="30"
                       min="1"
                       placeholder="Ingresa el tiempo de estudio"
                     />
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
+            >
+              <!-- Subscribe button -->
+              {#if value < 1}
+                <button
+                  type="button"
+                  disabled
+                  class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-500 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                >
+                  Añadir
+                </button>
+              {:else}
+                <button
+                  type="button"
+                  class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  on:click={handleCreateTimer}
+                >
+                  Añadir
+                </button>
+              {/if}
+
+              <!-- Cancel button -->
+              <button
+                type="button"
+                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                on:click={() => (timer = false)}
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{/if}
+{#if showModalStopAlarm}
+  <!-- component -->
+  <div class="flex items-center justify-center h-screen">
+    <div>
+      <!-- Background overlay -->
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <!-- Modal -->
+      <div class="fixed z-10 inset-0 overflow-y-auto">
+        <div
+          class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+        >
+          <!-- Modal panel -->
+          <div
+            class="w-full inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-headline"
+          >
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <!-- Modal content -->
+              <div class="sm:flex sm:items-start">
+                <div
+                  class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10"
+                >
+                  <!-- Icon for newsletter -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-hourglass"
+                    width="44"
+                    height="44"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="#2c3e50"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6.5 7h11" />
+                    <path d="M6.5 17h11" />
+                    <path
+                      d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"
+                    />
+                    <path
+                      d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"
+                >
+                  <h3
+                    class="text-lg leading-6 font-medium text-gray-900"
+                    id="modal-headline"
+                  >
+                    Añadir un pomodoro
+                  </h3>
+                  <div class="mt-2">
+                    <p class="text-sm text-gray-500">
+                      <!-- ! modificar éste texto -->
+                      Puedes aplazar el tiempo si deseas
+                    </p>
                   </div>
                 </div>
               </div>
@@ -462,45 +609,19 @@ function setCurrentSection(section: string) {
               <button
                 type="button"
                 class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                on:click={handleCreateTimer}
+                on:click={() => ((timer = true), (showModalStopAlarm = false))}
               >
-                Añadir
+                Aplazar
               </button>
 
               <!-- Cancel button -->
               <button
                 type="button"
                 class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                on:click={() => (timer = false)}
+                on:click={() => (showModalStopAlarm = false)}
               >
                 Cancelar
               </button>
-
-              <!-- dude button -->
-              <!-- <button
-                type="button"
-                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                on:click={handleCreateTimer}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-question-mark"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="#ffffff"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path
-                    d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4"
-                  />
-                  <path d="M12 19l0 .01" />
-                </svg>
-              </button> -->
             </div>
           </div>
         </div>
