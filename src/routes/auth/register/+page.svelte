@@ -82,14 +82,16 @@
 
 <Toaster />
 
-<div class="max-w-screen m-0 shadow  flex justify-center bg-background">
+<div class="max-w-screen  shadow  flex justify-center bg-background">
   <!-- Contenedor de la imagen (visible en dispositivos de pantalla grande) -->
-  <div class="hidden lg:block lg:w-1/2 bg-green-100 ">
-    <div class="bg-contain bg-center bg-no-repeat h-screen w-full " style="background-image: url('/src/lib/public/assets/img-register.svg');"></div>
+  <div class="hidden lg:flex lg:w-1/2 relative justify-center mt-12  ">
+    <div class="fixed w-1/2">/
+      <img src="/src/lib/public/assets/img-register.jpg" alt="image-register">
+    </div>
   </div>
 
   <!-- Contenedor del formulario -->
-  <div class="lg:w-1/2 p-6 sm:p-10">
+  <div class="lg:w-1/2 p-6 sm:p-12 z-10">
     <div>
       <h1 class="text-2xl xl:text-3xl font-extrabold text-center text-secondary">Learnflow AI</h1>
     </div>
@@ -147,28 +149,28 @@
         <form on:submit|preventDefault={formHandler} class="space-y-6">
           <div class="flex flex-col gap-3 mx-auto max-w-xs">
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-primary focus:border-gray-400 focus:bg-white mt-5"
               placeholder="Introduce tu nombre"
               bind:value={formData.username}
               required
               minlength="4"
             />
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm  focus:outline-primary focus:border-gray-400 focus:bg-white"
               placeholder="Introduce tu apellido"
               bind:value={formData.lastName}
               required
               minlength="5"
             />
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm  focus:outline-primary focus:border-gray-400 focus:bg-white"
               placeholder=" ¿Porque quieres usar nuestro software?"
               minlength="10"
               required
               bind:value={formData.reasonsToUseApp}
             />
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm  focus:outline-primary focus:border-gray-400 focus:bg-white"
               type="email"
               placeholder="example@xyz.com"
               bind:value={formData.userEmail}
@@ -180,7 +182,7 @@
               </span>
             </button>
             <input
-              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+              class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm  focus:outline-primary focus:border-gray-400 focus:bg-white"
               type="password"
               placeholder="*********"
               bind:value={formData.password}
