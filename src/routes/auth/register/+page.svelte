@@ -93,10 +93,10 @@
 
 <div class="max-w-screen shadow flex justify-center bg-background">
   <!-- Contenedor de la imagen (visible en dispositivos de pantalla grande) -->
-  <div class="hidden lg:flex lg:w-1/2 relative justify-center bg-green-100">
+  <div class="hidden lg:flex lg:w-1/2 relative justify-center">
     <div class="fixed mt-12">
       /
-      <img src="/src/lib/public/assets/img-register.png" alt="image-register" />
+      <img src="/src/lib/public/assets/img-register.jpg" alt="image-register" />
     </div>
   </div>
 
