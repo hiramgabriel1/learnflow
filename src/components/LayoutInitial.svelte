@@ -82,7 +82,7 @@
 
       if (miliSeconds <= 0) {
         const audio = new Audio(alarm);
-
+ 
         audio.play();
 
         currentTimeAlarm = audio.currentTime = 0;
@@ -102,8 +102,6 @@
   let hoverGenerador = false;
   let hoverAjuste = false;
   let hoverSalir = false;
-
-
 
 </script>
 
