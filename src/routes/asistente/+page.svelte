@@ -118,8 +118,8 @@
 
     <!-- todo: assistant code -->
     <div class="w-9/12 mx-auto p-8">
-      <h1 class="text-4xl font-extrabold mb-1">MarcyAI</h1>
-      <p class="text-lg text-gray-600 mb-6">AI Assistant for Students</p>
+      <h1 class="text-4xl font-extrabold mb-1 text-white">MarcyAI</h1>
+      <p class="text-lg text-white mb-6">AI Assistant for Students</p>
       <div class="flex items-center mb-10">
         <span
           class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
@@ -129,22 +129,22 @@
             src="https://imgs.search.brave.com/RK4eSupiqRKVzr36sUJ3xjc5x3KMrwE5cvDdcdLOkaU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9oYXBw/eS1wZXJzb24tcG9y/dHJhaXQtc21pbGlu/Zy13b21hbi10YW5u/ZWQtc2tpbi1jdXJs/eS1oYWlyLWhhcHB5/LXBlcnNvbi1wb3J0/cmFpdC1zbWlsaW5n/LXlvdW5nLWZyaWVu/ZGx5LXdvbWFuLTE5/NzUwMTE4NC5qcGc"
           /></span
         >
-        <p class="ml-4 flex-1">
+        <p class="ml-4 flex-1 text-white">
           Hola! Me dicen Marcy. ¿Cómo puedo ayudarte hoy?
         </p>
       </div>
       <form
-        class="flex items-center bg-gray-100 p-4 rounded-lg mb-6"
+        class="flex items-center bg-[#1f2937] p-4 rounded-lg mb-6"
         on:submit|preventDefault={sendQuestionToMarcyAI}
       >
         <input
-          class="flex h-10 w-full rounded-md border border-input  px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
+          class="flex h-10 w-full rounded-md border border-input bg-[#090d0f] border-none text-white  px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
           placeholder="Comenzar una conversación con MarcyAI..."
           bind:value={formData.question}
         />
 
         <button
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-green-600 text-primary-foreground hover:bg-green-700 h-10 px-4 py-2"
           style="color: white; width: 100px"
           disabled={sending}
         >
@@ -156,24 +156,24 @@
         {#if marcyIsResponse}
           <p><b>MarcyAI:</b> {responseMarcyAI.response}</p>
         {:else}
-          <h2 class="text-2xl font-semibold mb-4">Sugerencias</h2>
+          <h2 class="text-2xl font-semibold mb-4 text-white">Sugerencias</h2>
           <div class="overflow-auto">
             {#if loadingSuggestions}
-              <span>Creando sugerencias... 🧠</span>
+              <span class="text-white">Creando sugerencias... 🧠</span>
             {:else}
               {#each suggestionArrayList as sugerencias}
                 <ul class="my-5">
                   <li class="flex items-center justify-between py-2 border-b">
                     <!-- todo: renderización de sugerencias -->
-                    <span class="font-bold">{sugerencias.slice(2)}</span>
+                    <span class="font-bold text-white">{sugerencias.slice(2)}</span>
                     <button on:click={() => sendSuggestion(sugerencias)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
+                        fill="#fff"
+                        stroke="#fff"
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
