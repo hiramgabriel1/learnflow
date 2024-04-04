@@ -4,6 +4,7 @@
   // import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../../server/server";
+  import register from "$lib/public/assets/img-register.jpg"
 
   // @ts-ignore
   let formData = {
@@ -93,10 +94,9 @@
 
 <div class="max-w-screen shadow flex justify-center bg-background">
   <!-- Contenedor de la imagen (visible en dispositivos de pantalla grande) -->
-  <div class="hidden lg:flex lg:w-1/2 relative justify-center">
-    <div class="fixed mt-12">
-      /
-      <img src="/src/lib/public/assets/img-register.jpg" alt="image-register" />
+  <div class="flex items-center lg:flex lg:w-1/2 relative justify-center text">
+    <div class="fixed ml-20">
+      <img class="rounded-md" src={register} alt="" style="box-shadow: 1px 1px 20px;">
     </div>
   </div>
 
@@ -219,7 +219,7 @@
             />
 
             <button
-              class="mt-5 mb-10 xl:max-w-sm xl:mx-auto tracking-wide font-semibold bg-primary text-gray-100 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+              class="mt-5 mb-10 xl:mx-auto tracking-wide font-semibold bg-primary text-gray-100 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
             >
               <svg
                 class="w-6 h-6 -ml-2"

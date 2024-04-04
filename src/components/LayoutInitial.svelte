@@ -61,6 +61,7 @@
   }
 
   const validateInput = (e: Event) => {
+    //@ts-ignore
     value = e.target.value;
 
     if (value < 1 || typeof value === "string")
@@ -103,11 +104,6 @@
   let hoverAjuste = false;
   let hoverSalir = false;
 
-  let currentSection = '';
-
-function setCurrentSection(section: string) {
-    currentSection = section;
-}
 
 
 </script>
@@ -214,12 +210,22 @@ function setCurrentSection(section: string) {
 
           <a
             href="/dashboard"
-            class="app-sidebar-link {currentSection === 'dashboard' ? 'dashboard-active' : ''}"
+            class={`app-sidebar-link ${pathCurrent.includes("/dashboard") && "active text-slate-50"}`}
             title="dashboard"
-            on:mouseenter={() => setCurrentSection('dashboard')}
-            on:mouseleave={() => setCurrentSection('')}
-            
-            
+            on:mouseenter="{() => hoverDashboard = true}"
+            on:mouseleave="{() => hoverDashboard = false}"
+            style="
+            display: flex;
+            gap: 10px;
+            width: 9em;
+            height: 3em;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #16a34a;
+            justify-content: space-around;
+            background-color: {hoverDashboard ? '#1a4b2c' : '#16a34a'};
+            transition: background-color 0.3s;
+            "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
