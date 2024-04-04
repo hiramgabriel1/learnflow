@@ -4,6 +4,8 @@
   import memberJaf from "$lib/public/images/jafet.webp";
   import memberCrisFront from "$lib/public/images/crisfront.webp";
   import memberEcuDaniFront from "$lib/public/images/ecuadaniflow.webp";
+  import memberLohanaFront from "$lib/public/images/lohana.jpeg";
+  import memberCecilFront from "$lib/public/images/cecil.png";
 
   const imagesSlider = [
     "https://crehana-blog.imgix.net/media/filer_public/72/92/729243d3-0d4a-455b-b680-ec4f8ab237a1/tecnologia-futurista-glass.jpg?auto=format&q=50",
@@ -107,16 +109,14 @@
                     <span>Creadores</span>
                   </a>
                 </li>
-
-                <!-- ! NO ELIMINAR -->
-                <!-- <li>
+                <li>
                   <a
-                    href="/"
+                    href="#blog"
                     class="block md:px-4 transition hover:text-green-600 dark:hover:text-green-400"
                   >
-                    <span>Blog</span>
+                    <span>Novedades</span>
                   </a>
-                </li> -->
+                </li>
               </ul>
             </div>
             <div
@@ -124,13 +124,13 @@
             >
               <button
                 on:click={() => (window.location.href = "/auth/login")}
-                class="w-full h-9 lg:w-fit group flex items-center rounded-full disabled:border *:select-none [&>*:not(.sr-only)]:relative *:disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark:*:disabled:!text-white text-gray-800 hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center"
+                class="w-full h-9 lg:w-fit group flex items-center rounded-full disabled:border :select-none [&>:not(.sr-only)]:relative :disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark::disabled:!text-white text-gray-800 hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center"
               >
                 <span>Iniciar Sesión</span>
               </button>
               <button
                 on:click={() => (window.location.href = "/auth/register")}
-                class="w-full h-9 lg:w-fit group flex items-center relative border rounded-full *:select-none [&>*:not(.sr-only)]:relative before:rounded-full before:absolute before:inset-0 before:border before:bg-gradient-to-b *:disabled:opacity-20 disabled:text-gray-950/40 disabled:border-gray-200 disabled:bg-gray-100 disabled:*:text-gray-300 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:before:border-0 dark:before:border-t dark:before:shadow-inner dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 disabled:dark:*:text-gray-700 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none dark:*:disabled:!text-white text-white border-gray-950 bg-gray-600 before:border-gray-600 before:from-gray-800 hover:bg-gray-900 active:bg-gray-950 dark:text-gray-950 dark:before:border-gray-200 dark:before:from-gray-200 dark:bg-white dark:before:shadow-white/10 dark:hover:bg-gray-100 dark:active:bg-gray-300 dark:active:before:from-gray-200 lg:text-sm lg:h-8 px-3 justify-center"
+                class="w-full h-9 lg:w-fit group flex items-center relative border rounded-full :select-none [&>:not(.sr-only)]:relative before:rounded-full before:absolute before:inset-0 before:border before:bg-gradient-to-b :disabled:opacity-20 disabled:text-gray-950/40 disabled:border-gray-200 disabled:bg-gray-100 disabled::text-gray-300 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:before:border-0 dark:before:border-t dark:before:shadow-inner dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 disabled:dark::text-gray-700 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none dark::disabled:!text-white text-white border-gray-950 bg-gray-600 before:border-gray-600 before:from-gray-800 hover:bg-gray-900 active:bg-gray-950 dark:text-gray-950 dark:before:border-gray-200 dark:before:from-gray-200 dark:bg-white dark:before:shadow-white/10 dark:hover:bg-gray-100 dark:active:bg-gray-300 dark:active:before:from-gray-200 lg:text-sm lg:h-8 px-3 justify-center"
               >
                 <span>Crear cuenta</span>
               </button>
@@ -149,12 +149,12 @@
             class="text-center sm:mx-auto sm:w-10/12 lg:mr-auto lg:mt-0 lg:w-4/5"
           >
             <a
-              href="/auth/login"
+              href="https://beta.tailus.io/demo"
               class="border w-fit mx-auto flex justify-between items-center transition duration-200 rounded-full border-white hover:border-[--ui-light-border-hover-color] dark:border-[--ui-dark-border-color] dark:hover:border-[--ui-dark-border-hover-color] p-1 group gap-2"
             >
               <span
                 class="block text-sm px-2 py-0.5 rounded-full text-white bg-green-600"
-                >Nuevo</span
+                >New</span
               >
               <span
                 class="text-sm font-medium text-gray-700 dark:text-gray-300 flex gap-6"
@@ -189,13 +189,19 @@
             >
               Convierte tu curiosidad <br class="hidden sm:block" /> en conocimiento.
             </h1>
+            <p
+              class="text-wrap mx-auto mt-8 max-w-2xl text-lg text-gray-700 dark:text-gray-300 hidden sm:block"
+            >
+              The world's leading Ai Learnflow
+            </p>
+
             <div class="mt-8 flex flex-col items-center justify-center gap-4">
               <div
                 class="p-1 rounded-3xl bg-gray-950/5 border dark:border-white/10 dark:bg-white/5"
               >
                 <a
-                  href="/auth/register"
-                  class="*:select-none dark:shadow-green-500/10 *:disabled:opacity-20 disabled:*:text-gray-300 disabled:dark:*:text-gray-700 dark:*:disabled:!text-white group relative z-[1] flex h-11 items-center justify-center gap-1.5 rounded-3xl border border-green-600 bg-green-500 px-4 text-base text-white shadow-md shadow-primary-200 before:absolute before:inset-0 before:rounded-3xl before:border before:border-primary-500 before:bg-gradient-to-b before:from-primary-600 hover:bg-green-600 active:bg-green-700 disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-950/40 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:bg-primary-600 dark:before:border-0 dark:before:border-t dark:before:border-primary-400 dark:before:shadow-inner dark:before:shadow-white/10 dark:hover:bg-primary-700 dark:active:bg-primary-800 dark:active:before:from-primary-700 dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none [&>*:not(.sr-only)]:relative"
+                  href="/"
+                  class=":select-none dark:shadow-green-500/10 *:disabled:opacity-20 disabled::text-gray-300 disabled:dark::text-gray-700 dark::disabled:!text-white group relative z-[1] flex h-11 items-center justify-center gap-1.5 rounded-3xl border border-green-600 bg-green-500 px-4 text-base text-white shadow-md shadow-primary-200 before:absolute before:inset-0 before:rounded-3xl before:border before:border-primary-500 before:bg-gradient-to-b before:from-primary-600 hover:bg-green-600 active:bg-green-700 disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-950/40 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:bg-primary-600 dark:before:border-0 dark:before:border-t dark:before:border-primary-400 dark:before:shadow-inner dark:before:shadow-white/10 dark:hover:bg-primary-700 dark:active:bg-primary-800 dark:active:before:from-primary-700 dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none [&>*:not(.sr-only)]:relative"
                 >
                   <svg
                     class="size-5 relative"
@@ -236,70 +242,17 @@
                       <svg
                         class="h-12 w-fit mx-auto dark:hidden"
                         xmlns="http://www.w3.org/2000/svg"
-                        width="512"
-                        height="209"
-                        viewBox="0 0 512 209"
-                        fill="none"
-                      >
-                        <g clip-path="url(#clip0_235_8)">
-                          <path
-                            d="M117.436 207.036V154.604L118.529 153.51H129.452L130.545 154.604V207.036L129.452 208.13H118.529L117.436 207.036Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M117.436 53.5225V1.09339L118.529 0H129.452L130.545 1.09339V53.5225L129.452 54.6159H118.529L117.436 53.5225Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M69.9539 169.238H68.4094L60.6869 161.512V159.967L78.7201 141.938L86.8976 141.942L87.9948 143.031V151.209L69.9539 169.238Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M69.9462 38.8917H68.4017L60.6792 46.6181V48.1626L78.7124 66.192L86.8899 66.1882L87.9871 65.0986V56.9212L69.9462 38.8917Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M1.09339 97.5104H75.3711L76.4645 98.6038V109.526L75.3711 110.62H1.09339L0 109.526V98.6038L1.09339 97.5104Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M440.999 97.5104H510.91L512.004 98.6038V109.526L510.91 110.62H436.633L435.539 109.526L439.905 98.6038L440.999 97.5104Z"
-                            fill="#05BDBA"
-                          />
-                          <path
-                            d="M212.056 108.727L210.963 109.821H177.079L175.986 110.914C175.986 113.101 178.173 119.657 186.916 119.657C190.196 119.657 193.472 118.564 194.566 116.377L195.659 115.284H208.776L209.869 116.377C208.776 122.934 203.313 132.774 186.916 132.774C168.336 132.774 159.589 119.657 159.589 104.357C159.589 89.0576 168.332 75.9408 185.822 75.9408C203.313 75.9408 212.056 89.0576 212.056 104.357V108.731V108.727ZM195.659 97.7971C195.659 96.7037 194.566 89.0538 185.822 89.0538C177.079 89.0538 175.986 96.7037 175.986 97.7971L177.079 98.8905H194.566L195.659 97.7971Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M242.66 115.284C242.66 117.47 243.753 118.564 245.94 118.564H255.776L256.87 119.657V130.587L255.776 131.681H245.94C236.103 131.681 227.36 127.307 227.36 115.284V91.2368L226.266 90.1434H218.617L217.523 89.05V78.1199L218.617 77.0265H226.266L227.36 75.9332V66.0965L228.453 65.0031H241.57L242.663 66.0965V75.9332L243.757 77.0265H255.78L256.874 78.1199V89.05L255.78 90.1434H243.757L242.663 91.2368V115.284H242.66Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M283.1 131.681H269.983L268.889 130.587V56.2636L269.983 55.1702H283.1L284.193 56.2636V130.587L283.1 131.681Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M312.61 68.2871H299.493L298.399 67.1937V56.2636L299.493 55.1702H312.61L313.703 56.2636V67.1937L312.61 68.2871ZM312.61 131.681H299.493L298.399 130.587V78.1237L299.493 77.0304H312.61L313.703 78.1237V130.587L312.61 131.681Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M363.98 56.2636V67.1937L362.886 68.2871H353.05C350.863 68.2871 349.769 69.3805 349.769 71.5672V75.9408L350.863 77.0342H361.793L362.886 78.1276V89.0576L361.793 90.151H350.863L349.769 91.2444V130.591L348.676 131.684H335.559L334.466 130.591V91.2444L333.372 90.151H325.723L324.629 89.0576V78.1276L325.723 77.0342H333.372L334.466 75.9408V71.5672C334.466 59.5438 343.209 55.1702 353.046 55.1702H362.882L363.976 56.2636H363.98Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M404.42 132.774C400.046 143.704 395.677 150.261 380.373 150.261H374.906L373.813 149.167V138.237L374.906 137.144H380.373C385.836 137.144 386.929 136.05 388.023 132.77V131.677L370.536 89.05V78.1199L371.63 77.0265H381.466L382.56 78.1199L395.677 115.284H396.77L409.887 78.1199L410.98 77.0265H420.817L421.91 78.1199V89.05L404.424 132.77L404.42 132.774Z"
-                            fill="#014847"
-                          />
-                          <path
-                            d="M135.454 131.681L134.361 130.587L134.368 98.9172C134.368 93.4541 132.22 89.2182 125.625 89.0806C122.234 88.9926 118.354 89.0729 114.209 89.2488L113.59 89.8834L113.598 130.587L112.504 131.681H99.3913L98.2979 130.587V77.5388L99.3913 76.4454L128.901 76.1778C143.685 76.1778 149.668 86.3356 149.668 97.8009V130.587L148.575 131.681H135.454Z"
-                            fill="#014847"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_235_8">
-                            <rect width="512" height="208.126" fill="white" />
-                          </clipPath>
-                        </defs>
+                        width="1em"
+                        height="1em"
+                        viewBox="0 0 24 24"
+                        ><path
+                          fill="none"
+                          stroke="#000"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 6V2H8m0 16l-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Zm-6-6h2m5-1v2m6-2v2m5-1h2"
+                        />
                       </svg>
 
                       <svg
@@ -371,6 +324,26 @@
                   >
                     <div>
                       <div class="h-12 w-fit mx-auto">
+                        <svg
+                          class="h-12 my-auto w-fit dark:hidden"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 14 14"
+                          ><g
+                            fill="none"
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path
+                              d="M.576 6.733a6.538 6.538 0 0 1 1.164-.104c1.58 0 3.027.563 4.154 1.5"
+                            /><path
+                              d="M5.076 10.629h-3.5a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3.5"
+                            /><path
+                              d="M6.326 5.629a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m1.014 4.934c-.351-.061-.351-.565 0-.626a3.176 3.176 0 0 0 2.558-2.45l.021-.097c.076-.347.57-.349.649-.003l.026.113a3.193 3.193 0 0 0 2.565 2.435c.353.062.353.568 0 .63A3.192 3.192 0 0 0 10.594 13l-.026.113c-.079.346-.573.344-.649-.003l-.021-.097a3.176 3.176 0 0 0-2.558-2.45"
+                            /></g
+                          >
+                        </svg>
                         <svg
                           class="h-12 my-auto w-fit"
                           xmlns="http://www.w3.org/2000/svg"
@@ -629,7 +602,7 @@
     </section>
 
     <div class="text-gray-600 dark:text-gray-300 mt-28" id="creadores">
-      <div id="blog">
+      <div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
           <div class="mb-12 space-y-2 text-center">
             <h1
@@ -693,7 +666,7 @@
                 <h3
                   class="text-2xl font-semibold text-gray-800 dark:text-white"
                 >
-                  Jafett Beaz
+                  Jafett Bergas
                 </h3>
                 <span>Frontend Developer</span>
                 <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
@@ -789,10 +762,230 @@
                 </a> -->
               </div>
             </div>
+            <div
+              class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src={memberLohanaFront}
+                  alt="art cover"
+                  loading="lazy"
+                  width="1000"
+                  height="667"
+                  class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="mt-6 relative">
+                <h3
+                  class="text-2xl font-semibold text-gray-800 dark:text-white"
+                >
+                  Lohana Orellano
+                </h3>
+                <span>Frontend Developer</span>
+                <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+                  "El desarrollo y lanzamiento de LearnFlow ha sido un hito
+                  trascendental en mi vida. Creo firmemente en su potencial para
+                  transformar la manera en que las personas acceden al
+                  conocimiento. Como alguien que ha enfrentado obstáculos en su
+                  propio camino de aprendizaje, reconozco el valor que una
+                  plataforma como esta habría tenido para mí. Estoy emocionada
+                  de compartir esta innovación con todos aquellos que buscan
+                  ampliar sus horizontes y alcanzar sus metas educativas."
+                </p>
+                <!-- ! NO BORRAR
+                <a class="inline-block" href="#">
+                  <span class="text-info dark:text-blue-300">Read more</span>
+                </a> -->
+              </div>
+            </div>
+            <div
+              class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <img
+                  src={memberCecilFront}
+                  alt="art cover"
+                  loading="lazy"
+                  width="1000"
+                  height="667"
+                  class="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="mt-6 relative">
+                <h3
+                  class="text-2xl font-semibold text-gray-800 dark:text-white"
+                >
+                  Cecilia Prado
+                </h3>
+                <span>Frontend Developer</span>
+                <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+                  "A lo largo de mi vida, he experimentado la sensación de que
+                  algunas metas eran inalcanzables, pero ahora entiendo que todo
+                  es posible. Desde que comenzamos a trabajar en LearnFlow, he
+                  sentido una profunda satisfacción al saber que estamos
+                  contribuyendo al crecimiento y desarrollo de miles de
+                  personas. Nuestro objetivo es ayudar a los estudiantes y
+                  profesionales a materializar sus sueños, a superarse y a vivir
+                  una vida plena. Aunque la vida está llena de desafíos, estamos
+                  comprometidos a preparar a nuestros usuarios para enfrentarlos
+                  con determinación y nunca perder de vista sus aspiraciones."
+                </p>
+                <!-- ! NO BORRAR
+                <a class="inline-block" href="#">
+                  <span class="text-info dark:text-blue-300">Read more</span>
+                </a> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <section class="py-10 md:py-16" id="blog">
+      <h1
+        class="mt-20 mb-20 text-wrap text-center text-4xl md:text-5xl font-semibold text-gray-950 dark:text-white xl:text-5xl xl:[line-height:1.125]"
+      >
+        Descubre nuestras <br class="hidden sm:block" /> novedades.
+      </h1>
+
+      <div class="container max-w-screen-xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md">
+            <div
+              class="w-20 py-6 flex justify-center bg-[#222c35]  rounded-md mb-4"
+            >
+              <svg
+                class="h-12 w-fit mx-auto dark:hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 32 32"
+                ><path
+                  fill="#fff"
+                  d="M.034 16.668C.388 25.179 7.403 32 16 32s15.612-6.821 15.966-15.332A.493.493 0 0 0 32 16.5c0-.036-.013-.067-.02-.1c.003-.134.02-.265.02-.4c0-8.822-7.178-16-16-16S0 7.178 0 16c0 .135.017.266.02.4c-.007.033-.02.064-.02.1c0 .06.015.115.034.168m24.887 6.074a21.921 21.921 0 0 0-4.215-1.271c.158-1.453.251-2.962.28-4.47h4.98c-.091 2.054-.456 3.993-1.045 5.741M26.965 17h3.984a14.885 14.885 0 0 1-2.663 7.579a17.158 17.158 0 0 0-2.457-1.44c.645-1.869 1.042-3.943 1.136-6.139m-14.576 5.286A23.416 23.416 0 0 1 16 22c1.224 0 2.433.102 3.61.286C18.916 27.621 17.4 31 16 31s-2.916-3.379-3.611-8.714m1.519 8.378c-2.751-.882-5.078-3.471-6.482-6.984a20.873 20.873 0 0 1 3.99-1.217c.459 3.496 1.298 6.542 2.492 8.201m-1.634-19.955A24.43 24.43 0 0 0 16 11a24.43 24.43 0 0 0 3.726-.291c.172 1.62.274 3.388.274 5.291h-8c0-1.903.102-3.671.274-5.291M19.985 17a49.022 49.022 0 0 1-.26 4.291A24.397 24.397 0 0 0 16 21a24.42 24.42 0 0 0-3.726.291a48.668 48.668 0 0 1-.26-4.291zm.6 5.463c1.404.282 2.743.692 3.99 1.217c-1.404 3.513-3.731 6.102-6.482 6.984c1.193-1.659 2.032-4.705 2.492-8.201M21 16c0-1.836-.102-3.696-.294-5.47c1.48-.292 2.896-.72 4.215-1.271C25.605 11.288 26 13.574 26 16zm-.415-6.463c-.46-3.496-1.298-6.543-2.493-8.201c2.751.882 5.078 3.471 6.482 6.984a20.792 20.792 0 0 1-3.989 1.217m-.974.177C18.433 9.898 17.224 10 16 10s-2.433-.102-3.611-.286C13.084 4.379 14.6 1 16 1c1.4 0 2.916 3.379 3.611 8.714m-8.196-.177a20.895 20.895 0 0 1-3.99-1.217c1.404-3.513 3.731-6.102 6.482-6.984c-1.193 1.659-2.032 4.705-2.492 8.201m-.121.993A51.315 51.315 0 0 0 11 16H6c0-2.426.395-4.712 1.079-6.742c1.319.552 2.735.979 4.215 1.272m-.28 6.47c.029 1.508.122 3.017.28 4.471c-1.48.292-2.896.72-4.215 1.271c-.589-1.748-.954-3.687-1.045-5.742zM6.17 23.139a17.24 17.24 0 0 0-2.456 1.44A14.882 14.882 0 0 1 1.051 17h3.984c.094 2.196.491 4.27 1.135 6.139M4.313 25.38a16.126 16.126 0 0 1 2.207-1.305c1.004 2.485 2.449 4.548 4.186 5.943a15.05 15.05 0 0 1-6.393-4.638m16.981 4.637c1.738-1.394 3.182-3.458 4.186-5.943c.79.384 1.522.826 2.207 1.305a15.033 15.033 0 0 1-6.393 4.638M27 16c0-2.567-.428-4.987-1.17-7.139c.88-.422 1.698-.907 2.457-1.44A14.91 14.91 0 0 1 31 16zm.688-9.38c-.685.479-1.417.921-2.207 1.305c-1.004-2.485-2.449-4.549-4.186-5.943a15.062 15.062 0 0 1 6.393 4.638M10.706 1.983C8.968 3.377 7.524 5.441 6.52 7.926A16.173 16.173 0 0 1 4.313 6.62a15.04 15.04 0 0 1 6.393-4.637M3.714 7.421a17.185 17.185 0 0 0 2.456 1.44A21.954 21.954 0 0 0 5 16H1c0-3.19 1.009-6.145 2.714-8.579"
+                />
+              </svg>
+              <svg
+                class="h-12 w-fit mx-auto hidden dark:block"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 32 32"
+                ><path
+                  fill="#fff"
+                  d="M.034 16.668C.388 25.179 7.403 32 16 32s15.612-6.821 15.966-15.332A.493.493 0 0 0 32 16.5c0-.036-.013-.067-.02-.1c.003-.134.02-.265.02-.4c0-8.822-7.178-16-16-16S0 7.178 0 16c0 .135.017.266.02.4c-.007.033-.02.064-.02.1c0 .06.015.115.034.168m24.887 6.074a21.921 21.921 0 0 0-4.215-1.271c.158-1.453.251-2.962.28-4.47h4.98c-.091 2.054-.456 3.993-1.045 5.741M26.965 17h3.984a14.885 14.885 0 0 1-2.663 7.579a17.158 17.158 0 0 0-2.457-1.44c.645-1.869 1.042-3.943 1.136-6.139m-14.576 5.286A23.416 23.416 0 0 1 16 22c1.224 0 2.433.102 3.61.286C18.916 27.621 17.4 31 16 31s-2.916-3.379-3.611-8.714m1.519 8.378c-2.751-.882-5.078-3.471-6.482-6.984a20.873 20.873 0 0 1 3.99-1.217c.459 3.496 1.298 6.542 2.492 8.201m-1.634-19.955A24.43 24.43 0 0 0 16 11a24.43 24.43 0 0 0 3.726-.291c.172 1.62.274 3.388.274 5.291h-8c0-1.903.102-3.671.274-5.291M19.985 17a49.022 49.022 0 0 1-.26 4.291A24.397 24.397 0 0 0 16 21a24.42 24.42 0 0 0-3.726.291a48.668 48.668 0 0 1-.26-4.291zm.6 5.463c1.404.282 2.743.692 3.99 1.217c-1.404 3.513-3.731 6.102-6.482 6.984c1.193-1.659 2.032-4.705 2.492-8.201M21 16c0-1.836-.102-3.696-.294-5.47c1.48-.292 2.896-.72 4.215-1.271C25.605 11.288 26 13.574 26 16zm-.415-6.463c-.46-3.496-1.298-6.543-2.493-8.201c2.751.882 5.078 3.471 6.482 6.984a20.792 20.792 0 0 1-3.989 1.217m-.974.177C18.433 9.898 17.224 10 16 10s-2.433-.102-3.611-.286C13.084 4.379 14.6 1 16 1c1.4 0 2.916 3.379 3.611 8.714m-8.196-.177a20.895 20.895 0 0 1-3.99-1.217c1.404-3.513 3.731-6.102 6.482-6.984c-1.193 1.659-2.032 4.705-2.492 8.201m-.121.993A51.315 51.315 0 0 0 11 16H6c0-2.426.395-4.712 1.079-6.742c1.319.552 2.735.979 4.215 1.272m-.28 6.47c.029 1.508.122 3.017.28 4.471c-1.48.292-2.896.72-4.215 1.271c-.589-1.748-.954-3.687-1.045-5.742zM6.17 23.139a17.24 17.24 0 0 0-2.456 1.44A14.882 14.882 0 0 1 1.051 17h3.984c.094 2.196.491 4.27 1.135 6.139M4.313 25.38a16.126 16.126 0 0 1 2.207-1.305c1.004 2.485 2.449 4.548 4.186 5.943a15.05 15.05 0 0 1-6.393-4.638m16.981 4.637c1.738-1.394 3.182-3.458 4.186-5.943c.79.384 1.522.826 2.207 1.305a15.033 15.033 0 0 1-6.393 4.638M27 16c0-2.567-.428-4.987-1.17-7.139c.88-.422 1.698-.907 2.457-1.44A14.91 14.91 0 0 1 31 16zm.688-9.38c-.685.479-1.417.921-2.207 1.305c-1.004-2.485-2.449-4.549-4.186-5.943a15.062 15.062 0 0 1 6.393 4.638M10.706 1.983C8.968 3.377 7.524 5.441 6.52 7.926A16.173 16.173 0 0 1 4.313 6.62a15.04 15.04 0 0 1 6.393-4.637M3.714 7.421a17.185 17.185 0 0 0 2.456 1.44A21.954 21.954 0 0 0 5 16H1c0-3.19 1.009-6.145 2.714-8.579"
+                />
+              </svg>
+            </div>
+
+            <h4 class="font-medium dark:text-white text-lg mb-4">Chat Global</h4>
+
+            <p class="font-normal text-gray-500 text-md">
+              Podras comunicarte con personas que<br /> se encuentren
+              en <b>Línea</b> en ese momento, <br /> para compartir cualquier peticion.
+            </p>
+          </div>
+
+          <div class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md">
+            <div
+              class="w-20 py-6 flex justify-center bg-[#222c35] rounded-md mb-4"
+            >
+              <svg
+                class="h-12 w-fit mx-auto dark:hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 20 20"
+                ><g fill="#fff" fill-rule="evenodd" clip-rule="evenodd"
+                  ><path
+                    d="M5.604 5.45a6.44 6.44 0 0 0-1.883 5.278a.5.5 0 0 1-.994.105a7.44 7.44 0 0 1 2.175-6.096c2.937-2.897 7.675-2.85 10.582.098c2.907 2.947 2.888 7.685-.05 10.582a7.425 7.425 0 0 1-5.097 2.142a7.527 7.527 0 0 1-2.14-.271a.5.5 0 0 1 .266-.964a6.524 6.524 0 0 0 1.856.235a6.424 6.424 0 0 0 4.413-1.854c2.541-2.506 2.562-6.61.04-9.168c-2.522-2.558-6.627-2.594-9.168-.088"
+                  /><path
+                    d="M3.594 11.363a.5.5 0 0 1-.706.04l-1.72-1.53a.5.5 0 1 1 .664-.746l1.72 1.53a.5.5 0 0 1 .042.706"
+                  /><path
+                    d="M2.82 11.3a.5.5 0 0 0 .7.1l2-1.5a.5.5 0 1 0-.6-.8l-2 1.5a.5.5 0 0 0-.1.7M10 6.5a.5.5 0 0 1 .5.5v3.5a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5"
+                  /><path
+                    d="M13.5 10.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5"
+                  />
+                </g>
+              </svg>
+
+              <svg
+                class="h-12 w-fit mx-auto hidden dark:block"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 20 20"
+                ><g fill="#fff" fill-rule="evenodd" clip-rule="evenodd"
+                  ><path
+                    d="M5.604 5.45a6.44 6.44 0 0 0-1.883 5.278a.5.5 0 0 1-.994.105a7.44 7.44 0 0 1 2.175-6.096c2.937-2.897 7.675-2.85 10.582.098c2.907 2.947 2.888 7.685-.05 10.582a7.425 7.425 0 0 1-5.097 2.142a7.527 7.527 0 0 1-2.14-.271a.5.5 0 0 1 .266-.964a6.524 6.524 0 0 0 1.856.235a6.424 6.424 0 0 0 4.413-1.854c2.541-2.506 2.562-6.61.04-9.168c-2.522-2.558-6.627-2.594-9.168-.088"
+                  /><path
+                    d="M3.594 11.363a.5.5 0 0 1-.706.04l-1.72-1.53a.5.5 0 1 1 .664-.746l1.72 1.53a.5.5 0 0 1 .042.706"
+                  /><path
+                    d="M2.82 11.3a.5.5 0 0 0 .7.1l2-1.5a.5.5 0 1 0-.6-.8l-2 1.5a.5.5 0 0 0-.1.7M10 6.5a.5.5 0 0 1 .5.5v3.5a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5"
+                  /><path
+                    d="M13.5 10.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5"
+                  />
+                </g>
+              </svg>
+            </div>
+
+            <h4 class="font-medium dark:text-white text-lg mb-4">Temporizador</h4>
+
+            <p class="font-normal text-gray-500 text-md">
+              Integramos la nueva funcion <b>Pomodoro,</b> <br /> podras dividir
+              el tiempo de tu trabajo o <br /> estudio.
+            </p>
+          </div>
+
+          <div class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md">
+            <div
+              class="w-20 py-6 flex justify-center bg-[#222c35] rounded-md mb-4"
+            >
+
+            <svg
+            class="h-12 w-fit mx-auto dark:hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 48 48"
+                ><path
+                  fill="none"
+                  stroke="#fff"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M23.82 3.5v41m-7.23-32.517v24.034M9.374 19.759v8.482m21.725-16.258v24.034m7.527-16.258v8.482"
+                />
+              </svg>
+
+
+              <svg
+              class="h-12 w-fit mx-auto hidden dark:block"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 48 48"
+                ><path
+                  fill="none"
+                  stroke="#fff"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M23.82 3.5v41m-7.23-32.517v24.034M9.374 19.759v8.482m21.725-16.258v24.034m7.527-16.258v8.482"
+                />
+              </svg>
+            </div>
+
+            <h4 class="font-medium dark:text-white text-lg mb-4">
+              Historial de chat
+            </h4>
+
+            <p class="font-normal text-gray-500 text-md">
+              Dentro de poco con la nueva actualización <br /> podras visualizar
+              todo el <b>Historial</b>  <br /> registrado con nuestras IA.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="dark:bg-[#090d0f]">
@@ -877,44 +1070,3 @@
     }
   </style>
 </body>
-
-<style>
-  .shadow-xl {
-    box-shadow:
-      0 20px 25px -5px rgba(0, 0, 0, 0.1),
-      0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  }
-  .p-card-padding {
-    padding: var(--card-padding);
-  }
-  .rounded-card-border-radius {
-    border-radius: var(--card-border-radius);
-  }
-  .border-ui-light-border-color {
-    border-color: var(--ui-light-border-color);
-  }
-  .dark\:border-ui-dark-border-color {
-    border-color: var(--ui-dark-border-color);
-  }
-  .dark\:bg-card-dark-bg {
-    background-color: var(--card-dark-bg);
-  }
-  .border-length {
-    border-width: var(--border-width);
-  }
-  .dark\:text-[--lightness-14-percent] {
-    --tw-text-opacity: 1;
-    color: hsla(var(--hue), var(--saturation), 14%, var(--tw-text-opacity));
-  }
-  .text-opacity-1 {
-    --tw-text-opacity: 1;
-    opacity: var(--tw-text-opacity);
-  }
-  .rounded-[--radius] {
-    border-radius: var(--radius);
-  }
-  .dark\:text-[--saturation-97-percent] {
-    --tw-text-opacity: 1;
-    color: hsla(var(--hue), var(--saturation), 97%, var(--tw-text-opacity));
-  }
-</style>

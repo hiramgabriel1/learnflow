@@ -11,6 +11,10 @@
   import LayoutInitial from "../../../components/LayoutInitial.svelte";
   import { goto } from "$app/navigation";
   import type { FlashcardInterface } from "../../types/flashcardTypes";
+  import { writable } from "svelte/store";
+
+  let flashcardCurrent: FlashcardInterface | null = null;
+  let allFlashCards = writable<FlashcardInterface[]>([]);
 
   let totalConfigAnswers = {
     currentItem: 0,
@@ -36,20 +40,22 @@
     requestText: "",
   };
 
-  let flashcardCurrent: FlashcardInterface | null = null;
   let userIsAnswered: boolean;
 
   //@ts-ignore
   let respuestaApi: any[] = [];
   const saveResponseVoice = async () => {
     try {
-      if(!flashcardCurrent) return;
-      
+      if (!flashcardCurrent) return;
+
+      const answerCurrent =
+        flashcardCurrent.response[totalConfigAnswers.currentItem];
+
       let newFormData = {
         responseUserToFlashcard: (formData.requestText = recognizedText),
         answerUserToFlashCard:
           // respuestaApi[totalConfigAnswers.currentItem].pregunta,
-          flashcardCurrent.response[totalConfigAnswers.currentItem].pregunta,
+          answerCurrent.pregunta,
       };
 
       console.log(newFormData);
@@ -73,6 +79,32 @@
         const rpra = JSON.parse(resp.response);
         // var expresionRegular = /\[([^[\]]*)\]/;
         // var expresion = validateResponseVoiceWithAnswerAI;
+
+        allFlashCards.update(()=>
+          $allFlashCards?.map((obj) => {
+            if (obj.response === flashcardCurrent?.response) {
+              return {
+                ...flashcardCurrent,
+                response: flashcardCurrent.response.map((answer) => {
+                  if (answer.id === answerCurrent.id) {
+                    return {
+                      ...answer,
+                      state: rpra.isCorrect ? "correct" : "incorrect",
+                    };
+                  }
+                  return answer;
+                }),
+              } as FlashcardInterface;
+            }
+            return obj;
+          }) || null
+        )
+        flashcardCurrent = $allFlashCards[$allFlashCards.length - 1];
+
+
+        console.log($allFlashCards);
+        localStorage.setItem("flashcardsGenerate", JSON.stringify($allFlashCards))
+
 
         responseAI.consejos = rpra.consejos;
         responseAI.isCorrect = rpra.isCorrect;
@@ -103,6 +135,7 @@
     const flashcardsGenerate = JSON.parse(
       flashcardsGenerateString
     ) as FlashcardInterface[];
+    allFlashCards.update(()=>flashcardsGenerate);
     flashcardCurrent = flashcardsGenerate[flashcardsGenerate.length - 1];
     totalConfigAnswers.totalCount = flashcardCurrent.response.length;
   });
@@ -233,9 +266,17 @@
                       <div
                         class="bg-white w-1/2 m-auto border-1 relative border-dashed border-gray-100 shadow-md rounded-lg overflow-hidden"
                       >
-
-                        <div class="absolute top-0 left-0 w-20 flex items-center justify-center py-3 z-20 rounded-xl bg-slate-100/80 backdrop-blur-sm">
-                          <span class="h-5 w-5 rounded-full {pregunta.state==='enable'?'bg-yellow-400':(pregunta.state==='incorrect'?'bg-red-600':'bg-lime-500')}"></span>
+                        <div
+                          class="absolute top-0 left-0 w-20 flex items-center justify-center py-3 z-20 rounded-xl bg-slate-100/80 backdrop-blur-sm"
+                        >
+                          <span
+                            class="h-5 w-5 rounded-full {pregunta.state ===
+                            'enable'
+                              ? 'bg-yellow-400'
+                              : pregunta.state === 'incorrect'
+                                ? 'bg-red-600'
+                                : 'bg-lime-500'}"
+                          ></span>
                         </div>
 
                         <div
