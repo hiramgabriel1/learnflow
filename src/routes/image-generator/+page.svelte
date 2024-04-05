@@ -63,11 +63,11 @@
     );
 
     if (containsForbiddenWord) {
-      toast.error("no puedes ingresar eso");
+      toast.error("No puedes ingresar eso");
       formData.prompt = "";
     }
     if (inputValue === "") {
-      toast.error("no puedes dejar vacio");
+      toast.error("No puedes dejar vacio");
       // return
       disabled = true;
     } else {
