@@ -121,7 +121,7 @@
           <!-- Botones de registro con Google y GitHub -->
           <button
             on:click={handleAuthGoogle}
-            class="w-full max-w-md font-bold shadow-sm rounded-full py-3 border border-primary text-secondary flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-xl focus:shadow-outline"
+            class="bg-blue-50 w-full max-w-md  shadow-sm rounded-xl py-3  text-secondary flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-xl focus:shadow-outline"
           >
             <div class="bg-white p-2 rounded-full">
               <svg class="w-4" viewBox="0 0 533.5 544.3">
@@ -143,12 +143,12 @@
                 />
               </svg>
             </div>
-            <span class="ml-4">Registrarse con Google</span>
+            <span class="ml-4 text-blue-700 font-medium">Registrarse con Google</span>
           </button>
 
           <button
             on:click={handleAuthGithub}
-            class="w-full max-w-md font-bold shadow-sm rounded-full py-3 text-secondary border border-primary flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-sm focus:shadow-outline mt-5"
+            class="bg-gray-900 w-full max-w-md  shadow-sm rounded-xl py-3 text-secondary  flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-sm focus:shadow-outline mt-5"
           >
             <div class="bg-white p-1 rounded-full">
               <svg class="w-6" viewBox="0 0 32 32">
@@ -158,7 +158,7 @@
                 />
               </svg>
             </div>
-            <span class="ml-4">Registrarse con GitHub</span>
+            <span class="ml-4 font-medium">Registrarse con GitHub</span>
           </button>
         </div>
 
@@ -173,7 +173,7 @@
         <!-- Formulario de registro -->
         <form on:submit|preventDefault={formHandler} class="space-y-6">
           <div class="flex flex-col gap-3 mx-auto max-w-md">
-            <label class="text-secondary text-sm" for="">Nombre</label>
+            <label class="font-bold text-white" for="">Nombre</label>
             <input
               class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary 0 bg-transparent"
               placeholder="Introduce tu nombre"
@@ -181,7 +181,7 @@
               required
               minlength="4"
             />
-            <label class="text-secondary text-sm" for="">Apellido</label>
+            <label class="font-bold text-white" for="">Apellido</label>
             <input
               class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
               placeholder="Introduce tu apellido"
@@ -189,7 +189,7 @@
               required
               minlength="5"
             />
-            <label class="text-secondary text-sm" for=""
+            <label class="font-bold text-white" for=""
               >Razones por las que quieres usar la App</label
             >
             <input
@@ -199,7 +199,7 @@
               required
               bind:value={formData.reasonsToUseApp}
             />
-            <label class="text-secondary text-sm" for=""
+            <label class="font-bold text-white"for=""
               >Correo electrónico</label
             >
             <input
@@ -209,7 +209,7 @@
               bind:value={formData.userEmail}
               required
             />
-            <label class="text-secondary text-sm" for="">Contraseña</label>
+            <label class="font-bold text-white" for="">Contraseña</label>
             <input
               class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
               type="password"
@@ -219,7 +219,7 @@
             />
 
             <button
-              class="mt-5 mb-10 xl:mx-auto tracking-wide font-semibold bg-primary text-gray-100 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+              class="mt-5 mb-10 xl:mx-auto tracking-wide font-semibold bg-green-600 text-gray-100 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
             >
               <svg
                 class="w-6 h-6 -ml-2"
