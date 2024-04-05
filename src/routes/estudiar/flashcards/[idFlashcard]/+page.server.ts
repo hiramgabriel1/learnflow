@@ -1,13 +1,13 @@
 import { redirect } from "@sveltejs/kit";
-import type { PageServerLoad } from "./$types";
-import { envDataConf } from "../../../server/server";
+import type { PageServerLoad } from "../../$types";
+import { envDataConf } from "../../../../server/server";
 import jwt from "jsonwebtoken";
-import type { MessageJwtInterface } from "../../../interfaces/MessageJwt.interface";
+import type { MessageJwtInterface } from "../../../../interfaces/MessageJwt.interface";
 
-export const load: PageServerLoad = async ({ cookies }) => {
+export const load: PageServerLoad = async ({ cookies, params }) => {
   const token = cookies.get("jwt");
   const decodeToken = jwt.decode(token || "");
-
+  
   try {
     const validateSesion = await fetch(
       `${envDataConf.URLBACK}/auth/user`,
@@ -24,8 +24,12 @@ export const load: PageServerLoad = async ({ cookies }) => {
     if (!validateSesion.ok) {
       throw new Error("Error al acceder a la página");
     }
+    console.log(params)
+
     return {
       user: decodeToken as MessageJwtInterface,
+      //@ts-ignore
+      idFlashcard: parseInt(params?.idFlashcard || '0')
     };
     // Si la respuesta es correcta, no es necesario hacer nada más
   } catch (err) {
