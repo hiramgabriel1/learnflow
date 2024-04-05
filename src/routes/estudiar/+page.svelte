@@ -91,7 +91,12 @@
         response.substring(response.indexOf("["), response.lastIndexOf("]") + 1)
       ) as ResponseFlashcardInterface[];
 
+      const getQuestionFormatter = (JSON.parse(
+        localStorage.getItem("flashcardsGenerate") || "[]"
+      )) as FlashcardInterface[];
+
       const questionFormatter = {
+        id: getQuestionFormatter.length,
         question: question,
         created: (new Date()).toDateString(),
         response: resposeFormatter,
@@ -100,20 +105,18 @@
         resp.state = "enable";
       });
 
-      const getQuestionFormatter = (JSON.parse(
-        localStorage.getItem("flashcardsGenerate") || "[]"
-      )) as FlashcardInterface[];
+     
       //Almacenar los valores en el localStorage
       // localStorage.setItem("question", question);
       // localStorage.setItem("response", response.toString());
       localStorage.setItem(
         "flashcardsGenerate",
-        JSON.stringify([...getQuestionFormatter, questionFormatter])
+        JSON.stringify([questionFormatter, ...getQuestionFormatter])
       );
 
       toast.dismiss(thinkingToast);
 
-      return goto("/estudiar/flashcards");
+      return goto(`/estudiar/flashcards/${questionFormatter.id}`);
     } catch (error) {
       toast.error(
         toast("Upps, ha ocurrido un error", {

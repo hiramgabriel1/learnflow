@@ -107,6 +107,12 @@
       <div class="days-left" style="color: #ff942e;">
         {getDateString(currentFlashcard.created)}
       </div>
+      <a href="/estudiar/flashcards/{currentFlashcard.id}" class="h-full">
+        <button
+          class="h-7 rounded-md text-slate-50 bg-slate-900 px-3 hover:scale-105 duration-100"
+          >Seguir</button
+        >
+      </a>
     </div>
   </div>
 </div>
