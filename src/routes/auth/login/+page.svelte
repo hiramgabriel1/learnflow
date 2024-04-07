@@ -1,3 +1,4 @@
+<!-- Página de inicio de sesión -->
 <script>
   import "../../../app.css";
   // import google from "$lib/public/assets/google.svg";
@@ -6,6 +7,7 @@
   import { goto } from "$app/navigation";
   import cookie from "js-cookie";
   import { envDataConf } from "../../../server/server";
+  import imageLogin from "$lib/public/images/imagenLogin.jpg";
 
   let formData = {
     userEmail: "",
@@ -68,42 +70,56 @@
 </script>
 
 <Toaster />
-<div class="2xl:container h-screen m-auto">
-  <div hidden class="fixed inset-0 w-7/12 lg:block">
-    <!-- svelte-ignore a11y-media-has-caption -->
-    <!-- <video class="w-full h-full object-cover" loop autoplay {poster}></video> -->
+
+<div class="h-screen flex overflow-hidden">
+  <div class="w-1/2 bg-gray-300 flex items-center justify-center">
+    <img src="{imageLogin}" alt="Perfil" class="w-full" width="300" height="100%"/>
   </div>
 
-  <!-- svelte-ignore a11y-unknown-role -->
-  <div
-    hidden
-    role="hidden"
-    class="fixed inset-0 w-6/12 ml-auto bg-white bg-opacity-70 backdrop-blur-xl lg:block"
-  ></div>
-  <div class="relative h-full ml-auto lg:w-6/12">
-    <div class="m-auto py-12 px-6 sm:p-20 xl:w-10/12">
-      <div class="space-y-4">
-        <p class="text-xl" style="font-size: 60px;">Learnflow AI</p>
-        <p class="font-medium text-lg text-gray-600">
-          Bienvenido a Learnflow AI. Inicia Sesión primero !
+  <div class="w-1/2 bg-black text-white flex items-center justify-center">
+    <div class="mx-auto py-8 px-6 sm:p-20 xl:w-10/12 h-full flex flex-col justify-center">
+      <div class="space-y-4 text-center">
+        <p class="text-xl" style="font-size: 40px;">Sign up for templanata</p>
+        <p class="font-medium text-lg text-white-600">
+          Bienvenido a Learnflow AI. ¡Inicia Sesión primero!
         </p>
       </div>
 
-      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      <div class="mt-8 grid gap-4 sm:grid-cols-1">
         <button
-        on:click={handleAuthGoogle}
-          class="py-3 px-6 rounded-xl bg-blue-50 hover:bg-blue-100 focus:bg-blue-100 active:bg-blue-200"
+          on:click={handleAuthGoogle}
+          class="py-3 px-4 rounded-xl bg-blue-50 hover:bg-blue-100 focus:bg-blue-100 active:bg-blue-200 w-full"
         >
-          <div class="flex gap-4 justify-center">
-            <!-- <img src={google} class="w-5" alt="" /> -->
+          <div class="flex gap-4 justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" class="bg-white rounded-full p-1">
+              <circle cx="12" cy="12" r="10" fill="white" />
+              <path
+                d="M21 12c0-.67-.05-1.34-.15-2H12v4h5.63c-.26 1.36-.97 2.53-2.01 3.38v2.82h3.24C20.55 17.14 24 14.11 24 12h-3z"
+                fill="#4285F4"
+              />
+              <path
+                fill="#34A853"
+                d="M12 21c3.88 0 7.11-1.28 9.47-3.47l-3.24-2.82c-.88.6-2 1.09-3.47 1.09-2.66 0-4.92-1.79-5.72-4.21H3.84v2.63C6.16 18.18 8.94 21 12 21z"
+              />
+              <path
+                fill="#FBBC05"
+                d="M6.28 14.47c-.25-.72-.39-1.49-.39-2.28s.14-1.56.39-2.28V7.36H3.84C2.73 9.21 2 10.54 2 12s.73 2.79 1.84 4.64l2.44-2.17z"
+              />
+              <path
+                fill="#EA4335"
+                d="M12 6.08c1.43 0 2.59.49 3.47 1.09l2.48-2.22C19.11 3.41 15.88 2 12 2 8.06 2 4.82 4.37 3.84 7.36l2.44 2.17C7.08 7.87 9.34 6.08 12 6.08z"
+              />
+              <path fill="none" d="M0 0h24v24H0z" />
+            </svg>
             <span
               class="block w-max font-medium tracking-wide text-sm text-blue-700"
-              >Google</span
+              >Iniciar sesion con Google</span
             >
           </div>
         </button>
+
         <button
-          class="py-3 px-6 rounded-xl bg-gray-900 transition hover:bg-gray-800 active:bg-gray-600 focus:bg-gray-700"
+          class="py-3 px-4 rounded-xl bg-gray-900 transition hover:bg-gray-800 active:bg-gray-600 focus:bg-gray-700 w-full"
           on:click={handleAuthGithub}
         >
           <div class="flex gap-4 items-center justify-center text-white">
@@ -118,42 +134,30 @@
               />
             </svg>
             <span
-              class="block w-max font-medium tracking-wide text-sm text-white"
-              >Github</span
+              class="block w-max font-medium tracking-wide text-sm text-white" 
+             >Iniciar sesion con GitHub</span
             >
           </div>
         </button>
       </div>
 
-      <!-- svelte-ignore a11y-unknown-role -->
-      <div role="hidden" class="mt-12 border-t">
-        <span
-          class="block w-max mx-auto -mt-3 px-4 text-center text-gray-500 bg-white"
-          >o</span
-        >
+      <div role="hidden" class="mt-5 flex items-center">
+        <hr class="flex-grow border-t border-white">
+        <span class="px-4 text-white">O Inicia sesion con correo</span>
+        <hr class="flex-grow border-t border-white">
       </div>
 
-      <form on:submit|preventDefault={formHandler} class="space-y-6 py-6">
-        <div class="flex flex-col">
-          <label class="pb-2 font-bold" for="">Correo electronico</label>
+      <form on:submit|preventDefault={formHandler} class="space-y-6">
+        <div class="flex flex-col mt-3">
+          <label class="pb-2 font-bold" for="">Correo electrónico</label>
           <input
             type="text"
-            placeholder="example@xzy.com"
+            placeholder="example@xyz.com"
             required
             bind:value={formData.userEmail}
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
+            class="w-full py-2 px-3 ring-1 ring-gray-300 rounded-lg placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
-
-        <!-- <div>
-          <input
-            type="password"
-            placeholder="Contraseña"
-            required
-            bind:value={formData.contraseña}
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-          />
-        </div> -->
 
         <div class="flex flex-col">
           <label class="pb-2 font-bold" for="">Contraseña</label>
@@ -162,32 +166,29 @@
             placeholder="*********"
             required
             bind:value={formData.password}
-            class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
+            class="w-full py-2 px-3 ring-1 ring-gray-300 rounded-lg placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-gray-500 focus:invalid:outline-none"
           />
         </div>
 
         <div>
           <button
-            class="w-full px-6 py-3 rounded-full bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
+            class="w-full px-3 py-2 rounded-lg bg-green-600 transition hover:bg-green-700 focus:bg-green-700 active:bg-green-800"
           >
-            <span class="font-semibold text-white text-lg">Iniciar sesion</span>
+            <span class="font-semibold text-white text-lg">Iniciar sesión</span>
           </button>
 
-          <div class="flex justify-between">
-            <a href="/auth/register" type="reset" class="w-max p-3 -ml-3">
-              <span class="text-sm tracking-wide text-blue-600"
-                >Crear nueva cuenta</span
-              >
+          <div class="flex justify-between mt-4">
+            <a href="/auth/register" type="reset" class="w-full p-2">
+                <span class="text-sm tracking-wide  block text-center underline text-white mr-10">Crear nueva cuenta</span>
             </a>
-
-            <button type="reset" class="w-max p-3 -mr-3">
-              <span class="text-sm tracking-wide text-blue-600"
-                >Olvidé mi contraseña
-              </span>
+            <button type="reset" class="w-full p-2 ">
+                <span class="text-sm tracking-wide block text-center underline text-white ml-10">Olvidé mi contraseña</span>
             </button>
-          </div>
+        </div>
+        
         </div>
       </form>
     </div>
   </div>
 </div>
+

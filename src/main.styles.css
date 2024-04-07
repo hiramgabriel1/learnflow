@@ -68,7 +68,7 @@
   --link-color-hover: #c3cff4;
   --link-color-active: #fff;
   --link-color-active-bg: #3b82f6;
-  --projects-section: #fff;
+  --projects-section: #10161b;
   --message-box-hover: #fafcff;
   --message-box-border: #e9ebf0;
   --more-list-bg: #fff;
@@ -106,6 +106,7 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
+  
 }
 
 body {
@@ -114,6 +115,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: var(--app-container);
+  background-color: #090d0f;
 }
 
 button,
@@ -140,6 +142,7 @@ a {
 }
 
 .app-content {
+  background-color: #090d0f;
   display: flex;
   height: 100%;
  /*  overflow: hidden; */
@@ -153,6 +156,7 @@ a {
   width: 100%;
   padding: 16px 24px;
   position: relative;
+  background-color: #090d0f;
 }
 
 .app-header-left,
@@ -173,7 +177,7 @@ a {
   width: 26px;
   height: 2px;
   border-radius: 4px;
-  background-color: var(--main-color);
+  background-color: #fff;
   position: relative;
 }
 
@@ -184,7 +188,7 @@ a {
   width: 12px;
   height: 2px;
   border-radius: 4px;
-  background-color: var(--main-color);
+  background-color: #fff;
   left: 50%;
   transform: translatex(-50%);
 }
@@ -198,7 +202,7 @@ a {
 }
 
 .app-name {
-  color: var(--main-color);
+  color: #fff;
   margin: 0;
   font-size: 20px;
   line-height: 24px;
@@ -253,8 +257,8 @@ a {
 }
 
 .add-btn {
-  color: #fff;
-  background-color: var(--button-bg);
+  color: #000;
+  background-color: #fff;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -296,7 +300,7 @@ a {
 }
 
 .profile-btn span {
-  color: var(--main-color);
+  color:#fff;
   font-size: 16px;
   line-height: 24px;
   font-weight: 700;
@@ -370,7 +374,7 @@ a {
   font-weight: 700;
   opacity: 0.9;
   margin: 0;
-  color: var(--main-color);
+  color: #fff;
 }
 
 .projects-section-header .time {
@@ -403,13 +407,13 @@ a {
   font-size: 24px;
   line-height: 32px;
   font-weight: 700;
-  color: var(--main-color);
+  color: #fff;
 }
 
 .status-type {
   position: relative;
   padding-right: 24px;
-  color: var(--secondary-color);
+  color: #fff;
 }
 
 .view-actions {
@@ -433,8 +437,8 @@ a {
 }
 
 .view-btn.active {
-  background-color: var(--link-color-active-bg);
-  color: var(--link-color-active);
+  background-color: #16a34a;
+  color: #fff;
 }
 
 .view-btn:not(.active):hover {

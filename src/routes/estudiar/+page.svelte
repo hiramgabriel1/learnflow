@@ -146,9 +146,9 @@
     <!-- todo: enter GPT DUDE -->
     <div class="relative flex items-center justify-center py-12 px-6 lg:px-12">
       <div class="absolute opacity-60 inset-0 z-0"></div>
-      <div class="sm:max-w-3xl w-full p-12 bg-white rounded-xl z-10">
+      <div class="sm:max-w-3xl w-full p-12 bg-[#1f2937] rounded-xl z-10">
         <div class="text-center">
-          <h2 class="mt-8 text-4xl font-bold text-gray-900">
+          <h2 class="mt-8 text-4xl font-bold text-white">
             Ingresa un tema!
           </h2>
           <p class="mt-4 text-lg text-gray-400">
@@ -184,7 +184,7 @@
           <div>
             {#if !disabled}
               <button
-                class="my-8 w-full flex justify-center bg-blue-500 text-gray-100 p-6 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                class="my-8 w-full flex justify-center bg-green-600 text-gray-100 p-6 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-green-700 shadow-lg cursor-pointer transition ease-in duration-300"
               >
                 Comenzar
               </button>
