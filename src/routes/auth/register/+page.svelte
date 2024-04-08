@@ -5,6 +5,7 @@
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../../server/server";
   import register from "$lib/public/assets/img-register.jpg"
+  import regi from "$lib/public/assets/regi.jpg";
 
   // @ts-ignore
   let formData = {
@@ -95,8 +96,8 @@
 <div class="max-w-screen shadow flex justify-center bg-background">
   <!-- Contenedor de la imagen (visible en dispositivos de pantalla grande) -->
   <div class="flex items-center lg:flex lg:w-1/2 relative justify-center text">
-    <div class="fixed ml-20">
-      <img class="rounded-md" src={register} alt="" style="box-shadow: 1px 1px 20px;">
+    <div class="fixed">
+      <img class="rounded-md" src={regi} alt="">
     </div>
   </div>
 
