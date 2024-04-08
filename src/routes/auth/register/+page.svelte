@@ -93,10 +93,10 @@
 
 <Toaster />
 
-<div class="max-w-screen shadow flex justify-center bg-background">
+<div class="max-w-screen shadow flex justify-center bg-background ">
   <!-- Contenedor de la imagen (visible en dispositivos de pantalla grande) -->
-  <div class="flex  lg:flex lg:w-1/2 relative justify-center text">
-    <div class="fixed">
+  <div class="hidden  md:flex md:w-1/2 relative justify-center text overflow-hidden">
+    <div class="fixed w-1/2">
       <img class="" src={register} alt="">
     </div>
   </div>
