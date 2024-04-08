@@ -4,7 +4,7 @@
   // import poster from "$lib/public/assets/bg.jpg";
   import toast, { Toaster } from "svelte-french-toast";
   import { envDataConf } from "../../../server/server";
-  import register from "$lib/public/assets/img-register.jpg"
+  import register from "$lib/public/assets/img-register.jpg";
   import regi from "$lib/public/assets/regi.jpg";
 
   // @ts-ignore
@@ -93,11 +93,13 @@
 
 <Toaster />
 
-<div class="max-w-screen shadow flex justify-center bg-background ">
+<div class="max-w-screen shadow flex justify-center bg-background">
   <!-- Contenedor de la imagen (visible en dispositivos de pantalla grande) -->
-  <div class="hidden  md:flex md:w-1/2 relative justify-center text overflow-hidden">
-    <div class="fixed w-1/2">
-      <img class="" src={register} alt="">
+  <div
+    class="hidden lg:flex lg:w-1/2 relative justify-center text xl:overflow-hidden"
+  >
+    <div class="fixed w-full h-full">
+      <img class="object-cover w-3/4 h-full" src={register} alt="" />
     </div>
   </div>
 
@@ -122,7 +124,7 @@
           <!-- Botones de registro con Google y GitHub -->
           <button
             on:click={handleAuthGoogle}
-            class="bg-blue-50 w-full max-w-md  shadow-sm rounded-xl py-3  text-secondary flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-xl focus:shadow-outline"
+            class="bg-blue-50 w-full max-w-md shadow-sm rounded-xl py-3 text-secondary flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-xl focus:shadow-outline"
           >
             <div class="bg-white p-2 rounded-full">
               <svg class="w-4" viewBox="0 0 533.5 544.3">
@@ -144,12 +146,14 @@
                 />
               </svg>
             </div>
-            <span class="ml-4 text-blue-700 font-medium">Registrarse con Google</span>
+            <span class="ml-4 text-blue-700 font-medium"
+              >Registrarse con Google</span
+            >
           </button>
 
           <button
             on:click={handleAuthGithub}
-            class="bg-gray-900 w-full max-w-md  shadow-sm rounded-xl py-3 text-secondary  flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-sm focus:shadow-outline mt-5"
+            class="bg-gray-900 w-full max-w-md shadow-sm rounded-xl py-3 text-secondary flex items-center justify-center transition-all duration-500 ease-in-out focus:outline-none hover:shadow-xl hover:scale-105 focus:shadow-sm focus:shadow-outline mt-5"
           >
             <div class="bg-white p-1 rounded-full">
               <svg class="w-6" viewBox="0 0 32 32">
@@ -200,8 +204,7 @@
               required
               bind:value={formData.reasonsToUseApp}
             />
-            <label class="font-bold text-white"for=""
-              >Correo electrónico</label
+            <label class="font-bold text-white" for="">Correo electrónico</label
             >
             <input
               class="w-full px-8 py-4 rounded-lg font-medium border text-secondary border-gray-200 placeholder-gray-400 text-sm focus:outline-primary bg-transparent"
