@@ -98,8 +98,8 @@
   <div
     class="hidden lg:flex lg:w-1/2 relative justify-center text xl:overflow-hidden"
   >
-    <div class="fixed w-full h-full">
-      <img class="object-cover w-3/4 h-full" src={register} alt="" />
+    <div class="fixed w-full h-full flex justify-center items-center">
+      <img class="object-cover w-1/2 h-full" src={register} alt="" />
     </div>
   </div>
 
