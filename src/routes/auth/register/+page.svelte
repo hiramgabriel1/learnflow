@@ -95,9 +95,9 @@
 
 <div class="max-w-screen shadow flex justify-center bg-background">
   <!-- Contenedor de la imagen (visible en dispositivos de pantalla grande) -->
-  <div class="flex items-center lg:flex lg:w-1/2 relative justify-center text">
+  <div class="flex  lg:flex lg:w-1/2 relative justify-center text">
     <div class="fixed">
-      <img class="rounded-md" src={regi} alt="">
+      <img class="" src={register} alt="">
     </div>
   </div>
 
