@@ -60,7 +60,7 @@
             <a href="/" aria-label="tailus logo">
               <span class="text-white text-3xl">LearnFlowAI</span>
             </a>
-            <div class="flex lg:hidden">
+            <!-- <div class="flex lg:hidden">
               <button>
                 <div
                   aria-hidden="true"
@@ -73,7 +73,7 @@
                   class="m-auto mt-1.5 h-[1.5px] w-4 rounded bg-gray-900 transition duration-300 dark:bg-gray-300"
                 ></div>
               </button>
-            </div>
+            </div> -->
           </div>
 
           <div
