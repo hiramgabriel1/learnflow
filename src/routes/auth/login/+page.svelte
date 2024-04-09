@@ -71,18 +71,19 @@
 
 <Toaster />
 
-<div class="h-screen flex overflow-hidden">
-  <div class="w-1/2 bg-gray-300 flex items-center justify-center">
-    <img src="{imageLogin}" alt="Perfil" class="w-full" width="300" height="100%"/>
+<div class="h-screen flex lg:flex xl:flex overflow-hidden ">
+  <div class="hidden md:block w-1/2 bg-gray-300  items-center justify-center">
+    <img src="{imageLogin}" alt="Perfil" class="object-cover w-full h-full" width="300" height="100%"/>
   </div>
+  
 
-  <div class="w-1/2 bg-black text-white flex items-center justify-center">
+  <div class="lg:w-1/2 w-full  bg-black text-white flex items-center justify-center">
     <div class="mx-auto py-8 px-6 sm:p-20 xl:w-10/12 h-full flex flex-col justify-center">
       <div class="space-y-4 text-center">
-        <p class="text-xl" style="font-size: 40px;">Sign up for templanata</p>
-        <p class="font-medium text-lg text-white-600">
+        <h1 class="text-2xl xl:text-4xl font-extrabold text-center text-secondary">Learnflow AI</h1>
+        <h4 class="text-lg lg:text-xl font-semibold text-center text-secondary ">
           Bienvenido a Learnflow AI. ¡Inicia Sesión primero!
-        </p>
+        </h4>
       </div>
 
       <div class="mt-8 grid gap-4 sm:grid-cols-1">

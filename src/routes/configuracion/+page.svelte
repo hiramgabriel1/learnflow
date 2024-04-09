@@ -53,7 +53,7 @@
   
         <br /><br />
         <!-- inicio -->
-        <div class="max-w-4xl mx-auto p-8 overflow-auto">
+        <div class="max-w-4xl mx-auto p-8 overflow-auto text-white">
           <h1 class="text-3xl font-semibold mb-6">Settings</h1>
           <p class="text-sm mb-10">Manage your account, preferences, and more</p>
           <div dir="ltr" data-orientation="horizontal">
@@ -153,14 +153,14 @@
                 <p class="text-sm">lucy@gmail.com</p>
               </div>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center  border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >Change</button
               >
             </div>
             <div class="flex justify-between items-center mb-8">
               <p class="font-medium">Password</p>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >Change</button
               >
             </div>
@@ -172,7 +172,7 @@
                 aria-checked="false"
                 data-state="unchecked"
                 value="on"
-                class="peer inline-flex h-[24px] w-[44px] shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input"
+                class="peer inline-flex h-[24px]  w-[44px] shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input"
                 id="marketing-emails"
                 ><span
                   data-state="unchecked"
@@ -301,14 +301,14 @@
             <div class="flex justify-between items-center mb-4">
               <p class="font-medium">Theme</p>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center  border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >Light</button
               >
             </div>
             <div class="flex justify-between items-center mb-8">
               <p class="font-medium">Font Size</p>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center  border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >Medium</button
               >
             </div>
@@ -316,42 +316,42 @@
             <div class="flex justify-between items-center mb-4">
               <p class="font-medium">2FA</p>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center  border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >Disabled</button
               >
             </div>
             <div class="flex justify-between items-center mb-4">
               <p class="font-medium">Security Key</p>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center  border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >Add</button
               >
             </div>
             <div class="flex justify-between items-center mb-4">
               <p class="font-medium">Authorized Applications</p>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center  border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >View</button
               >
             </div>
             <div class="flex justify-between items-center mb-4">
               <p class="font-medium">Your Public Profile</p>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center  border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >Edit</button
               >
             </div>
             <div class="flex justify-between items-center mb-4">
               <p class="font-medium">Your Public Profile</p>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center  border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >Edit</button
               >
             </div>
             <div class="flex justify-between items-center">
               <p class="font-medium">Your Public Profile</p>
               <button
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                class="inline-flex items-center  border-none justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-green-600 text-white hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >Edit</button
               >
             </div>

@@ -352,8 +352,8 @@
                             {pregunta.pregunta}
                           </p>
 
-                          <!-- <span class="text-gray-700">{pregunta.respuesta}</span
-                          > -->
+                          <span class="text-gray-700">{pregunta.respuesta}</span
+                          >
 
                           <form
                             on:submit|preventDefault={formEnvData}
