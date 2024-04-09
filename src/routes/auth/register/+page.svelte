@@ -104,7 +104,7 @@
   </div>
 
   <!-- Contenedor del formulario -->
-  <div class="lg:w-1/2 p-6 sm:p-12 z-10">
+  <div class="lg:w-1/2 h-[115vh] p-6 sm:p-12 z-10">
     <div>
       <h1
         class="text-2xl xl:text-4xl font-extrabold text-center text-secondary"

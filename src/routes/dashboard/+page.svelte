@@ -71,17 +71,18 @@
   let circleRadius = 30; 
 
 
-  let svgElement = document.querySelector("svg");
+  onMount(() => {
+    let svgElement = document.querySelector("svg");
 
-  if (svgElement) {
-    let svgWidth = svgElement.clientWidth;
-    let svgHeight = svgElement.clientHeight;
-    let minSize = Math.min(svgWidth, svgHeight);
-    circleRadius = minSize * 0.3;
-
-  } else {
-    console.error("El elemento SVG no se encontró");
-  }
+    if (svgElement) {
+      let svgWidth = svgElement.clientWidth;
+      let svgHeight = svgElement.clientHeight;
+      let minSize = Math.min(svgWidth, svgHeight);
+      circleRadius = minSize * 0.3;
+    } else {
+      console.error("El elemento SVG no se encontró");
+    }
+  });
 </script>
 
 <LayoutInitial {user}>

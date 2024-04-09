@@ -154,7 +154,7 @@
       <div class="min-w-96">
         <!-- todo: response MarcyAI -->
         {#if marcyIsResponse}
-          <p><b>MarcyAI:</b> {responseMarcyAI.response}</p>
+          <p class="text-white"><b>MarcyAI:</b> {responseMarcyAI.response}</p>
         {:else}
           <h2 class="text-2xl font-semibold mb-4 text-white">Sugerencias</h2>
           <div class="overflow-auto">
