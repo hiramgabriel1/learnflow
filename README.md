@@ -7,3 +7,4 @@
 * Cambiar fuente de letra marcyAI
 * Mejorar seguridad de los prompts en generacion de imagenes a la burguer
 * Que se pueda pasar el mouse encima y hacer zoom en las imagenes, ademas de poner button para dscargar las imagenes
+* Que cuando entre el usuario un asistente le diga: "hola nombre__user"
