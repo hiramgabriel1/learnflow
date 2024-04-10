@@ -682,7 +682,7 @@
             aria-modal="true"
             aria-labelledby="modal-headline"
           >
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="bg-[#1f2937] px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <!-- Modal content -->
               <div class="sm:flex sm:items-start">
                 <div
@@ -716,7 +716,7 @@
                   class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"
                 >
                   <h3
-                    class="text-lg leading-6 font-medium text-gray-900"
+                    class="text-lg leading-6 font-medium text-white"
                     id="modal-headline"
                   >
                     Añadir un temporizador
@@ -725,7 +725,7 @@
                     on:submit|preventDefault={handleCreateTimer}
                     class="mt-2"
                   >
-                    <p class="text-sm text-gray-500">
+                    <p class="text-sm text-white">
                       <!-- ! modificar éste texto -->
                       La técnica divide el trabajo en intervalos cortos de 25 minutos,
                       llamados "pomodoros", seguidos de pausas de 5 minutos.
@@ -744,7 +744,7 @@
               </div>
             </div>
             <div
-              class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
+              class="bg-[#1f2937] px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
             >
               <!-- Subscribe button -->
               {#if value < 1}
