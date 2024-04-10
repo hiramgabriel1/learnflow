@@ -91,12 +91,11 @@
       console.log(suggestion);
     } catch (error) {
       console.log(error);
-      //   console.error(error);
     }
   };
 
   onMount(() => {
-    return generateSuggestionsAI();
+    generateSuggestionsAI();
   });
 
   const sendSuggestion = (sugerencias: string) => {
