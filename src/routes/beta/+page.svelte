@@ -1,0 +1,1 @@
+<!-- aqui hay que poner el nuevo diseño, no modificar directamente el dashboard, sino que hay que agregarlo aqui en esta ruta privada -->
