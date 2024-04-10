@@ -1,6 +1,5 @@
 # Pendientes
 
-* Cambiar foto de marcyAI
 * Imagen de las cards en estudiar --> cambiar el reloj que sale
 * Color de texto en asistente virtual 
 * Modificar la forma en la que se ve el texto entregado por marcyAI
