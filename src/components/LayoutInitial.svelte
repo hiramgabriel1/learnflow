@@ -145,17 +145,17 @@
 
     <div class="app-header-right gap-3">
       <button
-        class="md:hidden flex items-center justify-center  bg-primary rounded p-1 hover:cursor-pointer hover:scale-105"
+        class="md:hidden flex items-center justify-center  bg-secondary rounded p-1  hover:cursor-pointer hover:scale-105 hover:border-2git  border-primary"
         on:click={toggleMenu}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="2rem"
-          height="2rem"
+          width="1.5rem"
+          height="1.5rem"
           viewBox="0 0 48 48"
           ><path
             fill="none"
-            color="#ffffff"
+            color="#000000"
             stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -222,7 +222,7 @@
     </div>
   </header>
   <aside class="app-content">
-    <nav class="app-sidebar z-10">
+    <nav class="app-sidebar">
       <!-- <Tooltip> -->
       <div class="flex flex-col gap-5">
         <div
