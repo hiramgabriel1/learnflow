@@ -14,6 +14,8 @@
   import type { FlashcardInterface } from "../types/flashcardTypes";
   import { writable } from "svelte/store";
 
+  import './style.css'
+
 
   let showModal: FlashcardInterface | null = null;
   let flashcards = writable<FlashcardInterface[]>([]);
@@ -136,9 +138,9 @@
     </div>
 
     <div class="px-6 pt-6 mb-6 2xl:container overflow-y-auto">
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+      <div class="cuadros grid gap-6 md:grid-cols-2 lg:grid-cols-2">
         <div>
-          <div class="h-full py-6 px-6 rounded-xl bg-[#1f2937]">
+          <div class="grafica h-full py-6 px-6 rounded-xl bg-[#1f2937]">
             <h5 class="text-xl text-white">Grafica de progreso</h5>
             <div class="my-8"></div>
             <section
@@ -146,7 +148,7 @@
               style="display: block;"
             >
               <div class="flex items-center justify-center">
-                <svg class="w-72 h-72">
+                <svg class="svg w-72 h-72">
                   <circle
                     cx="50%"
                     cy="50%"
@@ -192,13 +194,13 @@
           </div>
         </div>
         <div class="md:col-span-2 lg:col-span-1">
-          <div class="h-full py-8 px-6 space-y-6 rounded-xl bg-[#1f2937]">
+          <div class="puntos h-full py-8 px-6 space-y-6 rounded-xl bg-[#1f2937]">
             <h5 class="text-xl text-white">Calificaciones</h5>
 
             <!-- Barra -->
 
             <section class="w-full p-6 rounded-lg max-w-2xl bg-[#1f2937]">
-              <section class="py-4 grid grid-cols-2 gap-x-6">
+              <section class="calificaciones py-4 grid grid-cols-2 gap-x-6">
                 <div class="flex items-center py-3">
                   <span
                     class="w-8 h-8 shrink-0 mr-4 rounded-full bg-blue-50 flex items-center justify-center"
@@ -243,7 +245,7 @@
                       <span
                         class="px-2 py-1 rounded-lg bg-red-50 text-red-500 text-xs"
                       >
-                        6.2 / 10
+                        6.2
                       </span>
                     </div>
                     <div
@@ -306,7 +308,7 @@
                       <span
                         class="px-2 py-1 rounded-lg bg-red-50 text-red-500 text-xs"
                       >
-                        6.8 / 10
+                        6.8
                       </span>
                     </div>
                     <div
@@ -374,7 +376,7 @@
                       <span
                         class="px-2 py-1 rounded-lg bg-green-50 text-green-700 text-xs"
                       >
-                        7.3 / 10
+                        7.3
                       </span>
                     </div>
                     <div
@@ -431,7 +433,7 @@
                       <span
                         class="px-2 py-1 rounded-lg bg-red-50 text-red-500 text-xs"
                       >
-                        6.4 / 10
+                        6.4
                       </span>
                     </div>
                     <div
@@ -502,7 +504,7 @@
                       <span
                         class="px-2 py-1 rounded-lg bg-green-50 text-green-700 text-xs"
                       >
-                        8 / 10
+                        8
                       </span>
                     </div>
                     <div
@@ -567,7 +569,7 @@
                       <span
                         class="px-2 py-1 rounded-lg bg-green-50 text-green-700 text-xs"
                       >
-                        8.7 / 10
+                        8.7
                       </span>
                     </div>
                     <div
@@ -587,16 +589,16 @@
           </div>
         </div>
         <div>
-          <div class="h-full py-6 px-6 rounded-xl bg-[#1f2937]">
+          <div class="tareasrecientes h-full py-6 px-6 rounded-xl bg-[#1f2937]">
             <h5 class="text-xl text-white">Tareas recientes</h5>
             <div class="my-8"></div>
 
             <!-- component -->
             <div
-              class="overflow-hidden rounded-lg shadow-md m-5"
+              class=" overflow-hidden rounded-lg shadow-md m-5"
             >
               <table
-                class="w-full border-collapse text-left text-sm text-gray-500"
+                class=" w-full border-collapse text-left text-sm text-gray-500"
               >
                 <tbody
                   class="divide-y divide-gray-600 border-t border-gray-600"
@@ -789,7 +791,7 @@
         </div>
         <div>
           <div
-            class="lg:h-full py-8 px-6 text-gray-600 rounded-xl bg-[#1f2937]"
+            class="añadirtareas lg:h-full py-8 px-6 text-gray-600 rounded-xl bg-[#1f2937]"
           >
           <h5 class="text-xl text-white">Añadir tareas</h5>
           <div class="max-w-md mx-auto  shadow-lg rounded-lg overflow-hidden mt-16">
