@@ -103,6 +103,13 @@
   let hoverGenerador = false;
   let hoverAjuste = false;
   let hoverSalir = false;
+
+  function toggleMenu() {
+    const sidebar = document.querySelector(".app-sidebar");
+    if (sidebar) {
+      sidebar.classList.toggle("sidebar-active");
+    }
+  }
 </script>
 
 <Toaster />
@@ -135,8 +142,29 @@
         </svg>
       </div>
     </div>
+
     <div class="app-header-right gap-3">
-      <a class="add-btn" href="/estudiar">
+      <button
+        class="md:hidden flex items-center justify-center  bg-primary rounded p-1 hover:cursor-pointer hover:scale-105"
+        on:click={toggleMenu}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="2rem"
+          height="2rem"
+          viewBox="0 0 48 48"
+          ><path
+            fill="none"
+            color="#ffffff"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="4"
+            d="M7.95 11.95h32m-32 12h32m-32 12h32"
+          /></svg
+        >
+      </button>
+      <a class=" add-btn" href="/estudiar">
         <svg
           class="btn-icon feather feather-plus"
           xmlns="http://www.w3.org/2000/svg"
@@ -194,7 +222,7 @@
     </div>
   </header>
   <aside class="app-content">
-    <nav class="app-sidebar">
+    <nav class="app-sidebar z-10">
       <!-- <Tooltip> -->
       <div class="flex flex-col gap-5">
         <div
