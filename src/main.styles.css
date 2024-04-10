@@ -581,7 +581,7 @@ a {
 }
 
 .project-boxes.jsGridView .project-box-wrapper {
-  width: 33.3%;
+  width: 100%;
 }
 
 .project-boxes.jsListView .project-box {
@@ -641,13 +641,13 @@ a {
 .project-boxes.jsListView .box-progress-wrapper {
   order: 3;
   flex: 1;
+  background-color: #10161b;
 }
 
 .project-box {
-  --main-color-card: #dbf6fd;
   border-radius: 30px;
   padding: 16px;
-  background-color: var(--main-color-card);
+  background-color: #1f2937;
 }
 
 .project-box-header {
@@ -761,7 +761,7 @@ a {
 .project-box-footer:after {
   content: "";
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgb(255, 211, 226);
   width: calc(100% + 32px);
   top: 0;
   left: -16px;

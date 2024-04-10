@@ -44,9 +44,9 @@
 </script>
 
 <div class="project-box-wrapper">
-  <div class="project-box" style="background-color: {colors[randomColors]};">
+  <div class="project-box bg-[#1f2937]">
     <div class="project-box-header">
-      <span>{currentFlashcard.created}</span>
+      <span style="color: white;">{currentFlashcard.created}</span>
       <div class="more-wrapper">
         <!-- ? options points -->
         <button
@@ -69,13 +69,13 @@
       </div>
     </div>
     <div class="project-box-content-header">
-      <p class="box-content-header">{currentFlashcard.question}</p>
-      <p class="box-content-subheader">
+      <p class="box-content-header text-white">{currentFlashcard.question}</p>
+      <p class="box-content-subheader text-white">
         {currentFlashcard.response[0].respuesta}
       </p>
     </div>
     <div class="box-progress-wrapper">
-      <p class="box-progress-header">Progreso</p>
+      <p class="box-progress-header text-white">Progreso</p>
       <div class="box-progress-bar flex flex[column_!important]">
         <span
           class="box-progress"
@@ -96,15 +96,15 @@
           )}%; background-color: #F8F8F8"
         ></span>
       </div>
-      <p class="box-progress-percentage">
+      <p class="box-progress-percentage text-white">
         {progress.correct.toFixed(2)}%
       </p>
-      <p class="box-progress-percentage pt-2">
+      <p class="box-progress-percentage pt-2 text-white">
         {(progress.correct * progress.total) / 100}/{progress.total}
       </p>
     </div>
     <div class="project-box-footer">
-      <div class="days-left" style="color: #ff942e;">
+      <div class="days-left text-white bg-[#1f2937]">
         {getDateString(currentFlashcard.created)}
       </div>
       <a href="/estudiar/flashcards/{currentFlashcard.id}" class="h-full">

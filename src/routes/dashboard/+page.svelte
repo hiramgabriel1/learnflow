@@ -588,207 +588,18 @@
             <!-- end barra -->
           </div>
         </div>
-        <div>
-          <div class="tareasrecientes h-full py-6 px-6 rounded-xl bg-[#1f2937]">
-            <h5 class="text-xl text-white">Tareas recientes</h5>
-            <div class="my-8"></div>
+        
+          
 
             <!-- component -->
-            <div
-              class=" overflow-hidden rounded-lg shadow-md m-5"
-            >
-              <table
-                class=" w-full border-collapse text-left text-sm text-gray-500"
-              >
-                <tbody
-                  class="divide-y divide-gray-600 border-t border-gray-600"
-                >
-                  <!-- 1 -->
-                  <tr class="hover:bg-gray-700">
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <div class="relative h-10 w-10">
-                        <div class="bg-blue-500 rounded-full p-2 flex">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="28"
-                            height="28"
-                            viewBox="0 0 56 56"
-                          >
-                            <path
-                              fill="white"
-                              d="M15.555 53.125h24.89c4.852 0 7.266-2.461 7.266-7.336V24.508H30.742c-3 0-4.406-1.43-4.406-4.43V2.875H15.555c-4.828 0-7.266 2.484-7.266 7.36v35.554c0 4.898 2.438 7.336 7.266 7.336m15.258-31.828h16.64c-.164-.961-.844-1.899-1.945-3.047L32.57 5.102c-1.078-1.125-2.062-1.805-3.047-1.97v16.9c0 .843.446 1.265 1.29 1.265m-11.836 13.36c-.961 0-1.641-.68-1.641-1.594c0-.915.68-1.594 1.64-1.594h18.07c.938 0 1.665.68 1.665 1.593c0 .915-.727 1.594-1.664 1.594Zm0 8.929c-.961 0-1.641-.68-1.641-1.594s.68-1.594 1.64-1.594h18.07c.938 0 1.665.68 1.665 1.594s-.727 1.594-1.664 1.594Z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="text-sm">
-                        <div class="font-bold text-white">
-                          Admin DashBoard Design
-                        </div>
-                        <div class="text-[#69738d]">
-                          Broadcast web app mockup
-                        </div>
-                      </div>
-                    </th>
-                    <td class="px-6 py-4"> </td>
-                    <td class="px-6 py-4">
-                      <div class="text-sm">
-                        <div class="font-medium text-[#69738d]">
-                          15 minutes ago
-                        </div>
-                        <div class="text-[#69738d]">30 task, 5 issues</div>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <!-- 2 -->
-                  <tr class="hover:bg-gray-700">
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <div class="relative h-10 w-10">
-                        <div class="bg-green-500 rounded-full p-2 flex">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="28"
-                            height="28"
-                            viewBox="0 0 24 24"
-                            ><path
-                              fill="white"
-                              fill-rule="evenodd"
-                              d="M8.38 7.194a5.41 5.41 0 0 1 9.952 2.605a4.478 4.478 0 1 1 .191 8.951H6.875A5.875 5.875 0 1 1 8.38 7.194M12 15.75c.18 0 .345-.063.475-.17l2.494-1.994a.75.75 0 0 0-.938-1.172L12.75 13.44V10a.75.75 0 0 0-1.5 0v3.44l-1.282-1.025a.75.75 0 1 0-.937 1.172l2.498 1.998a.747.747 0 0 0 .465.166z"
-                              clip-rule="evenodd"
-                            /></svg
-                          >
-                        </div>
-                      </div>
-                      <div class="text-sm">
-                        <div class="font-bold text-white">
-                          WordPress Development
-                        </div>
-                        <div class="text-[#69738d]">Upload new design</div>
-                      </div>
-                    </th>
-                    <td class="px-6 py-4"> </td>
-                    <td class="px-6 py-4">
-                      <div class="text-sm">
-                        <div class="font-medium text-[#69738d]">1 hour ago</div>
-                        <div class="text-[#69738d]">25 task, 5 issues</div>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <!-- 3 -->
-                  <tr class="hover:bg-gray-700">
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <div class="relative h-10 w-10">
-                        <div class="bg-violet-500 rounded-full p-2 flex">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="28"
-                            height="28"
-                            viewBox="0 0 24 24"
-                            ><g fill="none"
-                              ><path
-                                d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"
-                              /><path
-                                fill="white"
-                                d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 4a1 1 0 0 0-1 1v5a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V7a1 1 0 0 0-1-1"
-                              /></g
-                            ></svg
-                          >
-                        </div>
-                      </div>
-                      <div class="text-sm">
-                        <div class="font-bold text-white">Project meeting</div>
-                        <div class="text-[#69738d]">New project discussion</div>
-                      </div>
-                    </th>
-                    <td class="px-6 py-4"> </td>
-                    <td class="px-6 py-4">
-                      <div class="text-sm">
-                        <div class="font-medium text-[#69738d]">
-                          35 minutes ago
-                        </div>
-                        <div class="text-[#69738d]">15 task, 2 issues</div>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <!-- 4 -->
-                  <tr class="hover:bg-gray-700">
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <div class="relative h-10 w-10">
-                        <div class="bg-red-500 rounded-full p-2 flex">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="28"
-                            height="28"
-                            viewBox="0 0 24 24"
-                            ><path
-                              fill="white"
-                              d="m4 8l8 5l8-5l-8-5zm18 0v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8c0-.73.39-1.36.97-1.71L12 .64l9.03 5.65c.58.35.97.98.97 1.71"
-                            /></svg
-                          >
-                        </div>
-                      </div>
-                      <div class="text-sm">
-                        <div class="font-bold text-white">Broadcast Mail</div>
-                        <div class="text-[#69738d]">
-                          Sent release details to team
-                        </div>
-                      </div>
-                    </th>
-                    <td class="px-6 py-4"> </td>
-                    <td class="px-6 py-4">
-                      <div class="text-sm">
-                        <div class="font-medium text-[#69738d]">
-                          55 minutes ago
-                        </div>
-                        <div class="text-[#69738d]">35 task, 7 issues</div>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <!-- 5 -->
-                  <tr class="hover:bg-gray-700">
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <div class="relative h-10 w-10">
-                        <div class="bg-orange-500 rounded-full p-2 flex">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="28"
-                            height="28"
-                            viewBox="0 0 20 20"
-                            ><path
-                              fill="white"
-                              d="m5.976 0l4.475 3.418l-1.71 5.531H3.21L1.5 3.42zm0 20L1.5 16.582l1.71-5.531h5.532l1.709 5.53zM18.5 12.968l-5.261 1.797l-3.252-4.705l3.252-4.705L18.5 7.152z"
-                            /></svg
-                          >
-                        </div>
-                      </div>
-                      <div class="text-sm">
-                        <div class="font-bold text-white">
-                          UI Design
-                        </div>
-                        <div class="text-[#69738d]">
-                          New application planning
-                        </div>
-                      </div>
-                    </th>
-                    <td class="px-6 py-4"> </td>
-                    <td class="px-6 py-4">
-                      <div class="text-sm">
-                        <div class="font-medium text-[#69738d]">
-                          50 minutes ago
-                        </div>
-                        <div class="text-[#69738d]">27 task, 4 issues</div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="project-boxes jsGridView">
+              {#if $flashcards}
+                {#each $flashcards as flashcard}
+                  <CardView bind:showModal currentFlashcard={flashcard} />
+                {/each}
+              {/if}
             </div>
-          </div>
-        </div>
+          
         <div>
           <div
             class="añadirtareas lg:h-full py-8 px-6 text-gray-600 rounded-xl bg-[#1f2937]"
@@ -860,13 +671,7 @@
         </div>
       </div>
     </div>
-    <div class="project-boxes jsGridView">
-      {#if $flashcards}
-        {#each $flashcards as flashcard}
-          <CardView bind:showModal currentFlashcard={flashcard} />
-        {/each}
-      {/if}
-    </div>
+    
   </div>
 </LayoutInitial>
 
