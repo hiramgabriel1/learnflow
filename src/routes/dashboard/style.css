@@ -1,0 +1,49 @@
+@media (max-width: 1022px){
+    .grafica {
+        width: 300px;
+    }
+    .puntos {
+        width: 300px;
+    }
+    .tareasrecientes {
+        width: 300px;
+    }
+    .añadirtareas {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .calificaciones {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media (min-width: 430px) and (max-width: 768px) {
+    .calificaciones {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+    }
+    .svg {
+        width: 200px;
+        height: 200px;
+    }
+    .tareasrecientes {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+@media (max-width: 935px){
+    .cuadros {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+

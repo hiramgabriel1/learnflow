@@ -16,31 +16,33 @@
 
   const formHandler = async () => {
     try {
-      const verifyUser = await fetch(
-        `${envDataConf.URLBACK}/auth/login/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // credentials: 'include',
-          body: JSON.stringify(formData),
+        const verifyUser = await fetch(
+            `${envDataConf.URLBACK}/auth/login/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                // credentials: 'include',
+                body: JSON.stringify(formData),
+            }
+        );
+
+        if (!verifyUser.ok) {
+            if (verifyUser.status === 400)
+                return toast.error("Correo o contraseña invalidos");
+            else return toast.error("Error en la solicitud");
         }
-      );
 
-      if (!verifyUser.ok) {
-        if (verifyUser.status === 400)
-          return toast.error("Correo o contraseña invalidos");
-        else return toast.error("Error en la solicitud");
-      }
-
-      const userCurrent = await verifyUser.json();
-      cookie.set("jwt", userCurrent.jwt);
-      await goto("/dashboard");
+        const userCurrent = await verifyUser.json();
+        cookie.set("jwt", userCurrent.token); 
+        console.log(userCurrent);
+        console.log("login", userCurrent.token);
+        await goto("/dashboard");
     } catch (error) {
-      console.error(error);
+        console.error(error);
     }
-  };
+};
+
 
   // todo: auth methods here
   const handleAuthGithub = () => {
