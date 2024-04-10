@@ -4,7 +4,7 @@
 
   import "../../app.css";
   import "../../main.styles.css";
-  import marcyAI from "$lib/public/images/marcy-ai.png"
+  import marcyAI from "$lib/public/images/marcy-ai.png";
   import toast, { Toaster } from "svelte-french-toast";
   import { onMount } from "svelte";
   import { envDataConf } from "../../server/server";
@@ -103,7 +103,6 @@
     formData.question = sugerencias.slice(3);
     console.log(formData.question);
   };
-  
 </script>
 
 <Toaster />
@@ -140,7 +139,7 @@
         on:submit|preventDefault={sendQuestionToMarcyAI}
       >
         <input
-          class="flex h-10 w-full rounded-md border border-input bg-[#090d0f] border-none text-white  px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
+          class="flex h-10 w-full rounded-md border border-input bg-[#090d0f] border-none text-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
           placeholder="Comenzar una conversación con MarcyAI..."
           bind:value={formData.question}
         />
@@ -158,7 +157,7 @@
         {#if marcyIsResponse}
           <p class="text-white"><b>MarcyAI:</b> {responseMarcyAI.response}</p>
         {:else}
-          <h2 class="text-2xl font-semibold mb-4 text-white">Sugerencias</h2>
+          <h2 class="text-2xl mb-4 text-white">Sugerencias</h2>
           <div class="overflow-auto">
             {#if loadingSuggestions}
               <span class="text-white">Creando sugerencias... 🧠</span>
@@ -167,7 +166,9 @@
                 <ul class="my-5">
                   <li class="flex items-center justify-between py-2 border-b">
                     <!-- todo: renderización de sugerencias -->
-                    <span class="font-bold text-white">{sugerencias.slice(2)}</span>
+                    <span class="font-bold text-white"
+                      >{sugerencias.slice(2)}</span
+                    >
                     <button on:click={() => sendSuggestion(sugerencias)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
