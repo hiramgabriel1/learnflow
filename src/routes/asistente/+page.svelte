@@ -4,6 +4,7 @@
 
   import "../../app.css";
   import "../../main.styles.css";
+  import marcyAI from "$lib/public/images/marcy-ai.png"
   import toast, { Toaster } from "svelte-french-toast";
   import { onMount } from "svelte";
   import { envDataConf } from "../../server/server";
@@ -102,6 +103,7 @@
     formData.question = sugerencias.slice(3);
     console.log(formData.question);
   };
+  
 </script>
 
 <Toaster />
@@ -126,7 +128,7 @@
           ><img
             class="aspect-square h-full w-full"
             alt="AI"
-            src="https://imgs.search.brave.com/RK4eSupiqRKVzr36sUJ3xjc5x3KMrwE5cvDdcdLOkaU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9oYXBw/eS1wZXJzb24tcG9y/dHJhaXQtc21pbGlu/Zy13b21hbi10YW5u/ZWQtc2tpbi1jdXJs/eS1oYWlyLWhhcHB5/LXBlcnNvbi1wb3J0/cmFpdC1zbWlsaW5n/LXlvdW5nLWZyaWVu/ZGx5LXdvbWFuLTE5/NzUwMTE4NC5qcGc"
+            src={marcyAI}
           /></span
         >
         <p class="ml-4 flex-1 text-white">

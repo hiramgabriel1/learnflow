@@ -133,7 +133,9 @@
     <!-- index todo -->
     <div class="max-w-7xl mx-auto py-12 px-4">
       <form on:submit|preventDefault={generateImage}>
-        <h1 class="text-4xl font-bold mb-4 text-white">Genera una imagen con AI</h1>
+        <h1 class="text-4xl font-bold mb-4 text-white">
+          Genera una imagen con AI
+        </h1>
         <p class="mb-6 text-white">
           Introduce una breve descripción y generaremos una imagen para ti. <br
           />
@@ -151,7 +153,7 @@
             name=""
             id=""
             bind:value={formData.type}
-            class="flex h-10 w-fit rounded-md border border-input  px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            class="flex h-10 w-fit rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <option value="realistic">Realismo</option>
             <!-- <option value="paint">Pintura</option> -->
@@ -181,9 +183,10 @@
           {#each $listImages as image}
             <div class="flex flex-col items-center gap-2">
               <img
+                id="img-container"
                 src={image.url}
                 alt="Gallery item 1"
-                class="w-full h-auto rounded-md"
+                class="zoom w-full h-auto rounded-md"
                 width="200"
                 height="200"
                 style="aspect-ratio: 200 / 200; object-fit: cover;"
