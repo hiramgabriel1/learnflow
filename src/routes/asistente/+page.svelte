@@ -135,23 +135,25 @@
         </p>
       </div>
       <form
-        class="flex items-center bg-[#1f2937] p-4 rounded-lg mb-6"
+        class="flex flex-col md:flex-row items-center bg-[#1f2937] p-4 rounded-lg mb-6"
         on:submit|preventDefault={sendQuestionToMarcyAI}
       >
         <input
-          class="flex h-10 w-full rounded-md border border-input bg-[#090d0f] border-none text-white px-11 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-4"
+          class="flex h-10 w-full rounded-md border border-input bg-[#090d0f] border-none text-white px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mb-4 md:mb-0 md:mr-4"
           placeholder="Comenzar una conversación con MarcyAI..."
           bind:value={formData.question}
         />
-
+    
         <button
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-green-600 text-primary-foreground hover:bg-green-700 h-10 px-4 py-2"
-          style="color: white; width: 100px"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-green-600 text-primary-foreground hover:bg-green-700 h-10 px-4 py-2 md:w-auto"
+          style="color: white;"
           disabled={sending}
         >
           {sending ? "Pensando..." : "Enviar"}
         </button>
       </form>
+    
+    
       <div class="min-w-96">
         <!-- todo: response MarcyAI -->
         {#if marcyIsResponse}

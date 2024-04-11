@@ -51,9 +51,10 @@
 <body
   class="bg-white dark:bg-[#090d0f] dark:before:fixed dark:before:-z-50 dark:before:inset-0 dark:before:bg-gray-950/50"
 >
+
 <header>
   <nav
-    class="fixed overflow-hidden z-20 w-full bg-white/80 dark:bg-gray-950/0 dark:shadow-md rounded-b-lg dark:shadow-gray-950/10 border-b border-x dark:border-[#1a232a] backdrop-blur-2xl"
+    class="fixed overflow-hidden z-20 w-full bg-white/80 dark:bg-gray-950/0 dark:shadow-md rounded-b-lg  border-b border-x dark:border-[#1a232a] backdrop-blur-2xl"
   >
     <div class="px-6 m-auto max-w-6xl 2xl:px-0">
       <div class="flex flex-wrap items-center justify-between py-2 sm:py-4">
@@ -83,40 +84,56 @@
         </div>
 
         <div
-          class="{showMenu ? 'block' : 'hidden'} lg:hidden bg-green-500/80 rounded-b-lg lg:rounded-none w-full"
+          class="{showMenu ? 'block bg-black/50 text-white' : 'hidden lg:hidden'} lg:hidden rounded-b-lg lg:rounded-none w-full"
         >
-          <ul class="py-4 space-y-4 text-center">
-            <li>
+          <ul class="py-4 space-y-4 text-left bg-black"> <!-- Cambiado el fondo de gris a negro -->
+            <li class="pl-3">
               <a
                 href="/"
-                class="block transition hover:text-green-600 dark:hover:text-green-400 text-white underline"
-              >
+                class="block transition hover:text-green-600 dark:hover:text-green-400 text-white"
+              > <!-- Quitado el underline -->
                 <span>Features</span>
               </a>
             </li>
-            <li>
+            <li class="pl-3">
               <a
                 href="#conocer"
-                class="block transition hover:text-green-600 dark:hover:text-green-400 text-white underline"
-              >
+                class="block transition hover:text-green-600 dark:hover:text-green-400 text-white"
+              > <!-- Quitado el underline -->
                 <span>Conocer mas</span>
               </a>
             </li>
-            <li>
+            <li class="pl-3">
               <a
                 href="#creadores"
-                class="block transition hover:text-green-600 dark:hover:text-green-400 text-white underline"
-              >
+                class="block transition hover:text-green-600 dark:hover:text-green-400 text-white"
+              > <!-- Quitado el underline -->
                 <span>Creadores</span>
               </a>
             </li>
-            <li>
+            <li class="pl-3">
               <a
                 href="#blog"
-                class="block transition hover:text-green-600 dark:hover:text-green-400 text-white underline"
-              >
+                class="block transition hover:text-green-600 dark:hover:text-green-400 text-white"
+              > <!-- Quitado el underline -->
                 <span>Novedades</span>
               </a>
+            </li>
+            <li>
+              <button
+                on:click={() => (window.location.href = "/auth/login")}
+                class="inline-block min-w-min h-9 ml-2 group flex items-center rounded-full disabled:border :select-none [&>:not(.sr-only)]:relative :disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark::disabled:!text-white hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center bg-green-500"
+              > <!-- Cambiado a inline-block y min-w-min, añadido ml-2 para el margen izquierdo -->
+                <span>Iniciar Sesión</span>
+              </button>
+            </li>
+            <li>
+              <button
+                on:click={() => (window.location.href = "/auth/register")}
+                class="inline-block min-w-min h-9 ml-2 group flex items-center rounded-full disabled:border :select-none [&>:not(.sr-only)]:relative :disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark::disabled:!text-white hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center bg-green-500"
+              > <!-- Cambiado a inline-block y min-w-min, añadido ml-2 para el margen izquierdo -->
+                <span>Crear cuenta</span>
+              </button>
             </li>
           </ul>
         </div>
@@ -164,27 +181,16 @@
               </li>
             </ul>
           </div>
-          <div
-            class="w-full space-y-2 gap-2 pt-6 pb-4 lg:pb-0 border-t dark:border-[#1a232a] items-center flex flex-col lg:flex-row lg:space-y-0 lg:w-fit lg:border-l lg:border-t-0 lg:pt-0 lg:pl-2"
-          >
-            <button
-              on:click={() => (window.location.href = "/auth/login")}
-              class="w-full h-9 lg:w-fit group flex items-center rounded-full disabled:border :select-none [&>:not(.sr-only)]:relative :disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark::disabled:!text-white text-gray-800 hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center"
-            >
-              <span>Iniciar Sesión</span>
-            </button>
-            <button
-              on:click={() => (window.location.href = "/auth/register")}
-              class="w-full h-9 lg:w-fit group flex items-center relative border rounded-full :select-none [&>:not(.sr-only)]:relative before:rounded-full before:absolute before:inset-0 before:border before:bg-gradient-to-b :disabled:opacity-20 disabled:text-gray-950/40 disabled:border-gray-200 disabled:bg-gray-100 disabled::text-gray-300 disabled:before:border-transparent disabled:before:bg-gray-100 disabled:before:from-transparent dark:border-0 dark:before:border-0 dark:before:border-t dark:before:shadow-inner dark:disabled:border dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 disabled:dark::text-gray-700 dark:disabled:before:bg-gray-900 dark:disabled:before:from-gray-900 dark:disabled:before:shadow-none dark::disabled:!text-white text-white border-gray-950 bg-gray-600 before:border-gray-600 before:from-gray-800 hover:bg-gray-900 active:bg-gray-950 dark:text-gray-950 dark:before:border-gray-200 dark:before:from-gray-200 dark:bg-white dark:before:shadow-white/10 dark:hover:bg-gray-100 dark:active:bg-gray-300 dark:active:before:from-gray-200 lg:text-sm lg:h-8 px-3 justify-center"
-            >
-              <span>Crear cuenta</span>
-            </button>
-          </div>
         </div>
       </div>
     </div>
   </nav>
 </header>
+
+
+
+
+
 
   <main class="overflow-hidden">
     <section class="relative">
