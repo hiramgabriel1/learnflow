@@ -21,6 +21,8 @@
   import "swiper/css/pagination";
   import "swiper/css/effect-cards";
 
+  import "./style.css";
+
   onMount(() => {
     //@ts-ignore
     let swiper = new Swiper(".proofSlides", {
@@ -45,6 +47,8 @@
       },
     });
   });
+
+
 </script>
 
 <body
@@ -225,11 +229,10 @@
             </div>
           </div>
           <div class="-mx-6 relative mt-8 sm:mt-12 max-w-xl sm:mx-auto">
+            <div class="absolute inset-0 -top-8 left-1/2 -z-0 h-56 w-full -translate-x-1/2 dark:opacity-15 [background-image:linear-gradient(to_bottom,transparent_98%,theme(colors.gray.200/75%)_98%),linear-gradient(to_right,transparent_94%,_theme(colors.gray.200/75%)_94%)] [background-size:16px_35px] [mask:radial-gradient(black,transparent_95%)]"></div>
+
             <div
-              class="absolute inset-0 -top-8 left-1/2 -z-20 h-56 w-full -translate-x-1/2 dark:opacity-10 bg-gradient-to-b to-gray-200/25,bg-gradient-to-r from-transparent via-gray-200 to-transparent bg-no-repeat bg-16 bg-35 mask bg-opacity-95"
-            ></div>
-            <div
-              class="absolute top-12 inset-x-0 w-2/3 h-1/3 -z-[1] rounded-full bg-green-300 dark:bg-white/10 mx-auto blur-3xl"
+              class="absolute top-12 inset-x-0 w-2/3 h-1/3 -z-[1] rounded-full bg-primary-300 dark:bg-white/10 mx-auto blur-3xl"
             ></div>
 
             <div class="swiper proofSlides pb-6">
@@ -437,7 +440,7 @@
                 </div>
               </div>
               <div
-                class="col-span-full sm:col-span-3 lg:col-span-2 overflow-hidden relative p-6 rounded-3xl bg-white border border-[--ui-light-border-color] dark:border-[--ui-dark-border-color] dark:bg-[#10161b]"
+                class="col-span-full sm:col-span-3 lg:col-span-2 overflow-hidden relative p-6 rounded-3xl bg-white dark:border-[--ui-dark-border-color] dark:bg-[#10161b]"
               >
                 <div>
                   <div
@@ -469,7 +472,7 @@
                 </div>
               </div>
               <div
-                class="col-span-full sm:col-span-3 lg:col-span-2 overflow-hidden relative p-6 rounded-3xl bg-white border border-[--ui-light-border-color] dark:border-[--ui-dark-border-color] dark:bg-[#10161b]"
+                class="col-span-full sm:col-span-3 lg:col-span-2 overflow-hidden relative p-6 rounded-3xl bg-white dark:border-[--ui-dark-border-color] dark:bg-[#10161b]"
               >
                 <div>
                   <div class="pt-6 lg:px-6">
@@ -850,9 +853,11 @@
 
       <div class="container max-w-screen-xl mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md">
+          <div
+            class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md"
+          >
             <div
-              class="w-20 py-6 flex justify-center bg-[#222c35]  rounded-md mb-4"
+              class="w-20 py-6 flex justify-center bg-[#222c35] rounded-md mb-4"
             >
               <svg
                 class="h-12 w-fit mx-auto dark:hidden"
@@ -878,17 +883,20 @@
               </svg>
             </div>
 
-            <h4 class="font-medium dark:text-white text-lg mb-4">Chat global</h4>
+            <h4 class="font-medium dark:text-white text-lg mb-4">
+              Chat global
+            </h4>
 
             <p class="font-normal text-gray-500 text-md">
-              Podras comunicarte con personas que<br /> se encuentren
-              en <b>Línea</b> en ese momento, <br /> para compartir cualquier peticion.
+              Podras comunicarte con personas que<br /> se encuentren en
+              <b>Línea</b>
+              en ese momento, <br /> para compartir cualquier peticion.
             </p>
           </div>
 
-       
-
-          <div class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md">
+          <div
+            class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md"
+          >
             <div
               class="w-20 py-6 flex justify-center bg-[#222c35] rounded-md mb-4"
             >
@@ -931,21 +939,24 @@
               </svg>
             </div>
 
-            <h4 class="font-medium dark:text-white text-lg mb-4">Genera flashcards con inteligencia artificial </h4>
+            <h4 class="font-medium dark:text-white text-lg mb-4">
+              Genera flashcards con inteligencia artificial
+            </h4>
 
             <p class="font-normal text-gray-500 text-md">
-              Puedes generar ahora  <b>FlashCards</b> para <br /> llevar el progreso 
+              Puedes generar ahora <b>FlashCards</b> para <br /> llevar el progreso
               de tu apredizaje.
             </p>
           </div>
 
-          <div class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md">
+          <div
+            class="dark:bg-[#10161b] border dark:border-none px-8 py-10 rounded-md"
+          >
             <div
               class="w-20 py-6 flex justify-center bg-[#222c35] rounded-md mb-4"
             >
-
-            <svg
-            class="h-12 w-fit mx-auto dark:hidden"
+              <svg
+                class="h-12 w-fit mx-auto dark:hidden"
                 xmlns="http://www.w3.org/2000/svg"
                 width="1em"
                 height="1em"
@@ -959,9 +970,8 @@
                 />
               </svg>
 
-
               <svg
-              class="h-12 w-fit mx-auto hidden dark:block"
+                class="h-12 w-fit mx-auto hidden dark:block"
                 xmlns="http://www.w3.org/2000/svg"
                 width="1em"
                 height="1em"
@@ -977,12 +987,12 @@
             </div>
 
             <h4 class="font-medium dark:text-white text-lg mb-4">
-              Asistente con inteligencia artificial 
+              Asistente con inteligencia artificial
             </h4>
 
             <p class="font-normal text-gray-500 text-md">
-              Ahora todo el tiempo llevaras una <b>IA</b> <br /> para que 
-              le hagas cualquier pregunta.
+              Ahora todo el tiempo llevaras una <b>IA</b> <br /> para que le hagas
+              cualquier pregunta.
             </p>
           </div>
         </div>
