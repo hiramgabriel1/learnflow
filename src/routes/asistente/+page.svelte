@@ -99,8 +99,8 @@
   });
 
   const sendSuggestion = (sugerencias: string) => {
-    formData.question = sugerencias.slice(3);
-    console.log(formData.question);
+    const slicerFomdata = (formData.question = sugerencias.slice(3));
+    console.log(slicerFomdata);
   };
 </script>
 
